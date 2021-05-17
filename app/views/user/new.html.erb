@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account</title>
+</head>
+<body>
+    <div class="account_title">Account</div>
+    <br>
+        <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+            <%= message %>
+            </div>
+        <% end %>
+    <br>
+    <div class="account_form">
+        <%= form_tag("/users/create") do %>
+            <p>Login ID</p>
+            <input name="login_id" value="<%= @login_id %>">
+            <p>Password</p>
+            <input type="password" name="password" value="<%= @password %>">
+            <br>
+            <input type="submit" value="登録"> 
+        <% end %>
+    </div>
+</body>
+</html>

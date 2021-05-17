@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>アカウント設定編集</title>
+</head>
+<body>
+    <div class="login_title">アカウント編集</div>
+        <div class="login_form">
+            <% @current_user.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                    <%= message %>
+                </div>
+            <% end %>
+            <%= form_tag("/users/update") do %>
+                <p>Login ID</p>
+                <input name="login_id" value="<%=@current_user.login_id%>">
+                <p>Password</p>
+                <input name="password"　type="password">
+                <p><input type="submit" value="登録"></p> 
+            <%end%>
+        </div>
+        <div class="menulist">
+            <li><%= link_to("戻る","/users/#{@current_user.id}")%></li>
+        </div>
+</body>
+</html>

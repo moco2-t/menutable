@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menutable</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="title_logo">
+        menutable
+      </div>
+        <ul class="header_list">
+          <% if session[:user_id] %>
+            <li>
+              Login中のuser：
+              <%= link_to(@current_user.login_id,"/users/#{@current_user.id}") %>
+            </li>
+            <li>
+              <%= link_to("LOGOUT",'/logout',method: :post ,data: { confirm: "ログアウトしてよろしいですか?" }) %>
+            </li>
+            <li>
+              <%= link_to("RECIPE",'/recipes/index') %>
+            </li>
+            <li>
+              <%= link_to("MEAL",'/meal/index') %>
+            </li>
+            <li>
+              <%= link_to("SHOPPING",'/shopping/index') %>
+            </li>
+            <li>
+              <%= link_to("TOP",'/users/top') %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to("LOGIN",'/users/login_form') %> 
+            </li>
+            <li>
+              <%= link_to("ACCOUNT",'/users/new') %>
+            </li>
+            <li>
+              <%= link_to("INDEX",'/index') %>
+            </li>
+          <% end %>
+        </ul>
+    </header>
+    <br>
+    <br>
+    <main>
+    <br>
+    <br>
+    <% if flash[:notice] %>
+      <div class="flash">
+      <%= flash[:notice] %>
+      </div>
+      <%end%>
+      <%= yield %>
+    </main>
+  </body>
+</html>

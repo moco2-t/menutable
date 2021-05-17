@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ユーザー詳細</title>
+</head>
+<body>
+    <div class="show_title">User設定</div>
+    <div class="user_data">
+        <table>
+            <tr>
+                <td>
+                    Login ID    :
+                </td>
+                <td>
+                    <%= @current_user.login_id %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password    :
+                </td>
+                <td>
+                    ********
+                </td>
+            </tr>
+        </table>
+    <br>
+    <br>
+    <div class="show-list">
+        <li><%= link_to("編集","/users/#{@current_user.id}/edit")%></li>
+        <li><%= link_to ("削除", "/users/delete", method: :delete,data: { confirm: "アカウントを削除してよろしいですか?" } )%></li>
+    </div>
+    </div>   
+</body>
+</html>
