@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   post "users/update" => "user#update" #アカウント編集form
 
   get "recipes/index" => "recipe#index" #レシピ一覧
-
+  get "recipes/new" => "recipe#new"
   
 end
