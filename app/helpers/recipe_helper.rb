@@ -1,9 +1,8 @@
+require 'open-uri'
+require 'nokogiri'
+require 'kconv'
+
 module RecipeHelper
-
-    require 'open-uri'
-    require 'nokogiri'
-    require 'kconv'
-
     def recipes 
         Recipe.all
     end
@@ -24,10 +23,6 @@ module RecipeHelper
         recipe = Recipe.find_by(id: params[:id])
         url = recipe.address
         html = URI.open(url).read
-        doc = Nokogiri::HTML.parse(html) 
-        #scraping_ingredient = doc.css('.name').children 
-        #scraping_amount = doc.css('.ingredient_quantity')  
+        doc = Nokogiri::HTML.parse(html)  
     end
-
-    
 end
