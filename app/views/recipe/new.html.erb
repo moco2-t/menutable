@@ -8,7 +8,7 @@
 </head>
 <body>
    <div class="page_title"><h1>Recipe登録</h1></div> 
-        <% if @create_recipe %>
+        <% if @created_recipe %>
             <% @new_recipe.errors.full_messages.each do |message| %>
                 <div class="form-error">
                 <%= message %>

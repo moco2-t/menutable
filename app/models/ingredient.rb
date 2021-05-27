@@ -1,3 +1,4 @@
 class Ingredient < ApplicationRecord
-    belongs_to :foods
+    has_many :foods
+    validates :food_id,:amount, {presence:true}
 end

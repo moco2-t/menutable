@@ -9,15 +9,15 @@
 <body>
     <div class="page_title"><h1>材料登録</h1></div>
       <div class="recipe_detail">
-        <h3><%= @newrecipe.name %></h3>
+        <h3><%= recipe().name %></h3>
         <table>
           <tr>
             <td>keyword</td>
-            <td><%= @newrecipe.keyword %></td>
+            <td><%= recipe().keyword %></td>
           </tr>
           <tr>
             <td>URL</td>
-            <td><%= @newrecipe.address %></td>
+            <td><%= recipe().address %></td>
           </tr>
         </table>
       </div>
@@ -28,6 +28,15 @@
         </tr>
         <tr>
           <td>食材を登録してください</td>
+          <td>
+            <% if @created_ingredient %>
+              <% @created_ingredient.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                  <%= message %>
+                </div>
+              <% end %>
+            <%end%>
+          </td>
         </tr>
         <tr>
           <td>カテゴリー</td>
@@ -38,7 +47,7 @@
           <td>
             <!-- (1)材料のカテゴリーを選択 -->
             <div class="foodcategory_pulldown">
-              <%= form_with url:"/recipes/category" do |f| %>
+              <%= form_with url:"/recipes/#{params[:id]}/category" do |f| %>
                 <%= f.select :category, [ ["穀類/麺類",1],["肉類",2], ["魚介類",3],["野菜",4],["果物",5], ["大豆/卵/乳製品",6], ["調味料",7], ["加工品",8]], include_blank: "選択して下さい" %><br>
                 <%= f.submit 'next'%>
               <% end %>
@@ -48,7 +57,7 @@
             <!-- (2)カテゴリー別の材料名を選択 -->
             <div class="food_pulldown">
               <%if @food_category %>
-                <%= form_with url:"/recipes/create_ingredient" do |f| %>
+                <%= form_with url:"/recipes/#{params[:id]}/create_ingredient" do |f| %>
                   <%= f.collection_select :food_id, @food_category.children, :id, :name, include_blank: "選択して下さい" %>
             </div>
           </td>
@@ -63,17 +72,26 @@
           </td>
         </tr>
       </table>  
+      
       <br>
-      <%= link_to("登録完了","/recipes/#{@newrecipe.id}") %><br>
-      <br>
-        <!-- 食材の追加 -->
+
+      <!-- 食材の追加 -->
         <table class="add_food">
           <tr>
             <td>食材がリストになければ、新しく食材名を登録してください</td>
           </tr>
           <tr>
+            <% if @new_food %>
+              <% @new_food.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                  <%= message %>
+                </div>
+              <% end %>
+            <%end%>
+          </tr>
+          <tr>
             <td>
-              <%= form_with url:"/recipes/create_food" do |f| %>
+              <%= form_with url:"/recipes/#{params[:id]}/create_food" do |f| %>
                 <%= f.select :food_category, [ ["穀類/麺類",1],["肉類",2], ["魚介類",3],["野菜",4],["果物",5], ["大豆/卵/乳製品",6], ["調味料",7], ["加工品",8]], include_blank: "選択して下さい" %>
                 <%=f.label :食材名%><%= f.text_field :name %>
                 <%= f.submit '登録'%>
@@ -81,6 +99,10 @@
             </td>
           </tr>
         </table>
+
+      <br>
+
+      <%= link_to("登録完了","/recipes/#{params[:id]}") %><br>
       <br>
         <table class="ingredient-list" border="1">
           <tr>
@@ -91,7 +113,7 @@
             <td>
               <!-- 必要な材料　-->
               <div class="scraping_ingredient">
-                <% @scraping_ingredient.each do |i|%>
+                <% scraping().css('.name').children.each do |i|%>
                   <%if i.text != "\n"%>
                     <li><%= i.text %></li>
                   <%end%>
@@ -101,15 +123,16 @@
             <td>
               <!-- 必要な分量-->
               <div class="scraping_amount">
-                <% @scraping_amount.each do |a|%>
+                <% scraping().css('.ingredient_quantity').each do |a|%>
                   <li><%= a.text %></li>
                 <%end%>
               </div>
             </td>
           </tr>
         </table>
+      <br>
         <p>登録した食材</p>
-        <% if @ingredient %>
+        <% if ingredients() %>
         <table class="Registered_ingredientlist">
           <tr>
             <td>材料</td>
@@ -119,15 +142,15 @@
             <td>
               <!-- 登録した材料　-->
               <div class="Registered_ingredients">
-                <% @ingredient.each do |i|%>                  
-                    <li><%= Food.find_by(id: i.food_id).name %></li>
+                <% ingredients().each do |i|%>                  
+                    <li><%= i.foodname %></li>
                 <%end%>
               </div>
             </td>
             <td>
               <!-- 登録した分量-->
               <div class="Registered_amount">
-              <% @ingredient.each do |i|%>  
+              <% ingredients().each do |i|%>  
                   <li><%= i.amount %></li>
                 <%end%>
               </div>
