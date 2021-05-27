@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   post "users/update" => "user#update" #アカウント編集form
 
   get "recipes/index" => "recipe#index" #レシピ一覧
-  get "recipes/new" => "recipe#new"
+  get "recipes/new" => "recipe#new" #レシピ登録ページ
+  post "recipes/create" => "recipe#create" #レシピ登録
+  get "recipes/:id/ingredient" => "recipe#ingredient" #材料登録ページ
+  post "recipes/:id/category" => "recipe#category" #材料カテゴリー選択
+  post "recipes/:id/create_ingredient" => "recipe#create_ingredient" #材料登録
+  post "recipes/:id/create_food" => "recipe#create_food" #材料追加
   
 end
