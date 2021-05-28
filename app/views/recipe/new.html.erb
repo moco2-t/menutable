@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>レシピ登録（URL）</title>
+</head>
+<body>
+   <div class="page_title"><h1>Recipe登録</h1></div> 
+        <% if @created_recipe %>
+            <% @new_recipe.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                <%= message %>
+                </div>
+            <% end %>
+        <%end%>
+    <div class="createform">
+        <%= form_with url:"/recipes/create" do |f| %>
+            <p> Recipe URL：　<%= f.text_field :address %></p>
+            <%= f.submit "登録"%>
+        <%end%>
+    </div>
+    <div class="attention">
+        <h3>注意書き</h3>
+            <table>
+                <tr>対応してるサイト</tr>
+                <td>cookpad</td>
+            </table>
+    </div>
+    <div class="menu">
+        <li><%= link_to("自分でレシピを入力","/recipes/new")%></li>
+        <li><%= link_to("レシピ一覧","/recipes/index")%></li>
+    </div>
+</body>
+</html>
