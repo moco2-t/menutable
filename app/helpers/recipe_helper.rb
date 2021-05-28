@@ -1,9 +1,8 @@
+require 'open-uri'
+require 'nokogiri'
+require 'kconv'
+
 module RecipeHelper
-
-    require 'open-uri'
-    require 'nokogiri'
-    require 'kconv'
-
     def recipes 
         Recipe.all
     end
@@ -25,9 +24,9 @@ module RecipeHelper
         url = recipe.address
         html = URI.open(url).read
         doc = Nokogiri::HTML.parse(html) 
-        #scraping_ingredient = doc.css('.name').children 
-        #scraping_amount = doc.css('.ingredient_quantity')  
+<<<<<<< Updated upstream
+    end 
+=======
     end
-
-    
+>>>>>>> Stashed changes
 end
