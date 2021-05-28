@@ -23,15 +23,15 @@
                     Password    :
                 </td>
                 <td>
-                    ********
+                    ******
                 </td>
             </tr>
         </table>
     <br>
     <br>
     <div class="show-list">
-        <li><%= link_to("編集","/users/#{@current_user.id}/edit")%></li>
-        <li><%= link_to ("削除", "/users/delete", method: :delete,data: { confirm: "アカウントを削除してよろしいですか?" } )%></li>
+        <li><%= link_to "編集","/users/#{@current_user.id}/edit" %></li>
+        <li><%= link_to "削除", "/users/delete", method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %></li>
     </div>
     </div>   
 </body>

@@ -8,20 +8,21 @@
 </head>
 <body>
     <div class="login_title">login</div>
-    
-    <div class="login_form">
+    <br>
       <% if @error_message %>
         <div class="form-error">
           <%= @error_message %>
         </div>
       <% end %>
-      <%= form_tag("/users/login") do %>
+    <br>
+      <%= form_with url:"/users/login",class:"login_form" do |f|%>
         <p>Login ID</p>
-        <input name="login_id">
+        <%= f.text_field :login_id ,:value => @login_id %>
         <p>Password</p>
-        <input name="password"　type="password">
-        <p><input type="submit" value="Login"></p> 
-      <%end%>
+        <%= f.password_field :password ,:value => @password %>
+        <br>
+        <%= f.submit 'Login'%> 
+    <% end %>
     </div>
 </body>
 </html>
