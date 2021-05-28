@@ -24,9 +24,5 @@ module RecipeHelper
         url = recipe.address
         html = URI.open(url).read
         doc = Nokogiri::HTML.parse(html) 
-<<<<<<< Updated upstream
-    end 
-=======
     end
->>>>>>> Stashed changes
 end
