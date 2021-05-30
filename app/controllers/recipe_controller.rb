@@ -1,10 +1,4 @@
 class RecipeController < ApplicationController
-
-    require 'open-uri'
-    require 'nokogiri'
-    require 'kconv'
-
-
 before_action :ingredient,{only:[:category]}
 
 def index

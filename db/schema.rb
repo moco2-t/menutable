@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_05_26_141157) do
-
+#食材名
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_141157) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_foods_on_ancestry"
   end
-
+#材料
   create_table "ingredients", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "food_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_141157) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "foodname"
   end
-
+#レシピ
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "keyword"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_141157) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
+#アカウント
   create_table "users", force: :cascade do |t|
     t.string "login_id"
     t.string "password_digest"
