@@ -6,7 +6,7 @@ def index
 end
 
 def search
-    @search_recipe = Recipe.where(name: params[:recipe_key])
+    @search_recipe = Recipe.where('name LIKE ?', "%#{params[:searchword]}%")
     render("/recipe/index")
 end
 
