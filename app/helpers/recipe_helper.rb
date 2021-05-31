@@ -23,6 +23,6 @@ module RecipeHelper
         recipe = Recipe.find_by(id: params[:id])
         url = recipe.address
         html = URI.open(url).read
-        doc = Nokogiri::HTML.parse(html)  
+        doc = Nokogiri::HTML.parse(html)
     end
 end
