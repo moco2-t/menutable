@@ -15,11 +15,10 @@ def new
 end
 
 def create
-    url = params[:address] 
-    html = URI.open(url).read
-    doc = Nokogiri::HTML.parse(html)
+    @url = params[:address] 
+    scraping
     @created_recipe = Recipe.new(
-            name: doc.title,
+            name: @doc.title,
             keyword: "不明",
             address: params[:address]
             )
@@ -65,7 +64,7 @@ def create_ingredient
 end
 
 def create_food
-    select_category = Food.find_by(id: params[:food_category].to_i) 
+    select_category =Food.find_by(id:params[:food_category].to_i) 
     @new_food = select_category.children.new(name: params[:name])
    
     if @new_food.save
