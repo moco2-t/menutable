@@ -7,7 +7,7 @@
   <title>login</title>
 </head>
 <body>
-    <div class="login_title">login</div>
+    <div class="page_title">Login</div>
     <br>
       <% if @error_message %>
         <div class="form-error">
@@ -15,14 +15,25 @@
         </div>
       <% end %>
     <br>
-      <%= form_with url:"/users/login",class:"login_form" do |f|%>
-        <p>Login ID</p>
-        <%= f.text_field :login_id ,:value => @login_id %>
-        <p>Password</p>
-        <%= f.password_field :password ,:value => @password %>
-        <br>
-        <%= f.submit 'Login'%> 
-    <% end %>
+      <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
+        <table class="form_table">
+          <tr>
+            <td>Login ID</td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :login_id ,:value => @login_id %></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+          </tr>
+          <tr>
+            <td><%= f.password_field :password ,:value => @password %></td>
+          </tr>
+          <tr>
+            <td><%= f.submit 'Login',:class=>"form_btn" %></td>
+          </tr>
+        </table>
+      <% end %>
     </div>
 </body>
 </html>
