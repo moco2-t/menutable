@@ -15,15 +15,13 @@
             </div>
         <% end %>
     <br>
-    <div class="account_form">
-        <%= form_tag("/users/create") do %>
+        <%= form_with url:"/users/create",class:"account_form" do |f|%>
             <p>Login ID</p>
-            <input name="login_id" value="<%= @login_id %>">
+            <%= f.text_field :login_id ,:value => @login_id %>
             <p>Password</p>
-            <input type="password" name="password" value="<%= @password %>">
+            <%= f.password_field :password ,:value => @password %>
             <br>
-            <input type="submit" value="登録"> 
+            <%= f.submit '登録'%> 
         <% end %>
-    </div>
 </body>
 </html>

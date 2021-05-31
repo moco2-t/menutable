@@ -11,14 +11,14 @@ def login
         redirect_to("/users/top")
     else
         @error_message="IDまたはパスワードが間違っています"
-        @email = params[:email]
+        @login_id = params[:login_id]
         @password = params[:password]
-        render action: :login_form
+        render("user/login_form")
     end
 end
 
 def new
-    @user = User.new
+    
 end
 
 def create
@@ -65,8 +65,6 @@ def update
         flash[:notice]= "変更しました"
         redirect_to("/users/#{@current_user.id}")
     else
-        @login_id = params[:login_id]
-        @password = params[:password]
         render("user/edit")
     end
 end
@@ -74,7 +72,5 @@ end
 def top
 
 end
-
-
 
 end
