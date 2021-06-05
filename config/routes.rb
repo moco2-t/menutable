@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   post "recipes/:id/category" => "recipe#category" #材料カテゴリー選択
   post "recipes/:id/create_ingredient" => "recipe#create_ingredient" #材料登録
   post "recipes/:id/create_food" => "recipe#create_food" #材料追加
-  get "recipes/:id" => "recipe#show" #レシピ詳細
+  
 end
