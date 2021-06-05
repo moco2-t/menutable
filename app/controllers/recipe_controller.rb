@@ -66,7 +66,7 @@ end
 def create_food
     select_category =Food.find_by(id:params[:food_category].to_i) 
     @new_food = select_category.children.new(name: params[:name])
-   
+
     if @new_food.save
         flash[:notice] = "食材を新しく登録しました！"
         redirect_to("/recipes/#{params[:id]}/ingredient")
@@ -75,7 +75,12 @@ def create_food
     end
 end
 
-
-
+def destroy
+    destroy_recipe = Recipe.find_by(id: params[:id]).destroy
+    if destroy_recipe
+        flash[:notice] = "レシピを削除しました"
+        redirect_to("/recipes/index")
+    end
+end
 
 end
