@@ -22,4 +22,8 @@ Rails.application.routes.draw do
   post "recipes/:id/create_ingredient" => "recipe#create_ingredient" #材料登録
   post "recipes/:id/create_food" => "recipe#create_food" #材料追加
   get "recipes/:id" => "recipe#show" #レシピ詳細
+<<<<<<< HEAD
+  delete "recipes/:id/delete" => "recipe#destroy" #レシピ削除
+=======
+>>>>>>> develop
 end
