@@ -87,7 +87,7 @@ def edit
     
 end
 
-def r_update
+def update_recipe
     @edit_recipe = Recipe.find_by(id: params[:id])
     @edit_recipe.name = params[:name]
     @edit_recipe.keyword = params[:keyword]
@@ -104,7 +104,7 @@ def ingredient_edit
     
 end
 
-def i_update
+def update_ingredient
     @edit_ingredient = Ingredient.find_by(id: params[:ingredient_id])
     @edit_ingredient.amount = params[:amount]
     if @edit_ingredient.save
@@ -130,14 +130,14 @@ def edit_create_ingredient
     if @created_ingredient.save
         @created_ingredient.foodname = Food.find_by(id: params[:food_id]).name
         @created_ingredient.save
-        flash[:notice] = "登録しました！"
+        flash[:notice] = "新しく材料を登録しました！"
         redirect_to("/recipes/#{params[:id]}/ingredient_edit")
     else
         render("recipe/ingredient_edit")
     end
 end
 
-def i_destroy
+def destroy_ingredient
     destroy_ingredient = Ingredient.find_by(id: params[:ingredient_id]).destroy
     if destroy_ingredient
         flash[:notice] = "材料を削除しました"

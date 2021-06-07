@@ -16,7 +16,7 @@
             <% end %>
         <% end %>
         <br>
-        <%= form_with url:"/recipes/#{params[:id]}/r_update" ,class:"recipe_update_form" do |f| %>
+        <%= form_with url:"/recipes/#{params[:id]}/update_recipe" ,class:"update_recipe_form" do |f| %>
             <%= f.label :"レシピ名"%>
             <%= f.text_field :name ,:value=> recipe().name ,size:100 %><br>
             <%= f.label :"keyword"%>

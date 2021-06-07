@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <% ingredients().each do |i| %>
-                        <%= form_with url:"/recipes/#{params[:id]}/i_update" ,class:"ingredient_amount_form" do |f| %>
+                        <%= form_with url:"/recipes/#{params[:id]}/update_ingredient" ,class:"ingredient_amount_form" do |f| %>
                             <%= f.hidden_field :ingredient_id, value: i.id %>
                             <%= f.text_field :amount ,value: i.amount ,size:10 %>
                             <%= f.submit "変更" %>
