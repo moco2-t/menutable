@@ -88,11 +88,11 @@ def edit
 end
 
 def r_update
-    edit_recipe = Recipe.find_by(id: params[:id])
-    edit_recipe.name = params[:name]
-    edit_recipe.keyword = params[:keyword]
-    edit_recipe.address = params[:address]
-    if edit_recipe.save
+    @edit_recipe = Recipe.find_by(id: params[:id])
+    @edit_recipe.name = params[:name]
+    @edit_recipe.keyword = params[:keyword]
+    @edit_recipe.address = params[:address]
+    if @edit_recipe.save
         flash[:notice]= "変更しました"
         redirect_to("/recipes/#{params[:id]}")
     else
