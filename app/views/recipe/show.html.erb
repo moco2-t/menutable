@@ -10,12 +10,9 @@
     <div class="page_title"><h1>レシピ詳細</h1></div>
         <br>
         <div class="recipe_menu">
-            <li><%= link_to("レシピ編集","/recipes/#{params[:id]}/edit")%></li>
-<<<<<<< HEAD
+            <li><%= link_to("レシピの編集","/recipes/#{params[:id]}/edit")%></li>
+            <li><%= link_to("材料の編集","/recipes/#{params[:id]}/ingredient_edit")%></li>
             <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} %></li>
-=======
-            <li><%= link_to("削除","/recipes/delete")%></li>
->>>>>>> develop
         </div>
         <br>
         <div class="recipe_detail">
@@ -58,8 +55,4 @@
         </div>
         
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> develop

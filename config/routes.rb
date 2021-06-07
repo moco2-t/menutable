@@ -22,8 +22,12 @@ Rails.application.routes.draw do
   post "recipes/:id/create_ingredient" => "recipe#create_ingredient" #材料登録
   post "recipes/:id/create_food" => "recipe#create_food" #材料追加
   get "recipes/:id" => "recipe#show" #レシピ詳細
-<<<<<<< HEAD
   delete "recipes/:id/delete" => "recipe#destroy" #レシピ削除
-=======
->>>>>>> develop
+  get "recipes/:id/edit" => "recipe#edit" #レシピ編集
+  post "recipes/:id/r_update" => "recipe#r_update" #レシピ編集form
+  get "recipes/:id/ingredient_edit" => "recipe#ingredient_edit" #材料編集
+  post "recipes/:id/i_update" => "recipe#i_update" #材料編集form
+  post "recipes/:id/edit_category" => "recipe#edit_category" #材料追加カテゴリー編集
+  post "recipes/:id/edit_create_ingredient" => "recipe#edit_create_ingredient" #材料追加編集
+  delete "recipes/:id/delete_ingredient" => "recipe#i_destroy" #材料削除
 end

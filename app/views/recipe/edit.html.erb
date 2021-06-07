@@ -1,0 +1,26 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>レシピ編集</title>
+    </head>
+    <body>
+        <div class="page_title"><h1>レシピの編集</h1></div>
+        <br>
+        <%= form_with url:"/recipes/#{params[:id]}/r_update" ,class:"recipe_update_form" do |f| %>
+            <%= f.label :"レシピ名"%>
+            <%= f.text_field :name ,:value=> recipe().name ,size:100 %><br>
+            <%= f.label :"keyword"%>
+            <%= f.text_field :keyword ,:value=> recipe().keyword ,size:50 %><br>
+            <%= f.label :"URL"%>
+            <%= f.text_field :address ,:value=> recipe().address ,size:50 %><br>
+            <br>
+            <%= f.submit "変更" %>
+        <% end %>
+        <br>
+        <%= link_to "材料を編集","/recipes/#{params[:id]}/ingredient_edit"%><br>
+        <br>
+        <%= link_to "戻る","/recipes/#{params[:id]}" %>
+    </body>
+</html>
