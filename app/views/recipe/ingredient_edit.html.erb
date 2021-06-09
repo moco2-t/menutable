@@ -30,14 +30,14 @@
                 <td>
                     <%= form_with url:"/recipes/#{params[:id]}/update_ingredient" ,class:"ingredient_amount_form" do |f| %>
                         <%= f.hidden_field :ingredient_id, value: i.id %>
-                        <%= f.text_field :amount ,value: i.amount ,size:10 %>
-                        <%= f.submit "変更" %>
+                        <%= f.text_field :amount ,value: i.amount ,size:12 %>
+                        <%= f.submit "変更" ,class:"edit_btn"%>
                     <% end %>
                 </td>
                 <td>
                     <%= form_with url:"/recipes/#{params[:id]}/delete_ingredient",class:"ingredient_delete_form",method: :delete do |f|%>
                         <%= f.hidden_field :ingredient_id, value: i.id %>
-                        <%= f.submit "削除" %>
+                        <%= f.submit "削除" ,class:"edit_btn"%>
                     <% end %>
                 </td>
             </tr>
@@ -64,7 +64,7 @@
                     <div class="foodcategory_pulldown">
                         <%= form_with url:"/recipes/#{params[:id]}/edit_category" do |f| %>
                             <%= f.select :category, [ ["穀類/麺類",1],["肉類",2], ["魚介類",3],["野菜",4],["果物",5], ["大豆/卵/乳製品",6], ["調味料",7], ["加工品",8]], include_blank: "カテゴリーを選択して下さい" %>
-                            <%= f.submit 'select'%>
+                            <%= f.submit '選択' ,class:"edit_btn"%>
                         <% end %>
                     </div>
                 </td>
@@ -78,7 +78,7 @@
                                 <%= f.collection_select :food_id, @food_category.children, :id, :name, include_blank: "食材を選択して下さい" %>
                     <!-- (3)分量の入力 -->
                                 <%= f.text_field :amount %> 
-                                <%= f.submit '追加'%>
+                                <%= f.submit '追加',class:"edit_btn"%>
                             <% end %>
                         <%end%>
                     </div>
