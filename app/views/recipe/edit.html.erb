@@ -3,10 +3,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>レシピ編集</title>
+        <title>Edit recipe</title>
     </head>
     <body>
-        <div class="page_title"><h1>レシピの編集</h1></div>
+        <div class="page_title"><h1>Edit recipe</h1></div>
         <br>
         <% if @edit_recipe %>
             <% @edit_recipe.errors.full_messages.each do |message| %>
@@ -16,19 +16,33 @@
             <% end %>
         <% end %>
         <br>
-        <%= form_with url:"/recipes/#{params[:id]}/update_recipe" ,class:"update_recipe_form" do |f| %>
-            <%= f.label :"レシピ名"%>
-            <%= f.text_field :name ,:value=> recipe().name ,size:100 %><br>
-            <%= f.label :"keyword"%>
-            <%= f.text_field :keyword ,:value=> recipe().keyword ,size:50 %><br>
-            <%= f.label :"URL"%>
-            <%= f.text_field :address ,:value=> recipe().address ,size:50 %><br>
-            <br>
-            <%= f.submit "変更" %>
-        <% end %>
+        <div class="update_recipe_form">
+        <table>
+            <%= form_with url:"/recipes/#{params[:id]}/update_recipe" do |f| %>
+                <tr>
+                    <td><%= f.label :"レシピ名"%></td>
+                    <td><%= f.text_field :name ,:value=> recipe().name ,size:50 %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :"keyword"%></td>
+                    <td><%= f.text_field :keyword ,:value=> recipe().keyword ,size:50 %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :"URL"%></td>
+                    <td><%= f.text_field :address ,:value=> recipe().address ,size:50 %></td>
+                </tr>
+        </table>
         <br>
-        <%= link_to "材料を編集","/recipes/#{params[:id]}/ingredient_edit"%><br>
+                    <%= f.submit "変更" ,class:"edit_submit_button"%>                
+            <% end %>
+        </div>
         <br>
-        <%= link_to "戻る","/recipes/#{params[:id]}" %>
+        <br>
+        <div class="btn_ingredient_edit">
+            <%= link_to "材料を編集","/recipes/#{params[:id]}/ingredient_edit"%>
+        </div>
+        <div class="btn_return">
+            <%= link_to "戻る","/recipes/#{params[:id]}" %>
+        </div>
     </body>
 </html>

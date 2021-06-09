@@ -1,3 +1,47 @@
 // Place all the styles related to the Recipe controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.page_title {
+    font-size: 20px;
+    color: #006600;
+    width: 500px;
+    margin: 20px 50px;
+}
+
+.update_recipe_form {
+    font-size: 17px;
+    color: #666666;
+    width: 500px;
+    margin: 0px 100px;
+}
+
+.edit_submit_button {
+    font-size: 17px;
+    width: 450px;
+    margin: 0px 100px;
+    background-color: #669933;
+    color:white;
+    border: 0px none;
+}
+
+.ingredient_list {
+    font-size: 15px;
+    color: #666666;
+    width: 300px;
+    margin: 10px 100px;
+}
+
+.edit_subtitle {
+    color: #006600;
+    font-size: 20px;
+    width: 500px;
+    margin: 0px 100px;
+}
+
+.ingredient_edit_form{
+    font-size: 17px;
+    color: #666666;
+    width: 500px;
+    margin: 10px 100px;
+}
