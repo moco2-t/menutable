@@ -1,0 +1,94 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit ingredient</title>
+    </head>
+    <body>
+        <div class="page_title"><h1>Edit ingredient</h1></div>
+        <br>
+        <div class="edit_subtitle">材料の変更</div>
+        <br>
+        <% if @edit_ingredient %>
+            <% @edit_ingredient.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                    <%= message %>
+                </div>
+            <% end %>
+        <% end %>
+        <table class="ingredient_list">
+            <tr>
+                <td>材料</td>
+                <td>分量</td>
+            </tr>
+            <% ingredients().each do |i| %>
+            <tr>
+                <td>
+                    <%= i.foodname %>
+                </td>
+                <td>
+                    <%= form_with url:"/recipes/#{params[:id]}/update_ingredient" ,class:"ingredient_amount_form" do |f| %>
+                        <%= f.hidden_field :ingredient_id, value: i.id %>
+                        <%= f.text_field :amount ,value: i.amount ,size:12 %>
+                        <%= f.submit "変更" ,class:"edit_btn"%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_with url:"/recipes/#{params[:id]}/delete_ingredient",class:"ingredient_delete_form",method: :delete do |f|%>
+                        <%= f.hidden_field :ingredient_id, value: i.id %>
+                        <%= f.submit "削除" ,class:"edit_btn"%>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+        <br>
+        <div class="edit_subtitle">新しい材料の追加</div>
+        <br>
+        <table class="ingredient_edit_form">
+            <tr>    
+                <td>
+                    <% if @created_ingredient %>
+                        <% @created_ingredient.errors.full_messages.each do |message| %>
+                            <div class="form-error">
+                                <%= message %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- (1)材料のカテゴリーを選択 -->
+                    <div class="foodcategory_pulldown">
+                        <%= form_with url:"/recipes/#{params[:id]}/edit_category" do |f| %>
+                            <%= f.select :category, [ ["穀類/麺類",1],["肉類",2], ["魚介類",3],["野菜",4],["果物",5], ["大豆/卵/乳製品",6], ["調味料",7], ["加工品",8]], include_blank: "カテゴリーを選択して下さい" %>
+                            <%= f.submit '選択' ,class:"edit_btn"%>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- (2)カテゴリー別の材料名を選択 -->
+                    <div class="food_pulldown">
+                        <%if @food_category %>
+                            <%= form_with url:"/recipes/#{params[:id]}/edit_create_ingredient" do |f| %>
+                                <%= f.collection_select :food_id, @food_category.children, :id, :name, include_blank: "食材を選択して下さい" %>
+                    <!-- (3)分量の入力 -->
+                                <%= f.text_field :amount %> 
+                                <%= f.submit '追加',class:"edit_btn"%>
+                            <% end %>
+                        <%end%>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <%= link_to "編集完了","/recipes/#{params[:id]}" %>
+        <br>
+        <br>
+    </body>
+</html>

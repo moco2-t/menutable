@@ -1,3 +1,3 @@
 class Recipe < ApplicationRecord
-    validates :address,{presence: true} #空欄
+    validates :name,:keyword,:address, {presence: true} #空欄
 end
