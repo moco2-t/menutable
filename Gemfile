@@ -59,3 +59,5 @@ gem 'bcrypt'
 gem 'rails-i18n'
 
 gem 'ancestry'
+
+gem 'ransack'

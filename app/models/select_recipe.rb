@@ -1,0 +1,2 @@
+class SelectRecipe < ApplicationRecord
+end

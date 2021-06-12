@@ -30,4 +30,9 @@ Rails.application.routes.draw do
   post "recipes/:id/edit_category" => "recipe#edit_category" #材料追加カテゴリー編集
   post "recipes/:id/edit_create_ingredient" => "recipe#edit_create_ingredient" #材料追加編集
   delete "recipes/:id/delete_ingredient" => "recipe#destroy_ingredient" #材料削除
+  #献立機能
+  get "meal/index" => "meal#index" #献立決め
+  get "meal/search" => "meal#search" #献立用レシピ検索
+  post "meal/select" => "meal#select" #献立用レシピ選択
+  
 end
