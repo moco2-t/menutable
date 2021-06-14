@@ -11,7 +11,7 @@
     </div>
     <!--献立カレンダー-->
     <div class="meal_calender">
-        <div class="calender_title"><h2>献立カレンダー</h2></div>
+        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
         <%= week_calendar number_of_weeks:2 ,events:@meals do |date,meals| %>
             <%= date.day %>
             <% meals.each do |m| %>
@@ -22,22 +22,30 @@
         <% end %>
     </div>
     <br>
-    <div class="meal_select">
+    <div class="meal_subtitile">
         <h2>献立を決める</h2>
     </div>
     <div class="how_to_register">
         <p>レシピを検索し、登録日を選んでから選択ボタンを押してください。</p>
+    <% if @new_meal %>
+        <% @new_meal.errors.full_messages.each do |message| %>
+            <div class="form-error">
+            <%= message %>
+            </div>
+        <% end %>
+    <% end %>
     </div>
     <br>
     <!--レシピ検索form-->
     <%= search_form_for @search_recipes, url:"/meal/search" ,class:"recipe_search" do |f| %>
         <%= f.label :name_cont, "レシピ検索" %>
-        <%= f.search_field :name_cont %>
+        <%= f.search_field :name_cont ,size:50%>
         <%= f.submit "検索" %>
     <% end %>
     <br>
     <br>
-        <table class="">
+    <% if @results %>
+        <table class="meal_select">
             <% @results.each do |r|%>
                 <tr>
                     <!--レシピ選択-->
@@ -57,6 +65,7 @@
             <% end %>
             </tr>
         </table>
+    <%end%>
         <br>
         <br>
     </body>

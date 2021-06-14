@@ -1,2 +1,0 @@
-class SelectRecipe < ApplicationRecord
-end

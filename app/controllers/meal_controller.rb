@@ -11,15 +11,14 @@ class MealController < ApplicationController
     end
 
     def select 
-        new_meal = Meal.new(
+        @new_meal = Meal.new(
             start_time: params[:start_time],
             recipe_id: params[:recipe_id]
         )
-        if new_meal.save
+        if @new_meal.save
             flash[:notice] = "メニューを登録しました"
             redirect_to("/meal/index")
         else
-            flash[:notice] = "登録失敗"
             render("meal/index")
         end
     end
@@ -28,7 +27,6 @@ class MealController < ApplicationController
 
     def set_recipe
         @search_recipes = Recipe.ransack(params[:q]) 
-        @results = @search_recipes.result
         @meals = Meal.all  
     end
 
