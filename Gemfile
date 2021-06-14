@@ -61,3 +61,5 @@ gem 'rails-i18n'
 gem 'ancestry'
 
 gem 'ransack'
+
+gem 'simple_calendar'
