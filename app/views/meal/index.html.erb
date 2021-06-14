@@ -7,8 +7,16 @@
     </head>
     <body>
     <div class="page_title">
-        <h1>Make a menu</h1>
+        <h1>Meal</h1>
     </div>
+    <br>
+     <table class="menu_table">
+        <tr>
+            <td><%= link_to "Meke a meal","/meal/new" %></td>
+            <td><%= link_to "Edit meal","/meal/edit" %></td>
+        </tr>
+    </table>
+    <br>
     <!--献立カレンダー-->
     <div class="meal_calender">
         <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
@@ -20,53 +28,7 @@
                 </div>
             <% end %>
         <% end %>
-    </div>
-    <br>
-    <div class="meal_subtitile">
-        <h2>献立を決める</h2>
-    </div>
-    <div class="how_to_register">
-        <p>レシピを検索し、登録日を選んでから選択ボタンを押してください。</p>
-    <% if @new_meal %>
-        <% @new_meal.errors.full_messages.each do |message| %>
-            <div class="form-error">
-            <%= message %>
-            </div>
-        <% end %>
-    <% end %>
-    </div>
-    <br>
-    <!--レシピ検索form-->
-    <%= search_form_for @search_recipes, url:"/meal/search" ,class:"recipe_search" do |f| %>
-        <%= f.label :name_cont, "レシピ検索" %>
-        <%= f.search_field :name_cont ,size:50%>
-        <%= f.submit "検索" %>
-    <% end %>
     <br>
     <br>
-    <% if @results %>
-        <table class="meal_select">
-            <% @results.each do |r|%>
-                <tr>
-                    <!--レシピ選択-->
-                    <%= form_with url:"/meal/select" do |f| %>
-                        <td>
-                            <%= f.hidden_field :recipe_id, value: r.id %>
-                            <%= link_to r.name,"/recipes/#{r.id}" %>
-                        </td>
-                        <td>
-                            <%= f.date_field :start_time %>    
-                        </td>
-                        <td>
-                            <%= f.submit "選択"%>
-                        </td>
-                    <% end %>
-                </tr>
-            <% end %>
-            </tr>
-        </table>
-    <%end%>
-        <br>
-        <br>
     </body>
 </html>

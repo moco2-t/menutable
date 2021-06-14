@@ -5,6 +5,10 @@ class MealController < ApplicationController
     def index 
     end
 
+    def new
+    end
+    
+
     def search
         @results = @search_recipes.result
         render("meal/index")
