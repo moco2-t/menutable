@@ -35,5 +35,8 @@ Rails.application.routes.draw do
   get "meal/new" => "meal#new" #献立決め
   get "meal/search" => "meal#search" #献立用レシピ検索
   post "meal/select" => "meal#select" #献立用レシピ選択
+  get "meal/edit" => "meal#edit" #献立編集
+  post "meal/day" => "meal#day" #日付選択
+  delete "meal/delete" => "meal#destroy" #献立削除
   
 end

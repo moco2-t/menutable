@@ -7,7 +7,6 @@ class MealController < ApplicationController
 
     def new
     end
-    
 
     def search
         @results = @search_recipes.result
@@ -27,6 +26,23 @@ class MealController < ApplicationController
         end
     end
 
+    def edit
+        
+    end
+
+    def day
+        @select_meal = Meal.where(start_time: params[:start_time])
+        render("meal/edit")
+    end
+
+    def destroy
+        destroy_meal = Meal.find_by(id: params[:id]).destroy
+        if destroy_meal
+            flash[:notice] = "削除しました"
+            redirect_to("/meal/edit")
+        end
+    end
+    
     private
 
     def set_recipe

@@ -1,0 +1,56 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit meal</title>
+    </head>
+    <body>
+    <div class="page_title"><h1>Edit meal</h1></div>
+    <br>
+    <div class="meal_menu"><%= link_to "NEW MEAL","/meal/new" %></div>
+    <div class="meal_menu"><%= link_to "MEAL INDEX","/meal/index" %></div>        
+    <br>
+    <div class="select_day">
+        <%= form_with url:"/meal/day" do |f| %>
+            <%= f.date_field :start_time %>    
+            <%= f.submit "選択"%>
+        <% end %>
+    </div>
+    <br>
+    <%if @select_meal%>
+        <table class="edit_meal">
+            <tr>
+                <td><%= params[:start_time] %></td>
+            </tr>
+            <%= form_with url:"/meal/delete", method: :delete do |f| %>
+                <% @select_meal.each do |s| %>
+                    <tr>
+                        <td>
+                            <%= f.hidden_field :id, value: s.id %>
+                            <%= Recipe.find_by(id:s.recipe_id).name %>
+                        </td>
+                        <td>
+                            <%= f.submit "削除"%>
+                        </td>
+                    </tr>
+                <%end%>
+            <%end%>
+        </table>
+    <%end%>    
+    <br>
+    <div class="meal_calender">
+        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
+        <%= week_calendar number_of_weeks:2 ,events:@meals do |date,meals| %>
+            <%= date.day %>
+            <% meals.each do |m| %>
+                <div>
+                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <br>
+    <br>
+    </body>
+</html>
