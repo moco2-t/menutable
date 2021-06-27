@@ -36,8 +36,8 @@ class MealController < ApplicationController
     end
 
     def destroy
-        destroy_meal = Meal.find_by(id: params[:id]).destroy
-        if destroy_meal
+        destroyed__meal = Meal.find_by(id: params[:id]).destroy
+        if destroyed_meal
             flash[:notice] = "削除しました"
             redirect_to("/meal/edit")
         end
