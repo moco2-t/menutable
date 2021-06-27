@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShoppingList edit</title>
+</head>
+<body>
+<div class="page_title"><h1>ShoppingList edit</h1></div>
+<br>
+<div class="date"><%=params[:date]%></div>
+<br>
+    <table class="shopping_list_edit_form">
+        <tr>
+            <td>材料</td>
+            <td>分量</td>
+        </tr>            
+        <% shopping_list().each do |s|%>
+            <tr>
+                <%= form_with url:"/shopping/update" do |f| %>
+                    <%= f.hidden_field :shopping_id, value: s.id %>
+                    <td><%= Ingredient.find_by(id: s.ingredient_id).foodname%></td>
+                    <td><%= f.text_field :quantity,value:s.amount %></td>
+                    <td><%= f.submit "変更" %></td>
+                <%end%>
+                <%= form_with url:"/shopping/delete" do |f|%>
+                    <%= f.hidden_field :shopping_id, value: s.id %>
+                    <td><%= f.submit "削除",method: :delet %></td>
+                <%end%>
+            </tr>
+        <%end%>
+    </table>
+<br>
+<br>
+<div class="link">
+        <%= link_to "戻る","/shopping/list" %>
+</div>
+<br>
+</body>
+</html>

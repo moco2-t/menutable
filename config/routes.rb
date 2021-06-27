@@ -38,5 +38,12 @@ Rails.application.routes.draw do
   get "meal/edit" => "meal#edit" #献立編集
   post "meal/day" => "meal#day" #日付選択
   delete "meal/delete" => "meal#destroy" #献立削除
-  
+  #買い物リスト
+  get "shopping/index" => "shopping#index" #買い物リスト
+  post "shopping/create" => "shopping#create" #買い物リストの作成
+  get "shopping/list" => "shopping#list" #買い物リスト一覧
+  get "shopping/check_list" => "shopping#check_list" #買い物理リスト確認
+  get "shopping/edit" => "shopping#edit" #買い物リスト編集
+  post "shopping/update" => "shopping#update" #買い物リスト更新
+  delete "shopping/delete" => "recipe#destroy" #買い物リスト削除
 end

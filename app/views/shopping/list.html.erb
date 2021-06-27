@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShoppingList</title>
+</head>
+<body>
+<div class="page_title"><h1>ShoppingList</h1></div>
+<br>
+<table>
+<% shopping_all().group(:date).each do |s| %> 
+    <tr>
+        <td><%= s.date %></td>
+        <td><%= link_to "確認",shopping_check_list_path(date: s.date)%>
+        <td><%= link_to "編集",shopping_edit_path(date: s.date) %></td>
+    </tr>
+<%end%>
+</table>
+<br>
+<div class="link">
+        <%= link_to "戻る","/shopping/index" %>
+</div>
+<br>
+</body>
+</html>
