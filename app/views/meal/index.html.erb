@@ -1,0 +1,34 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Make a menu</title>
+    </head>
+    <body>
+    <div class="page_title">
+        <h1>Meal</h1>
+    </div>
+    <br>
+     <table class="menu_table">
+        <tr>
+            <td><%= link_to "Meke a meal","/meal/new" %></td>
+            <td><%= link_to "Edit meal","/meal/edit" %></td>
+        </tr>
+    </table>
+    <br>
+    <!--献立カレンダー-->
+    <div class="meal_calender">
+        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
+        <%= week_calendar number_of_weeks:2 ,events:@meals do |date,meals| %>
+            <%= date.day %>
+            <% meals.each do |m| %>
+                <div>
+                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+                </div>
+            <% end %>
+        <% end %>
+    <br>
+    <br>
+    </body>
+</html>
