@@ -10,7 +10,7 @@ class MealController < ApplicationController
 
     def search
         @results = @search_recipes.result
-        render("meal/index")
+        render("meal/new")
     end
 
     def select 
@@ -20,9 +20,7 @@ class MealController < ApplicationController
         )
         if @new_meal.save
             flash[:notice] = "メニューを登録しました"
-            redirect_to("/meal/index")
-        else
-            render("meal/index")
+            redirect_to("/meal/new")
         end
     end
 
@@ -31,12 +29,12 @@ class MealController < ApplicationController
     end
 
     def day
-        @select_meal = Meal.where(start_time: params[:start_time])
+        @select_meal = Meal.where(start_time: params[:start_time]..params[:start_time2])
         render("meal/edit")
     end
 
     def destroy
-        destroyed__meal = Meal.find_by(id: params[:id]).destroy
+        destroyed_meal = Meal.find_by(id: params[:id]).destroy
         if destroyed_meal
             flash[:notice] = "削除しました"
             redirect_to("/meal/edit")

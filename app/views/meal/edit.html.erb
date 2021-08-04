@@ -13,7 +13,7 @@
     <br>
     <div class="select_day">
         <%= form_with url:"/meal/day" do |f| %>
-            <%= f.date_field :start_time %>    
+            <%= f.date_field :start_time %> 〜 <%= f.date_field :start_time2 %>
             <%= f.submit "選択"%>
         <% end %>
     </div>
@@ -21,7 +21,7 @@
     <%if @select_meal%>
         <table class="edit_meal">
             <tr>
-                <td><%= params[:start_time] %></td>
+                <td><%= params[:start_time]%> ~ <%= params[:start_time2]%></td>
             </tr>
             <%= form_with url:"/meal/delete", method: :delete do |f| %>
                 <% @select_meal.each do |s| %>
