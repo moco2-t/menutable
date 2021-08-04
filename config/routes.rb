@@ -17,22 +17,10 @@ Rails.application.routes.draw do
   get "recipes/search" => "recipe#search" #レシピ検索
   get "recipes/new" => "recipe#new" #レシピ登録ページ
   post "recipes/create" => "recipe#create" #レシピ登録
-  get "recipes/:id/ingredient" => "recipe#ingredient" #材料登録ページ
-  post "recipes/:id/category" => "recipe#category" #材料カテゴリー選択
-  get "recipes/:id/foodsearch" => "recipe#foodsearch" #食材検索
-  post "recipes/:id/create_ingredient" => "recipe#create_ingredient" #材料登録
-  post "recipes/:id/create_food" => "recipe#create_food" #材料追加
   get "recipes/:id" => "recipe#show" #レシピ詳細
   delete "recipes/:id/delete" => "recipe#destroy" #レシピ削除
   get "recipes/:id/edit" => "recipe#edit" #レシピ編集
   post "recipes/:id/update_recipe" => "recipe#update_recipe" #レシピ編集form
-  get "recipes/:id/ingredient_edit" => "recipe#ingredient_edit" #材料編集
-  post "recipes/:id/update_ingredient" => "recipe#update_ingredient" #材料編集form
-  post "recipes/:id/edit_category" => "recipe#edit_category" #材料追加カテゴリー編集
-  post "recipes/:id/edit_create_ingredient" => "recipe#edit_create_ingredient" #材料追加編集
-  delete "recipes/:id/delete_ingredient" => "recipe#destroy_ingredient" #材料削除
-  get "recipes/:id/edit_foodsearch" => "recipe#edit_foodsearch" #編集食材検索
-
   #献立機能
   get "meal/index" => "meal#index" #献立表示
   get "meal/new" => "meal#new" #献立決め

@@ -34,18 +34,16 @@
                 <th>食材</th>
                 <th>分量</th>
             </tr>
+            <% ingredients().each do |i|%>
             <tr>
                 <td>
-                    <% ingredients().each do |i|%>
-                        <li><%= i.foodname %></li>
-                    <%end%>
+                    <%= i.foodname %>
                 </td>
                 <td>
-                    <% ingredients().each do |i|%>
-                        <li><%= i.amount %></li>
-                    <%end%>
+                    <%= i.amount %>
                 </td>
             </tr>
+            <%end%>
         </table>
         <br>
         <div class="menu">

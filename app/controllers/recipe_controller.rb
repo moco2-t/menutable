@@ -1,6 +1,4 @@
 class RecipeController < ApplicationController
-before_action :ingredient,{only:[:category]}
-before_action :set_food
 
 def index
     
@@ -19,14 +17,24 @@ def create
     url = params[:address] 
     html = URI.open(url).read
     doc = Nokogiri::HTML.parse(html)
+    doc_name = doc.css('.name')
+    doc_amount = doc.css('.amount')
     @created_recipe = Recipe.new(
             name: doc.title,
             keyword: "不明",
             address: params[:address]
-            )
+            )   
     if @created_recipe.save
-        flash[:notice]="材料を登録してください"
-        redirect_to("/recipes/#{@created_recipe.id}/ingredient")
+        doc_name.zip(doc_amount) do |n,a|
+            @created_ingredient = Ingredient.new(
+                foodname: n.text.delete("■,●,◎,○,\n, ,★,☆"),
+                amount: a.text.delete("■,●,◎,○,\n, ,★,☆"),
+                recipe_id: @created_recipe.id
+                )
+            @created_ingredient.save
+        end
+        flash[:notice]="登録"
+        redirect_to("/recipes/#{@created_recipe.id}")
     else
         flash[:notice] = "登録に失敗しました"
         render("/recipes/new")
@@ -35,44 +43,6 @@ end
 
 def show
      
-end
-
-def ingredient
-
-end
-
-def create_ingredient
-    @created_ingredient = Ingredient.new(
-        food_id: params[:food_ids],
-        amount: params[:amount],
-        recipe_id: params[:id],
-        foodname: Food.find_by(id: params[:food_ids]).name,
-        unit: Food.find_by(id: params[:food_ids]).unit 
-        )
-    @created_ingredient.save
-    if @created_ingredient.save
-        flash[:notice] = "登録しました！"
-        redirect_to("/recipes/#{params[:id]}/ingredient")
-    else
-        flash[:notice] = "失敗！"
-        render("recipe/ingredient")
-    end
-
-end
-
-def create_food
-    select_category = Food.find_by(id: params[:food_category].to_i) 
-    @new_food = select_category.children.new(
-        name: params[:name],
-        unit: params[:unit]
-        )
-
-    if @new_food.save
-        flash[:notice] = "食材を新しく登録しました！"
-        redirect_to("/recipes/#{params[:id]}/ingredient")
-    else
-        render("recipe/ingredient")
-    end
 end
 
 def destroy
@@ -98,62 +68,6 @@ def update_recipe
     else
         render("recipe/edit")
     end
-end
-
-def ingredient_edit
-    
-end
-
-def update_ingredient
-    @edit_ingredient = Ingredient.find_by(id: params[:ingredient_id])
-    @edit_ingredient.amount = params[:amount]
-    if @edit_ingredient.save
-        flash[:notice]= "分量を変更しました"
-        render("recipe/ingredient_edit")
-    else
-        render("recipe/ingredient_edit")
-    end
-end
-
-def edit_create_ingredient
-    @created_ingredient = Ingredient.new(
-        food_id: params[:food_ids],
-        amount: params[:amount],
-        recipe_id: params[:id],
-        foodname: Food.find_by(id: params[:food_ids]).name,
-        unit: Food.find_by(id: params[:food_ids]).unit 
-        )
-    if @created_ingredient.save
-        flash[:notice] = "新しく材料を登録しました！"
-        redirect_to("/recipes/#{params[:id]}/ingredient_edit")
-    else
-        render("recipe/ingredient_edit")
-    end
-end
-
-def destroy_ingredient
-    destroy_ingredient = Ingredient.find_by(id: params[:ingredient_id]).destroy
-    if destroy_ingredient
-        flash[:notice] = "材料を削除しました"
-        redirect_to("/recipes/#{params[:id]}/ingredient_edit")
-    end
-end
-
-def foodsearch
-    @food_results = @food.result
-    render("recipe/ingredient")
-end
-
-def edit_foodsearch
-    @food_results = @food.result
-    render("recipe/ingredient_edit")
-end
-
-
-private
-
-def set_food
-    @food = Food.where(id:9..).ransack(params[:q]) 
 end
 
 end

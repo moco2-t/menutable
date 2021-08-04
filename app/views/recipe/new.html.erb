@@ -17,7 +17,7 @@
         <%end%>
     <div class="createform">
         <%= form_with url:"/recipes/create" do |f| %>
-            <p> Recipe URL：　<%= f.text_field :address %></p>
+            Recipe URL：　<%= f.text_field :address %>
             <%= f.submit "登録"%>
         <%end%>
     </div>
