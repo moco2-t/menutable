@@ -31,6 +31,7 @@
                     <%= form_with url:"/recipes/#{params[:id]}/update_ingredient" ,class:"ingredient_amount_form" do |f| %>
                         <%= f.hidden_field :ingredient_id, value: i.id %>
                         <%= f.text_field :amount ,value: i.amount ,size:12 %>
+                        <%= i.unit%>
                         <%= f.submit "変更" ,class:"edit_btn"%>
                     <% end %>
                 </td>
@@ -44,47 +45,39 @@
             <% end %>
         </table>
         <br>
-        <div class="edit_subtitle">新しい材料の追加</div>
-        <br>
-        <table class="ingredient_edit_form">
-            <tr>    
-                <td>
-                    <% if @created_ingredient %>
-                        <% @created_ingredient.errors.full_messages.each do |message| %>
-                            <div class="form-error">
-                                <%= message %>
-                            </div>
-                        <% end %>
-                    <% end %>
-                </td>
-            </tr>
+        <div class="ingredients">
+      <p>材料登録</p>
+      <!-- 食材検索-->
+      <%= search_form_for @food, url:"/recipes/#{params[:id]}/edit_foodsearch" do |f| %>
+          <%= f.label :食材検索 %>
+          <%= f.search_field :name_cont%>
+          <%= f.submit "検索" %>
+      <% end %>
+      <br>
+      <% if @food_results %>
+        <!--材料登録-->
+        <%= form_with url:"/recipes/#{params[:id]}/edit_create_ingredient" do |f| %>
+          <table>
             <tr>
-                <td>
-                    <!-- (1)材料のカテゴリーを選択 -->
-                    <div class="foodcategory_pulldown">
-                        <%= form_with url:"/recipes/#{params[:id]}/edit_category" do |f| %>
-                            <%= f.select :category, [ ["穀類/麺類",1],["肉類",2], ["魚介類",3],["野菜",4],["果物",5], ["大豆/卵/乳製品",6], ["調味料",7], ["加工品",8]], include_blank: "カテゴリーを選択して下さい" %>
-                            <%= f.submit '選択' ,class:"edit_btn"%>
-                        <% end %>
-                    </div>
-                </td>
+              <td>
+                <%= f.collection_radio_buttons :food_ids, @food_results, :id, :name %>
+              </td>
             </tr>
-            <tr>
-                <td>
-                    <!-- (2)カテゴリー別の材料名を選択 -->
-                    <div class="food_pulldown">
-                        <%if @food_category %>
-                            <%= form_with url:"/recipes/#{params[:id]}/edit_create_ingredient" do |f| %>
-                                <%= f.collection_select :food_id, @food_category.children, :id, :name, include_blank: "食材を選択して下さい" %>
-                    <!-- (3)分量の入力 -->
-                                <%= f.text_field :amount %> 
-                                <%= f.submit '追加',class:"edit_btn"%>
-                            <% end %>
-                        <%end%>
-                    </div>
-                </td>
+          </table>
+          <table>
+            <tr>          
+              <td>
+                <%= f.label :半角数字で入力%>
+              </td>
+              <td>
+                <%= f.text_field :amount %> g
+              </td>
+              <td><%= f.submit "登録"%></td>
             </tr>
-        </table>
+          </table>
+        <%end%>
+      <%end%>
+    </div>
         <br>
         <br>
         <%= link_to "編集完了","/recipes/#{params[:id]}" %>

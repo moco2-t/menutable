@@ -10,23 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_071713) do
+ActiveRecord::Schema.define(version: 2021_07_05_132527) do
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
+    t.string "unit"
+    t.string "key"
     t.index ["ancestry"], name: "index_foods_on_ancestry"
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "food_id"
-    t.string "amount"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "foodname"
+    t.string "unit"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -41,6 +44,14 @@ ActiveRecord::Schema.define(version: 2021_06_14_071713) do
     t.string "keyword"
     t.string "address"
     t.integer "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shoppings", force: :cascade do |t|
+    t.string "date"
+    t.integer "ingredient_id"
+    t.string "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

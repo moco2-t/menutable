@@ -1,5 +1,6 @@
 class RecipeController < ApplicationController
 before_action :ingredient,{only:[:category]}
+before_action :set_food
 
 def index
     
@@ -37,35 +38,34 @@ def show
 end
 
 def ingredient
-    
-end
 
-def category
-    @category_id = params[:category]
-    @food_category = Food.find_by(id: @category_id.to_i)
-    render("recipe/ingredient")
 end
 
 def create_ingredient
     @created_ingredient = Ingredient.new(
-        food_id: params[:food_id],
+        food_id: params[:food_ids],
         amount: params[:amount],
-        recipe_id: params[:id]
+        recipe_id: params[:id],
+        foodname: Food.find_by(id: params[:food_ids]).name,
+        unit: Food.find_by(id: params[:food_ids]).unit 
         )
-
+    @created_ingredient.save
     if @created_ingredient.save
-        @created_ingredient.foodname = Food.find_by(id: params[:food_id]).name
-        @created_ingredient.save
         flash[:notice] = "登録しました！"
         redirect_to("/recipes/#{params[:id]}/ingredient")
     else
+        flash[:notice] = "失敗！"
         render("recipe/ingredient")
     end
+
 end
 
 def create_food
     select_category = Food.find_by(id: params[:food_category].to_i) 
-    @new_food = select_category.children.new(name: params[:name])
+    @new_food = select_category.children.new(
+        name: params[:name],
+        unit: params[:unit]
+        )
 
     if @new_food.save
         flash[:notice] = "食材を新しく登録しました！"
@@ -115,21 +115,15 @@ def update_ingredient
     end
 end
 
-def edit_category
-    @category_id = params[:category]
-    @food_category = Food.find_by(id: @category_id.to_i)
-    render("recipe/ingredient_edit")
-end
-
 def edit_create_ingredient
     @created_ingredient = Ingredient.new(
-        food_id: params[:food_id],
+        food_id: params[:food_ids],
         amount: params[:amount],
-        recipe_id: params[:id]
+        recipe_id: params[:id],
+        foodname: Food.find_by(id: params[:food_ids]).name,
+        unit: Food.find_by(id: params[:food_ids]).unit 
         )
     if @created_ingredient.save
-        @created_ingredient.foodname = Food.find_by(id: params[:food_id]).name
-        @created_ingredient.save
         flash[:notice] = "新しく材料を登録しました！"
         redirect_to("/recipes/#{params[:id]}/ingredient_edit")
     else
@@ -143,6 +137,23 @@ def destroy_ingredient
         flash[:notice] = "材料を削除しました"
         redirect_to("/recipes/#{params[:id]}/ingredient_edit")
     end
+end
+
+def foodsearch
+    @food_results = @food.result
+    render("recipe/ingredient")
+end
+
+def edit_foodsearch
+    @food_results = @food.result
+    render("recipe/ingredient_edit")
+end
+
+
+private
+
+def set_food
+    @food = Food.where(id:9..).ransack(params[:q]) 
 end
 
 end
