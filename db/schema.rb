@@ -10,46 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_071713) do
+ActiveRecord::Schema.define(version: 2021_08_05_135905) do
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
+    t.string "unit"
+    t.string "keyword"
+    t.integer "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_foods_on_ancestry"
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "food_id"
-    t.string "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "foodname"
-  end
-
-  create_table "meals", force: :cascade do |t|
+    t.string "amount"
     t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "start_time"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "keyword"
     t.string "address"
-    t.integer "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "login_id"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end
