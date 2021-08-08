@@ -2,8 +2,8 @@
 
 one:
   login_id: MyString
-  password_digest: MyString
+  password: MyString
 
 two:
   login_id: MyString
-  password_digest: MyString
+  password: MyString
