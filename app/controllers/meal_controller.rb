@@ -15,7 +15,7 @@ class MealController < ApplicationController
 
     def select 
         @new_meal = Meal.new(
-            start_time: params[:start_time],
+            start_date: params[:start_date],
             recipe_id: params[:recipe_id]
         )
         if @new_meal.save
@@ -29,7 +29,7 @@ class MealController < ApplicationController
     end
 
     def day
-        @select_meal = Meal.where(start_time: params[:start_time]..params[:start_time2])
+        @select_meal = Meal.where(start_date: params[:start_date]..params[:start_date2])
         render("meal/edit")
     end
 
