@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>レシピ詳細</title>
+</head>
+<body>
+    <div class="page_title"><h1>レシピ詳細</h1></div>
+        <br>
+        <div class="recipe_menu">
+            <li><%= link_to("編集","/recipes/#{params[:id]}/edit")%></li>
+            <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} %></li>
+        </div>
+        <br>
+        <div class="recipe_detail">
+            <h2><%= recipe().name %></h2>
+            <table>
+                <tr>
+                    <td>keyword</td>
+                    <td><%= recipe().keyword %></td>
+                </tr>
+                <tr>
+                <td>URL</td>
+                <td><%= link_to recipe().address, recipe().address %></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="recipe_ingredient">
+            <h3>材料</h3>
+            <table border="1">
+                <tr>
+                    <th>食材</th>
+                    <th>分量</th>
+                </tr>
+                <% ingredients().each do |i|%>
+                <tr>
+                    <td>
+                        <%= i.foodname %>
+                    </td>
+                    <td>
+                        <%= i.amount %>
+                    </td>
+                </tr>
+                <%end%>
+            </table>
+        </div>
+        <br>
+        <div class="recipe_material">
+            <h3>買い物リスト</h3>
+            <table border="1">
+                <tr>
+                    <th>名前</th>
+                    <th>数</th>
+                </tr>
+                <% materials().each do |m|%>
+                <tr>
+                    <td>
+                        <%= Food.find_by(id:m.food_id).name %>
+                    </td>
+                    <td>
+                        <%unless m.quantity === nil%>
+                            <%= m.quantity.ceil%><%= m.unit%>
+                        <%end%>
+                    </td>
+                </tr>
+                <%end%>
+            </table>
+        </div>
+        <br>
+        <div class="menu">
+            <li><%= link_to("レシピ一覧","/recipes/index")%></li>
+            <li><%= link_to("URLで登録","/recipes/new")%></li>
+        </div>
+        
+</body>
+</html>
+

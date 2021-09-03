@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_061520) do
+ActiveRecord::Schema.define(version: 2021_08_28_132651) do
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "unit"
     t.string "keyword"
-    t.integer "ancestry"
+    t.string "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2021_08_08_061520) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "amount"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "food_id"
+    t.float "quantity"
+    t.string "unit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "meals", force: :cascade do |t|
@@ -40,6 +49,15 @@ ActiveRecord::Schema.define(version: 2021_08_08_061520) do
     t.string "name"
     t.string "keyword"
     t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shoppings", force: :cascade do |t|
+    t.date "start_date"
+    t.integer "food_id"
+    t.float "quantity"
+    t.string "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

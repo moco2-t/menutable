@@ -9,31 +9,16 @@
 <body>
 <div class="page_title"><h1>SHOPPING</h1></div>
 <br>
-<div class="link">
-        <%= link_to "作成した買い物リストを確認する","/shopping/list" %>
-</div>
+<table class="link">
+    <td><%= link_to "作成した買い物リストを確認する","/shopping/list" %></td>
+</table>
 <br>
-<div class="meal_calender">
-        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
-        <%= month_calendar events:meals() do |date,meals| %>
-            <%= date.day %>
-            <% meals.each do |m| %>
-                <div>
-                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
-                </div>
-            <% end %>
-        <% end %>
+買い物リストを作る
+<div class="select_day">
+    <%= form_with url:"/shopping/select_day" do |f| %>
+        <%= f.date_field :start_date %> 〜 <%= f.date_field :start_date2 %>
+        <%= f.submit "選択"%>
+    <% end %>
 </div>
-<br>
-<div class="shopping_create">
-    <p>買い物リストを作りたい期間を指定してください。</p>
-        <%= form_with url:"/shopping/create" do |f| %>
-            <%= f.date_field :day_start %> ~ <%= f.date_field :day_end %>     
-            <%= f.submit "選択"%>
-        <% end %>
-</div>
-<br>
-
-
 </body>
 </html>
