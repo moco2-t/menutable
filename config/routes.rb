@@ -16,20 +16,20 @@ Rails.application.routes.draw do
   get "recipes/index" => "recipes#index" #レシピ一覧
   get "recipes/search" => "recipes#search" #レシピ検索
   get "recipes/new" => "recipes#new" #レシピ登録ページ
-  post "recipes/create" => "recipes#create" #レシピ登録
-
-  get "recipes/ingredient/:id/" => "recipes#ingredient" #買い物リストの設定(自動検索)
-  get "recipes/ingredient_2/" => "recipes#ingredient_2" #買い物リストの追加設定（手動）
-  #Ajaxで動くアクションのルートを作成
-  get 'recipes/ingredient_2/get_category_children' => "recipes#get_category_children", defaults: { format: 'json' } 
+  post "recipes/create_recipe" => "recipes#create_recipe" #レシピ登録
+  get "recipes/show_food_choices/:id/" => "recipes#show_food_choices" #買い物リストの設定(自動検索)
+  get "recipes/show_food_choices_by_category/" => "recipes#show_food_choices_by_category" #買い物リストの追加設定（手動）
+  get 'recipes/show_food_choices_by_category/get_category_children' => "recipes#get_category_children", defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
   post "recipes/create_materials" => "recipes#create_materials" #買い物リストの登録
-  post "recipes/create_additional_materials" => "recipes#create_additional_materials" #買い物リストの追加登録
-
+  post "recipes/create_manual_materials" => "recipes#create_manual_materials" #買い物リストの追加登録
   get "recipes/:id" => "recipes#show" #レシピと買い物リストの詳細
-  delete "recipes/:id/delete" => "recipes#destroy" #レシピ削除
-  get "recipes/:id/edit" => "recipes#edit" #レシピ編集
-  post "recipes/:id/update_recipe" => "recipes#update_recipe" #レシピ編集form
-  
+  delete "recipes/:id/delete" => "recipes#destroy_recipe" #レシピ削除
+  get "recipes/:id/edit_recipe" => "recipes#edit_recipe" #レシピ編集
+  post "recipes/:id/update_recipe" => "recipes#update_recipe" #レシピ更新
+  delete "recipes/material/delete" => "recipes#destroy_material" #買い物リストの削除
+  get "recipes/:id/edit_material" => "recipes#edit_material" #買い物リストの編集
+  post "recipes/:id/update_material" => "recipes#update_material" #レシピ更新
+
   #献立機能
   get "meal/index" => "meal#index" #献立表示
   get "meal/new" => "meal#new" #献立決め

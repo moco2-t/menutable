@@ -1,0 +1,41 @@
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit material</title>
+    </head>
+    <body>
+        <div class="page_title"><h1>Edit material</h1></div>
+        <br>
+        <table>
+            <tr>
+                <th>名前</th>
+                <th>数量</th>
+                <th>変更</th>
+                <th></th>
+            </tr>
+            <%materials().each do |m|%>
+            <tr>
+                <%= form_with url:"/recipes/#{params[:id]}/update_material" do |f| %>
+                    <td>
+                        <%= Food.find_by(id: m.food_id).name%>
+                    </td>
+                <%unless m.quantity === nil%>
+                    <td>
+                        <%= f.text_field :quantity, value:m.quantity ,size:10%>  <%= m.unit%>
+                    </td>
+                    <td>
+                        <%= f.submit "変更"%>
+                    </td>
+                <%end%>
+                <%end%>
+                <td>
+                    <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "削除してよろしいですか?"} %></li>
+                </td>
+            </tr>
+            <%end%>
+        </table>
+
+    </body>
+</html>

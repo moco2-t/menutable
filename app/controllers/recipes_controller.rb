@@ -12,7 +12,7 @@ include Choices
     def new
     end
 
-    def create
+    def create_recipe
         url = params[:address] 
         html = URI.open(url).read
         doc = Nokogiri::HTML.parse(html)
@@ -33,14 +33,14 @@ include Choices
                 @created_ingredient.save
             end
             flash[:notice]="登録"
-            redirect_to("/recipes/#{@created_recipe.id}/ingredient")
+            redirect_to("/recipes/show_food_choices/#{@created_recipe.id}/")
         else
             flash[:notice] = "登録に失敗しました"
             render("/recipes/new")
         end
     end
 
-    def ingredient
+    def show_food_choices
         @ingredients= Ingredient.where(recipe_id: params[:id])
         @automaticsearch_ingredients = []
         @ingredients.each do |m|
@@ -51,7 +51,7 @@ include Choices
         end
     end
 
-    def ingredient_2
+    def show_food_choices_by_category
         @ingredients= Ingredient.where(recipe_id:params[:id])
         @registered_material = Material.where(recipe_id: params[:id]) 
         @category_parent_array = ["---"]
@@ -61,13 +61,12 @@ include Choices
             end
     end
 
-
     def get_category_children
         #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
         @category_children = Food.find_by(name: params[:category]).children
     end
 
-    def create_materials
+    def create_materials #materialレコードの作成
         @recipe_id = params[:recipe_id]
         food_ids = params[:food_ids]
         amounts = params[:amounts].split
@@ -75,13 +74,9 @@ include Choices
             food_ids.zip(amounts) do |food_id,amount| 
                 @temporary_food_id = food_id
                 @amount = amount
-                if @amount.include?("適量") or @amount.include?("少々") or @amount.include?("ひとつまみ")
-                    @quantity = 1
-                else    
-                    @converted_number = Rational(@amount.tr('〇一二三四五六七八九', '0123456789').tr('０-９ａ-ｚＡ-Ｚ／', '0-9a-zA-Z/').delete("^0-9/","^０-９／")).to_f
-                end
                 
-                food_material#module_materialのメソッド呼び出し
+                converted_number #module_Choicesからメソッド呼び出し
+                food_material #module_Choicesからメソッド呼び出し
                 
                 @created_material = Material.create(
                     recipe_id: @recipe_id,
@@ -90,26 +85,20 @@ include Choices
                     unit: Food.find_by(id:@temporary_food_id).unit
                     )
             end        
-            
             flash[:notice]="登録"
-            redirect_to recipes_ingredient_2_path(id:params[:recipe_id])
+            redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
         else
             flash[:notice] = "登録に失敗しました"
-            render("recipes#ingredient")
+            render("recipes#show_food_choices")
         end       
     end
 
-    def create_additional_materials
+    def create_manual_materials
         @temporary_food_id = params[:food_id]
         @amount = params[:amount]
 
-        if @amount.include?("適量") or @amount.include?("少々") or @amount.include?("ひとつまみ")
-            @quantity = 1
-        else    
-            @converted_number = Rational(@amount.tr('〇一二三四五六七八九', '0123456789').tr('０-９ａ-ｚＡ-Ｚ／', '0-9a-zA-Z/').delete("^0-9/","^０-９／")).to_f
-        end
-        
-        food_material#module_materialのメソッド呼び出し
+        converted_number #module_Choicesからメソッド呼び出し
+        food_material #module_Choicesからメソッド呼び出し
         
         @created_material = Material.create(
             recipe_id: params[:recipe_id],
@@ -118,13 +107,13 @@ include Choices
             unit: Food.find_by(id:params[:food_id]).unit
             )
         flash[:notice]="登録"
-        redirect_to recipes_ingredient_2_path(id:params[:recipe_id])
+        redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
     end
 
     def show
     end
 
-    def destroy
+    def destroy_recipe
         destroy_recipe = Recipe.find_by(id: params[:id]).destroy
         if destroy_recipe
             flash[:notice] = "レシピを削除しました"
@@ -132,7 +121,7 @@ include Choices
         end
     end
 
-    def edit    
+    def edit_recipe
     end
 
     def update_recipe
@@ -144,8 +133,19 @@ include Choices
             flash[:notice]= "変更しました"
             redirect_to("/recipes/#{params[:id]}")
         else
-            render("recipes/edit")
+            render("recipes#edit_recipe")
         end
+    end
+
+    def destroy_material
+        
+    end
+
+    def edit_material
+
+    end
+
+    def update_material
     end
 
 end

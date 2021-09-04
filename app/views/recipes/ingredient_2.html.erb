@@ -48,7 +48,7 @@
   </table>
 <br>
 <p>材料リストに材料を登録しますか？</p>
-  <%=form_with url:"/recipes/create_additional_materials" do |f| %>
+  <%=form_with url:"/recipes/create_manual_materials" do |f| %>
     <%= f.hidden_field :recipe_id, value: params[:id] %>
     <div class="form-input-select"> 
       <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
@@ -97,7 +97,7 @@ $ (function(){
     //選択された親カテゴリーが"---"（初期設定）のままだとfalse、変わっているとtrue
     if (parentCategory != "---"){
       $.ajax({
-        url: '/recipes/ingredient_2/get_category_children',
+        url: '/recipes/show_food_choices_by_category/get_category_children',
         type: 'GET',
         //コントローラーに飛ばす値です。
         data: { category: parentCategory },

@@ -1,6 +1,14 @@
 require_relative "conversion"
 module Choices
 include Conversion
+    def converted_number
+        if @amount.include?("適量") or @amount.include?("少々") or @amount.include?("ひとつまみ")
+            @quantity = 1
+        else    
+            @converted_number = Rational(@amount.tr('〇一二三四五六七八九', '0123456789').tr('０-９ａ-ｚＡ-Ｚ／', '0-9a-zA-Z/').delete("^0-9/","^０-９／")).to_f
+        end
+    end
+
     def food_material
         case @temporary_food_id
             when "15" then
