@@ -76,7 +76,7 @@ include Conversion
                 @temporary_food_id = food_id
                 @amount = amount
                 
-                quantity_conversion_branch #module_Choicesからメソッド呼び出し
+                quantity_conversion_branch
                 
                 @created_material = Material.create(
                     recipe_id: @recipe_id,
@@ -137,15 +137,29 @@ include Conversion
     end
 
     def destroy_material
-        
+        destroy_material = Material.find_by(id: params[:id]).destroy
+        if destroy_material
+            flash[:notice] = "削除しました"
+            redirect_to("/recipes/#{params[:recipe_id]}/edit_material")
+        end
     end
 
     def edit_material
+        @category_parent_array = ["---"]
+        #データベースから、親カテゴリーのみ抽出し、配列化
+            Food.where(id:1..14).each do |parent|
+            @category_parent_array << parent.name
+            end
     end
 
     def update_material
+        edit_material = Material.find_by(id:params[:id])
+        edit_material.quantity = params[:quantity]
+        if edit_material.save
+            flash[:notice]= "変更しました"
+            redirect_to("/recipes/#{params[:recipe_id]}/edit_material")
+        else
+            render("recipes#edit_material")
+        end
     end
-
 end
-
-

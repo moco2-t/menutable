@@ -48,16 +48,30 @@
   </table>
 <br>
 <p>材料リストに材料を登録しますか？</p>
-  <%=form_with url:"/recipes/create_manual_materials" do |f| %>
-    <%= f.hidden_field :recipe_id, value: params[:id] %>
-    <div class="form-input-select"> 
-      <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
-    </div>
-    <div class ="listing-product-detail__category"></div>
-      分量<%= f.text_field :amount %>
-    <br>
-      <%= f.submit "登録"%>
-  <%end%>
+  <table class="add_material_form">
+    <tr>
+        <th></th>
+        <th>分量</th>
+        <th></th>
+    </tr>
+    <tr>
+    <%=form_with url:"/recipes/create_manual_materials" do |f| %>
+        <%= f.hidden_field :recipe_id, value: params[:id] %>
+        <td>
+            <div class="form-input-select"> 
+                <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+            </div>
+            <div class ="listing-product-detail__category"></div>
+        </td>
+        <td>
+            <%= f.text_field :amount %>
+        </td>
+        <td>
+            <%= f.submit "登録"%>
+        </td>
+    <%end%>
+    </tr>
+  </table>
 <br>
 <br>
 <h4><%= link_to "登録内容を確認する", "/recipes/#{params[:id]}"%></h4>

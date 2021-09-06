@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   delete "recipes/:id/delete" => "recipes#destroy_recipe" #レシピ削除
   get "recipes/:id/edit_recipe" => "recipes#edit_recipe" #レシピ編集
   post "recipes/:id/update_recipe" => "recipes#update_recipe" #レシピ更新
-  delete "recipes/material/delete" => "recipes#destroy_material" #買い物リストの削除
+  delete "recipes/material/:id/delete" => "recipes#destroy_material" #買い物リストの削除
   get "recipes/:id/edit_material" => "recipes#edit_material" #買い物リストの編集
   post "recipes/:id/update_material" => "recipes#update_material" #レシピ更新
 
