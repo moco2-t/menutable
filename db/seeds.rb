@@ -7,12 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
 
-CSV.foreach('db/food2.csv', headers: true) do |row|
+CSV.foreach('db/food.csv', headers: true) do |row|
     Food.create(
     id: row['id'], 
     name: row['name'],
     unit: row['unit'],
     keyword: row['keyword'],
-    ancestry: row['ancestry']
+    ancestry: row['ancestry'],
+    criterion: row['criterion']
     )
 end

@@ -1,6 +1,7 @@
-require_relative "choices"
+require "csv"
+require_relative "Conversion"
 class RecipesController < ApplicationController
-include Choices
+include Conversion
     def indexs
     end
 
@@ -75,8 +76,7 @@ include Choices
                 @temporary_food_id = food_id
                 @amount = amount
                 
-                converted_number #module_Choicesからメソッド呼び出し
-                food_material #module_Choicesからメソッド呼び出し
+                quantity_conversion_branch #module_Choicesからメソッド呼び出し
                 
                 @created_material = Material.create(
                     recipe_id: @recipe_id,
@@ -97,8 +97,7 @@ include Choices
         @temporary_food_id = params[:food_id]
         @amount = params[:amount]
 
-        converted_number #module_Choicesからメソッド呼び出し
-        food_material #module_Choicesからメソッド呼び出し
+        quantity_conversion_branch
         
         @created_material = Material.create(
             recipe_id: params[:recipe_id],
@@ -142,7 +141,6 @@ include Choices
     end
 
     def edit_material
-
     end
 
     def update_material
