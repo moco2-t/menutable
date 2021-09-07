@@ -46,24 +46,27 @@
             <table class="add_material_form">
                 <tr>
                     <th></th>
+                    <th></th>
                     <th>分量</th>
                     <th></th>
                 </tr>
                 <tr>
-                <%=form_with url:"/recipes/create_manual_materials" do |f| %>
-                    <%= f.hidden_field :recipe_id, value: params[:id] %>
-                    <td>
-                        <div class="form-input-select"> 
-                            <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
-                        </div>
-                        <div class ="listing-product-detail__category"></div>
-                    </td>
-                    <td>
-                        <%= f.text_field :amount %>
-                    </td>
-                    <td>
-                        <%= f.submit "登録"%>
-                    </td>
+                <%=form_with url:"/recipes/create_manual_materials", id:"create_manual_materials" do |f| %>
+                <%= f.hidden_field :recipe_id, value: params[:id] %>
+                <td>
+                    <div class="form-input-select"> 
+                        <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                    </div>
+                </td>
+                <td>
+                    <div class ="listing-product-detail__category"></div>
+                </td>
+                <td>
+                    <%= f.text_field :amount %>
+                </td>
+                <td>
+                    <%= f.submit "登録"%>
+                </td>
                 <%end%>
                 </tr>
             </table>
@@ -80,7 +83,7 @@
     function appendOption(child){
         //value="${category.name}"については、ストロングパラメーターでの値の取り方によってcategory.idの場合もあると思います。
         var html = `<tr><td>
-                    <input type="radio" value="${child.id}" name="food_id" class="listing-select-wrapper__box--select" id="child_category">${child.name}
+                        <input type="radio" value="${child.id}" name="food_id" class="listing-select-wrapper__box--select" id="child_category" form="create_manual_materials">${child.name}
                     </td></tr>`;
         return html;
     }
