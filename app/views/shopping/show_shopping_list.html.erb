@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping List</title>
+</head>
+<body>
+    <div class="page_title"><h1>SHOPPING LIST</h1></div>
+    <br>
+    <table border="1" class="shopping_list">
+        <tr>
+            <th>食材名</th>
+            <th>数</th>
+            <th></th>
+        </tr>
+        <%shopping_list().each do |item|%>
+            <tr>
+                <td>
+                    <%= Food.find_by(id:item.food_id)[:name]%>
+                </td>
+                <td>
+                    <%= item.quantity%>
+                </td>
+                <td>
+                    <%= item.unit%>
+                </td>
+            </tr>
+        <%end%>
+    </table>
+</body>
+</html>

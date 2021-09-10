@@ -40,6 +40,6 @@ Rails.application.routes.draw do
   delete "meal/delete" => "meal#destroy" #献立削除
   #買い物リスト
   get "shopping/index" => "shopping#index" #買い物リスト
-  post "shopping/select_day" => "shopping#select_day" #日程を選ぶ
-  
+  post "shopping/sum_shopping_list" => "shopping#sum_shopping_list" #買い物リストの合算
+  get "shopping/show_shopping_list" => "shopping#show_shopping_list"
 end

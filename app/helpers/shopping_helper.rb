@@ -9,6 +9,7 @@ module ShoppingHelper
     end
 
     def shopping_list
-        Shopping.where(date: params[:date])
+        Shopping.where(start_date: params[:date]).order("food_id")
+        #food_idを昇順に並び替える
     end
 end

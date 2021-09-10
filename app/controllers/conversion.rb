@@ -29,7 +29,7 @@ module Conversion
         criterion_value = Food.find_by(id:@temporary_food_id).criterion.to_i
             if @amount.include?("g")
                 @quantity = @amount.tr('０-９ａ-ｚＡ-Ｚ ', '0-9a-zA-Z ').delete("^0-9/","^０-９／").to_f/criterion_value
-            elsif @amount.include?("本") or @amount.include?("合") or @amount.include?("玉") or @amount.include?("尾") or @amount.include?("個") or @amount.include?("束") or @amount.include?("袋") or @amount.include?("片") or @amount.include?("株") or @amount.include?("パック") or @amount.include?("cm")
+            elsif @amount.include?("本") or @amount.include?("合") or @amount.include?("玉") or @amount.include?("尾") or @amount.include?("個") or @amount.include?("束") or @amount.include?("袋") or @amount.include?("片") or @amount.include?("株") or @amount.include?("パック") or @amount.include?("切れ")or @amount.include?("枚") or @amount.include?("切")
                 @quantity = Rational(@amount.tr('〇一二三四五六七八九', '0123456789').tr('０-９ａ-ｚＡ-Ｚ／', '0-9a-zA-Z/').delete("^0-9/","^０-９／")).to_f
             elsif @amount.include?("適量") or @amount.include?("少々") or @amount.include?("ひとつまみ")
                 @quantity = 1
