@@ -10,7 +10,12 @@
     <div class="page_title"><h1>SHOPPING LIST</h1></div>
     <br>
     <table class="link">
-        <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
+        <tr>
+            <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
+        </tr>
+        <tr>
+            <td><h2><%= link_to "買い物リストを編集",shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]) %></h2></td>
+        </tr>
     </table>
     <br>
     <h2><%= params[:start_date]%>~<%=params[:end_date]%></h2>

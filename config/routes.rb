@@ -43,7 +43,11 @@ Rails.application.routes.draw do
   #買い物リスト
   get "shopping/index" => "shopping#index" #買い物リスト
   post "shopping/view" => "shopping#view" #買い物リストの期間を指定する
-  get "shopping/create_shopping_list" => "shopping#create_shopping_list" #買い物リスト作成ページ
-  post "shopping/sum_shopping_list" => "shopping#sum_shopping_list" #買い物リストの合算
-  get "shopping/show_shopping_list" => "shopping#show_shopping_list"#買い物リストを表示
+  get "shopping/create_shopping_list" => "shopping#create_shopping_list" #買い物リスト作成画面
+  post "shopping/sum_shopping_list" => "shopping#sum_shopping_list" #買い物リストの作成
+  get "shopping/show_shopping_list" => "shopping#show_shopping_list"#買い物リストを表示画面
+  get "shopping/edit_shopping_list" => "shopping#edit_shopping_list" #買い物リスト編集画面
+  post "shopping/update_shopping_list" => "shopping#update_shopping_list" #買い物リスト変更
+  post "/shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
+  delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの削除
 end

@@ -1,8 +1,10 @@
 require'date'
+require_relative "Conversion"
 class ShoppingController < ApplicationController
+include Conversion
 
     def index 
-        @meals = Meal.all  
+        @meals = Meal.all
     end
 
     def create_shopping_list
@@ -71,10 +73,64 @@ class ShoppingController < ApplicationController
     end
 
     def view
-        redirect_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        if params[:start_date]&&params[:end_date] 
+            redirect_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        end
     end
 
-    
+    def edit_shopping_list
+        @category_parent_array = ["---"]
+        #データベースから、親カテゴリーのみ抽出し、配列化
+            Food.where(id:1..14).each do |parent|
+            @category_parent_array << parent.name
+            end
+    end
+
+    def get_category_children
+        #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+        @category_children = Food.find_by(name: params[:category]).children
+    end
+
+    def update_shopping_list
+        @edit_shopping =Shopping.find_by(id: params[:id])
+        @edit_shopping.quantity = params[:quantity]
+        if @edit_shopping.save
+            flash[:notice]= "#{Food.find_by(id:@edit_shopping.food_id)[:name]}の数量を変更しました"
+            redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        else
+            flash[:notice]="登録失敗"
+            redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        end
+    end
+
+    def destroy_shopping
+        destroy_shopping = Shopping.find_by(id: params[:id]).destroy
+        if destroy_shopping
+            flash[:notice] = "買い物リストの項目を削除しました"
+            redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        end
+    end
+
+    def add_shopping
+        @amount = params[:amount]
+        @temporary_food_id = params[:food_id]
+        quantity_conversion_branch
+        shopping_item= Shopping.new(
+            start_date: params[:start_date],
+            end_date: params[:end_date],
+            food_id: params[:food_id],
+            quantity: @quantity ,
+            unit: Food.find_by(id:params[:food_id])[:unit]
+            )
+        
+        if shopping_item.save
+            flash[:notice]="#{params[:start_date]}~#{params[:end_date]}の買い物リストを追加しました"
+            redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        else
+            flash[:notice]="登録失敗"
+            redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
+        end
+    end
 end
 
 
