@@ -25,13 +25,13 @@
                     <%end%>
                 </td>
                 <td>
-                    <%= Food.find_by(id: m.food_id).name%>
+                    <%= Food.find_by(id: m.food_id)[:name]%>
                 </td>
                 <%unless m.quantity === nil%>
                 <%= form_with url:"/recipes/#{m.id}/update_material" do |f2| %>
                     <td>
                         <%= f2.hidden_field :recipe_id, value: params[:id] %>
-                        <%= f2.text_field :quantity, value:m.quantity ,size:10%>  <%= m.unit%>
+                        <%= f2.text_field :quantity, value:m.quantity.floor(1) ,size:10%>  <%= Food.find_by(id: m.food_id)[:unit]%>
                     </td>
                     <td>
                         <%= f2.submit "変更"%>

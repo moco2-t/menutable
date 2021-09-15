@@ -10,18 +10,8 @@
     <div class="page_title"><h1>SHOPPING</h1></div>
     <br>
     <table class="link">
-        <td>
-            <h2><%= link_to "買い物リストを作成する","/shopping/create_shopping_list" %></h2>
-        </td>
+        <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
     </table>
-    <br>
-        <div class="shoppinglist_date">
-            <%= form_with url:"/shopping/view" do |f| %>
-                <%= f.date_field :start_date %> 〜 <%= f.date_field :end_date %>
-                <%= f.submit "選択"%>
-            <% end %>
-        </div>
-    <br>
     <!--献立カレンダー-->
     <h2>献立</h2>
     <div class="meal_calender">
@@ -32,6 +22,15 @@
                     <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
                 </div>
             <% end %>
+        <% end %>
+    </div>
+    <br>
+    <h3>買い物リスト作成</h3>
+    <p>日付を選択してください。</p>
+    <div class="shopping_list">
+        <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
+            <%= f.date_field :start_date %> 〜 <%= f.date_field :start_date2 %>
+            <%= f.submit "選択"%>
         <% end %>
     </div>
     <br>

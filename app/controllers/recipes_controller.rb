@@ -81,8 +81,7 @@ include Conversion
                 @created_material = Material.create(
                     recipe_id: @recipe_id,
                     food_id:  @temporary_food_id,
-                    quantity: @quantity,
-                    unit: Food.find_by(id:@temporary_food_id).unit
+                    quantity: @quantity
                     )
             end        
             flash[:notice]="登録"
@@ -102,8 +101,7 @@ include Conversion
         @created_material = Material.create(
             recipe_id: params[:recipe_id],
             food_id:  @temporary_food_id,
-            quantity: @quantity,
-            unit: Food.find_by(id:@temporary_food_id).unit
+            quantity: @quantity
             )
         flash[:notice]="登録"
         redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])

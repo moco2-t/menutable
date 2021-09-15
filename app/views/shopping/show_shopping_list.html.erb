@@ -9,25 +9,30 @@
 <body>
     <div class="page_title"><h1>SHOPPING LIST</h1></div>
     <br>
+    <table class="link">
+        <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
+    </table>
+    <br>
+    <h2><%= params[:start_date]%>~<%=params[:end_date]%></h2>
+    <br>
     <table border="1" class="shopping_list">
         <tr>
             <th>食材名</th>
             <th>数</th>
-            <th></th>
         </tr>
         <%shopping_list().each do |item|%>
             <tr>
                 <td>
                     <%= Food.find_by(id:item.food_id)[:name]%>
                 </td>
+                <% if item.unit != "none"%>
                 <td>
-                    <%= item.quantity%>
+                    <%= item.quantity%><%= item.unit%>
                 </td>
-                <td>
-                    <%= item.unit%>
-                </td>
+                <%end%>
             </tr>
         <%end%>
     </table>
+    <br>
 </body>
 </html>

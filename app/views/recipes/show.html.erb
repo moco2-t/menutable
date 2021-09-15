@@ -50,20 +50,20 @@
         </div>
         <br>
         <div class="recipe_material">
-            <h3>買い物リスト</h3>
+            <h3>材料リスト</h3>
             <table border="1">
                 <tr>
                     <th>名前</th>
                     <th>数</th>
                 </tr>
-                <% materials().each do |m|%>
+                <% materials().order("food_id").each do |m|%>
                 <tr>
                     <td>
-                        <%= Food.find_by(id:m.food_id).name %>
+                        <%= Food.find_by(id:m.food_id)[:name] %>
                     </td>
                     <td>
                         <%unless m.quantity === nil%>
-                            <%= m.quantity.ceil%><%= m.unit%>
+                            <%= m.quantity.floor(1)%><%=Food.find_by(id:m.food_id)[:unit]%>
                         <%end%>
                     </td>
                 </tr>
