@@ -1,8 +1,8 @@
 require "csv"
-require_relative "Conversion"
+require_relative "Converter"
 class RecipesController < ApplicationController
-include Conversion
-    def indexs
+include Converter
+    def index
     end
 
     def search
@@ -57,7 +57,7 @@ include Conversion
         @registered_material = Material.where(recipe_id: params[:id]) 
         @category_parent_array = ["---"]
         #データベースから、親カテゴリーのみ抽出し、配列化
-            Food.where(id:1..14).each do |parent|
+            Food.where(unit:nil).each do |parent|
             @category_parent_array << parent.name
             end
     end

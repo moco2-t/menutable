@@ -1,7 +1,7 @@
 require'date'
-require_relative "Conversion"
+require_relative "Converter"
 class ShoppingController < ApplicationController
-include Conversion
+include Converter
 
     def index 
         @meals = Meal.all
@@ -81,7 +81,7 @@ include Conversion
     def edit_shopping_list
         @category_parent_array = ["---"]
         #データベースから、親カテゴリーのみ抽出し、配列化
-            Food.where(id:1..14).each do |parent|
+            Food.where(unit:nil).each do |parent|
             @category_parent_array << parent.name
             end
     end
