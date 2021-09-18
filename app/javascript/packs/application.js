@@ -13,3 +13,5 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require ('shopping/add_shopping')

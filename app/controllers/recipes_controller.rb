@@ -145,7 +145,7 @@ include Converter
     def edit_material
         @category_parent_array = ["---"]
         #データベースから、親カテゴリーのみ抽出し、配列化
-            Food.where(id:1..14).each do |parent|
+            Food.where(unit:nil).each do |parent|
             @category_parent_array << parent.name
             end
     end
