@@ -103,8 +103,14 @@ include Converter
             food_id:  @temporary_food_id,
             quantity: @quantity
             )
-        flash[:notice]="登録"
-        redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
+        
+        if params[:kind] === "edit_material"
+            flash[:notice]="登録"
+            redirect_to ("/recipes/#{params[:recipe_id]}/edit_material")
+        elsif params[:kind] === "new_material"
+            flash[:notice]="登録"
+            redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
+        end
     end
 
     def show

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <%= javascript_pack_tag 'packs/application'%>
+    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shopping List</title>
 </head>
@@ -60,10 +60,9 @@
     <br>
     <h3>追加する</h3>
     <table class="add_shopping">
-        <%=form_with url:"/shopping/add_shopping", id:"add_shopping" do |f3| %>
+        <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f3| %>
             <%= f3.hidden_field :start_date, value: params[:start_date] %>
             <%= f3.hidden_field :end_date, value: params[:end_date] %>
-            <script src="add_shopping.js"></script>
             <td>
                 <div class="form-input-select"> 
                     <%= f3.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
@@ -83,5 +82,4 @@
     <br>
     <br>
 </body>
-
 </html>

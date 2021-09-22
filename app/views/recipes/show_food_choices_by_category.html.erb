@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
 <br>
 <head>
   <meta charset="UTF-8">
@@ -57,7 +58,8 @@
         <th></th>
     </tr>
     <tr>
-    <%=form_with url:"/recipes/create_manual_materials", id:"create_manual_materials" do |f| %>
+    <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>
+    <%= f.hidden_field :kind, value: "new_material" %>
     <%= f.hidden_field :recipe_id, value: params[:id] %>
     <td>
         <div class="form-input-select"> 
