@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   post "shopping/update_shopping_list" => "shopping#update_shopping_list" #買い物リスト変更
   post "/shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
   delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの削除
+  get "shopping/create_csv" => "shopping#create_csv" #買い物リストのCSVを作成
 end

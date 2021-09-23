@@ -1,4 +1,5 @@
 require'date'
+require 'csv'
 require_relative "Converter"
 class ShoppingController < ApplicationController
 include Converter
@@ -13,7 +14,6 @@ include Converter
 
     def sum_shopping_list
         meal=Meal.where(start_date:params[:start_date]..params[:start_date2])
-        
         meal_recipe_id = []
             meal.each do |m|
                 meal_recipe_id << m.recipe_id
@@ -23,10 +23,8 @@ include Converter
         material_list = Material.where(recipe_id:meal_recipe_id)
         @materials = material_list.group_by{|i| i.food_id}.select{|k,v| v.one?}.keys 
         @duplicate_materials = material_list.group_by{|i| i.food_id}.reject{|k,v| v.one?}.keys #重複している食材のfood_idの配列
-        
         @materials.each do |i_id|
             Material.where(recipe_id:meal_recipe_id,food_id:i_id).each do |material|
-
                 shopping_item= Shopping.new(
                     start_date: params[:start_date],
                     end_date: params[:start_date2],
@@ -52,7 +50,6 @@ include Converter
                     else
                         item_unit = Food.find_by(id:duplicate)[:unit]
                     end
-
                 duplicate_shopping_item = Shopping.new(
                     start_date: params[:start_date],
                     end_date: params[:start_date2],
@@ -63,13 +60,12 @@ include Converter
                 duplicate_shopping_item.save
             end
         end
-    
         flash[:notice]="#{params[:start_date]}~#{params[:start_date2]}の買い物リストを作成しました"
         redirect_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:start_date2])
     end
 
     def show_shopping_list
-
+        
     end
 
     def view
@@ -122,7 +118,6 @@ include Converter
             quantity: @quantity ,
             unit: Food.find_by(id:params[:food_id])[:unit]
             )
-        
         if shopping_item.save
             flash[:notice]="#{params[:start_date]}~#{params[:end_date]}の買い物リストを追加しました"
             redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
@@ -131,6 +126,43 @@ include Converter
             redirect_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
         end
     end
+    
+    def create_csv
+        shopping_food = Shopping.where(start_date: params[:start_date],end_date:params[:end_date],food_id:15..181).order("food_id")
+        shopping_seasoning = Shopping.where(start_date: params[:start_date],end_date:params[:end_date],food_id:182..224).order("food_id")
+        csv_shopping_list = shopping_food + shopping_seasoning
+            respond_to do |format|
+                format.html
+                format.csv do |csv|
+                    send_csv_shopping_list(csv_shopping_list)
+                end
+            end
+    end
+
+    def send_csv_shopping_list(csv_shopping_list)
+        csv_data = CSV.generate do |csv|
+            column_names = %w(名前,,)
+            csv << column_names
+            csv_shopping_list.each do |item|
+                if item.unit != "none"
+                    column_values = [
+                        Food.find_by(id:item.food_id)[:name],
+                        item.quantity,
+                        item.unit
+                        ]
+                else
+                    column_values = [
+                        Food.find_by(id:item.food_id)[:name],
+                        "",
+                        ""
+                        ]
+                end
+                csv << column_values
+            end
+        end
+        send_data(csv_data, filename: "買い物リスト.csv")
+    end
+
 end
 
 

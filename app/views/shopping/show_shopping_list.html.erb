@@ -18,12 +18,12 @@
         </tr>
     </table>
     <br>
-    <h2><%= params[:start_date]%>~<%=params[:end_date]%></h2>
+    <h2>期間：<%= params[:start_date]%>~<%=params[:end_date]%></h2>
     <br>
     <table border="1" class="shopping_list">
         <tr>
-            <th>食材名</th>
-            <th>数</th>
+            <th>食材</th>
+            <th> </th>
         </tr>
         <%shopping_list().each do |item|%>
             <tr>
@@ -37,7 +37,22 @@
                 <%end%>
             </tr>
         <%end%>
+            <tr>
+                <th>
+                    調味料
+                </th>
+            </tr>
+        <%shopping_seasoning().each do |item|%>
+            <tr>
+                <td>
+                    <%= Food.find_by(id:item.food_id)[:name]%>
+                </td>
+            </tr>
+        <%end%>
     </table>
     <br>
+    <%= link_to "csvで出力する",shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date])%>
+    <br>
+    
 </body>
 </html>
