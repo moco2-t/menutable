@@ -1,0 +1,80 @@
+<html lang="ja">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit material</title>
+    </head>
+    <body>
+        <div class="page_title"><h1>Edit material</h1></div>
+        <br>
+        <table class="edit_material_form">
+            <tr>
+                <th></th>
+                <th>名前</th>
+                <th>数量</th>
+                <th></th>
+            </tr>
+            <%materials().each do |m|%>
+            <tr>
+                <td>
+                    <%= form_with url:"/recipes/material/#{m.id}/delete",method: :delete do |f|%>
+                        <%= f.hidden_field :recipe_id, value: params[:id] %>
+                        <%= f.submit "削除", data: { confirm: "削除してよろしいですか?"}%>
+                    <%end%>
+                </td>
+                <td>
+                    <%= Food.find_by(id: m.food_id)[:name]%>
+                </td>
+                <%unless m.quantity === nil%>
+                <%= form_with url:"/recipes/#{m.id}/update_material" do |f2| %>
+                    <td>
+                        <%= f2.hidden_field :recipe_id, value: params[:id] %>
+                        <%= f2.text_field :quantity, value:m.quantity.floor(1) ,size:10%>  <%= Food.find_by(id: m.food_id)[:unit]%>
+                    </td>
+                    <td>
+                        <%= f2.submit "変更"%>
+                    </td>
+                <%end%>
+                <%end%>
+            </tr>
+            <%end%>
+        </table>
+        <br>
+        <h2>追加</h2>
+            <table class="add_material_form">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>分量</th>
+                    <th></th>
+                </tr>
+                <tr>
+                <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>
+                <%= f.hidden_field :kind, value: "edit_material" %>
+                <%= f.hidden_field :recipe_id, value: params[:id] %>
+                <td>
+                    <div class="form-input-select"> 
+                        <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                    </div>
+                </td>
+                <td>
+                    <div class ="listing-product-detail__category"></div>
+                </td>
+                <td>
+                    <%= f.text_field :amount %>
+                </td>
+                <td>
+                    <%= f.submit "登録"%>
+                </td>
+                <%end%>
+                </tr>
+            </table>
+        <br>
+        <div class="btn_return">
+            <%= link_to "戻る","/recipes/#{params[:id]}" %>
+        </div>
+    </body>
+</html>

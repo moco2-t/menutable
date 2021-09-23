@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'kconv'
 
-module RecipeHelper
+module RecipesHelper
     def recipes 
         Recipe.all
     end
@@ -15,8 +15,8 @@ module RecipeHelper
         Ingredient.where(recipe_id: params[:id])
     end
 
-    def food_category 
-        Food.find_by(id: @category_id.to_i)
+    def materials
+        Material.where(recipe_id: params[:id])
     end
 
     def scraping

@@ -12,15 +12,25 @@ Rails.application.routes.draw do
   delete "/users/delete" => "user#destroy" #アカウント削除
   get "users/:id/edit" => "user#edit" #アカウント編集
   post "users/update" => "user#update" #アカウント編集form
+
   #レシピ機能
-  get "recipes/index" => "recipe#index" #レシピ一覧
-  get "recipes/search" => "recipe#search" #レシピ検索
-  get "recipes/new" => "recipe#new" #レシピ登録ページ
-  post "recipes/create" => "recipe#create" #レシピ登録
-  get "recipes/:id" => "recipe#show" #レシピ詳細
-  delete "recipes/:id/delete" => "recipe#destroy" #レシピ削除
-  get "recipes/:id/edit" => "recipe#edit" #レシピ編集
-  post "recipes/:id/update_recipe" => "recipe#update_recipe" #レシピ編集form
+  get "recipes/index" => "recipes#index" #レシピ一覧
+  get "recipes/search" => "recipes#search" #レシピ検索
+  get "recipes/new" => "recipes#new" #レシピ登録ページ
+  post "recipes/create_recipe" => "recipes#create_recipe" #レシピ登録
+  get "recipes/show_food_choices/:id/" => "recipes#show_food_choices" #材料リストの設定(自動検索)
+  get "recipes/show_food_choices_by_category/" => "recipes#show_food_choices_by_category" #材料リストの追加設定（手動）
+  get 'recipes/show_food_choices_by_category/get_category_children' => "recipes#get_category_children", defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
+  post "recipes/create_materials" => "recipes#create_materials" #材料リストの登録
+  post "recipes/create_manual_materials" => "recipes#create_manual_materials" #材料リストの追加登録
+  get "recipes/:id" => "recipes#show" #レシピと材料リストの詳細
+  delete "recipes/:id/delete" => "recipes#destroy_recipe" #レシピ削除
+  get "recipes/:id/edit_recipe" => "recipes#edit_recipe" #レシピ編集
+  post "recipes/:id/update_recipe" => "recipes#update_recipe" #レシピ更新
+  delete "recipes/material/:id/delete" => "recipes#destroy_material" #材料リストの削除
+  get "recipes/:id/edit_material" => "recipes#edit_material" #材料リストの編集
+  post "recipes/:id/update_material" => "recipes#update_material" #材料リストの更新
+
   #献立機能
   get "meal/index" => "meal#index" #献立表示
   get "meal/new" => "meal#new" #献立決め
@@ -29,14 +39,16 @@ Rails.application.routes.draw do
   get "meal/edit" => "meal#edit" #献立編集
   post "meal/day" => "meal#day" #日付選択
   delete "meal/delete" => "meal#destroy" #献立削除
+
   #買い物リスト
   get "shopping/index" => "shopping#index" #買い物リスト
-  post "shopping/create" => "shopping#create" #買い物リストの作成
-  get "shopping/list" => "shopping#list" #買い物リスト一覧
-  get "shopping/check_list" => "shopping#check_list" #買い物理リスト確認
-  get "shopping/edit" => "shopping#edit" #買い物リスト編集
-  post "shopping/update" => "shopping#update" #買い物リスト更新
-  delete "shopping/delete" => "recipe#destroy" #買い物リスト削除
-
-  
+  post "shopping/view" => "shopping#view" #買い物リストの期間を指定する
+  get "shopping/create_shopping_list" => "shopping#create_shopping_list" #買い物リスト作成画面
+  post "shopping/sum_shopping_list" => "shopping#sum_shopping_list" #買い物リストの作成
+  get "shopping/show_shopping_list" => "shopping#show_shopping_list"#買い物リストを表示画面
+  get "shopping/edit_shopping_list" => "shopping#edit_shopping_list" #買い物リスト編集画面
+  post "shopping/update_shopping_list" => "shopping#update_shopping_list" #買い物リスト変更
+  post "/shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
+  delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの削除
+  get "shopping/create_csv" => "shopping#create_csv" #買い物リストのCSVを作成
 end
