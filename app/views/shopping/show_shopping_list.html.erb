@@ -14,7 +14,7 @@
             <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
         </tr>
         <tr>
-            <td><h2><%= link_to "買い物リストを編集",shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]) %></h2></td>
+            <td><h2><%= link_to "買い物リストを編集",shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  %></h2></td>
         </tr>
     </table>
     <br>
@@ -22,13 +22,17 @@
     <br>
     <table border="1" class="shopping_list">
         <tr>
+            <th> </th>
             <th>食材</th>
             <th> </th>
         </tr>
         <%shopping_list().each do |item|%>
             <tr>
                 <td>
-                    <%= Food.find_by(id:item.food_id)[:name]%>
+                    <%= check_box_tag :check1%>
+                </td>
+                <td>
+                    <%=Food.find_by(id:item.food_id)[:name]%>
                 </td>
                 <% if item.unit != "none"%>
                 <td>
@@ -38,6 +42,7 @@
             </tr>
         <%end%>
             <tr>
+                <th> </th>
                 <th>
                     調味料
                 </th>
@@ -45,7 +50,10 @@
         <%shopping_seasoning().each do |item|%>
             <tr>
                 <td>
-                    <%= Food.find_by(id:item.food_id)[:name]%>
+                    <%= check_box_tag :check1%>
+                </td>
+                <td>
+                    <%=Food.find_by(id:item.food_id)[:name]%>
                 </td>
             </tr>
         <%end%>

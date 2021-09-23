@@ -12,18 +12,6 @@
     <table class="link">
         <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
     </table>
-    <!--献立カレンダー-->
-    <h2>献立</h2>
-    <div class="meal_calender">
-        <%= week_calendar number_of_weeks:1 ,events:@meals do |date,meals| %>
-            <%= date.day %>
-            <% meals.each do |m| %>
-                <div>
-                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
-                </div>
-            <% end %>
-        <% end %>
-    </div>
     <br>
     <h3>買い物リスト作成</h3>
     <p>日付を選択してください。</p>
@@ -33,6 +21,20 @@
             <%= f.submit "選択"%>
         <% end %>
     </div>
+    <!--献立カレンダー-->
+    <h2>献立</h2>
+    <div class="meal_calender">
+        <%= week_calendar number_of_weeks:3 ,events:@meals do |date,meals| %>
+            <%= date.day %>
+            <% meals.each do |m| %>
+                <div>
+                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <br>
+    
     <br>
     <br>
 </body>

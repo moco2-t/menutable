@@ -56,6 +56,20 @@
                 <%end%>
             </tr>
         <%end%>
+        <%shopping_seasoning().each do |item|%>
+            <tr>
+                <td>
+                    <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
+                        <%= f.hidden_field :start_date, value: params[:start_date] %>
+                        <%= f.hidden_field :end_date, value: params[:end_date] %>
+                        <%= f.submit "削除", data: { confirm: "削除してよろしいですか?"}%>
+                    <%end%>
+                </td>
+                <td>
+                    <%= Food.find_by(id:item.food_id)[:name]%>
+                </td>
+            </tr>
+        <%end%>
     </table>
     <br>
     <h3>追加する</h3>
