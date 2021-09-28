@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Account</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account</title>
 </head>
 <body>
-    <div class="page_title">Account</div>
-    <br>
-        <%if @user %>
-            <% @user.errors.full_messages.each do |message| %>
-                <div class="form-error">
-                    <%= message %>
-                </div>
-            <% end %>
-        <%end%>
-    <br>
-        <%= form_with url:"/users/create",class:"input_form" do |f|%>
-            <table class="form_table">
-                <tr>
-                    <td>Login ID</td>
-                </tr>
-                <tr>
-                    <td><%= f.text_field :login_id ,:value => @login_id %></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                </tr>
-                <tr>
-                    <td><%= f.password_field :password ,:value => @password %></td>
-                </tr>
-                <tr>
-                    <td><%= f.submit '登録',:class=>"form_btn" %></td>
-                </tr>
+<div class="overlay">
+    <div class="close_btn"><%= link_to("×","/index")%></div>
+    <div class="account_table">
+        <h1 class="title_account">
+            <i class="far fa-user-circle"></i><br>
+            Account
+        </h1>
+        <br>
+            <%if @user %>
+                <% @user.errors.full_messages.each do |message| %>
+                    <div class="form-error">
+                        <p><%= message %></p>
+                    </div>
+                <% end %>
+            <%end%>
+            <table class="account_form">
+                <%= form_with url:"/users/create",class:"input_form" do |f|%>
+                    <tr>
+                        <td>
+                            <h2 class="label">ID</h2>
+                            <%= f.text_field :login_id , value:@login_id , class:"input" %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2 class="label">Password</h2>
+                            <%= f.password_field :password , value:@password , class:"password_input"%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><%= f.submit '登録', class:"account_form_btn" %></td>
+                    </tr>
+                <%end%>
             </table>
-        <% end %>
+    </div>
+<div>
 </body>
 </html>

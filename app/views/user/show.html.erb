@@ -7,32 +7,45 @@
   <title>ユーザー詳細</title>
 </head>
 <body>
-    <div class="page_title">User設定</div>
-    <div class="user_data">
+<div>
+<div class="overlay">
+<div class="close_btn"><%= link_to("×","/users/top")%></div>
+<div class="account_table">
+    <h1 class="title_account">
+        <i class="far fa-user-circle"></i><br>
+        User設定
+    </h1>
+    <div class="user_date">
         <table>
             <tr>
                 <td>
-                    Login ID    :
-                </td>
-                <td>
-                    <%= @current_user.login_id %>
+                    <h2 class="label">ID</h2>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Password    :
+                    <h2 class="user_date_label"><%= @current_user.login_id %></h2>
                 </td>
+            </tr>
+            <tr>
                 <td>
-                    ******
+                    <h2 class="label">Password</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="user_date_label">******</h2>
                 </td>
             </tr>
         </table>
-    <br>
-    <br>
-    <div class="show-list">
-        <li><%= link_to "編集","/users/#{@current_user.id}/edit" %></li>
-        <li><%= link_to "削除", "/users/delete", method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %></li>
+        <br>
+        <br>
+        <div class="show-list">
+            <%= link_to "編集","/users/#{@current_user.id}/edit" , class:"edit_btn" %>
+            <%= link_to "削除", "/users/delete", class:"delete_btn" , method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %>
+        </div>
     </div>
-    </div>   
+</div>
+</div>
 </body>
 </html>

@@ -7,33 +7,37 @@
   <title>login</title>
 </head>
 <body>
-    <div class="page_title">Login</div>
+<div class="overlay">
+<div class="close_btn"><%= link_to("×","/index")%></div>
+<div class="account_table">
+    <h1 class="title_account">
+      <i class="fas fa-sign-in-alt"></i><br>
+      Login
+    </h1>
     <br>
       <% if @error_message %>
-        <div class="form-error">
-          <%= @error_message %>
-        </div>
+        <div class="form-error"><p><%= @error_message %></p></div>
       <% end %>
-    <br>
-      <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
-        <table class="form_table">
+      <table class="account_form">
+        <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
           <tr>
-            <td>Login ID</td>
+            <td>
+              <h2 class="label">Login ID</h2>
+              <%= f.text_field :login_id ,value:@login_id , class:"input"%>
+            </td>
           </tr>
           <tr>
-            <td><%= f.text_field :login_id ,:value => @login_id %></td>
+            <td>
+              <h2 class="label">Password</h2>
+              <%= f.password_field :password ,value:@password , class:"password_input" %>
+            </td>
           </tr>
           <tr>
-            <td>Password</td>
+            <td><%= f.submit 'Login', class:"login_btn" %></td>
           </tr>
-          <tr>
-            <td><%= f.password_field :password ,:value => @password %></td>
-          </tr>
-          <tr>
-            <td><%= f.submit 'Login',:class=>"form_btn" %></td>
-          </tr>
-        </table>
-      <% end %>
-    </div>
+        <% end %>
+      </table> 
+</div>
+</div>
 </body>
 </html>
