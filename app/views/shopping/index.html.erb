@@ -26,10 +26,10 @@
     <br>
     <!--献立カレンダー-->
     <h2>献立</h2>
-    <div class="meal_calender">
-        <%= week_calendar number_of_weeks:4 ,events:@meals do |date,meals| %>
+    <div class="menu_calender">
+        <%= week_calendar number_of_weeks:4 ,events:@menus do |date,menus| %>
             <%= date.day %>
-            <% meals.each do |m| %>
+            <% menus.each do |m| %>
                 <div>
                     <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
                 </div>

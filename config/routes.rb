@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "index" => "home#index" #ログイン前index
+  get "top" => "home#top" #ログイン後top画面
+
   #ログイン、アカウント
   get "users/login_form" => "user#login_form" #ログイン画面
   post "users/login" => "user#login" #ログインform
   post "logout" => "user#logout" #ログアウト
   get "users/new" => "user#new" #アカウント登録画面
   post "users/create" => "user#create" #アカウント登録form
-  get "users/top" => "user#top" #ログイン後top画面
   get "users/:id" => "user#show" #アカウント詳細
   delete "/users/delete" => "user#destroy" #アカウント削除
   get "users/:id/edit" => "user#edit" #アカウント編集
@@ -32,13 +33,13 @@ Rails.application.routes.draw do
   post "recipes/:id/update_material" => "recipes#update_material" #材料リストの更新
 
   #献立機能
-  get "meal/index" => "meal#index" #献立表示
-  get "meal/new" => "meal#new" #献立決め
-  get "meal/search" => "meal#search" #献立用レシピ検索
-  post "meal/select" => "meal#select" #献立用レシピ選択
-  get "meal/edit" => "meal#edit" #献立編集
-  post "meal/day" => "meal#day" #日付選択
-  delete "meal/delete" => "meal#destroy" #献立削除
+  get "menu/index" => "meal#index" #献立表示
+  get "menu/new" => "meal#new" #献立決め
+  get "menu/search" => "meal#search" #献立用レシピ検索
+  post "menu/select" => "meal#select" #献立用レシピ選択
+  get "menu/edit" => "meal#edit" #献立編集
+  post "menu/day" => "meal#day" #日付選択
+  delete "menu/delete" => "meal#destroy" #献立削除
 
   #買い物リスト
   get "shopping/index" => "shopping#index" #買い物リスト

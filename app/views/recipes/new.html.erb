@@ -4,33 +4,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>レシピ登録（URL）</title>
+  <title>レシピ登録</title>
 </head>
 <body>
-   <div class="page_title"><h1>Recipe登録</h1></div> 
-        <% if @created_recipe %>
-            <% @new_recipe.errors.full_messages.each do |message| %>
-                <div class="form-error">
-                <%= message %>
-                </div>
-            <% end %>
-        <%end%>
-    <div class="createform">
-        <%= form_with url:"/recipes/create_recipe" do |f| %>
-            Recipe URL：　<%= f.text_field :address %>
-            <%= f.submit "登録"%>
-        <%end%>
+<div class="overlay">
+    <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
+    <div class="recipe_new_table">
+        <h1 class="title_newrecipe">Recipe登録</h1> 
+            <% if @created_recipe %>
+                <% @new_recipe.errors.full_messages.each do |message| %>
+                    <div class="form-error">
+                    <%= message %>
+                    </div>
+                <% end %>
+            <%end%>
+        <p class="create_recipe_attention">cookpadのみ対応</p>
+        <div class="create_recipe_form">
+            <%= form_with url:"/recipes/create_recipe" do |f| %>
+                <%= f.label 'URL' ,class:"recipe_label"%>
+                <%= f.text_field :address ,class:"create_recipe_input"%>
+                <%= f.submit "登録" ,class:"create_recipe_btn"%>
+            <%end%>
+        </div>
     </div>
-    <div class="attention">
-        <h3>注意書き</h3>
-            <table>
-                <tr>対応してるサイト</tr>
-                <td>cookpad</td>
-            </table>
-    </div>
-    <div class="menu">
-        <li><%= link_to("自分でレシピを入力","/recipes/new")%></li>
-        <li><%= link_to("レシピ一覧","/recipes/index")%></li>
-    </div>
+</div>
 </body>
 </html>

@@ -5,26 +5,26 @@ class ShoppingController < ApplicationController
 include Converter
 
     def index 
-        @meals = Meal.all
+        @menus = menu.all
     end
 
     def create_shopping_list
-        @meals = Meal.all
+        @menus = menu.all
     end
 
     def sum_shopping_list
-        meal=Meal.where(start_date:params[:start_date]..params[:start_date2])
-        meal_recipe_id = []
-            meal.each do |m|
-                meal_recipe_id << m.recipe_id
+        menu=menu.where(start_date:params[:start_date]..params[:start_date2])
+        menu_recipe_id = []
+            menu.each do |m|
+                menu_recipe_id << m.recipe_id
             end 
-        meal_recipe_id
+        menu_recipe_id
 
-        material_list = Material.where(recipe_id:meal_recipe_id)
+        material_list = Material.where(recipe_id:menu_recipe_id)
         @materials = material_list.group_by{|i| i.food_id}.select{|k,v| v.one?}.keys 
         @duplicate_materials = material_list.group_by{|i| i.food_id}.reject{|k,v| v.one?}.keys #重複している食材のfood_idの配列
         @materials.each do |i_id|
-            Material.where(recipe_id:meal_recipe_id,food_id:i_id).each do |material|
+            Material.where(recipe_id:menu_recipe_id,food_id:i_id).each do |material|
                 shopping_item= Shopping.new(
                     start_date: params[:start_date],
                     end_date: params[:start_date2],
@@ -38,7 +38,7 @@ include Converter
 
         if @duplicate_materials
             @duplicate_materials.each do |duplicate|
-                quantities=Material.where(recipe_id:meal_recipe_id,food_id:duplicate).pluck(:quantity)
+                quantities=Material.where(recipe_id:menu_recipe_id,food_id:duplicate).pluck(:quantity)
                     unless quantities.include?(nil)
                         sum_quantity = quantities.sum #分量の合計
                     else

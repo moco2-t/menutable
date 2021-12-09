@@ -7,75 +7,58 @@
   <title>レシピ詳細</title>
 </head>
 <body>
-    <div class="page_title"><h1>レシピ詳細</h1></div>
-        <br>
-        <div class="recipesetting_menu">
-            <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe")%></li>
-            <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} %></li>
-            <li><%= link_to("買い物リストの編集","/recipes/#{params[:id]}/edit_material")%></li>
-        </div>
-        <br>
+<main>
+    <nav>
+        <div class="nav_title"><h1>Recipe</h1></div>
+        <ul class="nav_menu">
+            <li><%= link_to("Register the recipe","/recipes/new",class:"menu_link")%></li>
+        </ul>
+    </nav>
+    <article>
+        <aside>
+            <div class="recipe_settings">
+                <ul>
+                    <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
+                    <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
+                    <li><%= link_to("材料の編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
+                    <li><%= link_to("レシピ一覧","/recipes/index",class:"recipe_settings_link")%></li>
+                </ul>
+            </div>
+        </aside>
         <div class="recipe_detail">
             <h2><%= recipe().name %></h2>
-            <table>
+            <table class="recipe_detail_table">
                 <tr>
-                    <td>keyword</td>
+                    <th>keyword</th>
                     <td><%= recipe().keyword %></td>
                 </tr>
                 <tr>
-                <td>URL</td>
+                <th>URL</th>
                 <td><%= link_to recipe().address, recipe().address %></td>
                 </tr>
             </table>
+            <br>
+            <div class="lists">
+                <table class="materials_list">
+                    <tr>
+                        <th>食材</th>
+                        <th>分量</th>
+                    </tr>
+                    <% ingredients().each do |i|%>
+                    <tr>
+                        <td>
+                            <%= i.foodname %>
+                        </td>
+                        <td>
+                            <%= i.amount %>
+                        </td>
+                    </tr>
+                    <%end%>
+                </table>
+            </div>
         </div>
-        <br>
-        <div class="recipe_ingredient">
-            <h3>材料</h3>
-            <table border="1">
-                <tr>
-                    <th>食材</th>
-                    <th>分量</th>
-                </tr>
-                <% ingredients().each do |i|%>
-                <tr>
-                    <td>
-                        <%= i.foodname %>
-                    </td>
-                    <td>
-                        <%= i.amount %>
-                    </td>
-                </tr>
-                <%end%>
-            </table>
-        </div>
-        <br>
-        <div class="recipe_material">
-            <h3>材料リスト</h3>
-            <table border="1">
-                <tr>
-                    <th>名前</th>
-                    <th>数</th>
-                </tr>
-                <% materials().order("food_id").each do |m|%>
-                <tr>
-                    <td>
-                        <%= Food.find_by(id:m.food_id)[:name] %>
-                    </td>
-                    <td>
-                        <%unless m.quantity === nil%>
-                            <%= m.quantity.floor(1)%><%=Food.find_by(id:m.food_id)[:unit]%>
-                        <%end%>
-                    </td>
-                </tr>
-                <%end%>
-            </table>
-        </div>
-        <br>
-        <div class="menu">
-            <li><%= link_to("レシピ一覧","/recipes/index")%></li>
-            <li><%= link_to("URLで登録","/recipes/new")%></li>
-        </div>
-        
+    </article>
+</main>
 </body>
 </html>
 

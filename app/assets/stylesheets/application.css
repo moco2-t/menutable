@@ -15,14 +15,84 @@
  *= require_self
  */
 
+
 body {
- background-image: url('back_ground.jpg');
- background-size: cover;
+    background-image: url("top_image.jpg") ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
+
 header {
-    background-color:#84BF04;
+    height: 30%;
+    background-color: rgba(255, 255, 255, 0.425);
 }
+
+/*メイン部分*/
+main {
+    height: 70%;
+}
+    /*ナビゲーション*/
+    nav {
+        width: 300px;
+        height: 780px;
+        float: left;
+        background-color: rgba(255, 255, 255, 0.425);
+    }
+        /*sideメニュータイトル*/
+        .nav_title {
+            width: 300px;
+            color: #000; 
+            font-size: 50px; 
+            font-family: fantasy;
+            letter-spacing: 10px;
+            float: right;
+            margin: 50px auto ;
+            writing-mode: vertical-rl;
+        }
+
+        /*メニュー*/
+        .nav_menu {
+            float:right;
+            width: 200px;
+            margin: 0 auto;
+            font-size: 18px;
+            font-family: fantasy;
+        }
+            .nav_menu li {
+                position: relative;
+                list-style-type: none!important;/*ポチ消す*/
+                padding:10px 2px;
+            }
+            .nav_menu li:before{ 
+                display:inline-block; 
+                vertical-align: middle;
+                /*以下白丸つくる*/
+                content:'';
+                width:0.7em;
+                height: 0.7em;
+                background: #038C25;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+
+        /*メニューリンク*/
+        .menu_link:hover {
+            border-bottom: solid 3px rgba(34, 163, 40, 0.301);
+        }
+        
+    /*文章部分*/ 
+    article {
+        overflow: scroll;
+        height: 780px;
+        background: #FFF;
+    }
+
+    aside {
+        width: 200px;
+        float: right;
+    }
 
 a {
     text-decoration:none; 
@@ -39,70 +109,40 @@ a {
 .form-error {
     color:red;
     text-align: center;
+    font-size: 15px;
 }
 
 .title_logo {
     color:white;
-    font-size: 30px;
-    font-family: 'Papyrus', sans-serif;
-    text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+    font-family: fantasy;
+    letter-spacing: 5px;
     width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
-    
+    margin:  0 auto;
+    padding:20px 0 0 0;
 }
 
 .user_information {
+    display:inline;
     font-size:20px ;
-    font-family: 'Papyrus','HanziPen SC', sans-serif;
+    font-family: fantasy;
     color:white;
     text-align: center;
-    float: right;
+    float:right;
+}
+
+.menu_list {
     display:inline-block;
-}
-
-.menu_list{
-    font-size: 15px;
-    font-family: 'Papyrus','HanziPen SC', sans-serif;
+    font-size: 20px;
+    font-family: fantasy;
     color:white;
-    width: 550px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 50%;
     text-align: center;
-    padding:5px;
 }
 
-.menu_list_before_login {
-    font-size: 15px;
-    font-family: 'Papyrus','HanziPen SC', sans-serif;
-    color:white;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    padding:5px;
-}
-
-.account_link {
+.account_link,.header_link {
     text-decoration:none; 
-    color:white;
-    padding-bottom: 3px;
-    background:
-    radial-gradient(circle closest-side, currentColor 80%, transparent) bottom 0 left calc(50% - var(--d, 0px)/2) /100% 2px no-repeat,
-    radial-gradient(circle closest-side, currentColor 80%, transparent) bottom 0 left calc(50% + var(--d, 0px)/2) /100% 2px no-repeat,
-    linear-gradient(currentColor 0 0) bottom /var(--d, 0%) 2px no-repeat;
-    transition: 0.5s;
-    margin: 5px 10px;
-}
-
-.account_link:hover {
-    --d: 80%;
-  }
-
-.header_link {
-    text-decoration:none;
-    font-size: 20px; 
     color:white;
     padding-bottom: 1px;
     background:
@@ -110,10 +150,13 @@ a {
     radial-gradient(circle closest-side, currentColor 80%, transparent) bottom 0 left calc(50% + var(--d, 0px)/2) /100% 2px no-repeat,
     linear-gradient(currentColor 0 0) bottom /var(--d, 0%) 2px no-repeat;
     transition: 0.5s;
-    margin: 5px 10px;
+    margin: 10px 15px;
 }
 
-.header_link:hover {
+.account_link:hover,.header_link:hover  {
     --d: 80%;
   }
+
+
+
 

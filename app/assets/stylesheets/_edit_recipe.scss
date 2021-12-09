@@ -1,0 +1,275 @@
+$base_font1: fantasy;
+$base_font2: "游ゴシック体";
+$color: #038C25;
+@mixin centered {
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+}
+//---- recipe_edit_recipe-----
+//編集テーブル
+.edit_recipe_detail {
+    @include centered;
+    background: #F9F9F9;
+    width: 600px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: .3s;
+        &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-100px);
+        }
+}
+    .title_edit_recipe_detail {
+        background: $color;
+        margin: 0;
+        padding: 10px 8px 8px 8px;
+        color: white;
+        font: 300 30px $base_font1;
+        text-align: center;
+        
+        span {
+        display: block;
+        width: 26px; 
+        height: 26px;
+        border-radius: 50%;
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+        transition: .2s;    
+        &:hover {
+            background-color: rgba(white, .2);     }
+        }
+    }
+
+//入力フォーム
+.update_recipe_form {
+    border-collapse: collapse;
+    padding-top: 50px;
+    width: 450px;
+    margin: 0 auto;
+}
+    .update_recipe_form td {
+        padding: 20px 15px;
+    }
+    .update_recipe_label{
+        font-size: 20px;
+        font-family: $base_font1,$base_font2;
+        font-weight: 600;
+    }
+    .update_recipe_input {
+        background: linear-gradient(to bottom, transparent 95%, #808080 5%) no-repeat;
+        background-position: -300px 0;
+        background-size: 300px 100%;
+        display: block;
+        width: 300px;
+        padding: 5px 0;
+        border: none;
+        border-bottom: dotted 0.5px #808080;
+        font-size: 15px;
+        transition: all 0.3s;
+        &:focus, &:valid {
+            background-position: 0 0;
+            outline: none;
+            
+            ~label {
+            top: -12px;
+            color: $color;
+            font: 700 12px Roboto;
+            }
+        }
+    }
+    .edit_recipe_submit_button {
+        display: block;
+        background: $color;
+        width: 250px;
+        height: 40px;
+        margin: 10px auto;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover { 
+            transform: translateY(-3px);
+        }
+    }
+
+//---- recipe edit_material-----
+.edit_material{
+    @include centered;
+    background: #F9F9F9;
+    width: 800px;
+    height: 700px;
+    border-radius: 10px;
+    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+    overflow: scroll;
+    transition: .3s;
+        &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-100px);
+        }
+}
+    .title_edit_material {
+        background: $color;
+        margin: 0;
+        padding: 10px 8px 8px 8px;
+        color: white;
+        font: 500 30px $base_font1;
+        text-align: center;
+        
+        span {
+        display: block;
+        width: 26px; 
+        height: 10px;
+        border-radius: 50%;
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+        transition: .2s;    
+        &:hover {
+            background-color: rgba(white, .2);     }
+        }
+    }
+
+//副題
+.sub_title {
+    font-size: 25px; 
+    color: #404040;
+    font-weight: 700;
+    font-family: $base_font1;
+    width: 300px;
+    margin: 40px 60px;
+}
+
+//材料編集テーブル
+.edit_material_form{
+    width: 500px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    & th {
+        color: #A66D03;/*文字色*/
+        background:  rgba(214,164,4,0.6);/*背景色*/
+        padding: 6px 10px;
+    }
+    & td {
+        text-align: center;
+    }
+}
+    //編集入力フォーム
+    .edit_material_input {
+        background: linear-gradient(to bottom, transparent 98%, #808080 2%) no-repeat;
+        background-position: -300px 0;
+        background-size: 150px 100%;
+        display: block;
+        width: 150px;
+        padding: 5px 0;
+        margin: 10px auto;
+        border: none;
+        border-bottom: dotted 0.5px #808080;
+        font-size: 15px;
+        transition: all 0.3s;
+        &:focus, &:valid {
+            background-position: 0 0;
+            outline: none;
+            
+            ~label {
+            top: -12px;
+            color: $color;
+            font: 700 12px Roboto;
+            }
+        }
+    }
+    //削除ボタン
+    .material_delete_btn {
+        display: block;
+        background: white;
+        width: 45px;
+        height: 30px;
+        margin: 5px auto;
+        border: solid 1px $color;
+        border-radius: 3px;
+        &:hover {
+            background: $color;
+            color:white;
+        }
+
+    }
+    //変更ボタン
+    .update_material_btn{
+        display: block;
+        background: $color;
+        width: 45px;
+        height: 30px;
+        margin: 5px auto;
+        border: solid 1px $color;
+        border-radius: 3px;
+        &:hover {
+            background: white;
+        }
+    }
+
+// 材料追加フォーム
+.edit_add_material {
+    width: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+    //材料追加登録のカテゴリーセレクトBOX
+    .listing-select-wrapper__box--select{
+        width: 180px;
+        height: 25px;
+        margin: 8px auto;
+        padding: 1px;
+        border-color:#038C25;
+        border-radius: 3px;
+        text-align:center;
+        background:#fff;
+    }
+    .edit_add_material_input {
+        background: linear-gradient(to bottom, transparent 98%, #808080 2%) no-repeat;
+        background-position: -300px 0;
+        background-size: 200px 100%;
+        display: inline-block;
+        width: 200px;
+        padding: 5px 0;
+        margin: 5px auto;
+        border: none;
+        border-bottom: dotted 0.5px #808080;
+        font-size: 15px;
+        transition: all 0.3s;
+        &:focus, &:valid {
+            background-position: 0 0;
+            outline: none;
+            
+            ~label {
+            top: -12px;
+            color: $color;
+            font: 700 12px Roboto;
+            }
+        }
+    }
+    .edit_add_material_btn {
+        display: block;
+        background: $color;
+        width: 200px;
+        height: 30px;
+        margin: 20px auto;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover { 
+            transform: translateY(-3px);
+        }
+    }

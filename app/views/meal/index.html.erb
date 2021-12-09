@@ -6,29 +6,28 @@
         <title>Make a menu</title>
     </head>
     <body>
-    <div class="page_title">
-        <h1>Meal</h1>
-    </div>
-    <br>
-     <table class="menu_table">
-        <tr>
-            <td><%= link_to "Meke a meal","/meal/new" %></td>
-            <td><%= link_to "Edit meal","/meal/edit" %></td>
-        </tr>
-    </table>
-    <br>
-    <!--献立カレンダー-->
-    <div class="meal_calender">
-        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
-        <%= week_calendar number_of_weeks:2 ,events:@meals do |date,meals| %>
-            <%= date.day %>
-            <% meals.each do |m| %>
-                <div>
-                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+        <main>
+            <nav>
+                <div class="nav_title"><h1>menu</h1></div>
+                <ul class="nav_menu">
+                    <li><%= link_to "Decide the menu","/menu/new" %></li>
+                    <li><%= link_to "Edit the menu","/menu/edit" %></li>
+                </ul>
+            </nav>
+            <article>
+            <!--献立カレンダー-->
+            <div class="menu_sub_title"><i class="far fa-calendar-alt"></i>  Calendar</div>
+                <div class="menu_calender">
+                    <%= week_calendar number_of_weeks:4 ,events:@menus do |date,menus| %>
+                        <%= date.day %>
+                        <% menus.each do |m| %>
+                            <li><%= link_to Recipe.find_by(id:m.recipe_id).name ,Recipe.find_by(id:m.recipe_id).address ,class:"calender_recipe_link" %></li>
+                        <% end %>
+                    <% end %>
                 </div>
-            <% end %>
-        <% end %>
-    <br>
-    <br>
+                <br>
+                <br>
+            </article>
+        </main>
     </body>
 </html>

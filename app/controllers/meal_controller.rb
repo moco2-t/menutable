@@ -14,13 +14,13 @@ class MealController < ApplicationController
     end
 
     def select 
-        @new_meal = Meal.new(
+        @new_menu = Meal.new(
             start_date: params[:start_date],
             recipe_id: params[:recipe_id]
         )
-        if @new_meal.save
+        if @new_menu.save
             flash[:notice] = "メニューを登録しました"
-            redirect_to("/meal/new")
+            redirect_to("/menu/new")
         end
     end
 
@@ -29,15 +29,15 @@ class MealController < ApplicationController
     end
 
     def day
-        @select_meal = Meal.where(start_date: params[:start_date]..params[:start_date2])
+        @select_menu = Meal.where(start_date: params[:start_date]..params[:start_date2])
         render("meal/edit")
     end
 
     def destroy
-        destroyed_meal = Meal.find_by(id: params[:id]).destroy
-        if destroyed_meal
+        destroyed_menu = Meal.find_by(id: params[:id]).destroy
+        if destroyed_menu
             flash[:notice] = "削除しました"
-            redirect_to("/meal/edit")
+            redirect_to("/menu/edit")
         end
     end
     
@@ -45,7 +45,7 @@ class MealController < ApplicationController
 
     def set_recipe
         @search_recipes = Recipe.ransack(params[:q]) 
-        @meals = Meal.all  
+        @menus = Meal.all  
     end
 
 end

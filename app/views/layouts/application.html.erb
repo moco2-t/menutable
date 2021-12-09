@@ -11,47 +11,43 @@
     <link rel="stylesheet" 
   </head>
   <body>
+  <% if session[:user_id] %>
     <header>
       <div class="title_logo">menutable</div>
-        <% if session[:user_id] %>
+        <div class="header_menu">
           <div class="user_information">
             <table>
               <tr>
-                <td><i class="far fa-user-circle"></i><%= link_to(@current_user.login_id,"/users/#{@current_user.id}",class:'account_link') %></td>
-                <td><i class="fas fa-sign-out-alt"></i><%= link_to('Logout','/logout',  class:'account_link', method: :post, data: { confirm: "ログアウトしてよろしいですか?" })%></td>
+                <td><i class="far fa-user-circle"></i><%= link_to(@current_user.login_id,"/users/#{@current_user.id}", class:'header_link') %></td>
+                <td><i class="fas fa-sign-out-alt"></i><%= link_to('Logout','/logout', class:'header_link', method: :post, data: { confirm: "ログアウトしてよろしいですか?" })%></td>
               </tr>
             </table>
           </div>
-          <br>
           <div class="menu_list">
             <table>
               <tr>
-                <td><i class="fas fa-home"></i><%= link_to("Our Services",'/users/top',class:'header_link') %></td>
+                <td><i class="fas fa-home"></i><%= link_to("About",'/top',class:'header_link') %></td>
                 <td><i class="fas fa-book"></i><%= link_to("recipe",'/recipes/index',class:'header_link') %></td>
-                <td><i class="far fa-calendar-alt"></i><%= link_to("meal",'/meal/index',class:'header_link') %></td>
+                <td><i class="far fa-calendar-alt"></i><%= link_to("menu",'/menu/index',class:'header_link') %></td>
                 <td><i class="far fa-list-alt"></i><%= link_to("shopping",'/shopping/index',class:'header_link') %></td>
                 <td><i class="fas fa-shopping-cart"></i><%= link_to("store",'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link') %></td>
               </tr>
             </table>
           </div>
-        <% else %>
-          <div class="menu_list_before_login">
-            <table>
-              <tr>
-                <td><i class="fas fa-sign-in-alt"></i><%= link_to("Login",'/users/login_form',class:'header_link') %></td>
-                <td><i class="far fa-user-circle"></i><%= link_to("Account",'/users/new',class:'header_link') %></td>
-                <td><%= link_to("index",'/index',class:'header_link') %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
+        </div>
     </header>
     <main>
-    <br>
-    <% if flash[:notice] %>
-      <div class="flash"><%= flash[:notice] %></div>
-    <%end%>
+    <div class="auto">
+      <% if flash[:notice] %>
+        <div class="flash"><%= flash[:notice] %></div>
+      <%end%>
+      <%= yield %>
+    </div>
+    </main>
+  <%else%>
+    <main>
       <%= yield %>
     </main>
+  <%end%>
   </body>
 </html>

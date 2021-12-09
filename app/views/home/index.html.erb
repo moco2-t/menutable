@@ -1,52 +1,92 @@
 <!DOCTYPE html>
 <html lang="ja">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>menutable</title>
+  <title>Menutable</title>
 </head>
 <body>
-<main>
-  <div class="index_title">
-    <h1>menutable</h1>
+  <div class="index">
+    <div class="index_title"><h1>menutable</h1></div>
+    <br>
+    <div class="login_menu">
+      <%= link_to("Login",'/users/login_form',class:'login_link') %>
+      <%= link_to("Account",'/users/new',class:'account_link') %>
+    </div>
   </div>
-  <br>
-  <h2>機能</h2>
-  <br>
-  <div class="instructions">
-     <table> 
-        <tr>
-          <td>
-            <b>レシピの登録と検索</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　レシピの材料、分量を登録。URLから自動入力もできます。
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <b>１週間の献立決め</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　登録されたレシピを組み合わせて１週間の献立をリスト化。
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <b>買い物リストの作成</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　１週間の献立別に買い物リストを自動作成。
-          </td>
-        </tr> 
-    </table>
+<!-- 
+  <アカウント>
+  <div class="account_overlay">
+    <div class="account_table">
+      <h1 class="title_account">
+        <i class="far fa-user-circle"></i><br>
+        Account
+      </h1>
+      <br>
+        <%if @user %>
+          <% @user.errors.full_messages.each do |message| %>
+              <div class="form-error">
+                  <p><%= message %></p>
+              </div>
+          <% end %>
+        <%end%>
+        <table class="account_form">
+          <%= form_with url:"/users/create",class:"input_form" do |f|%>
+            <tr>
+              <td>
+                <h2 class="label">ID</h2>
+                <%= f.text_field :login_id , value:@login_id , class:"input" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <h2 class="label">Password</h2>
+                  <%= f.password_field :password , value:@password , class:"password_input"%>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.submit '登録', class:"account_form_btn" %></td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  <!ログイン>
+  <div class="login_overlay">
+    <div class="login_table">
+      <h1 class="title_login">
+        <i class="fas fa-sign-in-alt"></i><br>
+        Login
+      </h1>
+      <span class="#close">
+        <br>
+        <% if @error_message %>
+          <div class="form-error"><p><%= @error_message %></p></div>
+        <% end %>
+          <table class="account_form">
+            <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
+              <tr>
+                <td>
+                  <h2 class="label">Login ID</h2>
+                  <%= f.text_field :login_id ,value:@login_id , class:"input"%>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h2 class="label">Password</h2>
+                  <%= f.password_field :password ,value:@password , class:"password_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td><%= f.submit 'Login', class:"login_btn" %></td>
+              </tr>
+            <% end %>
+          </table> 
+      </span>
+    </div>
   </div>
-</main>
+ -->
 </body>
 </html>
