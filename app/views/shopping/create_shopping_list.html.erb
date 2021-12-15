@@ -4,38 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping index</title>
+  <title>Shopping</title>
 </head>
 <body>
-    <div class="page_title"><h1>SHOPPING</h1></div>
-    <br>
-    <table class="link">
-        <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
-    </table>
-    <br>
-    <h3>買い物リスト作成</h3>
-    <p>日付を選択してください。</p>
-    <div class="shopping_list">
-        <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
-            <%= f.date_field :start_date %> 〜 <%= f.date_field :start_date2 %>
-            <%= f.submit "選択"%>
-        <% end %>
+    <div class="overlay">
+        <div class="close_btn"><%= link_to("×","/shopping/index")%></div>
+        <div class="create_shopping_list">
+            <div class="section_title">create shoppng list</div>
+            <div class="description">
+            買い物リストを作成したい日付を選択してください。
+            </div>
+            <div class="form_shopping_list">
+                <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
+                    <%= f.date_field :start_date ,class:"select_date"%> 〜 <%= f.date_field :start_date2,class:"select_date"%>
+                    <%= f.button :type => "submit",class:"create_btn" do %><i class="fas fa-folder-plus"></i><% end %>
+                <% end %>
+            </div>
+            <!--献立カレンダー-->
+            <div class="menu_calendar_shopping_list_creation">
+                <%= week_calendar number_of_weeks:2 ,events:@menus do |date,menus| %>
+                    <%= date.day %>
+                    <% menus.each do |m| %>
+                        <div>
+                            <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address,class:"recipe_link" %></li>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
-    <!--献立カレンダー-->
-    <h2>献立</h2>
-    <div class="menu_calender">
-        <%= week_calendar number_of_weeks:3 ,events:@menus do |date,menus| %>
-            <%= date.day %>
-            <% menus.each do |m| %>
-                <div>
-                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
-                </div>
-            <% end %>
-        <% end %>
-    </div>
-    <br>
-    
-    <br>
-    <br>
 </body>
 </html>

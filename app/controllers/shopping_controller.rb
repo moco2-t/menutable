@@ -5,15 +5,15 @@ class ShoppingController < ApplicationController
 include Converter
 
     def index 
-        @menus = menu.all
+        @menus = Meal.all
     end
 
     def create_shopping_list
-        @menus = menu.all
+        @menus = Meal.all
     end
 
     def sum_shopping_list
-        menu=menu.where(start_date:params[:start_date]..params[:start_date2])
+        menu=Meal.where(start_date:params[:start_date]..params[:start_date2])
         menu_recipe_id = []
             menu.each do |m|
                 menu_recipe_id << m.recipe_id
