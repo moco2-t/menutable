@@ -13,66 +13,68 @@
                 <div class="close_btn"><%= link_to("×","/recipes/#{params[:id]}")%></div>
                     <div class="edit_material">
                         <div class="title_edit_material">Edit material</div>
-                        <div class="sub_title"><i class="fas fa-edit"></i> Edit material</div>
-                            <table class="edit_material_form">
-                                <tr>
-                                    <th></th>
-                                    <th>名前</th>
-                                    <th>数量</th>
-                                    <th> </th>
-                                    <th> </th>
-                                    
-                                </tr>
-                                <% materials().each do |m|%>
-                                <tr>
-                                    <td>
-                                        <%= form_with url:"/recipes/material/#{m.id}/delete",method: :delete do |f|%>
-                                            <%= f.hidden_field :recipe_id, value: params[:id]%>
-                                            <%= f.submit "削除", class:"material_delete_btn", data: { confirm: "削除してよろしいですか?"}%>
-                                        <%end%>
-                                    </td>
-                                    <td>
-                                        <%= Food.find_by(id: m.food_id)[:name]%>
-                                    </td>
-                                    <%unless m.quantity === nil%>
-                                    <%= form_with url:"/recipes/#{m.id}/update_material" do |f2| %>
-                                        <td>
-                                            <%= f2.hidden_field :recipe_id, value: params[:id] %>
-                                            <%= f2.text_field :quantity, value:m.quantity.floor(1), size:10, class:"edit_material_input"%>
-                                        </td>
-                                        <td>
-                                            <%= Food.find_by(id: m.food_id)[:unit]%>
-                                        </td>
-                                        <td>
-                                            <%= f2.submit "変更" ,class:"update_material_btn"%>
-                                        </td>
-                                    <%end%>
-                                    <%end%>
-                                </tr>
-                                <%end%>
-                            </table>
-                        <div class="sub_title"><i class="fas fa-plus-square"></i> Add new material</div>
-                            <div class="edit_add_material">
-                                <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>
-                                <%= f.hidden_field :kind, value: "edit_material" %>
-                                <%= f.hidden_field :recipe_id, value: params[:id] %>
-                                <table>
+                        <div class="main_contents">
+                            <div class="sub_title_edit_material"><i class="fas fa-edit"></i> Edit material</div>
+                                <table class="edit_material_form">
                                     <tr>
-                                        <td>
-                                            <div class="form-input-select"> 
-                                                <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class ="listing-product-detail__category"></div>
-                                        </td>
+                                        <th></th>
+                                        <th>名前</th>
+                                        <th>数量</th>
+                                        <th> </th>
+                                        <th> </th>
+                                        
                                     </tr>
+                                    <% materials().each do |m|%>
                                     <tr>
+                                        <td>
+                                            <%= form_with url:"/recipes/material/#{m.id}/delete",method: :delete do |f|%>
+                                                <%= f.hidden_field :recipe_id, value: params[:id]%>
+                                                <%= f.button type:"submit",class:"material_delete_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="fas fa-trash-alt"></i> <%end%>
+                                            <%end%>
+                                        </td>
+                                        <td>
+                                            <%= Food.find_by(id: m.food_id)[:name]%>
+                                        </td>
+                                        <%unless m.quantity === nil%>
+                                        <%= form_with url:"/recipes/#{m.id}/update_material" do |f2| %>
+                                            <td>
+                                                <%= f2.hidden_field :recipe_id, value: params[:id] %>
+                                                <%= f2.text_field :quantity, value:m.quantity.floor(1), size:10, class:"edit_material_input"%>
+                                            </td>
+                                            <td>
+                                                <%= Food.find_by(id: m.food_id)[:unit]%>
+                                            </td>
+                                            <td>
+                                                <%= f2.button type:"submit",class:"update_material_btn" do%><i class="fas fa-edit"></i> <%end%>
+                                            </td>
+                                        <%end%>
+                                        <%end%>
+                                    </tr>
+                                    <%end%>
                                 </table>
-                                分量：<%= f.text_field :amount ,class:"edit_add_material_input"%>
-                                <%= f.submit "登録", class:"edit_add_material_btn"%>
-                                <%end%>
-                            </div>
+                            <div class="sub_title_edit_material"><i class="fas fa-plus-square"></i> Add new material</div>
+                                <div class="edit_add_material">
+                                    <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>
+                                    <%= f.hidden_field :kind, value: "edit_material" %>
+                                    <%= f.hidden_field :recipe_id, value: params[:id] %>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div class="form-input-select"> 
+                                                    <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class ="listing-product-detail__category"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                    </table>
+                                    分量：<%= f.text_field :amount ,class:"edit_add_material_input"%>
+                                    <%= f.submit "登録", class:"edit_add_material_btn"%>
+                                    <%end%>
+                                </div>
+                        </div>
                     </div>
                     
             </div>

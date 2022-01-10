@@ -25,8 +25,8 @@ $font-color:rgba(109, 109, 109, 0.877);
 
 //献立カレンダー
 .menu_calender {
-    width: 850px;
-    max-height:600px;
+    width: 80%;
+    max-height:30%;
     margin: 50px auto;
     color: $font-color;
     font-family: $base_font1 or $base_font1;
@@ -43,9 +43,9 @@ $font-color:rgba(109, 109, 109, 0.877);
 .new_menu , .edit_menu {
     @include centered;
     background: #F9F9F9;
-    width: 950px;
-    height: 700px;
-    border-radius: 5px;
+    width: 40%;
+    height: 70%;
+    border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     position: fixed;
     transition: .3s;
@@ -60,6 +60,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         background: $color;
         margin: 0;
         padding: 8px;
+        border-radius: 10px 10px 0 0;
         color: white;
         font: 900 25px $base_font1;
         text-align: center;
@@ -167,15 +168,15 @@ $font-color:rgba(109, 109, 109, 0.877);
 
     .edit_menu_calender {
         font-size: 8px;
-        max-height: 100px;
-        width: 800px;
+        max-height: 30%;
+        width: 80%;
         margin: 0 auto; 
         color: $font-color;
         list-style-type: "";/*none!important;/*ポチ消す*/
     }
 
 .select_day {
-    width: 300px;
+    width: 40%;
     margin: 30px  auto;
 }    
 

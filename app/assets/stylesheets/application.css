@@ -17,16 +17,18 @@
 
 
 body {
-    background-image: url("top_image.jpg") ;
+    background: url("top_image.jpg") no-repeat center;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-}
+    }
 
+    .bur {
+        background-color: rgba(255, 255, 255, 0.253);
+    }
 
 header {
     height: 30%;
-    background-color: rgba(255, 255, 255, 0.425);
 }
 
 /*メイン部分*/
@@ -38,7 +40,6 @@ main {
         width: 300px;
         height: 780px;
         float: left;
-        background-color: rgba(255, 255, 255, 0.425);
     }
         /*sideメニュータイトル*/
         .nav_title {

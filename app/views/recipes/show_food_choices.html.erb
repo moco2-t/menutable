@@ -9,9 +9,11 @@
 </head>
 <body>
     <div class="overlay">
-        <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
+        <div class="close_btn">
+            <%= link_to "/recipes/index" do %><i class="fas fa-times"></i><%end%>
+        </div>
         <div class="new_ingredients_table">
-            <h1 class="title_newrecipe">材料リストの登録</h1>
+            <div class="section_title">Add Material</div>
             <%= form_with url:"/recipes/create_materials" do |f| %>
                 <table class="choose_ingredients">
                     <tr>
@@ -39,7 +41,7 @@
                 </table>
                 <%= f.hidden_field :recipe_id, value: params[:id] %>
                 <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
-                <%= f.submit '登録' ,class:"create_material_btn"%>
+                <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
             <%end%>
             <br>
         </div>

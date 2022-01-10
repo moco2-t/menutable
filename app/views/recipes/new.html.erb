@@ -8,9 +8,11 @@
 </head>
 <body>
 <div class="overlay">
-    <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
+    <div class="close_btn">
+        <%= link_to "/recipes/index" do %><i class="fas fa-times"></i><%end%>
+    </div>
     <div class="recipe_new_table">
-        <h1 class="title_newrecipe">Recipe登録</h1> 
+        <div class="section_title">Add　Recipe </div> 
             <% if @created_recipe %>
                 <% @new_recipe.errors.full_messages.each do |message| %>
                     <div class="form-error">
@@ -21,9 +23,9 @@
         <p class="create_recipe_attention">cookpadのみ対応</p>
         <div class="create_recipe_form">
             <%= form_with url:"/recipes/create_recipe" do |f| %>
-                <%= f.label 'URL' ,class:"recipe_label"%>
+                <%= f.label 'URL' ,class:"recipe_label"%>　
                 <%= f.text_field :address ,class:"create_recipe_input"%>
-                <%= f.submit "登録" ,class:"create_recipe_btn"%>
+                <%= f.button type:"submit", class:"create_recipe_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
             <%end%>
         </div>
     </div>

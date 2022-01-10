@@ -9,7 +9,7 @@
         <div class="overlay">
             <div class="close_btn"><%= link_to("×","/menu/index")%></div>
                 <div class="edit_menu">
-                    <div class="title_edit_menu">Edit</div>
+                    <div class="title_edit_menu">Edit menu</div>
                     <div class="select_day">
                         <%= form_with url:"/menu/day" do |f| %>
                             <%= f.date_field :start_date , class:"select_date"%> 〜 <%= f.date_field :start_date2 ,class:"select_date"%>
@@ -17,7 +17,7 @@
                         <% end %>
                     </div>
                     <%if @select_menu%>
-                    <div class="menu_day">
+                    <div class="menu_day">
                         <%= params[:start_date]%> ~ <%= params[:start_date2]%>
                     </div>
                     <div class="edit_menu_list">

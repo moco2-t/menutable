@@ -11,74 +11,51 @@
 </head>
 <body>
 <div class="overlay">
-  <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
+  <div class="close_btn">
+    <%= link_to "/recipes/index" do %><i class="fas fa-times"></i><%end%>
+  </div>
   <div class="new_ingredients_table">
-      <h1 class="title_newrecipe">材料の登録2</h1>
-  <!-- 材料リストの追加 -->
-    <div class="add_material">
-      <p>カテゴリーから食材を選択し、<br>分量を入力して登録してください。</p>
-        <%=form_with url:"/recipes/create_manual_materials", id:"add_form" ,class:"add_form" do |f| %>
-          <table class="add_material_tablea">
-            <tr>
-              <td><%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%></td>
-            </tr>
-            <tr>
-              <td><div class ="listing-product-detail__category"></div></td>
-            </tr>
-            <tr>
-              <td><%= f.label "分量"%>　<%= f.text_field :amount, size:30 %></td>
-            </tr>
-          </table>
-          <%= f.hidden_field :kind, value: "new_material" %>
-          <%= f.hidden_field :recipe_id, value: params[:id] %>
-          <%= f.submit "登録" , class:"add_material_btn"%>
-        <%end%>
+    <div class="section_title">Add　Material</div>
+    <div class="explanation">
+      <p>未登録の食材を登録するためにカテゴリーから類似する食材を選択し、分量を入力して登録してください。</p>
     </div>
+    <div class="main_sections">
       <!-- 材料登録されていない分量のリスト-->
-        <div class="unregistered_materials_list">
-          <div class="material_title">登録されていない材料</div>
-            <table class="ingredients_list">
-              <tr>
-                  <th>材料</th>
-                  <th>分量</th>
-              </tr>
-              <%@ingredients.each do |m|%>
-                <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{m.foodname}%","%#{m.foodname}%")%>
-                  <%if @foodlist.empty?%>
-                    <tr>
-                      <td><%= m.foodname%></td>
-                      <td><%= m.amount%></td>
-                    </tr>
-                  <%end%>
-            <%end%>
-            </table>
-        </div>
-      <!-- 登録した材料リスト 
-        <div class="registered_materials_list">
-          <div class="material_title">材料リスト</div>
-            <table class="materials_list">
-              <tr>
-                <th>材料</th>
-                <th>数</th>
-              </tr>
-              <% materials().each do |m|%>
-              <tr>
-                <td>
-                  <%= Food.find_by(id:m.food_id)[:name]%>
-                </td>
-                <td>
-                <%unless m.quantity === nil%>
-                  <%= m.quantity.floor(1)%><%=Food.find_by(id:m.food_id)[:unit]%>
+      <div class="unregistered_materials_list">
+        <div class="list_title">未登録の食材</div>
+          <table class="ingredients_list">
+            <%@ingredients.each do |m|%>
+              <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{m.foodname}%","%#{m.foodname}%")%>
+                <%if @foodlist.empty?%>
+                  <tr>
+                    <td><%= check_box_tag :check%></td>
+                    <td><%= m.foodname%></td>
+                    <td><%= m.amount%></td>
+                  </tr>
                 <%end%>
-                </td>
+            <%end%>
+          </table>
+      </div>
+      <!-- 材料リストの追加 -->
+      <div class="add_material">
+          <%=form_with url:"/recipes/create_manual_materials", id:"add_form" ,class:"add_form" do |f| %>
+            <table class="add_material_table">
+              <tr>
+                <td><%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%></td>
+                <td><div class ="listing-product-detail__category"></div></td>
               </tr>
-              <%end%>
             </table>
-        </div>-->
-    
-  <br>
-  <div class="recipe_show_link"><%= link_to "登録内容を確認する", "/recipes/#{params[:id]}"%></div>
-  <br>
+            
+            分量：<%= f.text_field :amount, size:30 ,class:"amount_form"%></td>
+          
+            
+            <%= f.hidden_field :kind, value: "new_material" %>
+            <%= f.hidden_field :recipe_id, value: params[:id] %>
+            <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i>　Add<%end%>
+          <%end%>
+      </div>
+    </div>
+    <%= link_to "/recipes/#{params[:id]}",class:"recipe_show_link" do %><i class="fas fa-clipboard-list"></i> Complete<%end%>
 </div>
 </body>
 

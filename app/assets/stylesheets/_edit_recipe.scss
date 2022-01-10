@@ -11,7 +11,7 @@ $color: #038C25;
 //編集テーブル
 .edit_recipe_detail {
     @include centered;
-    background: #F9F9F9;
+    background: #fff;
     width: 600px;
     height: 500px;
     border-radius: 10px;
@@ -41,7 +41,7 @@ $color: #038C25;
         top: 7px;
         right: 7px;
         cursor: pointer;
-        transition: .2s;    
+        transition: .2s;  
         &:hover {
             background-color: rgba(white, .2);     }
         }
@@ -104,12 +104,11 @@ $color: #038C25;
 //---- recipe edit_material-----
 .edit_material{
     @include centered;
-    background: #F9F9F9;
-    width: 800px;
-    height: 700px;
+    background:#FFF;
+    width: 40%;
+    height: 70%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    overflow: scroll;
     transition: .3s;
         &.hidden {
         visibility: hidden;
@@ -124,6 +123,7 @@ $color: #038C25;
         color: white;
         font: 500 30px $base_font1;
         text-align: center;
+        border-radius: 10px 10px 0 0 ;
         
         span {
         display: block;
@@ -141,23 +141,21 @@ $color: #038C25;
     }
 
 //副題
-.sub_title {
-    font-size: 25px; 
+.sub_title_edit_material {
     color: #404040;
-    font-weight: 700;
-    font-family: $base_font1;
-    width: 300px;
-    margin: 40px 60px;
+    font: 900 25px $base_font1;
+    width: 40%;
+    margin: 50px 100px 20px 50px;
 }
 
 //材料編集テーブル
 .edit_material_form{
-    width: 500px;
+    width: 50%;
     margin: 30px auto;
     border-collapse: collapse;
+    font-size: 17px;
     & th {
         color: #A66D03;/*文字色*/
-        background:  rgba(214,164,4,0.6);/*背景色*/
         padding: 6px 10px;
     }
     & td {
@@ -166,16 +164,13 @@ $color: #038C25;
 }
     //編集入力フォーム
     .edit_material_input {
-        background: linear-gradient(to bottom, transparent 98%, #808080 2%) no-repeat;
-        background-position: -300px 0;
-        background-size: 150px 100%;
         display: block;
         width: 150px;
         padding: 5px 0;
         margin: 10px auto;
         border: none;
         border-bottom: dotted 0.5px #808080;
-        font-size: 15px;
+        font-size: 17px;
         transition: all 0.3s;
         &:focus, &:valid {
             background-position: 0 0;
@@ -188,38 +183,22 @@ $color: #038C25;
             }
         }
     }
-    //削除ボタン
-    .material_delete_btn {
-        display: block;
-        background: white;
-        width: 45px;
-        height: 30px;
-        margin: 5px auto;
-        border: solid 1px $color;
-        border-radius: 3px;
-        &:hover {
-            background: $color;
-            color:white;
-        }
-
-    }
-    //変更ボタン
-    .update_material_btn{
-        display: block;
-        background: $color;
-        width: 45px;
-        height: 30px;
-        margin: 5px auto;
-        border: solid 1px $color;
-        border-radius: 3px;
-        &:hover {
-            background: white;
-        }
+    //削除変更ボタン
+    .material_delete_btn ,.update_material_btn {
+        cursor: pointer;
+        font-family: FontAwesome;
+        font-size: 1.6em;
+        border: none;
+        background: none;
+        color: $color;
+        outline : none;
+        display: inline-block;
+        vertical-align: middle;
     }
 
 // 材料追加フォーム
 .edit_add_material {
-    width: 400px;
+    width: 50%;
     margin: 30px auto;
     text-align: center;
 }
@@ -235,9 +214,6 @@ $color: #038C25;
         background:#fff;
     }
     .edit_add_material_input {
-        background: linear-gradient(to bottom, transparent 98%, #808080 2%) no-repeat;
-        background-position: -300px 0;
-        background-size: 200px 100%;
         display: inline-block;
         width: 200px;
         padding: 5px 0;
