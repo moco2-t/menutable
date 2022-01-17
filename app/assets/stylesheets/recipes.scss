@@ -2,62 +2,157 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 各ページのタイトル
-.page_title {
-    font-size: 20px;
-    color: #006600;
-    width: 500px;
-    margin: 20px 50px;
+@use '_create_recipe'; //レシピ・リスト登録
+@use '_edit_recipe'; //レシピ・リスト編集
+
+$base_font1: fantasy;
+$base_font2: "游ゴシック体";
+$color: #038C25;
+$font-color:rgba(109, 109, 109, 0.877);
+
+@mixin centered {
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
 }
 
-// 編集のサブタイトル
-.edit_subtitle {
-    color: #006600;
-    font-size: 20px;
-    width: 500px;
-    margin: 0px 100px;
+//article
+//-----recipe_index----
+//検索フォーム
+.search_form {
+    width: 600px;
+    margin: 0px auto;
+    padding: 50px 0px;
 }
+    //ラベル
+    .recipe_label{
+        color: $font-color;
+        font: 800 20px $base_font1; //文字の大きさ
+        display: inline;
+    }
 
-// レシピの編集フォーム
-.update_recipe_form {
-    font-size: 17px;
-    color: #666666;
-    width: 500px;
-    margin: 0px 100px;
+    //入力フォーム
+    .search_input {
+        display: inline;
+        width: 250px;
+        padding: 5px 0;
+        margin: 30px 20px 5px 20px;
+        border: none;
+        border-bottom: dotted 1px $font-color;
+        font-size: 1vw;
+        transition: all 0.3s;
+        &:focus, &:valid {
+            background-position: 0 0;
+            outline: none;
+            
+            ~label {
+            top: -12px;
+            color: $color;
+            font: 700 12px $base_font1;
+            }
+        }
+    }
+    //検索ボタン
+    .search_submit {
+        font-family: FontAwesome;
+        font-size: 2vw;
+        border: none;
+        background: none;
+        color: $color;
+        outline : none;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+//検索結果のリスト
+.search_recipeslist,.all_recipeslist {
+    color: $font-color;
+    font: 100 1vw $base_font2;
+    width: 80%;
+    margin: 0 auto;
 }
-// レシピ編集フォームのsubmitボタン
-.edit_submit_button {
-    font-size: 17px;
-    width: 450px;
-    margin: 0px 100px;
-    background-color: #669933;
-    color:white;
-    border: 0px none;
+    .search_recipeslist td ,.all_recipeslist td {
+        padding: 0.5%;
+    }
+    .recipes_link {
+        padding: 0.5%;
+        &:hover {
+        color:#000;
+        border-top: dotted 2px $color;
+        border-bottom: dotted 2px $color;
+        }
+    }
+//---- recipe_show -----
+//編集、削除のリンク
+.recipe_settings{
+    width: 60%;
+    margin: 10%;
+    padding: 5px;
 }
+    .recipe_setting ul {
+        counter-reset:list;
+        list-style-type:none;
+        font: 14px/1.6 'arial narrow', sans-serif;
+        padding:0;
+    }
+    .recipe_settings li {
+        position:relative;
+        color: #333;
+        padding: 0 0 0 10px;
+        line-height: 30px;
+        margin: 5% 0%;
+        list-style-type: ">";
+    }
+        .recipe_settings_link {
+            padding: 7px 10px;    
+        }
+            .recipe_settings_link:hover{
+                background-color: rgba(8, 124, 76, 0.685);
+                border-radius: 3px;
+                color:#FFF;
+            }
 
-//　編集ページの登録済み材料のリスト
-.ingredient_list {
-    font-size: 15px;
-    color: #666666;
-    width: 320px;
-    margin: 10px 100px;
+//レシピ詳細
+.recipe_detail{
+    width: 80%;
+    margin: 0 auto;
+    color: $font-color;
+    font-family: $base_font2;
 }
+    .recipe_detail h2 {
+        margin: 10% 0 3% 15%;
+        font-size:  4vmin;
+        color:#333;
+    }
+    .recipe_detail_table {
+        width: 60%;
+        margin: 3% auto;
+    }
+        .recipe_detail_table th {
+            font-size: 2vmin;
+            color: #038c25ce;
+            padding: 15px 15px 10px 15px;
+        }
+        .recipe_detail_table td {
+            font-size: 2vmin;
+        }
 
-// 新しい材料の追加フォーム
-.ingredient_edit_form{
-    font-size: 17px;
-    color: #666666;
-    width: 500px;
-    margin: 10px 100px;
-}
 
-// 編集画面のボタン
-.edit_btn {
-    font-size: 12px;
-    background-color: #669933;
-    color:white;
-    border: 0px none;
-    padding: 5px 10px;
-} 
-
+    //分量テーブル
+    .materials_list {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 0 0 10% 8%;
+        font-size: 2vmin;
+        }
+        .materials_list th {
+            color: white;/*文字色*/
+            background: #038c25ce;/*背景色*/
+            padding: 5px 10px;
+        }
+        .materials_list td {
+            padding: 12px 15px;
+        }
 

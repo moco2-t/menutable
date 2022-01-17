@@ -8,60 +8,44 @@
     <title>材料登録</title>
 </head>
 <body>
-<div class="page_title">
-    <h1>材料リストの登録</h1>
-</div>
-<table class="ingredient_1" border="1">
-    <tr>
-        <th>材料</th>
-        <th>食材候補</th>
-        <th>分量</th>
-    </tr>
-    <%= form_with url:"/recipes/create_materials" do |f| %>
-        <%= f.hidden_field :recipe_id, value: params[:id] %>
-        <%= @automaticsearch_ingredient %>
-        <%@ingredients.each do |i|%>
-            <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
-            <%unless @foodlist.blank?%>
-            <tr>
-                <td>
-                    <%= i.foodname%>
-                </td>
-                <td>
-                    <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
-                </td>
-                <td>
-                    <%= i.amount%>
-                </td>
-            </tr>
-            <%end%>
-        <%end%>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
-                <%= f.submit '登録' %>
-            </td>
-        </tr>
-    <%end%>
-</table> 
-<br>
-<h2 class="materials_not_on_the_list">その他の食材</h2>
-<table class="ingredient_2" border="1">
-    <tr>
-        <th>材料</th>
-        <th>分量</th>
-    </tr>
-    <%@ingredients.each do |i|%>
-        <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
-        <%if @foodlist.blank?%>
-            <tr>
-                <td><%= i.foodname%></td>
-                <td><%= i.amount%></td>
-            </tr>
-        <%end%>
-    <%end%>
-</table>
-<h4><%= link_to "上記の材料を材料リストに加えますか？", recipes_show_food_choices_by_category_path(id:params[:id])%></h4>
-<br>
+    <div class="overlay">
+        <div class="close_btn">
+            <%= link_to "/recipes/index" do %><i class="fas fa-times"></i><%end%>
+        </div>
+        <div class="new_ingredients_table">
+            <div class="section_title">Add Material</div>
+            <div class="main_contents">
+                <%= form_with url:"/recipes/create_materials" do |f| %>
+                    <table class="choose_ingredients">
+                        <tr>
+                            <th></th>
+                            <th>Choices</th>
+                            <th>Qunatity</th>
+                        </tr>
+                            <%= @automaticsearch_ingredient %>
+                                <%@ingredients.each do |i|%>
+                                    <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
+                                    <%unless @foodlist.blank?%>
+                                    <tr>
+                                        <td>
+                                            <h1 class="foodname"><%= i.foodname%></h1>
+                                        </td>
+                                        <td>
+                                            <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
+                                        </td>
+                                        <td>
+                                            <%= i.amount%>
+                                        </td>
+                                    </tr>
+                                    <%end%>
+                                <%end%>
+                    </table>
+                    <%= f.hidden_field :recipe_id, value: params[:id] %>
+                    <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
+                    <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

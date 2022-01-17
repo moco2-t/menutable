@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>menutable</title>
+  <title>Menutable</title>
 </head>
 <body>
-<main>
-  <div class="index_title">
-    <h1>menutable</h1>
-  </div>
-  <br>
-  <h2>機能</h2>
-  <br>
-  <div class="instructions">
-     <table> 
-        <tr>
-          <td>
-            <b>レシピの登録と検索</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　レシピの材料、分量を登録。URLから自動入力もできます。
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <b>１週間の献立決め</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　登録されたレシピを組み合わせて１週間の献立をリスト化。
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <b>買い物リストの作成</b>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            　１週間の献立別に買い物リストを自動作成。
-          </td>
-        </tr> 
-    </table>
-  </div>
-</main>
+  <main>
+    <div class="index">
+      <div class="index_title">menutable</div>
+        <table class="login_menu">
+          <tr>
+            <td><%= link_to '/users/login_form',class:'login_link' do %><i class="fas fa-sign-in-alt"></i> ログイン<%end%></td>
+          </tr>
+          <tr>
+            <td><%= link_to '/users/new', class:'login_link' do %><i class="fas fa-user-circle"></i> アカウント登録<%end%></td>
+          </tr>
+        </table>
+    </div> 
+  </main>
 </body>
 </html>

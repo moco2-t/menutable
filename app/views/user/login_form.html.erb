@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,33 +9,33 @@
   <title>login</title>
 </head>
 <body>
-    <div class="page_title">Login</div>
-    <br>
-      <% if @error_message %>
-        <div class="form-error">
-          <%= @error_message %>
-        </div>
-      <% end %>
-    <br>
-      <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
-        <table class="form_table">
-          <tr>
-            <td>Login ID</td>
-          </tr>
-          <tr>
-            <td><%= f.text_field :login_id ,:value => @login_id %></td>
-          </tr>
-          <tr>
-            <td>Password</td>
-          </tr>
-          <tr>
-            <td><%= f.password_field :password ,:value => @password %></td>
-          </tr>
-          <tr>
-            <td><%= f.submit 'Login',:class=>"form_btn" %></td>
-          </tr>
-        </table>
-      <% end %>
-    </div>
+<div class="overlay">
+  <div class="close_btn"><%= link_to "/index",class:"close" do %> <i class="fas fa-times"></i><%end%></div>
+  <div class="account_table">
+      <div class="title_account"><i class="fas fa-sign-in-alt"></i> Login</div>
+        <% if @error_message %>
+          <div class="form-error"><p><%= @error_message %></p></div>
+        <% end %>
+        <table class="account_form">
+          <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
+            <tr>
+              <td>
+                <div class="label">Login ID　</div>
+                <%= f.text_field :login_id ,value:@login_id , class:"input"%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="label">Password　</div>
+                <%= f.password_field :password ,value:@password , class:"password_input" %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.button type:"submit", class:"login_btn" do %><i class="fas fa-sign-in-alt"></i> Login<%end%></td>
+            </tr>
+          <% end %>
+        </table> 
+  </div>
+</div>
 </body>
 </html>

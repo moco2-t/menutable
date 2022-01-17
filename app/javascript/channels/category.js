@@ -1,28 +1,23 @@
 document.addEventListener('turbolinks:load', function () {
-$ (function(){
-  
+  $ (function(){
     //子カテゴリー,セレクトボックスの選択
     function appendOption(child){
-      //value="${category.name}"については、ストロングパラメーターでの値の取り方によってcategory.idの場合もあると思います。
-      var html = `<tr><td>
-                    <input type="radio" value="${child.id}" name="food_id" class="listing-select-wrapper__box--select" id="child_category" form="add_form">${child.name}
-                  </td></tr>`;
+      var html  = `<option value=${child.id} name="food_id" form="add_form">${child.name}</option>`;
       return html;
     }
-    
     //子カテゴリーのビュー作成
     function appendChildrenBox(insertHTML){
       var childSelectHtml = '';
       childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                           <div class='listing-select-wrapper__box'>
-                          <table>
-                              ${insertHTML}
-                          </table>
+                          <select class="listing-select-wrapper__box--select" form="add_form">
+                            ${insertHTML}
+                          </select>
                           </div>
                         </div>`;
       $('.listing-product-detail__category').append(childSelectHtml);
     }
-  
+
     //親カテゴリーが選択された時の処理（子カテゴリーの表示）
     $("#parent_category").on('change', function(){
       //選択された親カテゴリーの値を取得
@@ -56,3 +51,7 @@ $ (function(){
     });
   });
 })
+
+//<select class="listing-select-wrapper__box--select">
+//                              ${insertHTML}
+//                          </select>

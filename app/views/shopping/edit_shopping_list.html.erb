@@ -9,91 +9,88 @@
     <title>Shopping List</title>
 </head>
 <body>
-    <div class="page_title"><h1>Edit SHOPPING LIST</h1></div>
-    <br>
-    <table class="link">
-        <tr>
-            <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
-        </tr>
-        <tr>
-            <td><h2><%= link_to "買い物リストを確認する",shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]) %></h2></td>
-        </tr>
-    </table>
-    <br>
-    <h2><%= params[:start_date]%>~<%=params[:end_date]%></h2>
-    <br>
-    <table border="1" class="edit_shopping_list">
-        <tr>
-            <th>削除</th>
-            <th>食材名</th>
-            <th>数</th>
-            <th>変更</th>
-        </tr>
-        <%shopping_list().each do |item|%>
-            <tr>
-                <td>
-                    <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
-                        <%= f.hidden_field :start_date, value: params[:start_date] %>
-                        <%= f.hidden_field :end_date, value: params[:end_date] %>
-                        <%= f.submit "削除", data: { confirm: "削除してよろしいですか?"}%>
+    <div class="overlay">
+        <div class="close_btn"><%= link_to("×","/shopping/index")%></div>
+        <div class="edit_shopping_list">
+            <div class="section_title">Edit shopping list</div>
+            <section>
+                <div class="edit_sub_title"><%= params[:start_date]%>〜<%=params[:end_date]%></div>
+                <table class="edit_shopping_list_form">
+                    <tr>
+                        <th></th>
+                        <th>食材名</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <%shopping_list().each do |item|%>
+                        <tr>
+                            <td>
+                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
+                                    <%= f.hidden_field :start_date, value: params[:start_date] %>
+                                    <%= f.hidden_field :end_date, value: params[:end_date] %>
+                                    <%= f.button type:"submit", class:"edit_form_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
+                                <%end%>
+                            </td>
+                            <td>
+                                <%= Food.find_by(id:item.food_id)[:name]%>
+                            </td>
+                            <% if item.unit != "none"%>
+                                <%= form_with url:"/shopping/update_shopping_list" do |f2| %>
+                                    <td>
+                                        <%= f2.hidden_field :id, value: item.id %>
+                                        <%= f2.hidden_field :start_date, value: params[:start_date] %>
+                                        <%= f2.hidden_field :end_date, value: params[:end_date] %>
+                                        <%= f2.text_field :quantity,value:item.quantity,size:10,class:"amount_form"%>　<%= item.unit%>
+                                    </td>
+                                    <td>
+                                        <%= f2.button type:"submit", class:"edit_form_btn" do%><i class="fas fa-edit"></i><%end%>
+                                    </td>
+                                <%end%>
+                            <%end%>
+                        </tr>
                     <%end%>
-                </td>
-                <td>
-                    <%= Food.find_by(id:item.food_id)[:name]%>
-                </td>
-                <% if item.unit != "none"%>
-                    <%= form_with url:"/shopping/update_shopping_list" do |f2| %>
-                        <td>
-                            <%= f2.hidden_field :id, value: item.id %>
-                            <%= f2.hidden_field :start_date, value: params[:start_date] %>
-                            <%= f2.hidden_field :end_date, value: params[:end_date] %>
-                            <%= f2.text_field :quantity,value:item.quantity,size:10%><%= item.unit%>
-                        </td>
-                        <td>
-                            <%= f2.submit "変更"%>
-                        </td>
+                    <%shopping_seasoning().each do |item|%>
+                        <tr>
+                            <td>
+                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
+                                    <%= f.hidden_field :start_date, value: params[:start_date] %>
+                                    <%= f.hidden_field :end_date, value: params[:end_date] %>
+                                    <%= f.button type:"submit",class:"edit_form_btn" , data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
+                                <%end%>
+                            </td>
+                            <td>
+                                <%= Food.find_by(id:item.food_id)[:name]%>
+                            </td>
+                        </tr>
                     <%end%>
-                <%end%>
-            </tr>
-        <%end%>
-        <%shopping_seasoning().each do |item|%>
-            <tr>
-                <td>
-                    <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
-                        <%= f.hidden_field :start_date, value: params[:start_date] %>
-                        <%= f.hidden_field :end_date, value: params[:end_date] %>
-                        <%= f.submit "削除", data: { confirm: "削除してよろしいですか?"}%>
-                    <%end%>
-                </td>
-                <td>
-                    <%= Food.find_by(id:item.food_id)[:name]%>
-                </td>
-            </tr>
-        <%end%>
-    </table>
-    <br>
-    <h3>追加する</h3>
-    <table class="add_shopping">
-        <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f3| %>
-            <%= f3.hidden_field :start_date, value: params[:start_date] %>
-            <%= f3.hidden_field :end_date, value: params[:end_date] %>
-            <td>
-                <div class="form-input-select"> 
-                    <%= f3.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
-                </div>
-            </td>
-            <td>
-                <div class ="listing-product-detail__category"></div>
-            </td>
-            <td>
-                <%= f3.text_field :amount %>
-            </td>
-            <td>
-                <%= f3.submit "追加"%>
-            </td>
-        <%end%>
-    </table>
-    <br>
-    <br>
+                </table>
+                <br>
+                <div class="edit_sub_title">Add to list</div>
+                    <table class="add_shoppinglist">
+                        <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f3| %>
+                            <%= f3.hidden_field :start_date, value: params[:start_date] %>
+                            <%= f3.hidden_field :end_date, value: params[:end_date] %>
+                            <td>
+                                <div class="form-input-select"> 
+                                    <%= f3.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                                </div>
+                            </td>
+                            <td>
+                                <div class ="listing-product-detail__category"></div>
+                            </td>
+                            <td>
+                                <%= f3.text_field :amount ,class:"amount_form"%>
+                            </td>
+                            <td>
+                                <%= f3.button type:"submit",class:"add_shopping_list_btn" do %><i class="fas fa-folder-plus"></i><%end%>
+                            </td>
+                        <%end%>
+                    </table>
+            
+                <%= link_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),class:"decision" do %> <i class="fas fa-check"></i>　Complete<%end%>
+            
+            </section>
+        </div>
+    </div>
 </body>
 </html>

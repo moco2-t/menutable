@@ -7,60 +7,67 @@
   <title>Shopping List</title>
 </head>
 <body>
-    <div class="page_title"><h1>SHOPPING LIST</h1></div>
-    <br>
-    <table class="link">
-        <tr>
-            <td><h2><%= link_to "Shopping Index","/shopping/index" %></h2></td>
-        </tr>
-        <tr>
-            <td><h2><%= link_to "買い物リストを編集",shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  %></h2></td>
-        </tr>
-    </table>
-    <br>
-    <h2>期間：<%= params[:start_date]%>~<%=params[:end_date]%></h2>
-    <br>
-    <table border="1" class="shopping_list">
-        <tr>
-            <th> </th>
-            <th>食材</th>
-            <th> </th>
-        </tr>
-        <%shopping_list().each do |item|%>
-            <tr>
-                <td>
-                    <%= check_box_tag :check1%>
-                </td>
-                <td>
-                    <%=Food.find_by(id:item.food_id)[:name]%>
-                </td>
-                <% if item.unit != "none"%>
-                <td>
-                    <%= item.quantity%><%= item.unit%>
-                </td>
-                <%end%>
-            </tr>
-        <%end%>
-            <tr>
-                <th> </th>
-                <th>
-                    調味料
-                </th>
-            </tr>
-        <%shopping_seasoning().each do |item|%>
-            <tr>
-                <td>
-                    <%= check_box_tag :check1%>
-                </td>
-                <td>
-                    <%=Food.find_by(id:item.food_id)[:name]%>
-                </td>
-            </tr>
-        <%end%>
-    </table>
-    <br>
-    <%= link_to "csvで出力する",shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date])%>
-    <br>
-    
+    <main>
+        <nav>
+        <div class="nav_title"><h1>Shopping</h1></div>
+            <ul class="nav_menu">
+                <li><%= link_to("Create shopping list","/shopping/create_shopping_list",class:"menu_link")%></li>
+                <li><%= link_to("Check shopping list","/shopping/index",class:"menu_link")%></li>
+            </ul>
+        </nav>
+        <article>
+            <div class="show_shopping_list">
+                <div class="sub_title"><i class="fas fa-tasks"></i>　Shopping List</div>
+                    <ul class="shopping_list_settings">
+                        <li><%= link_to "#" do%><i class="fas fa-wrench"></i> Setting<%end%>
+                            <ul>
+                                <li><%= link_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  do%><i class="far fa-edit"></i> 編集<%end%></li>
+                                <li><%= link_to shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date]) do %><i class="fas fa-file-csv"></i> CSV出力<% end %></li>                               
+                            </ul>
+                        </li>
+                    </ul>
+                <div class="shoppinglist_date">
+                    <%= params[:start_date]%>　〜　<%=params[:end_date]%>
+                </div>
+                <table class="shopping_list">
+                    <tr>
+                        <th> </th>
+                        <th>食材</th>
+                        <th> </th>
+                    </tr>
+                    <%shopping_list().each do |item|%>
+                        <tr>
+                            <td>
+                                <%= check_box_tag :check1 ,class:"check_box"%>
+                            </td>
+                            <td>
+                                <%=Food.find_by(id:item.food_id)[:name]%>
+                            </td>
+                            <% if item.unit != "none"%>
+                            <td>
+                                <%= item.quantity%><%= item.unit%>
+                            </td>
+                            <%end%>
+                        </tr>
+                    <%end%>
+                        <tr>
+                            <th> </th>
+                            <th>
+                                調味料
+                            </th>
+                        </tr>
+                    <%shopping_seasoning().each do |item|%>
+                        <tr>
+                            <td>
+                                <%= check_box_tag :check1%>
+                            </td>
+                            <td>
+                                <%=Food.find_by(id:item.food_id)[:name]%>
+                            </td>
+                        </tr>
+                    <%end%>
+                </table>
+            <div>
+        </article>
 </body>
 </html>

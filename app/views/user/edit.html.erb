@@ -7,25 +7,35 @@
   <title>アカウント設定編集</title>
 </head>
 <body>
-    <div class="page_title">アカウント編集</div>
-    <br>    
-        <% @current_user.errors.full_messages.each do |message| %>
-            <div class="form-error">
-                <%= message %>
-            </div>
-        <% end %>
-    <br>
-        <%= form_with url:"/users/update",class:"edit_form" do |f|%>
-            <p>Login ID</p>
-            <%= f.text_field :login_id ,:value => @current_user.login_id %>
-            <p>Password</p>
-            <%= f.password_field :password %>
-            <br>
-            <%= f.submit '登録'%> 
-        <% end %>
-    <br>
-    <div class="menulist">
-        <li><%= link_to("戻る","/users/#{@current_user.id}")%></li>
+    <div class="overlay">
+        <div class="close_btn"><%= link_to("×","/top")%></div>
+        <div class="account_table">
+            <h1 class="title_account"><i class="fas fa-user-edit"></i>アカウント編集</h1> 
+                <div class="form-error">
+                    <% @current_user.errors.full_messages.each do |message| %>
+                        <%= message %>
+                    <% end %>
+                </div>
+                <%= form_with url:"/users/update" do |f|%>
+                    <table class="account_form">
+                        <tr>
+                            <td>
+                                <h2 class="label">Login ID　</h2>
+                                <%= f.text_field :login_id ,value:@current_user.login_id , class:"input"%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2 class="label">Password　</h2>
+                                <%= f.password_field :password , class:"password_input"%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><%= f.submit 'Update', class:"update_btn"%></td>
+                        </tr>
+                    </table>
+                <% end %> 
+        </div>
     </div>
 </body>
 </html>

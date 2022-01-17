@@ -8,7 +8,7 @@ def login
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         flash[:notice]= "ログインしました"
-        redirect_to("/users/top")
+        redirect_to("/top")
     else
         @error_message="IDまたはパスワードが間違っています"
         @login_id = params[:login_id]

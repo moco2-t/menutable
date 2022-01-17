@@ -6,40 +6,40 @@
         <title>Edit recipe</title>
     </head>
     <body>
-        <div class="page_title"><h1>Edit recipe</h1></div>
-        <br>
-        <% if @edit_recipe %>
-            <% @edit_recipe.errors.full_messages.each do |message| %>
-                <div class="form-error">
-                    <%= message %>
+        <main>
+            <div class="overlay">
+                <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
+                <div class="edit_recipe_detail">
+                    <div class="title_edit_recipe_detail">Edit recipe</div>
+                    <% if @edit_recipe %>
+                        <% @edit_recipe.errors.full_messages.each do |message| %>
+                            <div class="form-error">
+                                <%= message %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    <div class="update_recipe_form">
+                    <table>
+                        <%= form_with url:"/recipes/#{params[:id]}/update_recipe" do |f| %>
+                            <tr>
+                                <td><%= f.label :"Name",class:"update_recipe_label"%></td>
+                                <td><%= f.text_field :name ,:value=> recipe().name ,size:50 ,class:"update_recipe_input"%></td>
+                            </tr>
+                            <tr>
+                                <td><%= f.label :"Keyword",class:"update_recipe_label"%></td>
+                                <td><%= f.text_field :keyword ,:value=> recipe().keyword ,size:50,class:"update_recipe_input"%></td>
+                            </tr>
+                            <tr>
+                                <td><%= f.label :"URL",class:"update_recipe_label"%></td>
+                                <td><%= f.text_field :address ,:value=> recipe().address ,size:50,class:"update_recipe_input"%></td>
+                            </tr>
+                    </table>
+                    <br>
+                                <%= f.button type:"submit",class:"edit_recipe_submit_button"%>                
+                        <% end %>
+                    </div>
                 </div>
-            <% end %>
-        <% end %>
-        <br>
-        <div class="update_recipe_form">
-        <table>
-            <%= form_with url:"/recipes/#{params[:id]}/update_recipe" do |f| %>
-                <tr>
-                    <td><%= f.label :"レシピ名"%></td>
-                    <td><%= f.text_field :name ,:value=> recipe().name ,size:50 %></td>
-                </tr>
-                <tr>
-                    <td><%= f.label :"keyword"%></td>
-                    <td><%= f.text_field :keyword ,:value=> recipe().keyword ,size:50 %></td>
-                </tr>
-                <tr>
-                    <td><%= f.label :"URL"%></td>
-                    <td><%= f.text_field :address ,:value=> recipe().address ,size:50 %></td>
-                </tr>
-        </table>
-        <br>
-                    <%= f.submit "変更" ,class:"edit_submit_button"%>                
-            <% end %>
-        </div>
-        <br>
-        <br>
-        <div class="btn_return">
-            <%= link_to "戻る","/recipes/#{params[:id]}" %>
-        </div>
+            </div>
+        </main>
     </body>
 </html>

@@ -55,7 +55,7 @@ include Converter
     def show_food_choices_by_category
         @ingredients= Ingredient.where(recipe_id:params[:id])
         @registered_material = Material.where(recipe_id: params[:id]) 
-        @category_parent_array = ["---"]
+        @category_parent_array = ["-- category --"]
         #データベースから、親カテゴリーのみ抽出し、配列化
             Food.where(unit:nil).each do |parent|
             @category_parent_array << parent.name

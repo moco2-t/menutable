@@ -1,7 +1,7 @@
 module ShoppingHelper
 
-    def meals
-        Meal.all
+    def menus
+        menu.all
     end
 
     def shopping_all

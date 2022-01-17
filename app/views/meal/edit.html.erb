@@ -3,54 +3,54 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Edit meal</title>
+        <title>Edit menu</title>
     </head>
     <body>
-    <div class="page_title"><h1>Edit meal</h1></div>
-    <br>
-    <div class="meal_menu"><%= link_to "NEW MEAL","/meal/new" %></div>
-    <div class="meal_menu"><%= link_to "MEAL INDEX","/meal/index" %></div>        
-    <br>
-    <div class="select_day">
-        <%= form_with url:"/meal/day" do |f| %>
-            <%= f.date_field :start_date %> 〜 <%= f.date_field :start_date2 %>
-            <%= f.submit "選択"%>
-        <% end %>
-    </div>
-    <br>
-    <%if @select_meal%>
-        <table class="edit_meal">
-            <tr>
-                <td><%= params[:start_date]%> ~ <%= params[:start_date2]%></td>
-            </tr>
-            <%= form_with url:"/meal/delete", method: :delete do |f| %>
-                <% @select_meal.each do |s| %>
-                    <tr>
-                        <td>
-                            <%= f.hidden_field :id, value: s.id %>
-                            <%= Recipe.find_by(id:s.recipe_id).name %>
-                        </td>
-                        <td>
-                            <%= f.submit "削除"%>
-                        </td>
-                    </tr>
-                <%end%>
-            <%end%>
-        </table>
-    <%end%>    
-    <br>
-    <div class="meal_calender">
-        <div class="meal_subtitile"><h2>献立カレンダー</h2></div>
-        <%= week_calendar number_of_weeks:2 ,events:@meals do |date,meals| %>
-            <%= date.day %>
-            <% meals.each do |m| %>
-                <div>
-                    <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+        <div class="overlay">
+            <div class="close_btn"><%= link_to("×","/menu/index")%></div>
+                <div class="edit_menu">
+                    <div class="title_edit_menu">Edit menu</div>
+                    <div class="select_day">
+                        <%= form_with url:"/menu/day" do |f| %>
+                            <%= f.date_field :start_date , class:"select_date"%> 〜 <%= f.date_field :start_date2 ,class:"select_date"%>
+                            <%= f.button :type => "submit",class:"search_btn" do %><i class="fas fa-search"></i><% end %>
+                        <% end %>
+                    </div>
+                    <%if @select_menu%>
+                    <div class="menu_day">
+                        <%= params[:start_date]%> ~ <%= params[:start_date2]%>
+                    </div>
+                    <div class="edit_menu_list">
+                        <table>
+                            <%= form_with url:"/menu/delete", method: :delete do |f| %>
+                                <% @select_menu.each do |s| %>
+                                    <tr>
+                                        <td>
+                                            <%= f.hidden_field :id, value: s.id %>
+                                            <%= Recipe.find_by(id:s.recipe_id).name %>
+                                        </td>
+                                        <td>                                        <td>
+                                            <%= f.button :type => "submit",class:"menu_delete_btn" do %><i class="far fa-trash-alt"></i><% end %>
+                                        </td>
+                                    </tr>
+                                <%end%>
+                            <%end%>
+                        </table>
+                    </div>
+                    <%end%>
+                    <div class="determined_calendar">
+                        <!--献立カレンダー-->
+                            <div class="calender_title"><i class="fas fa-utensils"></i>　登録済みの献立　<i class="fas fa-utensils"></i></div>
+                            <div class="edit_menu_calender">
+                                <%= week_calendar number_of_weeks:2 ,events:@menus do |date,menus| %>
+                                    <%= date.day %>
+                                    <% menus.each do |m| %>
+                                            <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                    </div>   
                 </div>
-            <% end %>
-        <% end %>
-    </div>
-    <br>
-    <br>
+        </div>
     </body>
 </html>

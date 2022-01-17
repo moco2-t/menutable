@@ -15,13 +15,157 @@
  *= require_self
  */
 
- .flash{
-     color:cornsilk;
-     background-color:forestgreen;
-     text-align: center;
- }
+html {
+    background-image : url("top_image.jpg");
+    background-color:rgba(255,255,255,0.3);
+    background-blend-mode:lighten;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    }
+html::-webkit-scrollbar {
+    display:none;
+}
+
+/*メイン部分*/
+body {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+    /*ナビゲーション*/
+    nav {
+        width: 20%;
+        height: 100%;
+        float: left;
+    }
+        /*sideメニュータイトル*/
+        .nav_title {
+            width: 60%;
+            color: #000; 
+            font-size: 50px; 
+            font-family: fantasy;
+            letter-spacing: 10px;
+            float: right;
+            margin: 50px auto ;
+            writing-mode: vertical-rl;
+        }
+
+        /*メニュー*/
+        .nav_menu {
+            float:right;
+            width: 90%;
+            margin: 0 auto;
+            font: 500 3vmin fantasy;
+        }
+            .nav_menu li {
+                position: relative;
+                list-style-type: none!important;/*ポチ消す*/
+                padding:10px 2px;
+            }
+            .nav_menu li:before{ 
+                display:inline-block; 
+                vertical-align: middle;
+                /*以下白丸つくる*/
+                content:'';
+                width:0.7em;
+                height: 0.7em;
+                background: #038C25;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+
+        /*メニューリンク*/
+        .menu_link:hover {
+            border-bottom: solid 3px rgba(34, 163, 40, 0.301);
+        }
+        
+    /*文章部分*/ 
+    article {
+        width: 80%;
+        height: 100%;
+        float: right;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        background: #FFF;
+    }
+        article::-webkit-scrollbar {
+            display:none;
+        }
+
+        aside {
+            width: 30%;
+            float: right;
+            overflow: scroll;
+            -ms-overflow-style: none;
+        }
+        aside::-webkit-scrollbar {
+            display:none;
+        }
 
 a {
- color: inherit;
- text-decoration: none;
+    text-decoration:none; 
+    color: inherit;
 }
+
+.flash {
+    color: #FFF;
+    font-size: 2vmin;
+    background-color: #038c25c7;
+    padding: 3%;
+    text-align: center;
+}
+
+.form-error {
+    color:red;
+    text-align: center;
+    font-size: 2vmin;
+}
+
+.title_logo {
+    font: 900 8vmin fantasy;
+    color:white;
+    letter-spacing: 5px;
+    width: 60%;
+    text-align: center;
+    margin:  0 auto;
+    padding: 2% 0 0 0;
+}
+
+.user_information {
+    display:inline;
+    font: 600 3vmin fantasy;
+    color:white;
+    text-align: center;
+    float:right;
+}
+
+.menu_list {
+    display:inline-block;
+    font: 600 3vmin fantasy;
+    color:white;
+    width: 50%;
+    text-align: center;
+}
+
+.account_link,.header_link {
+    text-decoration:none; 
+    color:white;
+    padding-bottom: 1px;
+    background:
+    radial-gradient(circle closest-side, currentColor 80%, transparent) bottom 0 left calc(50% - var(--d, 0px)/2) /100% 2px no-repeat,
+    radial-gradient(circle closest-side, currentColor 80%, transparent) bottom 0 left calc(50% + var(--d, 0px)/2) /100% 2px no-repeat,
+    linear-gradient(currentColor 0 0) bottom /var(--d, 0%) 2px no-repeat;
+    transition: 0.5s;
+    margin: 10px 15px;
+}
+
+.account_link:hover,.header_link:hover  {
+    --d: 80%;
+  }
+
+
+
+

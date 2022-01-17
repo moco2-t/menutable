@@ -2,47 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-header {
-    background-color: lightpink;
+$base_font1: fantasy;
+$base_font2: "游ゴシック体";
+$color: #038C25;
+$font-color:rgba(109, 109, 109, 0.877);
+
+@mixin centered {
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
 }
 
-.title_logo {
-    color: #dc143c;
-    font-size: 25px;
-    margin: 5px;
-    float: left;
-}
+.index {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10%;
+    height: 60%;
+    width: 50%;
+    margin: 15% auto ;
 
-.header_list{
-    float: left;
-}
-
-li {
-    list-style: none;
-    float: left;
-    font-size: 13px;
-    color: #696969;
-    text-decoration: none;
-    margin:5px;
 }
 
 .index_title {
-    text-align: center;
-    font-size: 25px;
-    color: #dc143c;
-    margin: 100px 100px 50px 100px;
+    font: 500 7vw $base_font1;
+    width: 65%;
+    margin: 0 auto;
+    padding: 30px 10px;
 }
 
-h2 {
-    color :darkcyan;
-    font-size: 20px;
+.login_menu {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.login_link , .account_link {
+    display: inline-block;
+    width: 70%;
+    height: 15%;
+    padding: 15px 30px;
+    margin: 3% auto;
+    text-decoration: none;
+    font: 100 1vw $base_font2;
+    color: white;
     text-align: center;
+    border: solid 2px $color;
+    border-radius: 10px;
+    transition: .4s;
+    background: $color;
+    &:hover {
+        color: #000;
+  }
+}
+
+.top_title {
+    font: 900 3vw fantasy;
+    margin: 5%;
 }
 
 .instructions {
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 5%;
+    color: $font-color;
+    font: 100 1vw $base_font2;
 }
-
