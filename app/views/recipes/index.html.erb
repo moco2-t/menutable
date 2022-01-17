@@ -21,13 +21,12 @@
             <%= f.text_field :searchword ,class:"search_input"%>
             <%= f.button type:"submit",name: nil,class:"search_submit" do %><i class="fas fa-search"></i><%end%>
           <% end %>
-        <br>
           <%if @search_recipe%>
             <table class="search_recipeslist">
               <% @search_recipe.each do |s| %>
                 <tr>
                   <td>
-                    <%= link_to s.name,  "/recipes/#{s.id}" %>
+                    <%= link_to s.name, "/recipes/#{s.id}",class:"recipes_link"%>
                   </td>
                 </tr>
               <%end%>
@@ -37,7 +36,7 @@
               <% recipes().each do |r|%>
                 <tr>
                   <td>
-                    <li><%= link_to r.name ,  "/recipes/#{r.id}" %></li>
+                    <li><%= link_to r.name , "/recipes/#{r.id}",class:"recipes_link" %></li>
                   </td>
                 </tr>
               <%end%>

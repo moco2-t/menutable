@@ -15,35 +15,35 @@
  *= require_self
  */
 
-
-body {
-    background: url("top_image.jpg") no-repeat center;
+html {
+    background-image : url("top_image.jpg");
+    background-color:rgba(255,255,255,0.3);
+    background-blend-mode:lighten;
     background-size: cover;
-    background-position: center center;
     background-repeat: no-repeat;
+    min-height: 100%;
+    overflow: scroll;
+    -ms-overflow-style: none;
     }
-
-    .bur {
-        background-color: rgba(255, 255, 255, 0.253);
-    }
-
-header {
-    height: 30%;
+html::-webkit-scrollbar {
+    display:none;
 }
 
 /*メイン部分*/
-main {
-    height: 70%;
+body {
+    min-width: 100%;
+    min-height: 100%;
 }
+
     /*ナビゲーション*/
     nav {
-        width: 300px;
-        height: 780px;
+        width: 20%;
+        height: 100%;
         float: left;
     }
         /*sideメニュータイトル*/
         .nav_title {
-            width: 300px;
+            width: 60%;
             color: #000; 
             font-size: 50px; 
             font-family: fantasy;
@@ -56,10 +56,9 @@ main {
         /*メニュー*/
         .nav_menu {
             float:right;
-            width: 200px;
+            width: 90%;
             margin: 0 auto;
-            font-size: 18px;
-            font-family: fantasy;
+            font: 500 3vmin fantasy;
         }
             .nav_menu li {
                 position: relative;
@@ -85,15 +84,26 @@ main {
         
     /*文章部分*/ 
     article {
+        width: 80%;
+        height: 100%;
+        float: right;
         overflow: scroll;
-        height: 780px;
+        -ms-overflow-style: none;
         background: #FFF;
     }
+        article::-webkit-scrollbar {
+            display:none;
+        }
 
-    aside {
-        width: 200px;
-        float: right;
-    }
+        aside {
+            width: 30%;
+            float: right;
+            overflow: scroll;
+            -ms-overflow-style: none;
+        }
+        aside::-webkit-scrollbar {
+            display:none;
+        }
 
 a {
     text-decoration:none; 
@@ -101,33 +111,32 @@ a {
 }
 
 .flash {
-    color:cornsilk;
-    background-color:#4F7302;
-    padding:15px;
+    color: #FFF;
+    font-size: 2vmin;
+    background-color: #038c25c7;
+    padding: 3%;
     text-align: center;
 }
 
 .form-error {
     color:red;
     text-align: center;
-    font-size: 15px;
+    font-size: 2vmin;
 }
 
 .title_logo {
+    font: 900 8vmin fantasy;
     color:white;
-    font-size: 50px;
-    font-weight: 900;
-    font-family: fantasy;
     letter-spacing: 5px;
-    width: 200px;
+    width: 60%;
+    text-align: center;
     margin:  0 auto;
-    padding:20px 0 0 0;
+    padding: 2% 0 0 0;
 }
 
 .user_information {
     display:inline;
-    font-size:20px ;
-    font-family: fantasy;
+    font: 600 3vmin fantasy;
     color:white;
     text-align: center;
     float:right;
@@ -135,8 +144,7 @@ a {
 
 .menu_list {
     display:inline-block;
-    font-size: 20px;
-    font-family: fantasy;
+    font: 600 3vmin fantasy;
     color:white;
     width: 50%;
     text-align: center;

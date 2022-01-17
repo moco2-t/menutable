@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
 
@@ -9,84 +10,18 @@
   <title>Menutable</title>
 </head>
 <body>
-  <div class="index">
-    <div class="index_title"><h1>menutable</h1></div>
-    <br>
-    <div class="login_menu">
-      <%= link_to("Login",'/users/login_form',class:'login_link') %>
-      <%= link_to("Account",'/users/new',class:'account_link') %>
-    </div>
-  </div>
-<!-- 
-  <アカウント>
-  <div class="account_overlay">
-    <div class="account_table">
-      <h1 class="title_account">
-        <i class="far fa-user-circle"></i><br>
-        Account
-      </h1>
-      <br>
-        <%if @user %>
-          <% @user.errors.full_messages.each do |message| %>
-              <div class="form-error">
-                  <p><%= message %></p>
-              </div>
-          <% end %>
-        <%end%>
-        <table class="account_form">
-          <%= form_with url:"/users/create",class:"input_form" do |f|%>
-            <tr>
-              <td>
-                <h2 class="label">ID</h2>
-                <%= f.text_field :login_id , value:@login_id , class:"input" %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <h2 class="label">Password</h2>
-                  <%= f.password_field :password , value:@password , class:"password_input"%>
-              </td>
-            </tr>
-            <tr>
-              <td><%= f.submit '登録', class:"account_form_btn" %></td>
-            </tr>
-          <%end%>
+  <main>
+    <div class="index">
+      <div class="index_title">menutable</div>
+        <table class="login_menu">
+          <tr>
+            <td><%= link_to '/users/login_form',class:'login_link' do %><i class="fas fa-sign-in-alt"></i> ログイン<%end%></td>
+          </tr>
+          <tr>
+            <td><%= link_to '/users/new', class:'login_link' do %><i class="fas fa-user-circle"></i> アカウント登録<%end%></td>
+          </tr>
         </table>
-    </div>
-  <!ログイン>
-  <div class="login_overlay">
-    <div class="login_table">
-      <h1 class="title_login">
-        <i class="fas fa-sign-in-alt"></i><br>
-        Login
-      </h1>
-      <span class="#close">
-        <br>
-        <% if @error_message %>
-          <div class="form-error"><p><%= @error_message %></p></div>
-        <% end %>
-          <table class="account_form">
-            <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
-              <tr>
-                <td>
-                  <h2 class="label">Login ID</h2>
-                  <%= f.text_field :login_id ,value:@login_id , class:"input"%>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h2 class="label">Password</h2>
-                  <%= f.password_field :password ,value:@password , class:"password_input" %>
-                </td>
-              </tr>
-              <tr>
-                <td><%= f.submit 'Login', class:"login_btn" %></td>
-              </tr>
-            <% end %>
-          </table> 
-      </span>
-    </div>
-  </div>
- -->
+    </div> 
+  </main>
 </body>
 </html>

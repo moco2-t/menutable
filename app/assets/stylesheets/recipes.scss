@@ -40,7 +40,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         margin: 30px 20px 5px 20px;
         border: none;
         border-bottom: dotted 1px $font-color;
-        font-size: 20px;
+        font-size: 1vw;
         transition: all 0.3s;
         &:focus, &:valid {
             background-position: 0 0;
@@ -56,7 +56,7 @@ $font-color:rgba(109, 109, 109, 0.877);
     //検索ボタン
     .search_submit {
         font-family: FontAwesome;
-        font-size: 1.3em;
+        font-size: 2vw;
         border: none;
         background: none;
         color: $color;
@@ -67,18 +67,28 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 
 //検索結果のリスト
-.search_recipeslist , .all_recipeslist {
+.search_recipeslist,.all_recipeslist {
     color: $font-color;
-    font: 100 17px $base_font2;
-    width: 800px;
+    font: 100 1vw $base_font2;
+    width: 80%;
     margin: 0 auto;
 }
-
+    .search_recipeslist td ,.all_recipeslist td {
+        padding: 0.5%;
+    }
+    .recipes_link {
+        padding: 0.5%;
+        &:hover {
+        color:#000;
+        border-top: dotted 2px $color;
+        border-bottom: dotted 2px $color;
+        }
+    }
 //---- recipe_show -----
 //編集、削除のリンク
 .recipe_settings{
-    width: 150px;
-    margin: 100px 30px 50px 0px;
+    width: 60%;
+    margin: 10%;
     padding: 5px;
 }
     .recipe_setting ul {
@@ -92,21 +102,15 @@ $font-color:rgba(109, 109, 109, 0.877);
         color: #333;
         padding: 0 0 0 10px;
         line-height: 30px;
-        border-bottom: dashed 1px #ccc;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -o-transition: 0.3s;
-        -ms-transition: 0.3s;
-        transition: 0.3s;
-        margin: 10px 0px;
-        list-style-type: "≫";/*none!important;/*ポチ消す*/
+        margin: 5% 0%;
+        list-style-type: ">";
     }
         .recipe_settings_link {
             padding: 7px 10px;    
         }
             .recipe_settings_link:hover{
                 background-color: rgba(8, 124, 76, 0.685);
-                border-radius: 100px;
+                border-radius: 3px;
                 color:#FFF;
             }
 
@@ -118,34 +122,30 @@ $font-color:rgba(109, 109, 109, 0.877);
     font-family: $base_font2;
 }
     .recipe_detail h2 {
-        margin: 50px 0 30px 0;
-        font-size:  25px;
-        text-align: center;
+        margin: 10% 0 3% 15%;
+        font-size:  4vmin;
         color:#333;
     }
     .recipe_detail_table {
-        width: 500px;
-        margin: 15px auto;
+        width: 60%;
+        margin: 3% auto;
     }
         .recipe_detail_table th {
-            font-size: 18px;
+            font-size: 2vmin;
             color: #038c25ce;
             padding: 15px 15px 10px 15px;
         }
         .recipe_detail_table td {
-            font-size: 18px;
+            font-size: 2vmin;
         }
 
-//分量リスト
-.lists {
-    width:100%;
-    margin:0 auto ;
-}
+
     //分量テーブル
     .materials_list {
         border-collapse: collapse;
-        width: 400px;
-        margin: 7px auto;
+        width: 50%;
+        margin: 0 0 10% 8%;
+        font-size: 2vmin;
         }
         .materials_list th {
             color: white;/*文字色*/

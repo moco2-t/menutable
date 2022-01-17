@@ -1,6 +1,7 @@
 $base_font1: fantasy;
 $base_font2: "游ゴシック体";
 $color: #038C25;
+$font-color:rgba(109, 109, 109, 0.877);
 @mixin centered {
     margin: auto;
     position: absolute;
@@ -12,8 +13,8 @@ $color: #038C25;
 .edit_recipe_detail {
     @include centered;
     background: #fff;
-    width: 600px;
-    height: 500px;
+    width: 50%;
+    height: 60%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     overflow: hidden;
@@ -51,27 +52,27 @@ $color: #038C25;
 .update_recipe_form {
     border-collapse: collapse;
     padding-top: 50px;
-    width: 450px;
+    color: $font-color;
+    width: 60%;
     margin: 0 auto;
 }
     .update_recipe_form td {
         padding: 20px 15px;
     }
     .update_recipe_label{
-        font-size: 20px;
-        font-family: $base_font1,$base_font2;
-        font-weight: 600;
+        font: 900 3vmin $base_font1,$base_font2;
     }
     .update_recipe_input {
-        background: linear-gradient(to bottom, transparent 95%, #808080 5%) no-repeat;
+        background: linear-gradient(to bottom, transparent 95%) no-repeat;
         background-position: -300px 0;
-        background-size: 300px 100%;
+        background-size: 100%;
         display: block;
-        width: 300px;
+        width: 100%;
         padding: 5px 0;
         border: none;
         border-bottom: dotted 0.5px #808080;
-        font-size: 15px;
+        font-size: 2.5vmin;
+        color: $font-color;
         transition: all 0.3s;
         &:focus, &:valid {
             background-position: 0 0;
@@ -105,17 +106,19 @@ $color: #038C25;
 .edit_material{
     @include centered;
     background:#FFF;
-    width: 40%;
-    height: 70%;
+    width: 60%;
+    height: 80%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     transition: .3s;
+
         &.hidden {
         visibility: hidden;
         opacity: 0;
         transform: translateY(-100px);
         }
-}
+    }
+
     .title_edit_material {
         background: $color;
         margin: 0;
@@ -140,20 +143,30 @@ $color: #038C25;
         }
     }
 
+.main_contents {
+    height:90%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display:none;
+    }
+}
+
+
 //副題
 .sub_title_edit_material {
     color: #404040;
-    font: 900 25px $base_font1;
+    font: 900 4vmin $base_font1;
     width: 40%;
-    margin: 50px 100px 20px 50px;
+    margin: 5% 10% 3% 10%;
 }
 
 //材料編集テーブル
 .edit_material_form{
     width: 50%;
-    margin: 30px auto;
+    margin: 3% auto;
     border-collapse: collapse;
-    font-size: 17px;
+    font-size: 2vmin;
     & th {
         color: #A66D03;/*文字色*/
         padding: 6px 10px;
@@ -165,7 +178,7 @@ $color: #038C25;
     //編集入力フォーム
     .edit_material_input {
         display: block;
-        width: 150px;
+        width: 80%;
         padding: 5px 0;
         margin: 10px auto;
         border: none;

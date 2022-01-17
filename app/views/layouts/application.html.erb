@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<div class="bur">
   <head>
     <title>Menutable</title>
     <meta name="viewport" content="widtr=device-widtr,initial-scale=1">
@@ -11,7 +12,6 @@
     <link rel="stylesheet" 
   </head>
   <body>
-    <div class="bur">
       <% if session[:user_id] %>
         <header>
           <div class="title_logo">menutable</div>
@@ -38,18 +38,18 @@
             </div>
         </header>
         <main>
-        <div class="auto">
-          <% if flash[:notice] %>
-            <div class="flash"><%= flash[:notice] %></div>
-          <%end%>
-          <%= yield %>
-        </div>
+          <div class="auto">
+            <% if flash[:notice] %>
+              <div class="flash"><%= flash[:notice] %></div>
+            <%end%>
+            <%= yield %>
+          </div>
         </main>
       <%else%>
         <main>
           <%= yield %>
         </main>
       <%end%>
-    </div>
   </body>
+</div>
 </html>

@@ -14,36 +14,37 @@
         </div>
         <div class="new_ingredients_table">
             <div class="section_title">Add Material</div>
-            <%= form_with url:"/recipes/create_materials" do |f| %>
-                <table class="choose_ingredients">
-                    <tr>
-                        <th></th>
-                        <th>Choices</th>
-                        <th>Qunatity</th>
-                    </tr>
-                        <%= @automaticsearch_ingredient %>
-                            <%@ingredients.each do |i|%>
-                                <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
-                                <%unless @foodlist.blank?%>
-                                <tr>
-                                    <td>
-                                        <h1 class="foodname"><%= i.foodname%></h1>
-                                    </td>
-                                    <td>
-                                        <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
-                                    </td>
-                                    <td>
-                                        <%= i.amount%>
-                                    </td>
-                                </tr>
+            <div class="main_contents">
+                <%= form_with url:"/recipes/create_materials" do |f| %>
+                    <table class="choose_ingredients">
+                        <tr>
+                            <th></th>
+                            <th>Choices</th>
+                            <th>Qunatity</th>
+                        </tr>
+                            <%= @automaticsearch_ingredient %>
+                                <%@ingredients.each do |i|%>
+                                    <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
+                                    <%unless @foodlist.blank?%>
+                                    <tr>
+                                        <td>
+                                            <h1 class="foodname"><%= i.foodname%></h1>
+                                        </td>
+                                        <td>
+                                            <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
+                                        </td>
+                                        <td>
+                                            <%= i.amount%>
+                                        </td>
+                                    </tr>
+                                    <%end%>
                                 <%end%>
-                            <%end%>
-                </table>
-                <%= f.hidden_field :recipe_id, value: params[:id] %>
-                <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
-                <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
-            <%end%>
-            <br>
+                    </table>
+                    <%= f.hidden_field :recipe_id, value: params[:id] %>
+                    <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
+                    <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
+                <%end%>
+            </div>
         </div>
     </div>
 </body>

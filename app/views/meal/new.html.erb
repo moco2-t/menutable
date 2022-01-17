@@ -10,58 +10,62 @@
             <div class="close_btn"><%= link_to("×","/menu/index")%></div>
                 <div class="new_menu">
                     <div class="title_new_menu">New Menu</div>
-                    <div class="search_and_registration_form">
-                        <!--検索-->
-                        <%= search_form_for @search_recipes, url:"/menu/search" ,class:"recipe_search" do |f| %>
-                            <%= f.search_field :name_cont ,size:30,class:"recipe_search_field"%>
-                            <%= f.button :type => "submit",class:"search_btn" do %><i class="fas fa-search"></i><% end %>
-                        <% end %>
-                        <% if @new_menu %>
-                            <% @new_menu.errors.full_messages.each do |message| %>
-                                <div class="form-error">
-                                <%= message %>
-                                </div>
+                    <div class="main_contents">
+                        <div class="search_and_registration_form">
+                            <!--検索-->
+                            <%= search_form_for @search_recipes, url:"/menu/search" ,class:"recipe_search" do |f| %>
+                                <%= f.search_field :name_cont ,size:30,class:"recipe_search_field"%>
+                                <%= f.button :type => "submit",class:"search_btn" do %><i class="fas fa-search"></i><% end %>
                             <% end %>
-                        <% end %>
-                        <% if @results %>
-                            <table class="menu_select">
-                                <% @results.each do |r|%>
-                                    <tr>
-                                        <!--登録-->
-                                        <%= form_with url:"/menu/select" do |f| %>
-                                            <td>
-                                                <%= f.hidden_field :recipe_id, value: r.id %>
-                                                <%= link_to r.name,"/recipes/#{r.id}" %>
-                                            </td>
-                                            <td>
-                                                <%= f.date_field :start_date,class:"select_date"%>    
-                                                <%= f.button :type => "submit",class:"create_new" do %><i class="fas fa-plus-circle"></i><% end %>
-                                            </td>
-                                        <% end %>
-                                    </tr>
+                            <% if @new_menu %>
+                                <% @new_menu.errors.full_messages.each do |message| %>
+                                    <div class="form-error">
+                                    <%= message %>
+                                    </div>
                                 <% end %>
-                                </tr>
-                            </table>
-                        <%else%>
-                            <div class="how_to_register">
-                                <p>レシピを検索し、登録日を選んでから選択ボタンを押してください。</p>
-                            </div>
-                        <%end%>
-                    </div>
-                    <div class="determined_calendar">
-                        <!--献立カレンダー-->
-                            <div class="calender_title"><i class="fas fa-utensils"></i>　登録済みの献立　<i class="fas fa-utensils"></i></div>
-                            <div class="edit_menu_calender">
-                                <%= week_calendar number_of_weeks:1 ,events:@menus do |date,menus| %>
-                                    <%= date.day %>
-                                    <% menus.each do |m| %>
-                                        <div>
-                                            <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
-                                        </div>
+                            <% end %>
+                            <% if @results %>
+                                <table class="menu_select">
+                                    <% @results.each do |r|%>
+                                        <tr>
+                                            <!--登録-->
+                                            <%= form_with url:"/menu/select" do |f| %>
+                                                <td>
+                                                    <%= f.hidden_field :recipe_id, value: r.id %>
+                                                    <%= link_to r.name,"/recipes/#{r.id}" %>
+                                                </td>
+                                                <td>
+                                                    <%= f.date_field :start_date,class:"select_date"%>    
+                                                    <%= f.button :type => "submit",class:"create_new" do %><i class="fas fa-plus-circle"></i><% end %>
+                                                </td>
+                                            <% end %>
+                                        </tr>
                                     <% end %>
-                                <% end %>
+                                    </tr>
+                                </table>
+                            <%else%>
+                                <div class="how_to_register">
+                                    <p>レシピを検索し、登録日を選んでから選択ボタンを押してください。</p>
+                                </div>
+                            <%end%>
+                        </div>
+                        <footer>
+                        <div class="determined_calendar">
+                            <!--献立カレンダー-->
+                                <div class="calender_title"><i class="fas fa-utensils"></i>　登録済みの献立　<i class="fas fa-utensils"></i></div>
+                                <div class="edit_menu_calender">
+                                    <%= week_calendar number_of_weeks:1 ,events:@menus do |date,menus| %>
+                                        <%= date.day %>
+                                        <% menus.each do |m| %>
+                                            <div>
+                                                <li><%= link_to Recipe.find_by(id:m.recipe_id).name,Recipe.find_by(id:m.recipe_id).address %></li>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                </div>
                             </div>
                         </div>
+                        </footer>
                     </div>
                 </div>
         </div>

@@ -37,25 +37,22 @@
                 <td><%= link_to recipe().address, recipe().address %></td>
                 </tr>
             </table>
-            <br>
-            <div class="lists">
-                <table class="materials_list">
-                    <tr>
-                        <th>食材</th>
-                        <th>分量</th>
-                    </tr>
-                    <% ingredients().each do |i|%>
-                    <tr>
-                        <td>
-                            <%= i.foodname %>
-                        </td>
-                        <td>
-                            <%= i.amount %>
-                        </td>
-                    </tr>
-                    <%end%>
-                </table>
-            </div>
+            <table class="materials_list">
+                <tr>
+                    <th>食材</th>
+                    <th>分量</th>
+                </tr>
+                <% ingredients().each do |i|%>
+                <tr>
+                    <td>
+                        <%= i.foodname %>
+                    </td>
+                    <td>
+                        <%= i.amount %>
+                    </td>
+                </tr>
+                <%end%>
+            </table>
         </div>
     </article>
 </main>

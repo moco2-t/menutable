@@ -12,34 +12,23 @@
 <div class="close_btn"><%= link_to("×","/top")%></div>
 <div class="account_table">
     <h1 class="title_account">
-        <i class="far fa-user-circle"></i><br>
-        User設定
+        <i class="far fa-user-circle"></i>User設定
     </h1>
     <div class="user_date">
         <table>
             <tr>
                 <td>
-                    <h2 class="label">ID</h2>
+                    <div class="label">ID</div>
+                    <div class="user_date_label"><%= @current_user.login_id %></div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h2 class="user_date_label"><%= @current_user.login_id %></h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2 class="label">Password</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2 class="user_date_label">******</h2>
+                    <div class="label">Password</div>
+                    <div class="user_date_label">-----</div>
                 </td>
             </tr>
         </table>
-        <br>
-        <br>
         <div class="show-list">
             <%= link_to "編集","/users/#{@current_user.id}/edit" , class:"edit_btn" %>
             <%= link_to "削除", "/users/delete", class:"delete_btn" , method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %>

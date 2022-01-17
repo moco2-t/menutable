@@ -2,21 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$color: #84BF04;
+$base_font1: fantasy;
+$base_font2: "游ゴシック体";
+$color: #038C25;
+$font-color:rgba(109, 109, 109, 0.877);
 @mixin centered {
     margin: auto;
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
 }
-
-html, body {min-height:100%;}
-
-body {
-    background:#ccc;
-    background-size: cover;
-    margin: 0;
-  }
 
 .overlay {
     background: rgba(204,204,204,0.6);
@@ -36,12 +31,11 @@ body {
 //ページ
 .account_table {
     @include centered;
-    background: #F9F9F9;
-    width: 350px;
-    height: 500px;
-    border-radius: 3px;
+    background: #fff;
+    width: 30%;
+    height: 50%;
+    border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    overflow: hidden;
     transition: .3s;
     &.hidden {
     visibility: hidden;
@@ -55,6 +49,7 @@ body {
     background: $color;
     margin: 0;
     padding: 8px;
+    border-radius: 10px 10px 0 0;
     color: white;
     font: 300 20px Roboto;
     text-align: center;
@@ -74,95 +69,77 @@ body {
     }
   }
 
-//ラベル
-.label {
-    top: 7px;
-    font: 400 15px Roboto;
-    color: gray;
-    cursor: text;
-    transition: .2s;
-}
 
 //アカウントフォーム
 .account_form {
-    width: 250px;
-    margin: 25px auto;
-    position: relative;
+    width: 80%;
+    margin: 10% 18%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+//ラベル
+.label {
+    display: inline-block;
+    width: 20%;
+    margin: 0 3%;
+    font: 400 1vw $base_font1;
+    color: $font-color;
 }
 
 //入力欄
 .input,.password_input {
-    background: linear-gradient(to bottom, transparent 95%, $color 5%) no-repeat;
-    background-position: -300px 0;
-    background-size: 300px 100%;
-    display: block;
-    width: 250px;
+    display: inline-block;
+    width: 50%;
     padding: 5px 0;
-    margin-top: 30px;
+    margin: 5% auto;
     border: none;
-    border-bottom: solid 1px $color;
-    font-size: 15px;
-    transition: all 0.3s;
-    
-    // Stop that awful pale yellow background on webkit auto-fill
-    &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px #F9F9F9 inset;
-    }
-    &:focus, &:valid {
-        background-position: 0 0;
-        outline: none;
-        
-        ~label {
-        top: -12px;
-        color: $color;
-        font: 700 12px Roboto;
-        }
-    }
+    border-bottom: dotted 1px $font-color;
+    font-size: 1vw;
 }
 
 //登録ボタン
-.account_form_btn,.login_btn,.update_btn{
+.account_form_btn,.login_btn{
     display: block;
     background: $color;
-    width: 250px;
-    height: 50px;
-    margin: 50px 0 5px 0;
+    width: 80%;
+    height: 35%;
+    padding: 20px 10px;
+    margin: 20% 0;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
     color: white;
+    font-size: 1vw;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover { 
-        nox-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
         transform: translateY(-3px);
     }
 }
 
 //ユーザー設定
 .user_date {
-    width: 250px;
-    margin: 30px auto;
+    width: 60%;
+    margin: 5% 20%;
     position: relative;
-    font-size: 15px;
 }
 
 //ユーザーラベル
 .user_date_label {
-    font-size: 20px;
-    text-align: center;
-    width: 250px;
-    border-bottom: solid 2px $color;
+    display: inline-block;
+    font: 700 2vw $base_font1;
+    width: 80%;
+    margin: 5% auto;
 }
 
 //編集、削除ボタン
 .edit_btn,.delete_btn{
     display: inline-block;
     background: $color;
-    width: 250px;
-    height: 25px;
-    margin: 5px auto;
-    border: none;
+    width: 100%;
+    height: 10%;
+    margin: 3% auto;
     border-radius: 3px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
     color: white;
@@ -170,27 +147,25 @@ body {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover { 
-        nox-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
         transform: translateY(-3px);
     }
 }
 
-//戻るボタン
-.back_btn {
-    display: inline-block;
-    background: white;
-    width: 250px;
-    height: 25px;
-    margin: 5px 0;
-    border: solid 2px $color;
-    border-radius: 3px;
+.update_btn{
+    display: block;
+    background: $color;
+    width: 80%;
+    height: 35%;
+    padding: 5% 7%;
+    margin: 10% 0;
+    border: none;
+    border-radius: 10px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-    color: $color;
-    text-align: center;
+    color: white;
+    font-size: 1vw;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover { 
-        nox-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
         transform: translateY(-3px);
     }
 }
@@ -200,9 +175,6 @@ body {
     float: right;
     color:white;
     font-size: 50px;
+    margin: 5% 5% 0 0;
 }
 
-::selection {
-    background: $color;
-    color: white;
-  }

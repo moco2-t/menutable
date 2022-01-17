@@ -16,8 +16,8 @@ $font-color:rgba(109, 109, 109, 0.877);
 .recipe_new_table {
     @include centered;
     background: white;
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: 50%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     overflow: hidden;
@@ -35,7 +35,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         margin: 0;
         padding: 10px 8px 8px 8px;
         color: white;
-        font: 900 25px $base_font1;
+        font: 900 3vmin $base_font1;
         text-align: center;
         
         span {
@@ -56,15 +56,15 @@ $font-color:rgba(109, 109, 109, 0.877);
 //レシピ登録フォーム    
 .create_recipe_form {
     width: 80%;
-    margin: 40px auto;
+    margin: 10% auto;
     position: relative;
 }
     //入力フォーム
     .create_recipe_input {
         display: inline-block;
         width: 80%;
-        padding: 5px 0;
-        margin: 50px auto;
+        padding: 1% 0;
+        margin: 10% auto;
         border: none;
         border-bottom: dotted 1px $font-color;
         font-size: 15px;
@@ -84,11 +84,11 @@ $font-color:rgba(109, 109, 109, 0.877);
     .create_recipe_btn {
         display: block;
         background: $color;
-        font: 200 20px $base_font1;
-        width: 300px;
-        height: 40px;
+        font: 200 3vmin $base_font1;
+        width: 70%;
+        height: 40%;
         padding-top:7px;
-        margin: 30px auto 10px auto;
+        margin: 2% auto 1% auto;
         border: none;
         border-radius: 5px;
         box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
@@ -114,11 +114,11 @@ $font-color:rgba(109, 109, 109, 0.877);
 .new_ingredients_table {
     @include centered;
     background: white;
-    width: 70%;
-    height: 600px;
+    width: 60%;
+    height: 70%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    overflow: scroll;
+    overflow: hidden;
     transition: .3s;
     &.hidden {
     visibility: hidden;
@@ -127,11 +127,20 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 }
 
+    .main_contents {
+        height:90%;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display:none;
+        }
+    }
+
 //材料登録フォーム
 .choose_ingredients {
     border-collapse: collapse;
     width: 50%;
-    margin: 30px auto;
+    margin: 5% auto;
 
     //material登録フォームテーブル見出し
     & th {
@@ -144,7 +153,7 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 }
     .foodname {
-        font-size: 15px;
+        font-size: 2vmin;
     }
 
 //材料登録ボタン,材料追加ボタン
@@ -152,11 +161,11 @@ $font-color:rgba(109, 109, 109, 0.877);
     display: inline-block;
     background: $color;
     color: white;
-    font: 500 18px $base_font1;
-    width: 300px;
-    height: 40px;
-    margin: 5px auto;
-    padding: 10px 0;
+    font: 500 3vmin $base_font1;
+    width: 40%;
+    height: 20%;
+    margin: 3% 30%;
+    padding: 1% 0 0 0;
     border: none;
     border-radius: 3px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
@@ -170,65 +179,88 @@ $font-color:rgba(109, 109, 109, 0.877);
 
 .explanation {
     color:$font-color;
-    font: 100 17px $base_font2;
-    width: 520px;
-    margin: 15px auto;
+    font: 100 2vmin $base_font2;
+    width: 90%;
+    margin: 3% auto;
 }
 
 .main_sections {
-    width: 700px;
+    width: 80%;
     margin: 0px auto;
     text-align: center;
 }
 
 //材料リストの追加
 .add_material {
-    width: 400px;
-    margin: 20px auto;
-    padding: 20px;
+    width: 60%;
+    margin: 5% auto;
+    padding: 3%;
     border: dotted 1px $color;
     border-radius: 30px;
+    font: 100 1vmin $base_font2;
     }
 
     .add_material_table {
-        width: 300px;
-        margin:5px auto;
+        width: 40%;
+        margin: 2% auto;
+        font: 100 2vmin $base_font2;
     }
 
     //材料追加登録のカテゴリーセレクト
     .listing-select-wrapper__box--select{
-        width: 300px;
-        height: 25px;
-        margin: 8px auto;
-        padding: 1px;
+        width: 90%;
+        height: 40%;
+        margin: 5% auto;
+        padding: 2%;
         border-color:#038C25;
         text-align:center;
         background:#fff;
+        font: 100 1vmin $base_font2;
     }
 
 .unregistered_materials_list {
-    width: 300px;
-    margin: 20px auto;
+    width: 50%;
+    margin: 5% auto;
 }
     .list_title {
-        width: 100px;
-        margin: 10px auto;
-        font: 800 16px $base_font1;
+        width: 80%;
+        margin: 3% auto;
+        font: 800 2vmin $base_font1;
         color:#A66D03;
     }
 
     .ingredients_list{
-        width:300px;
-        margin: 10px auto;
+        width:80%;
+        margin: 3% auto;
     }
+
+.add_material_btn{
+    display: inline-block;
+    background: $color;
+    color: white;
+    font: 500 2vmin $base_font1;
+    width: 40%;
+    height: 20%;
+    margin: 3% 30%;
+    padding: 1% 0 0 0;
+    border: none;
+    border-radius: 5%;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover { 
+        transform: translateY(-3px);
+    }
+
+}
 
 //登録内容の確認ボタン
 .recipe_show_link {
     display: block;
-    width: 150px;
+    width: 20%;
     text-align: center;
-    margin: 50px auto;
-    font: 500 20px $base_font1;
+    margin: 5% auto;
+    font: 800 3vmin $base_font1;
     color: $color;
         &:hover {
             border-bottom: dotted 1px $color;

@@ -43,8 +43,8 @@ $font-color:rgba(109, 109, 109, 0.877);
 .new_menu , .edit_menu {
     @include centered;
     background: #F9F9F9;
-    width: 40%;
-    height: 70%;
+    width: 70%;
+    height: 80%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -80,10 +80,23 @@ $font-color:rgba(109, 109, 109, 0.877);
         }
     }
 
+    .main_contents {
+        height:70%;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display:none;
+        }
+    }
+
 //検索と登録
 .search_and_registration_form {
-    height:450px;
+    height:90%;
     overflow: scroll;
+    -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display:none;
+        }
 }
     .how_to_register {
         color: $font-color;
@@ -124,9 +137,9 @@ $font-color:rgba(109, 109, 109, 0.877);
 
     //登録,削除
     .menu_select {
-        font-size: 15px;
-        width: 600px;
-        margin: 50px auto;
+        font-size: 2vmin;
+        width: 90%;
+        margin: 4% auto;
     }
         .select_date {
             color: $font-color;
@@ -134,7 +147,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             padding: 3px 5px;
             border-radius: 10px;
             height: 2.0em;
-            width: 150px;
+            width: 30%;
             overflow: hidden;
             &:focus {
                 outline: 0;
@@ -156,40 +169,41 @@ $font-color:rgba(109, 109, 109, 0.877);
 //献立カレンダー
 .determined_calendar {
     position: fixed;
-    height: 120px;
-    width: 950px;
+    height: 30%;
+    width: 70%;
+    margin: 0 auto;
 }
     .calender_title{
-        font-size: 900 15px $base_font2;
+        font-size: 900 2vmin $base_font2;
         color: $font-color;
         text-align: center;
-        margin: 5px;
+        margin: 0 auto;
     }
 
     .edit_menu_calender {
-        font-size: 8px;
-        max-height: 30%;
-        width: 80%;
+        font-size: 1vmin;
+        height: 20%;
+        width: 90%;
         margin: 0 auto; 
         color: $font-color;
         list-style-type: "";/*none!important;/*ポチ消す*/
     }
 
 .select_day {
-    width: 40%;
-    margin: 30px  auto;
+    width: 60%;
+    margin: 5%  auto;
 }    
 
 .edit_menu_list {
-    width: 500px;
-    margin:10px auto ;
-    font: 100 15px $base_font2;
+    width: 90%;
+    margin:3% auto ;
+    font: 100 2vmin $base_font2;
     color: $font-color;
 }
 
 .menu_day {
-    width: 300px;
-    margin: 10px auto;
-    font: 800 22px $base_font2;
+    width: 80%;
+    margin: 3% auto;
+    font: 800 2vmin $base_font2;
     color: $font-color;
 }

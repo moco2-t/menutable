@@ -11,7 +11,6 @@
                 <div class="close_btn"><%= link_to("×","/recipes/index")%></div>
                 <div class="edit_recipe_detail">
                     <div class="title_edit_recipe_detail">Edit recipe</div>
-                
                     <% if @edit_recipe %>
                         <% @edit_recipe.errors.full_messages.each do |message| %>
                             <div class="form-error">
@@ -19,7 +18,6 @@
                             </div>
                         <% end %>
                     <% end %>
-                    <br>
                     <div class="update_recipe_form">
                     <table>
                         <%= form_with url:"/recipes/#{params[:id]}/update_recipe" do |f| %>
