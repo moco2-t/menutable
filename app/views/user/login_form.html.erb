@@ -16,8 +16,8 @@
         <% if @error_message %>
           <div class="form-error"><p><%= @error_message %></p></div>
         <% end %>
-        <table class="account_form">
-          <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
+        <%= form_with url:"/users/login" ,class:"input_form" do |f|%>
+          <table class="account_form">
             <tr>
               <td>
                 <div class="label">Login ID　</div>
@@ -33,8 +33,8 @@
             <tr>
               <td><%= f.button type:"submit", class:"login_btn" do %><i class="fas fa-sign-in-alt"></i> Login<%end%></td>
             </tr>
-          <% end %>
-        </table> 
+          </table> 
+        <% end %>
   </div>
 </div>
 </body>
