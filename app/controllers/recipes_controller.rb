@@ -66,6 +66,7 @@ include Converter
         #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
         @category_children = Food.find_by(name: params[:category]).children
     end
+    
 
     def create_materials #materialレコードの作成
         @recipe_id = params[:recipe_id]
