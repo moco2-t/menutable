@@ -24,8 +24,8 @@
                     </div>
                 <% end %>
             <%end%>
-            <table class="account_form">
-                <%= form_with url:"/users/create",class:"input_form" do |f|%>
+            <%= form_with url:"/users/create",class:"input_form" do |f|%>
+                <table class="account_form">
                     <tr>
                         <td>
                             <h2 class="label">ID</h2>
@@ -41,8 +41,8 @@
                     <tr>
                         <td><%= f.submit '登録', class:"account_form_btn" %></td>
                     </tr>
-                <%end%>
-            </table>
+                </table>
+            <%end%>
     </div>
 <div>
 </body>
