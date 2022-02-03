@@ -1,57 +1,55 @@
+const { get } = require("jquery");
+
 document.addEventListener('turbolinks:load', function () {
-  $ (function(){
-    //子カテゴリー,セレクトボックスの選択
+  $(function(){
+    // カテゴリーセレクトボックスのオプションを作成
     function appendOption(child){
-      var html  = `<option value=${child.id} name="food_id" form="add_form">${child.name}</option>`;
+      var html = `<option value="${child.id}" data-category="${child.name}">${child.name}</option>`;
       return html;
     }
-    //子カテゴリーのビュー作成
-    function appendChildrenBox(insertHTML){
+    // 子カテゴリーの表示作成
+    function appendChidrenBox(insertHTML){
       var childSelectHtml = '';
       childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                           <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" form="add_form">
-                            ${insertHTML}
-                          </select>
+                            <select class="listing-select-wrapper__box--select" id="child_category" name="food_id">
+                              <option value="---" data-category="---">---</option>
+                              ${insertHTML}
+                            <select>
                           </div>
                         </div>`;
       $('.listing-product-detail__category').append(childSelectHtml);
     }
-
-    //親カテゴリーが選択された時の処理（子カテゴリーの表示）
-    $("#parent_category").on('change', function(){
-      //選択された親カテゴリーの値を取得
-      var parentCategory = document.getElementById('parent_category').value;
-      //選択された親カテゴリーが"---"（初期設定）のままだとfalse、変わっているとtrue
-      if (parentCategory != "---"){
+    // 親カテゴリー選択後のイベント
+    $('#parent_category').on('change', function(){
+      var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
+      if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/recipes/show_food_choices_by_category/get_category_children',
           type: 'GET',
-          //コントローラーに飛ばす値です。
           data: { category: parentCategory },
           dataType: 'json'
         })
         .done(function(children){
-          //まず、既に表示されている子カテゴリーを削除
-          $('#children_wrapper').remove();
-          //insertHTMLという変数にカテゴリーのセレクトボックスの選択肢を入れる。（一番最初の段落で設けた変数）
+          $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+          $('#grandchildren_wrapper').remove();
+          $('#size_wrapper').remove();
+          $('#brand_wrapper').remove();
           var insertHTML = '';
           children.forEach(function(child){
             insertHTML += appendOption(child);
           });
-          //2段落目で設定した子カテゴリーのビューの呼び出し
-          appendChildrenBox(insertHTML);
+          appendChidrenBox(insertHTML);
         })
         .fail(function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#children_wrapper').remove();
+        $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+        $('#grandchildren_wrapper').remove();
+        $('#size_wrapper').remove();
+        $('#brand_wrapper').remove();
       }
     });
   });
-})
-
-//<select class="listing-select-wrapper__box--select">
-//                              ${insertHTML}
-//                          </select>
+});
