@@ -17,8 +17,8 @@ $font-color:rgba(109, 109, 109, 0.877);
 .create_shopping_list {
     @include centered;
     background: #F9F9F9;
-    width: 900px;
-    height: 500px;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -36,7 +36,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         margin: 0;
         padding: 8px;
         color: white;
-        font: 900 25px $base_font1;
+        font: 900 3vmin $base_font1;
         text-align: center;
         
         span {
@@ -56,14 +56,18 @@ $font-color:rgba(109, 109, 109, 0.877);
 
     .description {
         width: 40%;
-        margin : 20px auto;
-        font: 100 15px $base_font2;
+        margin : 3% auto;
+        font: 100 2vmin $base_font2;
         color: $font-color;
+    }
+
+    .calender_recipe_name{
+        font: 200 1vmin $base_font2 ;
     }
 
     .form_shopping_list {
         width: 45%;
-        margin: 10px auto;
+        margin: 5% auto;
     }
         .create_btn {
             cursor: pointer;
@@ -79,14 +83,14 @@ $font-color:rgba(109, 109, 109, 0.877);
     
     .menu_calendar_shopping_list_creation {
         width:90%;
-        margin: 20px auto;
+        margin: 10% auto;
         color:$font-color;
-        font-size: 14px;
+        font-size: 2vmin;
         font-family: $base_font1 or $base_font1;
         list-style-type: none!important;/*ポチ消す*/
     }
         .recipe_link {
-        font-size:12px;
+        font-size: 1vmin;
         &:hover {
             border-bottom: 2px solid $font-color;
         }
@@ -98,9 +102,9 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 
     .sub_title {
-        width:50%;
-        margin: 10px 0;
-        font: 900 35px $base_font1;
+        width: 60%;
+        margin: 3% 0;
+        font: 900 5vmin $base_font1;
         color: $font-color;   
     }
 
@@ -110,28 +114,51 @@ $font-color:rgba(109, 109, 109, 0.877);
         color: $font-color;
     }
 
+    .sub_title_shopping_list {
+        width: 60%;
+        margin: 3% 0 0 0 ;
+        font: 900 5vmin $base_font1;
+        color: $font-color;
+        display: inline-block;
+    }
+
     .show_shopping_list {
-        margin: 50px 100px;
+        margin: 5% 7%;
     }
         .shoppinglist_date {
-            margin: 20px 50px;
-            font: 100 25px $base_font1;
+            width: 80%;
+            margin: 2% auto;
+            font: 100 4vmin $base_font1;
             color: $font-color;
+
         }
         .shopping_list {
-            margin: 20px 50px;
-            width: 40%;
+            margin: 2% 5%;
+            width: 60%;
             font: 300 18px $base_font2;
             color: $font-color;
+            & th {
+                padding: 2% 3%;
+            }
+            & td {
+                padding: 2% 3%;
+            }
 
         }
 
+        .setting {
+            display: inline-block;
+            position: relative;
+            right: 5%;
+            top: 30%;
+        }
         .shopping_list_settings {
             color: $font-color;
             display: flex;
-            height: 2rem;
-            margin: 10px auto;
-            width: 200px;
+            height: 1rem;
+            margin: 1% 5%;
+            padding:3% 5%;
+            width: 100%;
             border-radius: 5px;
             text-align: center;
         }
@@ -149,7 +176,8 @@ $font-color:rgba(109, 109, 109, 0.877);
             line-height: 2rem;
             text-align: center;
             text-decoration: none;
-            width: 100px;
+            width: 100%;
+            padding: 5% 10%;
         }
         .shopping_list_settings li li {
             height: 0;
@@ -210,11 +238,10 @@ $font-color:rgba(109, 109, 109, 0.877);
         }
     
     .edit_sub_title {
-        width: 370px;
-        margin: 30px 200px;
+        width: 40%;
+        margin: 3% auto;
         color: $font-color;
-        font-size: 30px;
-        font-family: $base_font1;
+        font: 600 4vmin $base_font1;
     }
 
     .edit_shopping_list_form {
@@ -224,6 +251,10 @@ $font-color:rgba(109, 109, 109, 0.877);
         font-size: 17px;
         font-family: $base_font1;
     }
+        .shopping_seasonings {
+            padding: 2% 0;
+        }
+
         .amount_form {
             width: 100px;
             padding: 5px 0;
@@ -256,6 +287,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             vertical-align: middle;
         }
     
+    
     .add_shoppinglist {
             width: 400px;
             margin: 10px auto 40px auto;
@@ -285,6 +317,18 @@ $font-color:rgba(109, 109, 109, 0.877);
             background-color: #038c2541;
             border-radius: 10px;
             }
-        
+    }
+
+    .shopping_select_date {
+        color: $font-color;
+        border: 1px solid #999;
+        padding: 3px 5px;
+        border-radius: 10px;
+        height: 2.0em;
+        width: 35%;
+        overflow: hidden;
+        &:focus {
+            outline: 0;
+            }
     }
     

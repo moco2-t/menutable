@@ -44,7 +44,7 @@ $font-color:rgba(109, 109, 109, 0.877);
     @include centered;
     background: #F9F9F9;
     width: 70%;
-    height: 80%;
+    height: 90%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -107,8 +107,8 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
     //検索
     .recipe_search {
-        width: 300px;
-        margin: 10px auto;
+        width: 30%;
+        margin: 3% auto;
     }
         .recipe_search_field {
             color:$font-color;
@@ -138,8 +138,9 @@ $font-color:rgba(109, 109, 109, 0.877);
     //登録,削除
     .menu_select {
         font-size: 2vmin;
-        width: 90%;
-        margin: 4% auto;
+        width: 60%;
+        text-align: center;
+        margin: 2% auto;
     }
         .select_date {
             color: $font-color;
@@ -147,11 +148,16 @@ $font-color:rgba(109, 109, 109, 0.877);
             padding: 3px 5px;
             border-radius: 10px;
             height: 2.0em;
-            width: 30%;
+            width: 90%;
             overflow: hidden;
             &:focus {
                 outline: 0;
               }              
+        }
+
+        .recipe_name{
+            text-align: left;
+            padding:1%;
         }
 
         .create_new {
@@ -190,15 +196,20 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 
 .select_day {
-    width: 60%;
+    width: 70%;
+    text-align: center;
     margin: 5%  auto;
 }    
 
 .edit_menu_list {
-    width: 90%;
+    width: 70%;
     margin:3% auto ;
     font: 100 2vmin $base_font2;
     color: $font-color;
+     & td {
+         text-align: center;
+         padding: 1%;
+     }
 }
 
 .menu_day {
@@ -206,4 +217,17 @@ $font-color:rgba(109, 109, 109, 0.877);
     margin: 3% auto;
     font: 800 2vmin $base_font2;
     color: $font-color;
+}
+
+.menu_edit_select_date {
+    color: $font-color;
+    border: 1px solid #999;
+    padding: 3px 5px;
+    border-radius: 10px;
+    height: 2.0em;
+    width: 40%;
+    overflow: hidden;
+    &:focus {
+        outline: 0;
+        }           
 }
