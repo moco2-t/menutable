@@ -10,7 +10,7 @@
     <body>
         <main>
             <div class="overlay">
-                <div class="close_btn"><%= link_to("×","/recipes/#{params[:id]}")%></div>
+                <div class="close_btn"><%= link_to "/recipes/#{params[:id]}" do %><i class="fas fa-times"></i><%end%></div>
                     <div class="edit_material">
                         <div class="title_edit_material">Edit material</div>
                         <div class="main_contents">

@@ -17,15 +17,17 @@
         </nav>
         <article>
             <div class="show_shopping_list">
-                <div class="sub_title"><i class="fas fa-tasks"></i>　Shopping List</div>
-                    <ul class="shopping_list_settings">
-                        <li><%= link_to "#" do%><i class="fas fa-wrench"></i> Setting<%end%>
-                            <ul>
-                                <li><%= link_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  do%><i class="far fa-edit"></i> 編集<%end%></li>
-                                <li><%= link_to shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date]) do %><i class="fas fa-file-csv"></i> CSV出力<% end %></li>                               
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="sub_title_shopping_list"><i class="fas fa-tasks"></i>　Shopping List</div>
+                    <div class="setting">
+                        <ul class="shopping_list_settings">
+                            <li><%= link_to "#" do%><i class="fas fa-wrench"></i> Setting<%end%>
+                                <ul>
+                                    <li><%= link_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  do%><i class="far fa-edit"></i> 編集<%end%></li>
+                                    <li><%= link_to shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date]) do %><i class="fas fa-file-csv"></i> CSV出力<% end %></li>                               
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 <div class="shoppinglist_date">
                     <%= params[:start_date]%>　〜　<%=params[:end_date]%>
                 </div>
