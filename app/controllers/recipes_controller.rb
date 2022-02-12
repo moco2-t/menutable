@@ -121,6 +121,8 @@ include Converter
         destroy_recipe = Recipe.find_by(id: params[:id]).destroy
         if destroy_recipe
             flash[:notice] = "レシピを削除しました"
+            destroy_ingredients = Ingredient.where(recipe_id: params[:id]).destroy_all
+            destroy_materials = Material.where(recipe_id: params[:id]).destroy_all
             redirect_to("/recipes/index")
         end
     end
