@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="overlay">
-            <div class="close_btn"><%= link_to("×","/menu/index")%></div>
+            <div class="close_btn"><%= link_to "/menu/index" do %><i class="fas fa-times"></i><%end%></div>
                 <div class="new_menu">
                     <div class="title_new_menu">New Menu</div>
                     <div class="main_contents">
@@ -20,22 +20,29 @@
                             <% if @new_menu %>
                                 <% @new_menu.errors.full_messages.each do |message| %>
                                     <div class="form-error">
-                                    <%= message %>
+                                        <%= message %>
                                     </div>
                                 <% end %>
                             <% end %>
                             <% if @results %>
                                 <table class="menu_select">
+                                    <tr>
+                                        <th>レシピ名</th>
+                                        <th>日付</th>
+                                        <th>　　</th>
+                                    </tr>
                                     <% @results.each do |r|%>
                                         <tr>
                                             <!--登録-->
                                             <%= form_with url:"/menu/select" do |f| %>
-                                                <td>
+                                                <td class='recipe_name'>
                                                     <%= f.hidden_field :recipe_id, value: r.id %>
                                                     <%= link_to r.name,"/recipes/#{r.id}" %>
                                                 </td>
                                                 <td>
-                                                    <%= f.date_field :start_date,class:"select_date"%>    
+                                                    <%= f.date_field :start_date,class:"select_date"%>
+                                                </td>
+                                                <td>
                                                     <%= f.button :type => "submit",class:"create_new" do %><i class="fas fa-plus-circle"></i><% end %>
                                                 </td>
                                             <% end %>

@@ -51,7 +51,7 @@
                     <%end%>
                     <%shopping_seasoning().each do |item|%>
                         <tr>
-                            <td>
+                            <td class='shopping_seasonings'>
                                 <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
                                     <%= f.hidden_field :start_date, value: params[:start_date] %>
                                     <%= f.hidden_field :end_date, value: params[:end_date] %>

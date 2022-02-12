@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="overlay">
-        <div class="close_btn"><%= link_to("×","/shopping/index")%></div>
+        <div class="close_btn"><%= link_to "/shopping/index" do %><i class="fas fa-times"></i><%end%></div>
         <div class="create_shopping_list">
             <div class="section_title">create shoppng list</div>
             <div class="description">
@@ -16,7 +16,7 @@
             </div>
             <div class="form_shopping_list">
                 <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
-                    <%= f.date_field :start_date ,class:"select_date"%> 〜 <%= f.date_field :start_date2,class:"select_date"%>
+                    <%= f.date_field :start_date ,class:"shopping_select_date"%> 〜 <%= f.date_field :start_date2,class:"shopping_select_date"%>
                     <%= f.button :type => "submit",class:"create_btn" do %><i class="fas fa-folder-plus"></i><% end %>
                 <% end %>
             </div>
