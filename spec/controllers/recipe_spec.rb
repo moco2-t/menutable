@@ -1,3 +1,4 @@
+=begin
 RSpec.describe '' do
     before do
         
@@ -8,3 +9,4 @@ RSpec.describe '' do
             expect(quantity).to eq 5.0
         end
     end
+=end
