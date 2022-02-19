@@ -1,4 +1,4 @@
-class ChangeColumnTomeal < ActiveRecord::Migration[6.1]
+class ChangeColumnToMeal < ActiveRecord::Migration[6.1]
   def change
     remove_column :meals, :start_time
     add_column :meals, :start_date, :date
