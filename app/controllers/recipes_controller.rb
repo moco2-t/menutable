@@ -1,5 +1,5 @@
 require "csv"
-require_relative "../app/controllers/converter.rb"
+require_relative "menutable/app/controllers/converter.rb"
 class RecipesController < ApplicationController
 include Converter
     def index
