@@ -72,5 +72,5 @@ end
 gem "jquery-rails"
 
 group :production do #heroku
-  gem 'pg'
+  gem 'pg' 
 end
