@@ -76,3 +76,5 @@ group :production do #heroku
 end
 
 gem 'rails_12factor'
+
+gem 'net-smtp', require: false
