@@ -1,6 +1,6 @@
 require'date'
 require 'csv'
-require_relative "menutable/app/controllers/converter.rb"
+require_relative "converter.rb"
 class ShoppingController < ApplicationController
 include Converter
 

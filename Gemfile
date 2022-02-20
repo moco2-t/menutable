@@ -74,3 +74,5 @@ gem "jquery-rails"
 group :production do #heroku
   gem 'pg' 
 end
+
+gem 'rails_12factor'

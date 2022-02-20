@@ -10,7 +10,7 @@ def set_current_user
 end
 
 def authenticate_user
-    if @current_user = nil
+    if @current_user == nil
         flash[:notice] = "ログインが必要です"
     end       
 end
