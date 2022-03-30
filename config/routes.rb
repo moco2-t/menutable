@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "index" => "home#index" #ログイン前index
+  get "/" => "home#index" #ログイン前index
   get "top" => "home#top" #ログイン後top画面
 
   #ログイン、アカウント
