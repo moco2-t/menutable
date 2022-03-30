@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
-
+=begin
 before_action:authenticate_user
 before_action:set_current_user
-
-    
 
 def set_current_user
   @current_user = User.find_by(id:session[:user_id])
@@ -14,5 +12,6 @@ def authenticate_user
         flash[:notice] = "ログインが必要です"
     end       
 end
+=end
 
 end
