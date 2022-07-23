@@ -15,15 +15,23 @@
       <% if session[:user_id] %>
         <header>
           <div class="title_logo">menutable</div>
+              <div class="account_list">
+                <table>
+                  <tr>
+                    <td><i class="fas fa-user"></i><%= link_to(@current_user.login_id,"/users/#{@current_user.id}",class:'header_link') %></td>
+                    <td><i class="fas fa-sign-out-alt"></i><%= link_to("Logout",'/users/logout',method: :post, data: {confirm: "ログアウトしますか？"},class:'header_link') %></td>
+                  </tr>
+                </table>
+              </div>
             <div class="header_menu">
               <div class="menu_list">
                 <table>
                   <tr>
                     <td><i class="fas fa-home"></i><%= link_to("About",'/top',class:'header_link') %></td>
-                    <td><i class="fas fa-book"></i><%= link_to("recipe",'/recipes/index',class:'header_link') %></td>
-                    <td><i class="far fa-calendar-alt"></i><%= link_to("menu",'/menu/index',class:'header_link') %></td>
-                    <td><i class="far fa-list-alt"></i><%= link_to("shopping",'/shopping/index',class:'header_link') %></td>
-                    <td><i class="fas fa-shopping-cart"></i><%= link_to("store",'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link') %></td>
+                    <td><i class="fas fa-book"></i><%= link_to("Recipe",'/recipes/index',class:'header_link') %></td>
+                    <td><i class="far fa-calendar-alt"></i><%= link_to("Menu",'/menu/index',class:'header_link') %></td>
+                    <td><i class="far fa-list-alt"></i><%= link_to("Shopping",'/shopping/index',class:'header_link') %></td>
+                    <td><i class="fas fa-shopping-cart"></i><%= link_to("Store",'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link') %></td>
                   </tr>
                 </table>
               </div>
@@ -38,9 +46,9 @@
           </div>
         </main>
       <%else%>
-        <main>
-          <%= yield %>
-        </main>
+          <main>
+            <%= yield %>
+          </main>
       <%end%>
   </body>
 </div>

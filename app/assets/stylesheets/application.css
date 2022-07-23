@@ -125,7 +125,7 @@ a {
 }
 
 .title_logo {
-    font: 900 8vmin fantasy;
+    font: 900 9vmin fantasy;
     color:white;
     letter-spacing: 5px;
     width: 60%;
@@ -143,10 +143,18 @@ a {
 }
 
 .menu_list {
-    display:inline-block;
     font: 600 3vmin fantasy;
     color:white;
     width: 50%;
+    margin:  0 auto;
+    text-align: center;
+}
+
+.account_list {
+    font: 600 3vmin fantasy;
+    color:white;
+    width: 20%;
+    margin:  0 auto;
     text-align: center;
 }
 

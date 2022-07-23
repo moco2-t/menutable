@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "/" => "home#index" #ログイン前index
-  get "top" => "home#top" #ログイン後top画面
-
-  #ログイン、アカウント
-  get "users/login_form" => "user#login_form" #ログイン画面
+  get "/" => "home#index"
+  get "/top" => "home#top"
+  get "users/login_form" => "user#login_form" 
   post "users/login" => "user#login" #ログインform
-  post "logout" => "user#logout" #ログアウト
   get "users/new" => "user#new" #アカウント登録画面
   post "users/create" => "user#create" #アカウント登録form
+  post "users/logout" => "user#logout" #ログアウト
   get "users/:id" => "user#show" #アカウント詳細
-  delete "/users/delete" => "user#destroy" #アカウント削除
+  delete "users/delete" => "user#destroy" #アカウント削除
   get "users/:id/edit" => "user#edit" #アカウント編集
   post "users/update" => "user#update" #アカウント編集form
 
@@ -19,7 +17,7 @@ Rails.application.routes.draw do
   get "recipes/search" => "recipes#search" #レシピ検索
   get "recipes/new" => "recipes#new" #レシピ登録ページ
   post "recipes/create_recipe" => "recipes#create_recipe" #レシピ登録
-  get "recipes/show_food_choices/:id/" => "recipes#show_food_choices" #材料リストの設定(自動検索)
+  get "recipes/show_food_choices/" => "recipes#show_food_choices" #材料リストの設定(自動検索)
   get "recipes/show_food_choices_by_category/" => "recipes#show_food_choices_by_category" #材料リストの追加設定（手動）
   get 'recipes/show_food_choices_by_category/get_category_children' => "recipes#get_category_children", defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
   post "recipes/create_materials" => "recipes#create_materials" #材料リストの登録
@@ -52,4 +50,5 @@ Rails.application.routes.draw do
   post "/shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
   delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの削除
   get "shopping/create_csv" => "shopping#create_csv" #買い物リストのCSVを作成
+
 end

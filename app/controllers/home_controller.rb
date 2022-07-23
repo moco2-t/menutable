@@ -1,8 +1,13 @@
 class HomeController < ApplicationController
+    before_action:set_current_user,{skip:[:index]}
 
-def index
+    def index
 
-end
+    end
+
+    def top
+        
+    end
 
 end
 
