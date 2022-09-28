@@ -1,0 +1,257 @@
+@charset "UTF-8";
+.shopping_search_btn {
+  cursor: pointer;
+  font: 100 2vmin FontAwesome;
+  color: #5F5F5F;
+  border: none;
+  background: none;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.create_shopping_list {
+  background: #ffffff;
+  font: 100 2vmin "丸明オールド";
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+  margin: 5% auto;
+}
+
+.section_title {
+  background: rgba(111, 239, 193, 0.28);
+  border-radius: 10px 10px 0 0;
+  margin: 0;
+  padding: 8px;
+  color: #5F5F5F;
+  font: 900 3vmin "丸明オールド";
+  text-align: center;
+}
+
+.central_part {
+  margin: 2% auto;
+}
+
+.description {
+  width: 30%;
+  margin: 1% auto;
+  font: 100 2vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+}
+
+.form_shopping_list {
+  width: 45%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+.create_shoppinglist_btn {
+  cursor: pointer;
+  font: 200 3vmin FontAwesome;
+  color: #5F5F5F;
+  border: none;
+  background: none;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.menu_calendar_shopping_list_creation {
+  display: inline-block;
+  width: 80%;
+  margin: 1% 10% 10%;
+  font: 200 1vmin "丸明オールド";
+  color: #5F5F5F;
+  list-style-type: none !important;
+}
+
+.recipe_link:hover {
+  border-bottom: 2px solid #5F5F5F;
+}
+
+.check_shopping_list {
+  width: 80%;
+  margin: 50px 0 0 50px;
+}
+
+.index_description {
+  margin: 10px 0;
+  font: 100 15px "丸明オールド";
+  color: #5F5F5F;
+}
+
+.show_shopping_list {
+  width: 60%;
+  margin: 2% auto;
+}
+
+.sub_title_shopping_list {
+  width: 50%;
+  margin: 3% 0 0;
+  font: 900 4vmin "丸明オールド";
+  color: #5F5F5F;
+  display: inline-block;
+}
+
+.shoppinglist_date {
+  width: 70%;
+  margin: 2% 0;
+  font: 100 3vmin "丸明オールド";
+  color: #5F5F5F;
+}
+
+.shopping_list {
+  margin: 2% auto;
+  width: 60%;
+  font: 300 2vmin "丸明オールド";
+  color: #5F5F5F;
+}
+.shopping_list th {
+  padding: 2% 1%;
+}
+.shopping_list td {
+  padding: 2% 1%;
+}
+
+.setting {
+  float: right;
+}
+
+.shopping_list_settings {
+  color: #5F5F5F;
+  display: flex;
+  height: 1rem;
+  margin: 1% 5%;
+  padding: 3% 5%;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.shopping_list_settings li {
+  list-style: none;
+  position: relative;
+}
+
+.shopping_list_settings li a {
+  background: rgba(65, 155, 13, 0.39);
+  color: #5F5F5F;
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 3% 10%;
+}
+
+.shopping_list_settings li li {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.shopping_list_settings li li a {
+  border-top: solid 2px #eee;
+}
+
+.shopping_list_settings li:hover > ul > li {
+  height: 2.5rem;
+  overflow: visible;
+}
+
+.edit_shopping_list {
+  background: #F9F9F9;
+  font: 100 2vmin "丸明オールド";
+  width: 70%;
+  height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+  margin: 0 auto;
+}
+
+section {
+  height: 650px;
+  background-color: #FFFFFF;
+  overflow: scroll;
+}
+
+.edit_sub_title {
+  width: 40%;
+  margin: 3% auto;
+  color: #5F5F5F;
+  font: 600 2vmin "丸明オールド";
+  text-align: center;
+}
+
+.edit_shopping_list_form {
+  width: 70%;
+  margin: 2% auto;
+  color: #5F5F5F;
+  font-size: 17px;
+  font-family: "丸明オールド";
+}
+
+.shopping_seasonings {
+  padding: 2% 0;
+}
+
+.edit_form_btn {
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  border: none;
+  background: none;
+  color: rgba(65, 155, 13, 0.39);
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.add_shoppinglist {
+  width: 80%;
+  margin: 2% auto 3%;
+}
+
+.add_shopping_list_btn {
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 2vmin;
+  border: none;
+  background: none;
+  color: rgba(65, 155, 13, 0.39);
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.decision {
+  display: block;
+  color: rgba(65, 155, 13, 0.881);
+  font: 700 2vmin "丸明オールド";
+  text-align: center;
+  width: 25%;
+  padding: 1%;
+  margin: 3% auto;
+}
+.decision:hover {
+  border-bottom: double 5px #038c2594;
+}
+
+.shopping_select_date {
+  color: #5F5F5F;
+  border: 1px solid #999;
+  padding: 3px 5px;
+  border-radius: 10px;
+  height: 2em;
+  width: 35%;
+  overflow: hidden;
+}
+.shopping_select_date:focus {
+  outline: 0;
+}

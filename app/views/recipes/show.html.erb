@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>レシピ詳細</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>レシピ詳細</title>
 </head>
 <body>
-<main>
     <nav>
-        <div class="nav_title"><h1>Recipe</h1></div>
-        <ul class="nav_menu">
-            <li><%= link_to("Register the recipe","/recipes/new",class:"menu_link")%></li>
-        </ul>
+        <div class="nav_title">Recipe</div>
+        <div class="nav_menu">
+            <li><%= link_to("レシピを登録する","/recipes/new",class:"nav_menu_link")%></li>
+            <li><%= link_to("レシピ一覧","/recipes/index",class:"nav_menu_link")%></li>
+        </div>
     </nav>
     <article>
-        <aside>
-            <div class="recipe_settings">
-                <ul>
-                    <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
-                    <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
-                    <li><%= link_to("材料の編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
-                    <li><%= link_to("レシピ一覧","/recipes/index",class:"recipe_settings_link")%></li>
-                </ul>
-            </div>
-        </aside>
         <div class="recipe_detail">
+            <div class="recipe_settings">
+                <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
+                <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
+                <li><%= link_to("買い物リストの編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
+            </div>
             <h2><%= recipe().name %></h2>
             <table class="recipe_detail_table">
                 <tr>
@@ -33,29 +28,54 @@
                     <td><%= recipe().keyword %></td>
                 </tr>
                 <tr>
-                <th>URL</th>
-                <td><%= link_to recipe().address, recipe().address %></td>
+                    <th>URL</th>
+                    <td><%= link_to recipe().address, recipe().address %></td>
                 </tr>
             </table>
-            <table class="materials_list">
-                <tr>
-                    <th>食材</th>
-                    <th>分量</th>
-                </tr>
-                <% ingredients().each do |i|%>
-                <tr>
-                    <td>
-                        <%= i.foodname %>
-                    </td>
-                    <td>
-                        <%= i.amount %>
-                    </td>
-                </tr>
-                <%end%>
-            </table>
+
+            <div class="show_section">
+                <div class='list_title'><i class="fa-solid fa-utensils"></i>　材料リスト</div>
+                    <table class="materials_list">
+                        <tr>
+                            <th>名前</th>
+                            <th>分量</th>
+                        </tr>
+                        <% ingredients().each do |i|%>
+                        <tr>
+                            <td>
+                                <%= i.foodname %>
+                            </td>
+                            <td>
+                                <%= i.amount %>
+                            </td>
+                        </tr>
+                        <%end%>
+                    </table>
+            </div>
+            <div class="show_section">
+                <div class='list_title'><i class="fa-solid fa-basket-shopping"></i>　買い物リスト</div>
+                    <table class="materials_list">
+                        <tr>
+                            <th>名前</th>
+                            <th>数量</th>
+                        </tr>
+                        <% materials().each do |m|%>
+                        <tr>
+                            <td>
+                                <%= Food.find_by(id: m.food_id)[:name]%>
+                            </td>
+                            <%unless m.quantity === nil%>
+                                <td>
+                                    <%= m.quantity%>
+                                    <%= Food.find_by(id: m.food_id)[:unit]%>
+                                </td>
+                            <%end%>
+                        </tr>
+                        <%end%>
+                    </table>
+            </div>
         </div>
     </article>
-</main>
 </body>
 </html>
 

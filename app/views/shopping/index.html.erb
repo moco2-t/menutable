@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping index</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping index</title>
 </head>
 <body>
     <main>
         <nav>
-        <div class="nav_title"><h1>Shopping</h1></div>
-            <ul class="nav_menu">
-                <li><%= link_to("Create shopping list","/shopping/create_shopping_list",class:"menu_link")%></li>
-            </ul>
+            <div class="nav_title">Shopping</div>
+                <div class="nav_menu">
+                    <li><%= link_to("買い物リスト作成","/shopping/create_shopping_list",class:"nav_menu_link")%></li>
+                </div>
         </nav>
         <article>
             <div class="check_shopping_list">
-                <div class="sub_title"><i class="fas fa-tasks"></i> Check the shopping list</div>
-                <div class="index_description">日付を選択してください。</div>
+                <div class="index_description">確認したい買い物リストの日付を選択してください。</div>
                     <div class="shoppinglist_date">
                         <%= form_with url:"/shopping/view" do |f| %>
                             <%= f.date_field :start_date,class:"shopping_select_date"%> 〜 <%= f.date_field :end_date,class:"shopping_select_date" %>
-                            <%= f.button :type => "submit",class:"search_btn" do %><i class="fas fa-search"></i><% end %>
+                            <%= f.button :type => "submit",class:"shopping_search_btn" do %><i class="fas fa-search"></i><% end %>
                         <% end %>
                     </div>
             </div>

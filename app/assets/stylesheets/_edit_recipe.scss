@@ -1,77 +1,40 @@
-$base_font1: fantasy;
-$base_font2: "游ゴシック体";
-$color: #038C25;
-$font-color:rgba(109, 109, 109, 0.877);
-@mixin centered {
-    margin: auto;
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-}
+$base_font: "丸明オールド";
+$color: #6fefc147;
+$font-color: #5F5F5F;
+
 //---- recipe_edit_recipe-----
 //編集テーブル
-.edit_recipe_detail {
-    @include centered;
-    background: #fff;
+.edit_recipe_table {
+    display: block;
+    background-color: #fff;
     width: 50%;
-    height: 60%;
-    border-radius: 10px;
-    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    transition: .3s;
-        &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-100px);
-        }
-}
-    .title_edit_recipe_detail {
-        background: $color;
-        margin: 0;
-        padding: 10px 8px 8px 8px;
-        color: white;
-        font: 300 30px $base_font1;
-        text-align: center;
-        
-        span {
-        display: block;
-        width: 26px; 
-        height: 26px;
-        border-radius: 50%;
-        position: absolute;
-        top: 7px;
-        right: 7px;
-        cursor: pointer;
-        transition: .2s;  
-        &:hover {
-            background-color: rgba(white, .2);     }
-        }
+    margin: 10% auto;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
     }
 
-//入力フォーム
 .update_recipe_form {
-    border-collapse: collapse;
-    padding-top: 50px;
+    display: block;
     color: $font-color;
-    width: 60%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 5% auto;
+        & td {
+            padding: 1% 10%;
+        }
 }
-    .update_recipe_form td {
-        padding: 20px 15px;
+    .update_recipe_label {
+        font: 800 2vmin $base_font;
     }
-    .update_recipe_label{
-        font: 900 3vmin $base_font1,$base_font2;
-    }
+
     .update_recipe_input {
         background: linear-gradient(to bottom, transparent 95%) no-repeat;
         background-position: -300px 0;
         background-size: 100%;
         display: block;
         width: 100%;
-        padding: 5px 0;
+        padding: 2% 0;
         border: none;
         border-bottom: dotted 0.5px #808080;
-        font-size: 2.5vmin;
+        font: 200 2vmin $base_font;
         color: $font-color;
         transition: all 0.3s;
         &:focus, &:valid {
@@ -81,20 +44,22 @@ $font-color:rgba(109, 109, 109, 0.877);
             ~label {
             top: -12px;
             color: $color;
-            font: 700 12px Roboto;
+            font: 200 2vmin $base_font;
             }
         }
     }
-    .edit_recipe_submit_button {
-        display: block;
+    .update_recipe_submit_btn {
+        display: inline-block;
         background: $color;
-        width: 250px;
-        height: 40px;
-        margin: 10px auto;
+        font: 200 2vmin $base_font;
+        width: 70%;
+        height: 40%;
+        padding-top:7px;
+        margin: 2% auto 5% auto;
         border: none;
         border-radius: 3px;
         box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-        color: white;
+        color: $font-color;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         &:hover { 
@@ -102,93 +67,62 @@ $font-color:rgba(109, 109, 109, 0.877);
         }
     }
 
-//---- recipe edit_material-----
+//材料の編集
 .edit_material{
-    @include centered;
+    display: block;
+    position: relative;
     background:#FFF;
     width: 60%;
     height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+    margin: 10% auto;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
     transition: .3s;
-
-        &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-100px);
+    }
+    .main_contents {
+        height:90%;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display:none;
         }
     }
-
-    .title_edit_material {
-        background: $color;
-        margin: 0;
-        padding: 10px 8px 8px 8px;
-        color: white;
-        font: 500 30px $base_font1;
-        text-align: center;
-        border-radius: 10px 10px 0 0 ;
-        
-        span {
-        display: block;
-        width: 26px; 
-        height: 10px;
-        border-radius: 50%;
-        position: absolute;
-        top: 7px;
-        right: 7px;
-        cursor: pointer;
-        transition: .2s;    
-        &:hover {
-            background-color: rgba(white, .2);     }
-        }
+    .sub_title {
+        color: $font-color;
+        font: 400 3vmin $base_font;
+        width: 60%;
+        margin: 3% 10%;
     }
-
-.main_contents {
-    height:90%;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display:none;
-    }
-}
-
-
-//副題
-.sub_title_edit_material {
-    color: #404040;
-    font: 900 4vmin $base_font1;
-    width: 40%;
-    margin: 5% 10% 3% 10%;
-}
 
 //材料編集テーブル
-.edit_material_form{
-    width: 50%;
+.edit_material_form {
+    width: 80%;
     margin: 3% auto;
     border-collapse: collapse;
-    font-size: 2vmin;
     & th {
-        color: #A66D03;/*文字色*/
-        padding: 6px 10px;
+        font:500 2vmin $base_font;
+        color: #098402;
+        padding: 2px 0;
     }
     & td {
+        font:200 2vmin $base_font;
+        color: $font-color;
         text-align: center;
+        padding: 2px 0;
     }
 }
     //編集入力フォーム
     .edit_material_input {
         display: block;
         width: 80%;
-        padding: 5px 0;
-        margin: 10px auto;
+        margin: 2% auto;
         border: none;
         border-bottom: dotted 0.5px #808080;
-        font-size: 17px;
+        font:200 2vmin $base_font;
+        color: $font-color;
         transition: all 0.3s;
         &:focus, &:valid {
             background-position: 0 0;
             outline: none;
-            
             ~label {
             top: -12px;
             color: $color;
@@ -203,7 +137,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         font-size: 1.6em;
         border: none;
         background: none;
-        color: $color;
+        color: $font-color;
         outline : none;
         display: inline-block;
         vertical-align: middle;
@@ -212,14 +146,14 @@ $font-color:rgba(109, 109, 109, 0.877);
 // 材料追加フォーム
 .edit_add_material {
     width: 50%;
-    margin: 30px auto;
+    margin: 2% auto;
     text-align: center;
 }
     //材料追加登録のカテゴリーセレクトBOX
     .listing-select-wrapper__box--select{
         width: 180px;
         height: 25px;
-        margin: 8px auto;
+        margin: 3% auto;
         padding: 1px;
         border-color:#038C25;
         border-radius: 3px;
@@ -230,7 +164,7 @@ $font-color:rgba(109, 109, 109, 0.877);
         display: inline-block;
         width: 200px;
         padding: 5px 0;
-        margin: 5px auto;
+        margin: 3% auto;
         border: none;
         border-bottom: dotted 0.5px #808080;
         font-size: 15px;
@@ -249,13 +183,13 @@ $font-color:rgba(109, 109, 109, 0.877);
     .edit_add_material_btn {
         display: block;
         background: $color;
-        width: 200px;
-        height: 30px;
-        margin: 20px auto;
+        width: 80%;
+        padding: 2%;
+        margin: 7% auto 15%;
         border: none;
         border-radius: 3px;
         box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-        color: white;
+        color: $font-color;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         &:hover { 

@@ -2,38 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font1: fantasy;
-$base_font2: "游ゴシック体";
-$color: #038C25;
-$font-color:rgba(109, 109, 109, 0.877);
-
-@mixin centered {
-    margin: auto;
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-}
+$base_font: "丸明オールド";
+$color: #6fefc147;
+$font-color: #5F5F5F;
 
 .menu_sub_title {
-    color: #606060;
-    font-family: $base_font1;
-    font-size: 40px;
-    font-weight: 800;
+    color: $font-color;
+    font: 400 2vw $base_font;
     width: 300px;
-    margin: 50px 50px;
+    margin: 5%;
 }
-
 //献立カレンダー
 .menu_calender {
     width: 80%;
-    max-height:30%;
-    margin: 50px auto;
+    max-height: 30%;
+    margin: 3% auto;
     color: $font-color;
-    font-family: $base_font1 or $base_font1;
+    font-family: $base_font;
     list-style-type: none!important;/*ポチ消す*/
 }
     .calender_recipe_link {
-        font-size:12px;
+        font-size:2vmin;
         &:hover {
             border-bottom: 2px solid $font-color;
         }
@@ -41,73 +30,34 @@ $font-color:rgba(109, 109, 109, 0.877);
 
 //献立作成ページ,編集ページ
 .new_menu , .edit_menu {
-    @include centered;
-    background: #F9F9F9;
-    width: 70%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    position: fixed;
-    transition: .3s;
-        &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-100px);
-        }
+    display: block;
+    background-color: #fff;
+    width: 90%;
+    height: 100%;
+    margin: 10% auto;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
 }
     //タイトル
     .title_new_menu , .title_edit_menu{
         background: $color;
-        margin: 0;
+        margin: 2% 0;
         padding: 8px;
         border-radius: 10px 10px 0 0;
-        color: white;
-        font: 900 25px $base_font1;
+        color: $font-color;
+        font: 400 3vmin $base_font;
         text-align: center;
-        
-        span {
-        display: block;
-        width: 26px; 
-        height: 26px;
-        border-radius: 50%;
-        position: absolute;
-        top: 7px;
-        right: 7px;
-        cursor: pointer;
-        transition: .2s;    
-        &:hover {
-            background-color: rgba(white, .2);     }
-        }
-    }
-
-    .main_contents {
-        height:70%;
-        overflow: scroll;
-        -ms-overflow-style: none;
-        &::-webkit-scrollbar {
-            display:none;
-        }
     }
 
 //検索と登録
-.search_and_registration_form {
-    height:90%;
-    overflow: scroll;
-    -ms-overflow-style: none;
-        &::-webkit-scrollbar {
-            display:none;
-        }
-}
     .how_to_register {
         color: $font-color;
-        font-size: 15px;
-        font-family:$base_font2;
-        margin: 10px 50px;
+        font: 100 2vmin $base_font;
+        margin: 2%;
         text-align: center;
     }
     //検索
     .recipe_search {
-        width: 30%;
+        width: 50%;
         margin: 3% auto;
     }
         .recipe_search_field {
@@ -116,7 +66,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             padding: 3px 5px;
             border-radius: 15px;
             height: 2.0em;
-            width: 245px;
+            width: 80%;
             overflow: hidden;
             text-align: center;
             &:focus {
@@ -129,7 +79,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             font-size: 1.3em;
             border: none;
             background: none;
-            color: $color;
+            color: $font-color;
             outline : none;
             display: inline-block;
             vertical-align: middle;
@@ -137,8 +87,7 @@ $font-color:rgba(109, 109, 109, 0.877);
 
     //登録,削除
     .menu_select {
-        font-size: 2vmin;
-        width: 60%;
+        width: 80%;
         text-align: center;
         margin: 2% auto;
     }
@@ -149,24 +98,21 @@ $font-color:rgba(109, 109, 109, 0.877);
             border-radius: 10px;
             height: 2.0em;
             width: 90%;
-            overflow: hidden;
             &:focus {
                 outline: 0;
               }              
         }
-
         .recipe_name{
             text-align: left;
             padding:1%;
         }
-
         .create_new {
             cursor: pointer;
             font-family: FontAwesome;
-            font-size: 1.7em;
+            font-size: 3vmin;
             border: none;
             background: none;
-            color: $color;
+            color: $font-color;
             outline : none;
             display: inline-block;
             vertical-align: middle;
@@ -174,13 +120,12 @@ $font-color:rgba(109, 109, 109, 0.877);
 
 //献立カレンダー
 .determined_calendar {
-    position: fixed;
-    height: 30%;
-    width: 70%;
-    margin: 0 auto;
+    height: 25%;
+    width: 90%;
+    margin: 0 auto 10%;
 }
     .calender_title{
-        font-size: 900 2vmin $base_font2;
+        font-size: 900 2vmin $base_font;
         color: $font-color;
         text-align: center;
         margin: 0 auto;
@@ -195,39 +140,3 @@ $font-color:rgba(109, 109, 109, 0.877);
         list-style-type: "";/*none!important;/*ポチ消す*/
     }
 
-.select_day {
-    width: 70%;
-    text-align: center;
-    margin: 5%  auto;
-}    
-
-.edit_menu_list {
-    width: 70%;
-    margin:3% auto ;
-    font: 100 2vmin $base_font2;
-    color: $font-color;
-     & td {
-         text-align: center;
-         padding: 1%;
-     }
-}
-
-.menu_day {
-    width: 80%;
-    margin: 3% auto;
-    font: 800 2vmin $base_font2;
-    color: $font-color;
-}
-
-.menu_edit_select_date {
-    color: $font-color;
-    border: 1px solid #999;
-    padding: 3px 5px;
-    border-radius: 10px;
-    height: 2.0em;
-    width: 40%;
-    overflow: hidden;
-    &:focus {
-        outline: 0;
-        }           
-}

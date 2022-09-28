@@ -75,7 +75,7 @@ include Converter
     end
 
     def edit_shopping_list
-        @category_parent_array = ["---"]
+        @category_parent_array = ["--category--"]
         #データベースから、親カテゴリーのみ抽出し、配列化
             Food.where(unit:nil).each do |parent|
             @category_parent_array << parent.name

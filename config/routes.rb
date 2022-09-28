@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'recipes/get_category_children' => 'recipes#get_category_children', defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
+  get 'shopping/get_category_children' => 'shopping#get_category_children', defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
+
   get "/" => "home#index"
   get "/top" => "home#top"
   get "users/login_form" => "user#login_form" 
@@ -17,9 +20,8 @@ Rails.application.routes.draw do
   get "recipes/search" => "recipes#search" #レシピ検索
   get "recipes/new" => "recipes#new" #レシピ登録ページ
   post "recipes/create_recipe" => "recipes#create_recipe" #レシピ登録
-  get "recipes/show_food_choices/" => "recipes#show_food_choices" #材料リストの設定(自動検索)
+  get "recipes/show_food_choices/:id" => "recipes#show_food_choices" #材料リストの設定(自動検索)
   get "recipes/show_food_choices_by_category/" => "recipes#show_food_choices_by_category" #材料リストの追加設定（手動）
-  get 'recipes/show_food_choices_by_category/get_category_children' => "recipes#get_category_children", defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
   post "recipes/create_materials" => "recipes#create_materials" #材料リストの登録
   post "recipes/create_manual_materials" => "recipes#create_manual_materials" #材料リストの追加登録
   get "recipes/:id" => "recipes#show" #レシピと材料リストの詳細

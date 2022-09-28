@@ -2,121 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font1: fantasy;
-$base_font2: "游ゴシック体";
-$color: #038C25;
-$font-color:rgba(109, 109, 109, 0.877);
-@mixin centered {
-    margin: auto;
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
+$base_font: "丸明オールド";
+$color: rgba(111, 239, 193, 0.28);
+$font-color: #5F5F5F;
+
+//login_form,new
+.close_btn {
+    color: $font-color;
+    font-size: 2vw;
+    margin: 0;
 }
 
-.overlay {
-    background: rgba(204,204,204,0.6);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: auto;
-    transition: .3s;
-    &.hidden {
-      visibility: hidden;
-      opacity: 0;
-    }
-}
-
-//ページ
 .account_table {
-    @include centered;
-    background: #fff;
+    background-color: #FFFFFF;
     width: 30%;
     height: 50%;
-    border-radius: 10px;
-    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    transition: .3s;
-    &.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-100px);
-    }
+    margin: 10% auto;
+    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.403);
 }
-
-//アカウント関連ページタイトル
-.title_account {
-    background: $color;
-    margin: 0;
-    padding: 8px;
-    border-radius: 10px 10px 0 0;
-    color: white;
-    font: 300 20px Roboto;
-    text-align: center;
+    .title_account {
+        background: $color;
+        margin: 0;
+        padding: 8px;
+        color: $font-color;
+        font: 400 3vmin $base_font;
+        text-align: center;
       
-    span {
-      display: block;
-      width: 26px; 
-      height: 26px;
-      border-radius: 50%;
-      position: absolute;
-      top: 7px;
-      right: 7px;
-      cursor: pointer;
-      transition: .2s;    
-      &:hover {
-        background-color: rgba(white, .2);     }
+        span {
+        display: block;
+        width: 26px; 
+        height: 26px;
+        border-radius: 50%;
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+        transition: .2s;    
+        &:hover {
+            background-color: rgba(white, .2);     }
+        }
     }
-  }
-
-
-//アカウントフォーム
-.account_form {
-    width: 80%;
-    margin: 10% 18%;
-    overflow: scroll;
-    -ms-overflow-style: none;
-}
-
-//ラベル
-.label {
-    display: inline-block;
-    width: 20%;
-    margin: 0 3%;
-    font: 400 1vw $base_font1;
-    color: $font-color;
-}
-
-//入力欄
-.input,.password_input {
-    display: inline-block;
-    width: 50%;
-    padding: 5px 0;
-    margin: 5% auto;
-    border: none;
-    border-bottom: dotted 1px $font-color;
-    font-size: 1vw;
-}
-
-//登録ボタン
-.account_form_btn,.login_btn{
-    display: block;
-    background: $color;
-    width: 80%;
-    height: 35%;
-    padding: 20px 10px;
-    margin: 20% 0;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-    color: white;
-    font-size: 1vw;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &:hover { 
-        transform: translateY(-3px);
+    //アカウントフォーム
+    .account_form {
+        width: 80%;
+        margin: 5% 18%;
+        overflow: scroll;
+        -ms-overflow-style: none;
     }
-}
+    //ラベル
+    .label {
+        display: inline-block;
+        width: 20%;
+        margin: 0 3%;
+        font: 400 2vmin $base_font;
+        color: $font-color;
+    }
+    //入力欄
+    .input,.password_input {
+        display: inline-block;
+        width: 50%;
+        padding: 5px 0;
+        margin: 5% auto;
+        border: none;
+        border-bottom: dotted 1px $font-color;
+        font-size: 3vmin;
+    }
+    .account_form_btn,.login_btn{
+        display: block;
+        background: $color;
+        width: 80%;
+        height: 35%;
+        padding: 5% 3%;
+        margin: 20% 0;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+        color: $font-color;
+        font-size: 2vmin;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover { 
+            transform: translateY(-3px);
+        }
+    }
+
+
+//edit,show
 
 //ユーザー設定
 .user_date {
@@ -128,7 +99,7 @@ $font-color:rgba(109, 109, 109, 0.877);
 //ユーザーラベル
 .user_date_label {
     display: inline-block;
-    font: 700 2vw $base_font1;
+    font: 700 2vw $base_font;
     width: 80%;
     margin: 5% auto;
 }
@@ -170,11 +141,5 @@ $font-color:rgba(109, 109, 109, 0.877);
     }
 }
 
-//閉じるボタン
-.close_btn {
-    float: right;
-    color:white;
-    font-size: 50px;
-    margin: 5% 5% 0 0;
-}
+
 

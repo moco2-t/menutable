@@ -24,20 +24,11 @@ class MealController < ApplicationController
         end
     end
 
-    def edit
-        
-    end
-
-    def day
-        @select_menu = Meal.where(start_date: params[:start_date]..params[:start_date2])
-        render("meal/edit")
-    end
-
     def destroy
         destroyed_menu = Meal.find_by(id: params[:id]).destroy
         if destroyed_menu
             flash[:notice] = "削除しました"
-            redirect_to("/menu/edit")
+            redirect_to("/menu/new")
         end
     end
     

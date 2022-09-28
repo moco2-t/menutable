@@ -7,22 +7,19 @@
   <title>Shopping</title>
 </head>
 <body>
-    <div class="overlay">
-        <div class="close_btn"><%= link_to "/shopping/index" do %><i class="fas fa-times"></i><%end%></div>
-        <div class="create_shopping_list">
-            <div class="section_title">create shoppng list</div>
-            <div class="description">
-            買い物リストを作成したい日付を選択してください。
-            </div>
+
+    <div class="create_shopping_list">
+        <div class="section_title">New shoppng list</div>
+        <div class='central_part'>
+            <div class="description">日付を選択してください。</div>
             <div class="form_shopping_list">
                 <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
                     <%= f.date_field :start_date ,class:"shopping_select_date"%> 〜 <%= f.date_field :start_date2,class:"shopping_select_date"%>
-                    <%= f.button :type => "submit",class:"create_btn" do %><i class="fas fa-folder-plus"></i><% end %>
+                    <%= f.button :type => "submit",class:"create_shoppinglist_btn" do %><i class="fas fa-folder-plus"></i><% end %>
                 <% end %>
             </div>
-            <!--献立カレンダー-->
             <div class="menu_calendar_shopping_list_creation">
-                <%= week_calendar number_of_weeks:2 ,events:@menus do |date,menus| %>
+                <%= week_calendar number_of_weeks:2,events:@menus do |date,menus| %>
                     <%= date.day %>
                     <% menus.each do |m| %>
                         <div>

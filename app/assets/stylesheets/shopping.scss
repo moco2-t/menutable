@@ -2,32 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font1: fantasy;
-$base_font2: "游ゴシック体";
-$color: #038C25;
-$font-color:rgba(109, 109, 109, 0.877);
+$base_font: "丸明オールド";
+$color: rgba(111, 239, 193, 0.28);
+$font-color: #5F5F5F;
 
-@mixin centered {
-    margin: auto;
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
+.shopping_search_btn {
+    cursor: pointer;
+    font:100 2vmin FontAwesome;
+    color: $font-color;
+    border: none;
+    background: none;
+    outline : none;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .create_shopping_list {
-    @include centered;
-    background: #F9F9F9;
+    background: #ffffff;
+    font:100 2vmin $base_font;
     width: 80%;
     height: 80%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-    position: fixed;
     transition: .3s;
-        &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-100px);
-        }
+    margin: 5% auto;
 }
     //タイトル
     .section_title{
@@ -35,122 +33,93 @@ $font-color:rgba(109, 109, 109, 0.877);
         border-radius: 10px 10px 0 0;
         margin: 0;
         padding: 8px;
-        color: white;
-        font: 900 3vmin $base_font1;
-        text-align: center;
-        
-        span {
-        display: block;
-        width: 26px; 
-        height: 26px;
-        border-radius: 50%;
-        position: absolute;
-        top: 7px;
-        right: 7px;
-        cursor: pointer;
-        transition: .2s;    
-        &:hover {
-            background-color: rgba(white, .2);     }
-        }
-    }
-
-    .description {
-        width: 40%;
-        margin : 3% auto;
-        font: 100 2vmin $base_font2;
         color: $font-color;
+        font: 900 3vmin $base_font;
+        text-align: center;
     }
-
-    .calender_recipe_name{
-        font: 200 1vmin $base_font2 ;
+    .central_part {
+        margin: 2% auto;
+    }
+    .description {
+        width: 30%;
+        margin : 1% auto;
+        font: 100 2vmin $base_font;
+        color: $font-color;
+        text-align: center;
     }
 
     .form_shopping_list {
         width: 45%;
-        margin: 5% auto;
+        margin: 2% auto;
+        text-align: center;
     }
-        .create_btn {
+        .create_shoppinglist_btn {
             cursor: pointer;
-            font-family: FontAwesome;
-            font-size: 2.0em;
+            font: 200 3vmin FontAwesome;
+            color: $font-color;
             border: none;
             background: none;
-            color: $color;
             outline : none;
             display: inline-block;
             vertical-align: middle;
         }
     
     .menu_calendar_shopping_list_creation {
-        width:90%;
-        margin: 10% auto;
+        display: inline-block;
+        width: 80%;
+        margin: 1% 10% 10%;
+        font:200 1vmin $base_font;
         color:$font-color;
-        font-size: 2vmin;
-        font-family: $base_font1 or $base_font1;
-        list-style-type: none!important;/*ポチ消す*/
+        list-style-type: none!important;
     }
-        .recipe_link {
-        font-size: 1vmin;
-        &:hover {
+        .recipe_link:hover {
             border-bottom: 2px solid $font-color;
         }
-    }
 
     .check_shopping_list{
         width: 80%;
         margin: 50px 0 0 50px;
     }
 
-    .sub_title {
-        width: 60%;
-        margin: 3% 0;
-        font: 900 5vmin $base_font1;
-        color: $font-color;   
-    }
-
     .index_description {
         margin: 10px 0;
-        font: 100 15px $base_font2;
+        font: 100 15px $base_font;
         color: $font-color;
-    }
-
-    .sub_title_shopping_list {
-        width: 60%;
-        margin: 3% 0 0 0 ;
-        font: 900 5vmin $base_font1;
-        color: $font-color;
-        display: inline-block;
     }
 
     .show_shopping_list {
-        margin: 5% 7%;
+        width: 60%;
+        margin: 2% auto;
     }
+        .sub_title_shopping_list {
+            width: 50%;
+            margin: 3% 0 0 ;
+            font: 900 4vmin $base_font;
+            color: $font-color;
+            display: inline-block;
+        }
         .shoppinglist_date {
-            width: 80%;
-            margin: 2% auto;
-            font: 100 4vmin $base_font1;
+            width: 70%;
+            margin: 2% 0;
+            font: 100 3vmin $base_font;
             color: $font-color;
 
         }
         .shopping_list {
-            margin: 2% 5%;
+            margin: 2% auto;
             width: 60%;
-            font: 300 18px $base_font2;
+            font: 300 2vmin $base_font;
             color: $font-color;
             & th {
-                padding: 2% 3%;
+                padding: 2% 1%;
             }
             & td {
-                padding: 2% 3%;
+                padding: 2% 1%;
             }
-
         }
 
         .setting {
-            display: inline-block;
-            position: relative;
-            right: 5%;
-            top: 30%;
+            float: right;
         }
         .shopping_list_settings {
             color: $font-color;
@@ -162,14 +131,12 @@ $font-color:rgba(109, 109, 109, 0.877);
             border-radius: 5px;
             text-align: center;
         }
-        /*全てのリスト・リンク共通*/
         .shopping_list_settings li {
             list-style: none;
             position: relative;
         }
         .shopping_list_settings li a {
             background: rgba(65, 155, 13, 0.39);
-            border-radius: 3px;
             color:$font-color;
             display: block;
             height: 2rem;
@@ -177,7 +144,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             text-align: center;
             text-decoration: none;
             width: 100%;
-            padding: 5% 10%;
+            padding: 3% 10%;
         }
         .shopping_list_settings li li {
             height: 0;
@@ -185,94 +152,47 @@ $font-color:rgba(109, 109, 109, 0.877);
             transition: .3s;
         }
         .shopping_list_settings li li a {
-            border-top: 2px solid #eee;
+            border-top: solid 2px #eee;
         }
         .shopping_list_settings li:hover > ul > li {
-            height: 2rem;
+            height: 2.5rem;
             overflow: visible;
         }
 
     .edit_shopping_list {
-        @include centered;
-        background: white;
-        width: 900px;
-        height: 700px;
+        background: #F9F9F9;
+        font:100 2vmin $base_font;
+        width: 70%;
+        height: 80%;
         border-radius: 10px;
         box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
-        position: fixed;
         transition: .3s;
-            &.hidden {
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(-100px);
-            }
+        margin: 0 auto;
     }
-        //タイトル
-        .section_title{
-            background: $color;
-            border-radius: 10px 10px 0 0;
-            margin: 0;
-            padding: 8px;
-            color: white;
-            font: 900 25px $base_font1;
-            text-align: center;
-            
-            span {
-            display: block;
-            width: 26px; 
-            height: 26px;
-            border-radius: 50%;
-            position: absolute;
-            top: 7px;
-            right: 7px;
-            cursor: pointer;
-            transition: .2s;    
-            &:hover {
-                background-color: rgba(white, .2);     }
-            }
-        }
-
-        section {
-            height: 650px;
-            overflow: scroll;
-        }
+    //タイトル
+    section {
+        height: 650px;
+        background-color: #FFFFFF;
+        overflow: scroll;
+    }
     
     .edit_sub_title {
         width: 40%;
         margin: 3% auto;
         color: $font-color;
-        font: 600 4vmin $base_font1;
+        font: 600 2vmin $base_font;
+        text-align: center;
     }
 
     .edit_shopping_list_form {
-        width: 450px;
-        margin:10px auto;
+        width: 70%;
+        margin: 2% auto;
         color: $font-color;
         font-size: 17px;
-        font-family: $base_font1;
+        font-family: $base_font;
     }
         .shopping_seasonings {
             padding: 2% 0;
-        }
-
-        .amount_form {
-            width: 100px;
-            padding: 5px 0;
-            margin: 10px auto;
-            border: none;
-            border-bottom: dotted 0.5px #808080;
-            font-size: 17px;
-            transition: all 0.3s;
-            &:focus, &:valid {
-                background-position: 0 0;
-                outline: none;
-                
-                ~label {
-                top: -12px;
-                color: $color;
-                font: 700 12px Roboto;
-                }
-            }
         }
 
         .edit_form_btn {
@@ -281,7 +201,7 @@ $font-color:rgba(109, 109, 109, 0.877);
             font-size: 1.2em;
             border: none;
             background: none;
-            color: $color;
+            color: rgba(65, 155, 13, 0.39);
             outline : none;
             display: inline-block;
             vertical-align: middle;
@@ -289,16 +209,16 @@ $font-color:rgba(109, 109, 109, 0.877);
     
     
     .add_shoppinglist {
-            width: 400px;
-            margin: 10px auto 40px auto;
+            width: 80%;
+            margin: 2% auto 3%;
     }
         .add_shopping_list_btn {
             cursor: pointer;
             font-family: FontAwesome;
-            font-size: 1.8em;
+            font-size: 2vmin;
             border: none;
             background: none;
-            color: $color;
+            color: rgba(65, 155, 13, 0.39);
             outline : none;
             display: inline-block;
             vertical-align: middle;
@@ -306,16 +226,14 @@ $font-color:rgba(109, 109, 109, 0.877);
 
     .decision {
         display: block;
-        color: $color;
-        font-size: 22px;
-        font-family: $base_font1;
+        color: rgba(65, 155, 13, 0.881);
+        font:700 2vmin $base_font;
         text-align: center;
-        width: 200px;
-        padding: 5px 7px;
-        margin: 30px auto;
+        width: 25%;
+        padding: 1%;
+        margin: 3% auto;
         &:hover {
-            background-color: #038c2541;
-            border-radius: 10px;
+            border-bottom:double 5px #038c2594;
             }
     }
 
@@ -331,4 +249,3 @@ $font-color:rgba(109, 109, 109, 0.877);
             outline: 0;
             }
     }
-    

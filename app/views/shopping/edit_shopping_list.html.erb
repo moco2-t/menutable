@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shopping List</title>
 </head>
 <body>
-    <div class="overlay">
-        <div class="close_btn"><%= link_to("×","/shopping/index")%></div>
         <div class="edit_shopping_list">
             <div class="section_title">Edit shopping list</div>
             <section>
@@ -25,10 +22,10 @@
                     <%shopping_list().each do |item|%>
                         <tr>
                             <td>
-                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
-                                    <%= f.hidden_field :start_date, value: params[:start_date] %>
-                                    <%= f.hidden_field :end_date, value: params[:end_date] %>
-                                    <%= f.button type:"submit", class:"edit_form_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
+                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f1|%>
+                                    <%= f1.hidden_field :start_date, value: params[:start_date] %>
+                                    <%= f1.hidden_field :end_date, value: params[:end_date] %>
+                                    <%= f1.button type:"submit", class:"edit_form_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
                                 <%end%>
                             </td>
                             <td>
@@ -52,10 +49,10 @@
                     <%shopping_seasoning().each do |item|%>
                         <tr>
                             <td class='shopping_seasonings'>
-                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f|%>
-                                    <%= f.hidden_field :start_date, value: params[:start_date] %>
-                                    <%= f.hidden_field :end_date, value: params[:end_date] %>
-                                    <%= f.button type:"submit",class:"edit_form_btn" , data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
+                                <%= form_with url:"/shopping/#{item.id}/delete",method: :delete do |f3|%>
+                                    <%= f3.hidden_field :start_date, value: params[:start_date] %>
+                                    <%= f3.hidden_field :end_date, value: params[:end_date] %>
+                                    <%= f3.button type:"submit",class:"edit_form_btn" , data: { confirm: "削除してよろしいですか?"} do%><i class="far fa-trash-alt"></i><%end%>
                                 <%end%>
                             </td>
                             <td>
@@ -67,22 +64,22 @@
                 <br>
                 <div class="edit_sub_title">Add to list</div>
                     <table class="add_shoppinglist">
-                        <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f3| %>
-                            <%= f3.hidden_field :start_date, value: params[:start_date] %>
-                            <%= f3.hidden_field :end_date, value: params[:end_date] %>
+                        <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f| %>
+                            <%= f.hidden_field :start_date, value: params[:start_date] %>
+                            <%= f.hidden_field :end_date, value: params[:end_date] %>
                             <td>
                                 <div class="form-input-select"> 
-                                    <%= f3.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                                    <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
                                 </div>
                             </td>
                             <td>
                                 <div class ="listing-product-detail__category"></div>
                             </td>
                             <td>
-                                <%= f3.text_field :amount ,class:"amount_form"%>
+                                <%= f.text_field :amount ,class:"amount_form"%>
                             </td>
                             <td>
-                                <%= f3.button type:"submit",class:"add_shopping_list_btn" do %><i class="fas fa-folder-plus"></i><%end%>
+                                <%= f.button type:"submit",class:"add_shopping_list_btn" do %><i class="fas fa-folder-plus"></i><%end%>
                             </td>
                         <%end%>
                     </table>

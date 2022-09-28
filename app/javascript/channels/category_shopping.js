@@ -25,13 +25,13 @@ document.addEventListener('turbolinks:load', function () {
       var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
-          url: '/recipes/get_category_children',
+          url: '/shopping/get_category_children',
           type: 'GET',
           data: { category: parentCategory },
           dataType: 'json'
         })
         .done(function(children){
-          $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+          $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
           $('#grandchildren_wrapper').remove();
           $('#size_wrapper').remove();
           $('#brand_wrapper').remove();

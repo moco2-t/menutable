@@ -1,51 +1,85 @@
 <!DOCTYPE html>
 <html lang="ja">
-<br>
+<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>材料登録</title>
 </head>
 <body>
-    <div class="overlay">
-        <div class="close_btn">
-            <%= link_to "/recipes/index" do %><i class="fas fa-times"></i><%end%>
-        </div>
+    <article>
         <div class="new_ingredients_table">
             <div class="section_title">Add Material</div>
-            <div class="main_contents">
-                <%= form_with url:"/recipes/create_materials" do |f| %>
-                    <table class="choose_ingredients">
-                        <tr>
-                            <th></th>
-                            <th>Choices</th>
-                            <th>Qunatity</th>
-                        </tr>
-                            <%= @automaticsearch_ingredient %>
-                                <%@ingredients.each do |i|%>
-                                    <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
-                                    <%unless @foodlist.blank?%>
-                                    <tr>
-                                        <td>
-                                            <h1 class="foodname"><%= i.foodname%></h1>
-                                        </td>
-                                        <td>
-                                            <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
-                                        </td>
-                                        <td>
-                                            <%= i.amount%>
-                                        </td>
-                                    </tr>
-                                    <%end%>
-                                <%end%>
-                    </table>
-                    <%= f.hidden_field :recipe_id, value: params[:id] %>
-                    <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
-                    <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
+            <div class="p_explanation">候補から各食材１つを選択してください</div>
+            <%= form_with url:"/recipes/create_materials" do |f| %>
+                <table class="ingredients_list">
+                    <tr>
+                        <th>材料名</th>
+                        <th>候補</th>
+                        <th>分量</th>
+                    </tr>
+                <%= @automaticsearch_ingredient %>
+                <% @ingredients.each do |i|%>
+                <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{i.foodname}%","%#{i.foodname}%")%>
+                    <%unless @foodlist.blank?%>
+                    <tr>
+                        <td>
+                            <div class="foodname"><%= i.foodname%></div>
+                        </td>
+                        <td>
+                            <%= f.collection_check_boxes :food_ids, @foodlist, :id, :name, include_hidden:false, multiple: true %>
+                        </td>
+                        <td>
+                            <%= i.amount%>
+                        </td>
+                    </tr>
+                    <%end%>
                 <%end%>
-            </div>
+                </table>
+                <%= f.hidden_field :recipe_id, value: params[:id] %>
+                <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
+                <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
+            <%end%>
+            <div class="p_explanation">以下は選択候補が絞れなかった食材です。<br>カテゴリー選択し該当する食材を登録してください</div>
+            <table class="ingredients_list">
+                <tr>
+                    <th>材料名</th>
+                    <th>分量</th>
+                </tr>
+                <% @ingredients.each do |m|%>
+                <% @foodlist = Food.where("name LIKE ? OR keyword LIKE ?","%#{m.foodname}%","%#{m.foodname}%")%>
+                    <%if @foodlist.empty?%>
+                        <tr>
+                            <td><%= m.foodname%></td>
+                            <td><%= m.amount%></td>
+                        </tr>
+                    <%end%>
+                <%end%>
+            </table>
+          <!-- 材料リストの追加 -->
+          <div class="add_material">
+              <%=form_with url:"/recipes/create_manual_materials", id:"add_form",class:"add_form" do |f| %>
+                <table class="add_material_table">
+                  <tr>
+                    <td><%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%></td>
+                  </tr>
+                  <tr>
+                    <td><div class ="listing-product-detail__category"></div></td>
+                  </tr>
+                </table>
+                <div class="material_amount_form">
+                    分量：<%= f.text_field :amount, size:20, class:"amount_form"%></td>
+                </div>
+                <%= f.hidden_field :kind, value: "new_material" %>
+                <%= f.hidden_field :recipe_id, value: params[:id] %>
+                <%= f.button type:"submit",class:"create_material_btn", onclick:'add()' do %><i class="fas fa-folder-plus"></i> Add<%end%>
+              <%end%>
+          </div>
+            <%= link_to "/recipes/#{params[:id]}",class:"recipe_show_link" do %>登録終了<%end%>
+        <br>
         </div>
-    </div>
+     </article>
 </body>
 </html>

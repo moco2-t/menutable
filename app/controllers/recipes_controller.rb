@@ -33,7 +33,6 @@ include Converter
                     )
                 @created_ingredient.save
             end
-            flash[:notice]="登録"
             redirect_to("/recipes/show_food_choices/#{@created_recipe.id}/")
         else
             flash[:notice] = "登録に失敗しました"
@@ -50,15 +49,11 @@ include Converter
                     @automaticsearch_ingredients << m.amount    #foodテーブルに該当するもの
                 end
         end
-    end
-
-    def show_food_choices_by_category
-        @ingredients= Ingredient.where(recipe_id:params[:id])
         @registered_material = Material.where(recipe_id: params[:id]) 
         @category_parent_array = ["-- category --"]
         #データベースから、親カテゴリーのみ抽出し、配列化
             Food.where(unit:nil).each do |parent|
-            @category_parent_array << parent.name
+                @category_parent_array << parent.name
             end
     end
 
@@ -67,7 +62,6 @@ include Converter
         @category_children = Food.find_by(name: params[:category]).children
     end
     
-
     def create_materials #materialレコードの作成
         @recipe_id = params[:recipe_id]
         food_ids = params[:food_ids]
@@ -85,8 +79,8 @@ include Converter
                     quantity: @quantity
                     )
             end        
-            flash[:notice]="登録"
-            redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
+            flash[:notice]="材料登録しました"
+            redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
         else
             flash[:notice] = "登録に失敗しました"
             render("recipes#show_food_choices")
@@ -106,11 +100,11 @@ include Converter
             )
         
         if params[:kind] === "edit_material"
-            flash[:notice]="登録"
-            redirect_to ("/recipes/#{params[:recipe_id]}/edit_material")
+            flash[:notice]="材料編集をしました"
+            redirect_to "/recipes/#{params[:recipe_id]}/edit_material"
         elsif params[:kind] === "new_material"
-            flash[:notice]="登録"
-            redirect_to recipes_show_food_choices_by_category_path(id:params[:recipe_id])
+            flash[:notice]="材料登録しました"
+            redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
         end
     end
 
