@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -10,40 +8,38 @@
     <title>Account</title>
 </head>
 <body>
-<div class="overlay">
-    <div class="close_btn"><%= link_to("×","/")%></div>
-    <div class="account_table">
-        <h1 class="title_account">
-            <i class="far fa-user-circle"></i>Account
-        </h1>
-        <br>
-            <%if @user %>
-                <% @user.errors.full_messages.each do |message| %>
-                    <div class="form-error">
-                        <p><%= message %></p>
-                    </div>
-                <% end %>
-            <%end%>
+    <div class="input_table">
+        <div class="input_table_title">Account<%= link_to "/",class:"close_btn" do %><i class="fa-solid fa-xmark"></i><%end%></div>
+        <%if @user %>
+            <% @user.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                    <p><%= message %></p>
+                </div>
+            <% end %>
+        <%end%>
+        <div class="account_main">
             <%= form_with url:"/users/create",class:"input_form" do |f|%>
                 <table class="account_form">
                     <tr>
                         <td>
-                            <h2 class="label">ID</h2>
+                            <div class="label">ID</div>
+                        </td>
+                        <td>
                             <%= f.text_field :login_id , value:@login_id , class:"input" %>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h2 class="label">Password</h2>
+                            <div class="label">Password</div>
+                        </td>
+                        <td>
                             <%= f.password_field :password , value:@password , class:"password_input"%>
                         </td>
                     </tr>
-                    <tr>
-                        <td><%= f.submit '登録', class:"account_form_btn" %></td>
-                    </tr>
                 </table>
+                <%= f.submit '登録', class:"user_form_btn" %>
             <%end%>
+        </div>
     </div>
-<div>
 </body>
 </html>

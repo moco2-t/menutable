@@ -7,32 +7,32 @@
   <title>ユーザー詳細</title>
 </head>
 <body>
-<div>
-<div class="account_table">
-    <h1 class="title_account">
-        <i class="far fa-user-circle"></i>User設定
-    </h1>
-    <div class="user_date">
-        <table>
+<div class="input_table">
+    <div class="input_table_title"><i class="far fa-user-circle"></i>User設定<%= link_to top_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+    <div class="account_show_main">
+        <table class="user_date">
             <tr>
                 <td>
                     <div class="label">ID</div>
+                </td>
+                <td>
                     <div class="user_date_label"><%= @current_user.login_id %></div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="label">Password</div>
+                </td>
+                <td>
                     <div class="user_date_label">-----</div>
                 </td>
             </tr>
         </table>
-        <div class="show-list">
-            <%= link_to "編集","/users/#{@current_user.id}/edit" , class:"edit_btn" %>
-            <%= link_to "削除", "/users/delete", class:"delete_btn" , method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %>
+        <div class="show_list">
+            <%= link_to "編集","/users/#{@current_user.id}/edit" , class:"show_list_link" %>
+            <%= link_to "削除", "/users/delete", class:"show_list_link" , method: :delete, data: { confirm: "アカウントを削除してよろしいですか?"} %>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

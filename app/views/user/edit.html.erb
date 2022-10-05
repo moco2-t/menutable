@@ -7,33 +7,36 @@
   <title>アカウント設定編集</title>
 </head>
 <body>
-    <div class="close_btn"><%= link_to("×","/top")%></div>
-        <div class="account_table">
-            <h1 class="title_account"><i class="fas fa-user-edit"></i>アカウント編集</h1> 
-                <div class="form-error">
-                    <% @current_user.errors.full_messages.each do |message| %>
-                        <%= message %>
-                    <% end %>
-                </div>
+    <div class="input_table">
+        <div class="input_table_title"><i class="fas fa-user-edit"></i>アカウント編集<%= link_to "/users/#{@current_user.id}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div> 
+            <div class="form-error">
+                <% @current_user.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+            </div>
+            <div class="account_edit_main">
                 <%= form_with url:"/users/update" do |f|%>
                     <table class="account_form">
                         <tr>
                             <td>
-                                <h2 class="label">Login ID　</h2>
+                                <div class="label">ID</div>
+                            </td>
+                            <td>
                                 <%= f.text_field :login_id ,value:@current_user.login_id , class:"input"%>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <h2 class="label">Password　</h2>
-                                <%= f.password_field :password , class:"password_input"%>
+                                <div class="label">Password</div>
+                            </td>
+                            <td>
+                                <%= f.password_field :password, class:"password_input"%>
                             </td>
                         </tr>
-                        <tr>
-                            <td><%= f.submit 'Update', class:"update_btn"%></td>
-                        </tr>
                     </table>
-                <% end %> 
-        </div>
+                    <%= f.submit '変更', class:"user_form_btn"%>
+                <% end %>
+            </div>
+    </div>
 </body>
 </html>

@@ -1,12 +1,4 @@
 @charset "UTF-8";
-.edit_recipe_table {
-  display: block;
-  background-color: #fff;
-  width: 50%;
-  margin: 10% auto;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
-}
-
 .update_recipe_form {
   display: block;
   color: #5F5F5F;
@@ -44,34 +36,15 @@
   font: 200 2vmin "丸明オールド";
 }
 
-.update_recipe_submit_btn {
-  display: inline-block;
-  background: #6fefc147;
-  font: 200 2vmin "丸明オールド";
-  width: 70%;
-  height: 40%;
-  padding-top: 7px;
-  margin: 2% auto 5% auto;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-  color: #5F5F5F;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-.update_recipe_submit_btn:hover {
-  transform: translateY(-3px);
-}
-
 .edit_material {
-  display: block;
-  position: relative;
-  background: #FFF;
-  width: 60%;
-  height: 80%;
-  margin: 10% auto;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  font: 100 2vmin "丸明オールド";
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
   transition: 0.3s;
+  margin: 5% auto;
 }
 
 .main_contents {
@@ -173,22 +146,5 @@
 .edit_add_material_input:focus ~ label, .edit_add_material_input:valid ~ label {
   top: -12px;
   color: #6fefc147;
-  font: 700 12px Roboto;
-}
-
-.edit_add_material_btn {
-  display: block;
-  background: #6fefc147;
-  width: 80%;
-  padding: 2%;
-  margin: 7% auto 15%;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-  color: #5F5F5F;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-.edit_add_material_btn:hover {
-  transform: translateY(-3px);
+  font: 700 12px "丸明オールド";
 }

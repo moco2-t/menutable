@@ -21,16 +21,6 @@
   margin: 5% auto;
 }
 
-.section_title {
-  background: rgba(111, 239, 193, 0.28);
-  border-radius: 10px 10px 0 0;
-  margin: 0;
-  padding: 8px;
-  color: #5F5F5F;
-  font: 900 3vmin "丸明オールド";
-  text-align: center;
-}
-
 .central_part {
   margin: 2% auto;
 }
@@ -90,18 +80,19 @@
 }
 
 .sub_title_shopping_list {
-  width: 50%;
+  width: 80%;
   margin: 3% 0 0;
-  font: 900 4vmin "丸明オールド";
+  font: 900 3vmin "丸明オールド";
   color: #5F5F5F;
   display: inline-block;
 }
 
 .shoppinglist_date {
   width: 70%;
-  margin: 2% 0;
-  font: 100 3vmin "丸明オールド";
+  margin: 2% auto;
+  font: 100 2vmin "丸明オールド";
   color: #5F5F5F;
+  text-align: center;
 }
 
 .shopping_list {
@@ -175,30 +166,45 @@
   margin: 0 auto;
 }
 
-section {
-  height: 650px;
-  background-color: #FFFFFF;
-  overflow: scroll;
-}
-
 .edit_sub_title {
   width: 40%;
   margin: 3% auto;
   color: #5F5F5F;
-  font: 600 2vmin "丸明オールド";
+  font: 500 3vmin "丸明オールド";
   text-align: center;
 }
 
 .edit_shopping_list_form {
   width: 70%;
   margin: 2% auto;
+  font: 200 1em "丸明オールド";
   color: #5F5F5F;
-  font-size: 17px;
-  font-family: "丸明オールド";
+}
+.edit_shopping_list_form th {
+  color: rgba(65, 155, 13, 0.881);
 }
 
 .shopping_seasonings {
   padding: 2% 0;
+}
+
+.shopping_amount_form {
+  width: 150px;
+  padding: 3px 0;
+  margin: 3px auto;
+  border: none;
+  border-bottom: dotted 0.5px #808080;
+  font-size: 2vmin;
+  transition: all 0.3s;
+}
+.shopping_amount_form:focus, .shopping_amount_form:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.shopping_amount_form:focus ~ label, .shopping_amount_form:valid ~ label {
+  top: -12px;
+  color: rgba(111, 239, 193, 0.28);
+  font: 300 2vmin "丸明オールド";
 }
 
 .edit_form_btn {
@@ -207,15 +213,16 @@ section {
   font-size: 1.2em;
   border: none;
   background: none;
-  color: rgba(65, 155, 13, 0.39);
+  color: #5F5F5F;
   outline: none;
   display: inline-block;
   vertical-align: middle;
 }
 
 .add_shoppinglist {
-  width: 80%;
+  width: 60%;
   margin: 2% auto 3%;
+  text-align: center;
 }
 
 .add_shopping_list_btn {
@@ -224,23 +231,10 @@ section {
   font-size: 2vmin;
   border: none;
   background: none;
-  color: rgba(65, 155, 13, 0.39);
+  color: #5F5F5F;
   outline: none;
   display: inline-block;
   vertical-align: middle;
-}
-
-.decision {
-  display: block;
-  color: rgba(65, 155, 13, 0.881);
-  font: 700 2vmin "丸明オールド";
-  text-align: center;
-  width: 25%;
-  padding: 1%;
-  margin: 3% auto;
-}
-.decision:hover {
-  border-bottom: double 5px #038c2594;
 }
 
 .shopping_select_date {

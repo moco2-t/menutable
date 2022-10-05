@@ -9,10 +9,9 @@
     <title>材料登録</title>
 </head>
 <body>
-    <article>
-        <div class="new_ingredients_table">
-            <div class="section_title">Add Material</div>
-            <div class="p_explanation">候補から各食材１つを選択してください</div>
+    <div class="input_table_2">
+        <div class="input_table_title">Add Material<%= link_to recipes_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="p_explanation">候補から各食材１つを選択してください</div>
             <%= form_with url:"/recipes/create_materials" do |f| %>
                 <table class="ingredients_list">
                     <tr>
@@ -40,7 +39,7 @@
                 </table>
                 <%= f.hidden_field :recipe_id, value: params[:id] %>
                 <%= f.hidden_field :amounts, value: @automaticsearch_ingredients%>
-                <%= f.button type:"submit",class:"create_material_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
+                <%= f.button type:"submit",class:"material_submit_btn" do %><i class="fas fa-folder-plus"></i> Add<%end%>
             <%end%>
             <div class="p_explanation">以下は選択候補が絞れなかった食材です。<br>カテゴリー選択し該当する食材を登録してください</div>
             <table class="ingredients_list">
@@ -64,8 +63,6 @@
                 <table class="add_material_table">
                   <tr>
                     <td><%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%></td>
-                  </tr>
-                  <tr>
                     <td><div class ="listing-product-detail__category"></div></td>
                   </tr>
                 </table>
@@ -74,12 +71,10 @@
                 </div>
                 <%= f.hidden_field :kind, value: "new_material" %>
                 <%= f.hidden_field :recipe_id, value: params[:id] %>
-                <%= f.button type:"submit",class:"create_material_btn", onclick:'add()' do %><i class="fas fa-folder-plus"></i> Add<%end%>
+                <%= f.button type:"submit",class:"material_submit_btn", onclick:'add()' do %><i class="fas fa-folder-plus"></i> Add<%end%>
               <%end%>
-          </div>
-            <%= link_to "/recipes/#{params[:id]}",class:"recipe_show_link" do %>登録終了<%end%>
-        <br>
         </div>
-     </article>
+        <%= link_to "/recipes/#{params[:id]}",class:"recipe_show_link" do %>登録終了<%end%>
+    </div>
 </body>
 </html>

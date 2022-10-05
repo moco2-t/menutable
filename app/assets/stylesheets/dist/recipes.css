@@ -1,0 +1,490 @@
+@charset "UTF-8";
+.create_recipe_form {
+  width: 80%;
+  margin: 5% auto;
+  display: block;
+}
+
+.create_recipe_input {
+  display: inline-block;
+  width: 80%;
+  padding: 1% 0;
+  margin: 3% auto;
+  border: none;
+  border-bottom: dotted 1px #5F5F5F;
+  font: 200 2vmin "丸明オールド";
+  transition: all 0.3s;
+}
+.create_recipe_input:focus, .create_recipe_input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.create_recipe_input:focus ~ label, .create_recipe_input:valid ~ label {
+  top: -12px;
+  color: rgba(111, 239, 193, 0.28);
+  font: 700 2vmin "丸明オールド";
+}
+
+.create_recipe_attention {
+  color: crimson;
+  font: 100 2vmin "丸明オールド";
+  width: 35%;
+  margin: 1% auto;
+}
+
+.p_explanation {
+  width: 80%;
+  margin: 1% auto;
+  font: 200 2vmin "丸明オールド";
+  color: #5F5F5F;
+}
+
+.ingredients_list {
+  border-collapse: collapse;
+  width: 70%;
+  margin: 3% auto;
+  text-align: center;
+}
+.ingredients_list th {
+  color: #098402;
+  /*文字色*/
+  padding: 6px 10px;
+}
+.ingredients_list td {
+  padding: 6px 10px;
+  margin: 1% 2%;
+  font: 100 2vmin "丸明オールド";
+  color: #5F5F5F;
+}
+
+.foodname {
+  font: 500 2vmin "丸明オールド";
+  color: #5F5F5F;
+}
+
+.add_material {
+  width: 100%;
+  margin: 1% auto;
+  padding: 1%;
+  font: 100 1vmin "丸明オールド";
+}
+
+.add_material_table {
+  width: 50%;
+  margin: 3% auto;
+  font: 100 2vmin "丸明オールド";
+}
+
+.listing-select-wrapper__box--select {
+  width: 100%;
+  height: 40%;
+  margin: 2% auto;
+  padding: 1%;
+  border-color: #038C25;
+  text-align: center;
+  background: #fff;
+  font: 100 2vmin "丸明オールド";
+  color: #5F5F5F;
+}
+
+.material_amount_form {
+  width: 40%;
+  margin: 0 auto;
+  font: 400 2vmin "丸明オールド";
+}
+
+.amount_form {
+  width: 50%;
+  padding: 5px 0;
+  margin: 10px auto;
+  border: none;
+  border-bottom: dotted 0.5px #808080;
+  font-size: 2vmin;
+  transition: all 0.3s;
+}
+.amount_form:focus, .amount_form:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.amount_form:focus ~ label, .amount_form:valid ~ label {
+  top: -12px;
+  color: rgba(111, 239, 193, 0.28);
+  font: 300 2vmin "丸明オールド";
+}
+
+.recipe_show_link {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  margin: 5% 25%;
+  font: 500 2vmin "丸明オールド";
+  letter-spacing: 10px;
+  color: #5F5F5F;
+}
+.recipe_show_link:hover {
+  background-color: rgba(4, 179, 48, 0.445);
+}
+
+.edit_recipe_table {
+  background: #ffffff;
+  font: 100 2vmin "丸明オールド";
+  width: 50%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+  margin: 5% auto;
+}
+
+.update_recipe_form {
+  display: block;
+  color: #5F5F5F;
+  width: 80%;
+  margin: 5% auto;
+}
+.update_recipe_form td {
+  padding: 1% 10%;
+}
+
+.update_recipe_label {
+  font: 800 2vmin "丸明オールド";
+}
+
+.update_recipe_input {
+  background: linear-gradient(to bottom, transparent 95%) no-repeat;
+  background-position: -300px 0;
+  background-size: 100%;
+  display: block;
+  width: 100%;
+  padding: 2% 0;
+  border: none;
+  border-bottom: dotted 0.5px #808080;
+  font: 200 2vmin "丸明オールド";
+  color: #5F5F5F;
+  transition: all 0.3s;
+}
+.update_recipe_input:focus, .update_recipe_input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.update_recipe_input:focus ~ label, .update_recipe_input:valid ~ label {
+  top: -12px;
+  color: #6fefc147;
+  font: 200 2vmin "丸明オールド";
+}
+
+.edit_material {
+  background: #ffffff;
+  font: 100 2vmin "丸明オールド";
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+  margin: 5% auto;
+}
+
+.main_contents {
+  height: 90%;
+  overflow: scroll;
+  -ms-overflow-style: none;
+}
+.main_contents::-webkit-scrollbar {
+  display: none;
+}
+
+.sub_title {
+  color: #5F5F5F;
+  font: 400 3vmin "丸明オールド";
+  width: 60%;
+  margin: 3% 10%;
+}
+
+.edit_material_form {
+  width: 80%;
+  margin: 3% auto;
+  border-collapse: collapse;
+}
+.edit_material_form th {
+  font: 500 2vmin "丸明オールド";
+  color: #098402;
+  padding: 2px 0;
+}
+.edit_material_form td {
+  font: 200 2vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+  padding: 2px 0;
+}
+
+.edit_material_input {
+  display: block;
+  width: 80%;
+  margin: 2% auto;
+  border: none;
+  border-bottom: dotted 0.5px #808080;
+  font: 200 2vmin "丸明オールド";
+  color: #5F5F5F;
+  transition: all 0.3s;
+}
+.edit_material_input:focus, .edit_material_input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.edit_material_input:focus ~ label, .edit_material_input:valid ~ label {
+  top: -12px;
+  color: #6fefc147;
+  font: 700 12px Roboto;
+}
+
+.material_delete_btn, .update_material_btn {
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.6em;
+  border: none;
+  background: none;
+  color: #5F5F5F;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.edit_add_material {
+  width: 50%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+.listing-select-wrapper__box--select {
+  width: 180px;
+  height: 25px;
+  margin: 3% auto;
+  padding: 1px;
+  border-color: #038C25;
+  border-radius: 3px;
+  text-align: center;
+  background: #fff;
+}
+
+.edit_add_material_input {
+  display: inline-block;
+  width: 200px;
+  padding: 5px 0;
+  margin: 3% auto;
+  border: none;
+  border-bottom: dotted 0.5px #808080;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+.edit_add_material_input:focus, .edit_add_material_input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.edit_add_material_input:focus ~ label, .edit_add_material_input:valid ~ label {
+  top: -12px;
+  color: #6fefc147;
+  font: 700 12px Roboto;
+}
+
+.edit_add_material_btn {
+  display: block;
+  background: #6fefc147;
+  width: 80%;
+  padding: 2%;
+  margin: 7% auto 15%;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #5F5F5F;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.edit_add_material_btn:hover {
+  transform: translateY(-3px);
+}
+
+.search_form {
+  width: 60%;
+  margin: 0 auto;
+  padding: 1% 0;
+  text-align: center;
+}
+
+.recipe_label {
+  color: #5F5F5F;
+  font: 800 2vmin "丸明オールド";
+}
+
+.search_input {
+  display: inline;
+  width: 30%;
+  padding: 2% 0;
+  margin: 5%;
+  border: none;
+  border-bottom: dotted 1px #5F5F5F;
+  font-size: 2vmin;
+  transition: all 0.3s;
+}
+.search_input:focus, .search_input:valid {
+  background-position: 0 0;
+  outline: none;
+}
+.search_input:focus ~ label, .search_input:valid ~ label {
+  top: -12px;
+  color: #6fefc147;
+  font: 700 2vmin "丸明オールド";
+}
+
+.search_submit {
+  font-family: FontAwesome;
+  font-size: 3vmin;
+  border: none;
+  background: none;
+  color: rgba(78, 154, 126, 0.852);
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.search_recipeslist, .all_recipeslist {
+  color: #5F5F5F;
+  font: 100 2vmin "丸明オールド";
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search_recipeslist td, .all_recipeslist td {
+  padding: 0.5%;
+}
+
+.recipes_link {
+  text-decoration: none;
+}
+.recipes_link:hover {
+  padding: 0.5%;
+  background-color: rgba(152, 154, 154, 0.549);
+}
+
+.recipe_settings {
+  width: 100%;
+  margin: 1%;
+  padding: 2%;
+}
+
+.recipe_settings li {
+  position: relative;
+  display: inline;
+  color: #4e9a7e;
+  line-height: 2em;
+  margin: 3% 0%;
+}
+
+.recipe_settings_link {
+  padding: 1% 2%;
+  text-decoration: none;
+  background-color: rgba(78, 154, 126, 0.356);
+  border-radius: 3px;
+}
+.recipe_settings_link:hover {
+  background-color: #FFFFFF;
+  border: solid 1px rgba(78, 154, 126, 0.542);
+}
+
+.recipe_detail {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.recipe_detail h2 {
+  margin: 5% 0 3% 10%;
+  font: 500 3vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+}
+
+.recipe_detail_table {
+  width: 60%;
+  margin: 2% auto 4% auto;
+}
+.recipe_detail_table th {
+  font: 600 2vmin "丸明オールド";
+  color: #4e9a7e;
+  padding: 3%;
+}
+.recipe_detail_table td {
+  font: 200 2vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+}
+
+.show_section {
+  width: 48%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.list_title {
+  width: 55%;
+  font: 800 2vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+  margin: 2% auto;
+}
+
+.materials_list {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 10% 8%;
+  font-size: 2vmin;
+}
+.materials_list th {
+  color: white;
+  /*文字色*/
+  background: rgba(78, 154, 126, 0.852);
+  padding: 3% 5%;
+}
+.materials_list td {
+  padding: 3% 5%;
+  font: 200 2vmin "丸明オールド";
+  text-align: center;
+}
+
+.material_submit_btn {
+  display: block;
+  background: rgba(78, 154, 126, 0.356);
+  width: 40%;
+  height: 15%;
+  padding: 1%;
+  margin: 5% auto;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #5F5F5F;
+  font-size: 2vmin;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.material_submit_btn:hover {
+  transform: translateY(-3px);
+}
+
+.recipes_submit_btn {
+  display: block;
+  background: rgba(78, 154, 126, 0.356);
+  width: 80%;
+  height: 20%;
+  padding: 1% 0;
+  margin: 5% auto;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  color: #5F5F5F;
+  font-size: 2vmin;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.recipes_submit_btn:hover {
+  transform: translateY(-3px);
+}

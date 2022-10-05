@@ -6,9 +6,8 @@
     <title>Edit recipe</title>
 </head>
 <body>
-<article>
-    <div class="edit_recipe_table">
-        <div class="section_title">Edit recipe</div>
+    <div class="input_table">
+        <div class="input_table_title">Edit recipe<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
             <% if @edit_recipe %>
                 <% @edit_recipe.errors.full_messages.each do |message| %>
                     <div class="form-error">
@@ -42,15 +41,9 @@
                         <%= f.text_field :address ,:value=> recipe().address ,size:50,class:"update_recipe_input"%>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>      
-                        <%= f.button type:"submit",class:"update_recipe_submit_btn"%>
-                    </td>
-                </tr>
-            </table>
+            </table>      
+            <%= f.button type:"submit",class:"recipes_submit_btn"%>
         <% end %>
     </div>
-</article>
 </body>
 </html>

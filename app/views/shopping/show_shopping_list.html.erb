@@ -16,7 +16,7 @@
     </nav>
     <article>
         <div class="show_shopping_list">
-            <div class="sub_title_shopping_list"><i class="fas fa-tasks"></i>　Shopping List</div>
+            <div class="sub_title_shopping_list"><i class="fas fa-tasks"></i>　<%= params[:start_date]%>　〜　<%=params[:end_date]%></div>
                 <div class="setting">
                     <ul class="shopping_list_settings">
                         <li><%= link_to "#" do%><i class="fas fa-wrench"></i> Setting<%end%>
@@ -27,9 +27,6 @@
                         </li>
                     </ul>
                 </div>
-            <div class="shoppinglist_date">
-                <%= params[:start_date]%>　〜　<%=params[:end_date]%>
-            </div>
             <table class="shopping_list">
                 <tr>
                     <th> </th>

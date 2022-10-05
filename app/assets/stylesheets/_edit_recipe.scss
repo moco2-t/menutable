@@ -3,14 +3,6 @@ $color: #6fefc147;
 $font-color: #5F5F5F;
 
 //---- recipe_edit_recipe-----
-//編集テーブル
-.edit_recipe_table {
-    display: block;
-    background-color: #fff;
-    width: 50%;
-    margin: 10% auto;
-    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
-    }
 
 .update_recipe_form {
     display: block;
@@ -48,36 +40,18 @@ $font-color: #5F5F5F;
             }
         }
     }
-    .update_recipe_submit_btn {
-        display: inline-block;
-        background: $color;
-        font: 200 2vmin $base_font;
-        width: 70%;
-        height: 40%;
-        padding-top:7px;
-        margin: 2% auto 5% auto;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-        color: $font-color;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        &:hover { 
-            transform: translateY(-3px);
-        }
-    }
 
 //材料の編集
 .edit_material{
-    display: block;
-    position: relative;
-    background:#FFF;
-    width: 60%;
-    height: 80%;
-    margin: 10% auto;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    font:100 2vmin $base_font;
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     transition: .3s;
-    }
+    margin: 5% auto; 
+}
     .main_contents {
         height:90%;
         overflow: scroll;
@@ -176,23 +150,8 @@ $font-color: #5F5F5F;
             ~label {
             top: -12px;
             color: $color;
-            font: 700 12px Roboto;
+            font: 700 12px $base_font;
             }
         }
     }
-    .edit_add_material_btn {
-        display: block;
-        background: $color;
-        width: 80%;
-        padding: 2%;
-        margin: 7% auto 15%;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
-        color: $font-color;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        &:hover { 
-            transform: translateY(-3px);
-        }
-    }
+    
