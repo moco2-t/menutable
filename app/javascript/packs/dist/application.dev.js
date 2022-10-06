@@ -29,6 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require rails-ujs
 _ujs["default"].start();
 
 _turbolinks["default"].start();
