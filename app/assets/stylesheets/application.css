@@ -122,8 +122,8 @@ main {
 
 /*login before*/
     .index {
-        width: 40%;
-        height: 50%;
+        width: 50%;
+        height: 60%;
         margin: 15% auto;
         background: #FFFFFF;
     }
@@ -150,14 +150,14 @@ main {
         margin: 2% auto;
         padding: 5% 10%;
         font: 500 2vmin "丸明オールド";
-        background: rgba(111, 239, 193, 0.55);
+        background:rgba(72, 155, 125, 0.551);
         color: #5F5F5F;
         text-align: center;
-        border-radius: 10px;
+        border-radius: 5px;
         text-decoration:none; 
     }
         .login_link:hover {
-            border: solid 3px rgba(111, 239, 193, 0.55);
+            border: solid 2px rgba(72, 155, 125, 0.551);
             background-color: #FFFFFF;
         }
 
@@ -173,8 +173,9 @@ main {
 
 .form-error {
     color:red;
+    font:200 1vmin "丸明オールド";
     text-align: center;
-    font-size: 2vmin;
+    margin: 3% auto;
 }
 
 a {

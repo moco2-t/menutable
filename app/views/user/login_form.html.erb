@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>login</title>
 </head>
 <body>
-    <div class="input_tabale">
+    <div class="input_table">
       <div class="input_table_title">Login <%= link_to "/",class:"close_btn" do %><i class="fa-solid fa-xmark"></i><%end%></div>
         <% if @error_message %>
           <div class="form-error"><p><%= @error_message %></p></div>

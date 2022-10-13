@@ -11,7 +11,7 @@ def login
         flash[:notice]= "ログインしました"
         redirect_to("/top")
     else
-        @error_message="IDまたはパスワードが間違っています"
+        @error_message="IDまたはパスワードが違っています。再度入力してください。"
         @login_id = params[:login_id]
         @password = params[:password]
         render("user/login_form")

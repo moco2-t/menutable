@@ -88,3 +88,12 @@
 .show_list_link:hover {
   transform: translateY(-3px);
 }
+
+.note {
+  display: block;
+  font: 100 1vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+  width: 90%;
+  margin: 3% auto;
+}

@@ -96,3 +96,12 @@ $font-color: #5F5F5F;
             transform: translateY(-3px);
         }
     }
+
+    .note {
+        display: block;
+        font:100 1vmin $base_font;
+        color: $font-color;
+        text-align: center;
+        width: 90%;
+        margin: 3% auto;
+    }
