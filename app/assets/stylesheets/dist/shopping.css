@@ -155,6 +155,21 @@
   overflow: visible;
 }
 
+.shopping_list_btn {
+  cursor: pointer;
+  font: 100 2vmin "丸明オールド";
+  color: #5F5F5F;
+  text-align: center;
+  outline: none;
+  display: block;
+  width: 30%;
+  padding: 3% auto;
+  margin: 3% auto;
+  border: none;
+  border-radius: 10px;
+  background: rgba(78, 154, 126, 0.356);
+}
+
 .edit_shopping_list {
   background: #F9F9F9;
   font: 100 2vmin "丸明オールド";
@@ -189,9 +204,10 @@
 }
 
 .shopping_amount_form {
+  display: inline-block;
   width: 150px;
   padding: 3px 0;
-  margin: 3px auto;
+  margin: 1% auto;
   border: none;
   border-bottom: dotted 0.5px #808080;
   font-size: 2vmin;
@@ -225,16 +241,24 @@
   text-align: center;
 }
 
-.add_shopping_list_btn {
-  cursor: pointer;
-  font-family: FontAwesome;
-  font-size: 2vmin;
+.add_shopping_amount_form {
+  display: block;
+  width: 150px;
+  padding: 0;
+  margin: 1% auto;
   border: none;
-  background: none;
-  color: #5F5F5F;
+  border-bottom: dotted 0.5px #808080;
+  font-size: 2vmin;
+  transition: all 0.3s;
+}
+.add_shopping_amount_form:focus, .add_shopping_amount_form:valid {
+  background-position: 0 0;
   outline: none;
-  display: inline-block;
-  vertical-align: middle;
+}
+.add_shopping_amount_form:focus ~ label, .add_shopping_amount_form:valid ~ label {
+  top: -12px;
+  color: rgba(111, 239, 193, 0.28);
+  font: 300 2vmin "丸明オールド";
 }
 
 .shopping_select_date {

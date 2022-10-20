@@ -16,8 +16,9 @@
     <article>
         <div class="check_shopping_list">
             <div class="index_description">確認したい買い物リストの日付を選択してください。</div>
+            <div class="form-error"><%=flash[:error_view]%></div>   
                 <div class="shoppinglist_date">
-                    <%= form_with url:"/shopping/view" do |f| %>
+                    <%= form_with url:"/shopping/search" do |f| %>
                         <%= f.date_field :start_date,class:"shopping_select_date"%> 〜 <%= f.date_field :end_date,class:"shopping_select_date" %>
                         <%= f.button :type => "submit",class:"shopping_search_btn" do %><i class="fas fa-search"></i><% end %>
                     <% end %>

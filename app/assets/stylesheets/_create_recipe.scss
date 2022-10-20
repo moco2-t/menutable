@@ -32,23 +32,26 @@ $font-color: #5F5F5F;
     }
 //注意事項
 .create_recipe_attention {
-    color:crimson;
-    font: 100 2vmin $base_font;       
-    width: 35%;
-    margin: 1% auto;
+    display: block;
+    color: $font-color;
+    font: 100 1vmin $base_font;       
+    width: 40%;
+    margin: 5% auto 2%;
+    text-align: center;
 }
 
 .p_explanation {
     width: 80%;
     margin: 1% auto;
+    text-align: center;
     font: 200 2vmin $base_font;
     color: $font-color;
 }
 //材料登録フォーム
 .ingredients_list {
     border-collapse: collapse;
-    width: 70%;
-    margin: 3% auto;
+    width: 100%;
+    margin: 1% auto;
     text-align: center;
     //material登録フォームテーブル見出し
     & th {
@@ -72,18 +75,17 @@ $font-color: #5F5F5F;
 .add_material {
     width: 100%;
     margin: 1% auto;
-    padding: 1%;
     font: 100 1vmin $base_font;
 }
 .add_material_table {
     width: 50%;
-    margin: 3% auto;
+    margin: 0 auto;
     font: 100 2vmin $base_font;
 }
 .listing-select-wrapper__box--select{
     width: 100%;
     height: 40%;
-    margin: 2% auto;
+    margin: 0 auto;
     padding: 1%;
     border-color:#038C25;
     text-align:center;
@@ -94,6 +96,7 @@ $font-color: #5F5F5F;
 .material_amount_form {
     width: 40%;
     margin: 0 auto;
+    text-align: center;
     font: 400 2vmin $base_font;
 }
 .amount_form {
@@ -120,9 +123,12 @@ $font-color: #5F5F5F;
     width: 50%;
     text-align: center;
     margin: 5% 25%;
-    font: 500 2vmin $base_font;
+    padding: 1% 0;
+    font: 800 2vmin $base_font;
     letter-spacing: 10px;
     color: $font-color;
+    border: solid 1px rgba(4, 179, 48, 0.445);
+    border-radius: 5px;
         &:hover {
             background-color: rgba(4, 179, 48, 0.445);
         }

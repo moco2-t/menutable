@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">New Menu<%= link_to menu_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">Menu<%= link_to menu_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <div class="main_contents">
             <div class="search_and_registration_form">
                 <!--検索-->
@@ -16,13 +16,7 @@
                     <%= f.search_field :name_cont ,size:30,class:"recipe_search_field"%>
                     <%= f.button :type => "submit",class:"search_btn" do %><i class="fas fa-search"></i><% end %>
                 <% end %>
-                <% if @new_menu %>
-                    <% @new_menu.errors.full_messages.each do |message| %>
-                        <div class="form-error">
-                            <%= message %>
-                        </div>
-                    <% end %>
-                <% end %>
+                <div class="form-error"><%= flash[:new_menu_error]%></div>
                 <% if @results %>
                     <table class="menu_select">
                         <tr>

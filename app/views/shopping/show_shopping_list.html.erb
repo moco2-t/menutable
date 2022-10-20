@@ -11,7 +11,7 @@
         <div class="nav_title">Shopping</div>
         <div class="nav_menu">
             <li><%= link_to("買い物リスト作成","/shopping/create_shopping_list",class:"nav_menu_link")%></li>
-            <li><%= link_to("買い物リスト","/shopping/index",class:"nav_menu_link")%></li>
+            <li><%= link_to("買い物リスト検索","/shopping/index",class:"nav_menu_link")%></li>
         </div>
     </nav>
     <article>
@@ -21,7 +21,7 @@
                     <ul class="shopping_list_settings">
                         <li><%= link_to "#" do%><i class="fas fa-wrench"></i> Setting<%end%>
                             <ul>
-                                <li><%= link_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),data: {"turbolinks" => false}  do%><i class="far fa-edit"></i> 編集<%end%></li>
+                                <li><%= link_to shopping_edit_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]) do%>編集/削除<%end%></li>
                                 <li><%= link_to shopping_create_csv_path(format: :csv,start_date:params[:start_date],end_date:params[:end_date]) do %><i class="fas fa-file-csv"></i> CSV出力<% end %></li>                               
                             </ul>
                         </li>

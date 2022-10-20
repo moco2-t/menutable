@@ -12,6 +12,8 @@
         <div class="input_table_title">Edit shopping list <%= link_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
             <div class="edit_sub_title"><%= params[:start_date]%>〜<%=params[:end_date]%></div>
+            <%= link_to shopping_list_delete_path(start_date:params[:start_date],end_date:params[:end_date]), method: :delete, data: { confirm: "買い物リストのすべての項目を削除します。削除してよろしいですか?"} ,class:"shopping_list_btn" do%><i class="fa-solid fa-trash-can"> 買い物リスト削除</i><%end%>
+            <div class="form-error"><%= flash[:error_edit_shopping] %></div>
             <table class="edit_shopping_list_form">
                 <tr>
                     <th></th>
@@ -62,31 +64,27 @@
                 <%end%>
             </table>
             <br>
-            <div class="edit_sub_title">Add to list</div>
+            <div class="edit_sub_title"><i class="fa-solid fa-cart-plus"></i>  Add to list</div>
+                <div class="form-error"><%= flash[:alert] %></div>
+                <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f| %>
+                    <%= f.hidden_field :start_date, value: params[:start_date] %>
+                    <%= f.hidden_field :end_date, value: params[:end_date] %>
                 <table class="add_shoppinglist">
-                    <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f| %>
-                        <%= f.hidden_field :start_date, value: params[:start_date] %>
-                        <%= f.hidden_field :end_date, value: params[:end_date] %>
-                        <tr>
-                            <td>
-                                <div class="form-input-select"> 
-                                    <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
-                                </div>
-                                <div class ="listing-product-detail__category"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <%= f.text_field :amount ,class:"shopping_amount_form"%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <%= f.button type:"submit",class:"add_shopping_list_btn" do%><i class="fa-solid fa-circle-plus"></i> 追加<%end%>
-                            </td>
-                        </tr>
-                    <%end%>
+                    <tr>
+                        <td>
+                            <div class="form-input-select"> 
+                                <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}%>
+                            </div>
+                        </td>
+                        <td>    
+                            <div class ="listing-product-detail__category"></div>
+                        </td>
+                    </tr>
                 </table>
+                    <%= f.text_field :amount ,class:"add_shopping_amount_form"%>
+                    <%= f.button type:"submit",class:"shopping_list_btn" do%><i class="fa-solid fa-circle-plus"></i> 追加<%end%>
+                <%end%>
+            <br>
         </section>
     </div>
 </body>

@@ -151,6 +151,21 @@ $font-color: #5F5F5F;
             overflow: visible;
         }
 
+    .shopping_list_btn{
+        cursor: pointer;
+        font:100 2vmin $base_font;
+        color: $font-color;
+        text-align: center;
+        outline : none;
+        display: block;
+        width: 30%;
+        padding: 3% auto;
+        margin: 3% auto;
+        border: none;
+        border-radius: 10px;
+        background: rgba(78, 154, 126, 0.356);
+    }
+
     .edit_shopping_list {
         background: #F9F9F9;
         font:100 2vmin $base_font;
@@ -185,9 +200,10 @@ $font-color: #5F5F5F;
         }
 
         .shopping_amount_form {
+            display: inline-block;
             width: 150px;
             padding: 3px 0;
-            margin: 3px auto;
+            margin: 1% auto;
             border: none;
             border-bottom: dotted 0.5px #808080;
             font-size: 2vmin;
@@ -220,18 +236,26 @@ $font-color: #5F5F5F;
             margin: 2% auto 3%;
             text-align: center;
     }
-        .add_shopping_list_btn {
-            cursor: pointer;
-            font-family: FontAwesome;
-            font-size: 2vmin;
-            border: none;
-            background: none;
-            color: $font-color;
-            outline : none;
-            display: inline-block;
-            vertical-align: middle;
-        }
 
+        .add_shopping_amount_form {
+            display: block;
+            width: 150px;
+            padding: 0;
+            margin: 1% auto;
+            border: none;
+            border-bottom: dotted 0.5px #808080;
+            font-size: 2vmin;
+            transition: all 0.3s;
+            &:focus, &:valid {
+                background-position: 0 0;
+                outline: none;
+                ~label {
+                top: -12px;
+                color: $color;
+                font: 300 2vmin $base_font;
+                }
+            }
+        }
     .shopping_select_date {
         color: $font-color;
         border: 1px solid #999;

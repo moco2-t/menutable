@@ -6,6 +6,7 @@ class MealController < ApplicationController
     end
 
     def new
+        @results = @search_recipes.result
     end
 
     def search
@@ -21,13 +22,16 @@ class MealController < ApplicationController
         if @new_menu.save
             flash[:notice] = "メニューを登録しました"
             redirect_to("/menu/new")
-        end
+       else
+            flash[:new_menu_error] = "日付選択されていません。日付を選択してください。"
+            redirect_to("/menu/new")
+       end
     end
 
     def destroy
         destroyed_menu = Meal.find_by(id: params[:id]).destroy
         if destroyed_menu
-            flash[:notice] = "削除しました"
+            flash[:notice] = "#{destroyed_menu.start_date}のメニュー【#{Recipe.find_by(id:destroyed_menu.recipe_id).name}】を削除しました"
             redirect_to("/menu/new")
         end
     end

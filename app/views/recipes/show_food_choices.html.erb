@@ -12,6 +12,7 @@
     <div class="input_table_2">
         <div class="input_table_title">Add Material<%= link_to recipes_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <div class="p_explanation">候補から各食材１つを選択してください</div>
+        <div class="form-error"><%= flash[:error_create_materials] %></div>
             <%= form_with url:"/recipes/create_materials" do |f| %>
                 <table class="ingredients_list">
                     <tr>
@@ -58,7 +59,8 @@
                 <%end%>
             </table>
           <!-- 材料リストの追加 -->
-          <div class="add_material">
+          <div class="form-error"><%= flash[:alert] %></div>
+            <div class="add_material">
               <%=form_with url:"/recipes/create_manual_materials", id:"add_form",class:"add_form" do |f| %>
                 <table class="add_material_table">
                   <tr>
@@ -73,7 +75,7 @@
                 <%= f.hidden_field :recipe_id, value: params[:id] %>
                 <%= f.button type:"submit",class:"material_submit_btn", onclick:'add()' do %><i class="fas fa-folder-plus"></i> Add<%end%>
               <%end%>
-        </div>
+            </div>
         <%= link_to "/recipes/#{params[:id]}",class:"recipe_show_link" do %>登録終了<%end%>
     </div>
 </body>

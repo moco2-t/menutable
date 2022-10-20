@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   delete "recipes/material/:id/delete" => "recipes#destroy_material" #材料リストの削除
   get "recipes/:id/edit_material" => "recipes#edit_material" #材料リストの編集
   post "recipes/:id/update_material" => "recipes#update_material" #材料リストの更新
-
   #献立機能
   get "menu/index" => "meal#index" #献立表示
   get "menu/new" => "meal#new" #献立決め
@@ -40,17 +39,17 @@ Rails.application.routes.draw do
   get "menu/edit" => "meal#edit" #献立編集
   post "menu/day" => "meal#day" #日付選択
   delete "menu/delete" => "meal#destroy" #献立削除
-
   #買い物リスト
   get "shopping/index" => "shopping#index" #買い物リスト
-  post "shopping/view" => "shopping#view" #買い物リストの期間を指定する
+  post "shopping/search" => "shopping#search" #買い物リストの期間を指定する
   get "shopping/create_shopping_list" => "shopping#create_shopping_list" #買い物リスト作成画面
   post "shopping/sum_shopping_list" => "shopping#sum_shopping_list" #買い物リストの作成
+  delete "shopping/list/delete" => "shopping#destroy" #買い物リストの削除
   get "shopping/show_shopping_list" => "shopping#show_shopping_list"#買い物リストを表示画面
   get "shopping/edit_shopping_list" => "shopping#edit_shopping_list" #買い物リスト編集画面
   post "shopping/update_shopping_list" => "shopping#update_shopping_list" #買い物リスト変更
-  post "/shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
-  delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの削除
+  post "shopping/add_shopping" => "shopping#add_shopping"  #買い物リストの追加
+  delete "shopping/:id/delete" => "shopping#destroy_shopping" #買い物リストの項目削除
   get "shopping/create_csv" => "shopping#create_csv" #買い物リストのCSVを作成
-
+  
 end

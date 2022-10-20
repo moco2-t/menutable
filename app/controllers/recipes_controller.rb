@@ -14,30 +14,37 @@ include Converter
     end
 
     def create_recipe
-        url = params[:address] 
-        html = URI.open(url).read
-        doc = Nokogiri::HTML.parse(html)
-        doc_name = doc.css('.name')
-        doc_amount = doc.css('.amount')
-        @created_recipe = Recipe.new(
-                name: doc.title,
-                keyword: "不明",
-                address: params[:address]
-                )   
-        if @created_recipe.save
-            doc_name.zip(doc_amount) do |n,a|
-                @created_ingredient = Ingredient.new(
-                    foodname: n.text.delete("■,●,◎,○,\n, ,★,☆"),
-                    amount: a.text.delete("■,●,◎,○,\n, ,★,☆"),
-                    recipe_id: @created_recipe.id
-                    )
-                @created_ingredient.save
+        @url = params[:address] 
+            if @url.empty?
+                @url_error = "URLを入力してください。"
+                render("/recipes/new")
+            elsif @url.include?("https://")
+                html = URI.open(@url).read
+                doc = Nokogiri::HTML.parse(html)
+                doc_name = doc.css('.name')
+                doc_amount = doc.css('.amount')
+                @created_recipe = Recipe.new(
+                        name: doc.title,
+                        keyword: "不明",
+                        address: params[:address]
+                        )   
+                    if @created_recipe.save
+                        doc_name.zip(doc_amount) do |n,a|
+                            @created_ingredient = Ingredient.new(
+                                foodname: n.text.delete("■,●,◎,○,\n, ,★,☆"),
+                                amount: a.text.delete("■,●,◎,○,\n, ,★,☆"),
+                                recipe_id: @created_recipe.id
+                                )
+                            @created_ingredient.save
+                        end
+                        redirect_to("/recipes/show_food_choices/#{@created_recipe.id}/")
+                    else
+                        render("recipes/new")
+                    end
+            else
+                @url_error = "URLを再度確認して入力してください。"
+                render("/recipes/new")
             end
-            redirect_to("/recipes/show_food_choices/#{@created_recipe.id}/")
-        else
-            flash[:notice] = "登録に失敗しました"
-            render("/recipes/new")
-        end
     end
 
     def show_food_choices
@@ -66,7 +73,7 @@ include Converter
         @recipe_id = params[:recipe_id]
         food_ids = params[:food_ids]
         amounts = params[:amounts].split
-        if food_ids
+        if amounts.split.count == food_ids.count
             food_ids.zip(amounts) do |food_id,amount| 
                 @temporary_food_id = food_id
                 @amount = amount
@@ -82,29 +89,41 @@ include Converter
             flash[:notice]="材料登録しました"
             redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
         else
-            flash[:notice] = "登録に失敗しました"
-            render("recipes#show_food_choices")
+            flash[:error_create_materials] = "各材料１つ、チェックボックスを選択してください。"
+            redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
         end       
     end
 
     def create_manual_materials
         @temporary_food_id = params[:food_id]
         @amount = params[:amount]
-
-        quantity_conversion_branch
-        
-        @created_material = Material.create(
-            recipe_id: params[:recipe_id],
-            food_id:  @temporary_food_id,
-            quantity: @quantity
-            )
-        
-        if params[:kind] === "edit_material"
-            flash[:notice]="材料編集をしました"
-            redirect_to "/recipes/#{params[:recipe_id]}/edit_material"
-        elsif params[:kind] === "new_material"
-            flash[:notice]="材料登録しました"
-            redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
+        case params[:kind]
+        when "edit_material" then
+            if  @temporary_food_id.nil?||@amount.empty? 
+                redirect_to "/recipes/#{params[:recipe_id]}/edit_material",flash:{alert: '食材の選択または数量の入力がされていません。選択及び入力をしてください。'}
+            else
+                quantity_conversion_branch
+                @created_material = Material.create(
+                    recipe_id: params[:recipe_id],
+                    food_id:  @temporary_food_id,
+                    quantity: @quantity
+                    )
+                flash[:notice]="新しく「　#{Food.find_by(id:@temporary_food_id).name}　」を登録しました"
+                redirect_to "/recipes/#{params[:recipe_id]}/edit_material"
+            end    
+        when "new_material" then
+            if  @temporary_food_id.nil? ||@amount.empty? 
+                redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}" ,flash:{alert: '食材の選択または数量の入力がされていません。選択及び入力をしてください。'}
+            else
+                quantity_conversion_branch
+                @created_material = Material.create(
+                    recipe_id: params[:recipe_id],
+                    food_id:  @temporary_food_id,
+                    quantity: @quantity
+                    )
+                flash[:notice]="「　#{Food.find_by(id:@temporary_food_id).name}　」を登録しました"
+                redirect_to "/recipes/show_food_choices/#{params[:recipe_id]}/"
+            end
         end
     end
 
@@ -133,7 +152,7 @@ include Converter
             flash[:notice]= "変更しました"
             redirect_to("/recipes/#{params[:id]}")
         else
-            render("recipes#edit_recipe")
+            render"recipes/edit_recipe"
         end
     end
 
@@ -154,13 +173,15 @@ include Converter
     end
 
     def update_material
-        edit_material = Material.find_by(id:params[:id])
-        edit_material.quantity = params[:quantity]
-        if edit_material.save
-            flash[:notice]= "変更しました"
-            redirect_to("/recipes/#{params[:recipe_id]}/edit_material")
-        else
-            render("recipes#edit_material")
+        edit_material = Material.find_by(id:params[:id]) 
+        if params[:quantity].empty?
+            redirect_to "/recipes/#{params[:recipe_id]}/edit_material",flash:{info: '数量が空欄です。再度入力してください。'}
+        elsif params[:quantity]
+            edit_material.quantity = params[:quantity]
+            if edit_material.save
+                flash[:notice]= "変更しました"
+                redirect_to("/recipes/#{params[:recipe_id]}/edit_material")
+            end
         end
     end
 end

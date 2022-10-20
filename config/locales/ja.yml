@@ -6,6 +6,12 @@ ja:
     attributes:
       user:
         login_id: ID
+      recipe:
+        name: レシピ名
+        address: URL
+        keyword: キーワード
+      material:
+        quantity: 分量
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

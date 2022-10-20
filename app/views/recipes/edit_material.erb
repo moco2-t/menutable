@@ -12,6 +12,7 @@
         <section>
         <div class="main_contents">
             <div class="sub_title"><i class="fas fa-edit"></i> Edit material</div>
+                <div class="form-error"><%= flash[:info] %></div>
                 <table class="edit_material_form">
                     <tr>
                         <th></th>
@@ -50,6 +51,7 @@
                 <%end%>
                 </table>
             <div class="sub_title"><i class="fas fa-plus-square"></i> Add new material</div>
+                <div class="form-error"><%= flash[:alert] %></div>
                 <div class="edit_add_material">
                     <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>
                     <%= f.hidden_field :kind, value: "edit_material" %>

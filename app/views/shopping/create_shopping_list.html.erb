@@ -11,6 +11,7 @@
         <div class="input_table_title">New shoppng list<%= link_to shopping_index_path,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <div class='central_part'>
             <div class="description">日付を選択してください。</div>
+                <div class="form-error"><%= flash[:error_new_shopping] %></div>
             <div class="form_shopping_list">
                 <%= form_with url:"/shopping/sum_shopping_list" do |f| %>
                     <%= f.date_field :start_date ,class:"shopping_select_date"%> 〜 <%= f.date_field :start_date2,class:"shopping_select_date"%>
