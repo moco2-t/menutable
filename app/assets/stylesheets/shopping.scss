@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font: "丸明オールド";
+$base_font: Times, "Times New Roman", Georgia, serif;
 $color: rgba(111, 239, 193, 0.28);
 $font-color: #5F5F5F;
 
 .shopping_search_btn {
     cursor: pointer;
-    font:100 2vmin FontAwesome;
+    font:100 16px FontAwesome;
     color: $font-color;
     border: none;
     background: none;
@@ -19,7 +19,7 @@ $font-color: #5F5F5F;
 
 .create_shopping_list {
     background: #ffffff;
-    font:100 2vmin $base_font;
+    font:100 16px $base_font;
     width: 80%;
     height: 80%;
     border-radius: 10px;
@@ -34,7 +34,7 @@ $font-color: #5F5F5F;
     .description {
         width: 30%;
         margin : 1% auto;
-        font: 100 2vmin $base_font;
+        font: 100 16px $base_font;
         color: $font-color;
         text-align: center;
     }
@@ -46,7 +46,7 @@ $font-color: #5F5F5F;
     }
         .create_shoppinglist_btn {
             cursor: pointer;
-            font: 200 3vmin FontAwesome;
+            font: 200 25px FontAwesome;
             color: $font-color;
             border: none;
             background: none;
@@ -59,12 +59,12 @@ $font-color: #5F5F5F;
         display: inline-block;
         width: 80%;
         margin: 1% 10% 10%;
-        font:200 1vmin $base_font;
+        font:200 10px $base_font;
         color:$font-color;
         list-style-type: none!important;
     }
         .recipe_link:hover {
-            border-bottom: 2px solid $font-color;
+            border-bottom: 1px solid $font-color;
         }
 
     .check_shopping_list{
@@ -85,14 +85,14 @@ $font-color: #5F5F5F;
         .sub_title_shopping_list {
             width: 80%;
             margin: 3% 0 0 ;
-            font: 900 3vmin $base_font;
+            font: 500 24px $base_font;
             color: $font-color;
             display: inline-block;
         }
         .shoppinglist_date {
             width: 70%;
             margin: 2% auto;
-            font: 100 2vmin $base_font;
+            font: 100 16px $base_font;
             color: $font-color;
             text-align: center;
 
@@ -100,7 +100,7 @@ $font-color: #5F5F5F;
         .shopping_list {
             margin: 2% auto;
             width: 60%;
-            font: 300 2vmin $base_font;
+            font: 300 16px $base_font;
             color: $font-color;
             & th {
                 padding: 2% 1%;
@@ -153,7 +153,7 @@ $font-color: #5F5F5F;
 
     .shopping_list_btn{
         cursor: pointer;
-        font:100 2vmin $base_font;
+        font:100 16px $base_font;
         color: $font-color;
         text-align: center;
         outline : none;
@@ -168,7 +168,7 @@ $font-color: #5F5F5F;
 
     .edit_shopping_list {
         background: #F9F9F9;
-        font:100 2vmin $base_font;
+        font:100 16px $base_font;
         width: 70%;
         height: 80%;
         border-radius: 10px;
@@ -181,7 +181,7 @@ $font-color: #5F5F5F;
         width: 40%;
         margin: 3% auto;
         color: $font-color;
-        font: 500 3vmin $base_font;
+        font: 500 25px $base_font;
         text-align: center;
     }
 
@@ -206,7 +206,7 @@ $font-color: #5F5F5F;
             margin: 1% auto;
             border: none;
             border-bottom: dotted 0.5px #808080;
-            font-size: 2vmin;
+            font-size: 16px;
             transition: all 0.3s;
             &:focus, &:valid {
                 background-position: 0 0;
@@ -214,7 +214,7 @@ $font-color: #5F5F5F;
                 ~label {
                 top: -12px;
                 color: $color;
-                font: 300 2vmin $base_font;
+                font: 300 16px $base_font;
                 }
             }
         }
@@ -244,7 +244,7 @@ $font-color: #5F5F5F;
             margin: 1% auto;
             border: none;
             border-bottom: dotted 0.5px #808080;
-            font-size: 2vmin;
+            font-size: 16px;
             transition: all 0.3s;
             &:focus, &:valid {
                 background-position: 0 0;
@@ -252,7 +252,7 @@ $font-color: #5F5F5F;
                 ~label {
                 top: -12px;
                 color: $color;
-                font: 300 2vmin $base_font;
+                font: 300 16px $base_font;
                 }
             }
         }

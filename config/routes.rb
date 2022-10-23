@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'shopping/get_category_children' => 'shopping#get_category_children', defaults: { format: 'json' } #Ajaxで動くアクションのルートを作成
 
   get "/" => "home#index"
-  get "/top" => "home#top"
+  get "/about" => "home#about"
   get "users/login_form" => "user#login_form" 
   post "users/login" => "user#login" #ログインform
   get "users/new" => "user#new" #アカウント登録画面

@@ -9,7 +9,7 @@ def login
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         flash[:notice]= "ログインしました"
-        redirect_to("/top")
+        redirect_to("/about")
     else
         @error_message="IDまたはパスワードが違っています。再度入力してください。"
         @login_id = params[:login_id]
@@ -30,7 +30,7 @@ def create
     if @user.save
         session[:user_id] = @user.id
         flash[:notice]= "ユーザー登録が完了しました / ログインしました"
-        redirect_to("/top")
+        redirect_to("/about")
     else
         @login_id = params[:login_id]
         @password = params[:password]

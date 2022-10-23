@@ -38,7 +38,7 @@ header {
     text-align: center;
 }
     .title_logo {
-        font: 400 8vmin '丸明オールド';
+        font: 400 70px Times, "Times New Roman", Georgia, serif;
         color:#5F5F5F;
         width: 60%;
         margin:  0 auto;
@@ -52,8 +52,8 @@ header {
         margin: 1% auto;
     }
     .account_link,.header_link {
-        font: 300 2vmin '丸明オールド';
-        color:#5F5F5F;
+        font: 100 20px Times, "Times New Roman", Georgia, serif;
+        color:#646464;
         padding-bottom: 2px;
         margin: 0 auto;
         background:
@@ -69,25 +69,28 @@ header {
 
 main {
     width: 80%;
+    height: 550px;
     margin: 0 auto;
 }
         /*ナビゲーション*/
         nav {
             background: #FFFFFF;
             width: 100%;
-            height: 16%;
+            height: 100px;
             color:#5F5F5F;
         }
             .nav_title {
                 width: 20%;
-                font: 300 5vmin "丸明オールド";
+                font: 300 60px Times, "Times New Roman", Georgia, serif;
                 margin: 0 auto;
+                padding: 5% auto;
                 text-align: center;
             }
             .nav_menu {
-                font: 500 2vmin "丸明オールド";
+                font: 500 16px Times, "Times New Roman", Georgia, serif;
                 text-align: center;
-                padding-bottom: 1%;
+                padding: 1%;
+
             }
                 .nav_menu li {
                     display: inline;
@@ -132,14 +135,14 @@ main {
             width: 100%;
             height: 20%;
             margin: 10% auto 3% auto;
-            font: 500 6vw "丸明オールド";
+            font: 500 80px Times, "Times New Roman", Georgia, serif;
             text-align: center;
             color: #5F5F5F;
         }
 
     .login_menu {
         width: 50%;
-        margin: 0 auto;
+        margin: 5% auto;
         padding: 0 0 10% 0;
     }
 
@@ -149,15 +152,15 @@ main {
         height: 10%;
         margin: 2% auto;
         padding: 5% 10%;
-        font: 500 2vmin "丸明オールド";
-        background:rgba(72, 155, 125, 0.551);
+        font: 500 16px Times, "Times New Roman", Georgia, serif;
+        background:rgba(72, 155, 125, 0.295);
         color: #5F5F5F;
         text-align: center;
         border-radius: 5px;
         text-decoration:none; 
     }
         .login_link:hover {
-            border: solid 2px rgba(72, 155, 125, 0.551);
+            border: solid 1px rgba(72, 155, 125, 0.295);
             background-color: #FFFFFF;
         }
 
@@ -167,13 +170,13 @@ main {
     margin: 0 auto;
     background-color: #ffa694da;
     color: #FFFFFF;
-    font:500 3vmin "丸明オールド";
+    font:500 3vmin Times, "Times New Roman", Georgia, serif;
     text-align: center;
 }
 
 .form-error {
     color:red;
-    font:200 1vmin "丸明オールド";
+    font:200 1vmin Times, "Times New Roman", Georgia, serif;
     text-align: center;
     margin: 3% auto;
 }
@@ -187,7 +190,7 @@ a {
     float: right;
     cursor: pointer;
     font-family: FontAwesome;
-    font-size: 2vmin;
+    font-size: 16px;
     border: none;
     background: none;
     color: #FFFFFF;
@@ -197,9 +200,9 @@ a {
 /* user,recipes/new,edit_recipe*/ 
 .input_table {
     background: #ffffff;
-    font:100 2vmin "丸明オールド";
+    font:100 16px Times, "Times New Roman", Georgia, serif;
     width: 40%;
-    height: 30%;
+    height: 45%;
     padding-bottom: 1%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
@@ -209,9 +212,9 @@ a {
 /* meal/new,recipes/show_food_choices,edit_material*/
 .input_table_2 {
     background: #ffffff;
-    font:100 2vmin "丸明オールド";
+    font:100 16px Times, "Times New Roman", Georgia, serif;
     width: 70%;
-    height: 30%;
+    height: 80%;
     border-radius: 10px;
     box-shadow: 0 3px 36px 0 rgba(0, 0, 0, 0.6);
     transition: .3s;
@@ -223,7 +226,7 @@ a {
     margin: 0;
     padding: 8px;
     color: #ffffff;
-    font: 400 3vmin "丸明オールド";
+    font: 400 3vmin Times, "Times New Roman", Georgia, serif;
     text-align: center;
     border-radius: 10px 10px 0 0;
 }

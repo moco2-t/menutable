@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .account_form {
   width: 70%;
   margin: 2% auto;
@@ -9,7 +8,7 @@
   display: inline-block;
   width: 20%;
   margin: 0 3%;
-  font: 400 2vmin "丸明オールド";
+  font: 400 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
 }
 
@@ -20,7 +19,7 @@
   margin: 5% auto;
   border: none;
   border-bottom: dotted 1px #5F5F5F;
-  font: 200 2vmin "丸明オールド";
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
 }
 
@@ -28,14 +27,13 @@
   display: inline-block;
   background: rgba(78, 154, 126, 0.356);
   width: 50%;
-  height: 15%;
-  padding: 1% 0;
+  padding: 2% 0;
   margin: 5% 25%;
   border: none;
   border-radius: 10px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   color: #5F5F5F;
-  font-size: 2vmin;
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -61,7 +59,7 @@
 
 .user_date_label {
   display: inline-block;
-  font: 600 2vmin "丸明オールド";
+  font: 600 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   width: 80%;
   margin: 5% auto;
@@ -91,7 +89,7 @@
 
 .note {
   display: block;
-  font: 100 1vmin "丸明オールド";
+  font: 100 10px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
   width: 90%;

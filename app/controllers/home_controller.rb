@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     end
 
-    def top
+    def about
         
     end
 

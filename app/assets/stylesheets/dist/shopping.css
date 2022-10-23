@@ -1,7 +1,6 @@
-@charset "UTF-8";
 .shopping_search_btn {
   cursor: pointer;
-  font: 100 2vmin FontAwesome;
+  font: 100 16px FontAwesome;
   color: #5F5F5F;
   border: none;
   background: none;
@@ -12,7 +11,7 @@
 
 .create_shopping_list {
   background: #ffffff;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   width: 80%;
   height: 80%;
   border-radius: 10px;
@@ -28,7 +27,7 @@
 .description {
   width: 30%;
   margin: 1% auto;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
 }
@@ -41,7 +40,7 @@
 
 .create_shoppinglist_btn {
   cursor: pointer;
-  font: 200 3vmin FontAwesome;
+  font: 200 25px FontAwesome;
   color: #5F5F5F;
   border: none;
   background: none;
@@ -54,13 +53,13 @@
   display: inline-block;
   width: 80%;
   margin: 1% 10% 10%;
-  font: 200 1vmin "丸明オールド";
+  font: 200 10px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   list-style-type: none !important;
 }
 
 .recipe_link:hover {
-  border-bottom: 2px solid #5F5F5F;
+  border-bottom: 1px solid #5F5F5F;
 }
 
 .check_shopping_list {
@@ -70,7 +69,7 @@
 
 .index_description {
   margin: 10px 0;
-  font: 100 15px "丸明オールド";
+  font: 100 15px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
 }
 
@@ -82,7 +81,7 @@
 .sub_title_shopping_list {
   width: 80%;
   margin: 3% 0 0;
-  font: 900 3vmin "丸明オールド";
+  font: 500 24px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   display: inline-block;
 }
@@ -90,7 +89,7 @@
 .shoppinglist_date {
   width: 70%;
   margin: 2% auto;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
 }
@@ -98,7 +97,7 @@
 .shopping_list {
   margin: 2% auto;
   width: 60%;
-  font: 300 2vmin "丸明オールド";
+  font: 300 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
 }
 .shopping_list th {
@@ -157,7 +156,7 @@
 
 .shopping_list_btn {
   cursor: pointer;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
   outline: none;
@@ -172,7 +171,7 @@
 
 .edit_shopping_list {
   background: #F9F9F9;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   width: 70%;
   height: 80%;
   border-radius: 10px;
@@ -185,14 +184,14 @@
   width: 40%;
   margin: 3% auto;
   color: #5F5F5F;
-  font: 500 3vmin "丸明オールド";
+  font: 500 25px Times, "Times New Roman", Georgia, serif;
   text-align: center;
 }
 
 .edit_shopping_list_form {
   width: 70%;
   margin: 2% auto;
-  font: 200 1em "丸明オールド";
+  font: 200 1em Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
 }
 .edit_shopping_list_form th {
@@ -210,7 +209,7 @@
   margin: 1% auto;
   border: none;
   border-bottom: dotted 0.5px #808080;
-  font-size: 2vmin;
+  font-size: 16px;
   transition: all 0.3s;
 }
 .shopping_amount_form:focus, .shopping_amount_form:valid {
@@ -220,7 +219,7 @@
 .shopping_amount_form:focus ~ label, .shopping_amount_form:valid ~ label {
   top: -12px;
   color: rgba(111, 239, 193, 0.28);
-  font: 300 2vmin "丸明オールド";
+  font: 300 16px Times, "Times New Roman", Georgia, serif;
 }
 
 .edit_form_btn {
@@ -248,7 +247,7 @@
   margin: 1% auto;
   border: none;
   border-bottom: dotted 0.5px #808080;
-  font-size: 2vmin;
+  font-size: 16px;
   transition: all 0.3s;
 }
 .add_shopping_amount_form:focus, .add_shopping_amount_form:valid {
@@ -258,7 +257,7 @@
 .add_shopping_amount_form:focus ~ label, .add_shopping_amount_form:valid ~ label {
   top: -12px;
   color: rgba(111, 239, 193, 0.28);
-  font: 300 2vmin "丸明オールド";
+  font: 300 16px Times, "Times New Roman", Georgia, serif;
 }
 
 .shopping_select_date {

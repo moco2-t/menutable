@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .update_recipe_form {
   display: block;
   color: #5F5F5F;
@@ -10,7 +9,7 @@
 }
 
 .update_recipe_label {
-  font: 800 2vmin "丸明オールド";
+  font: 800 16px Times, "Times New Roman", Georgia, serif;
 }
 
 .update_recipe_input {
@@ -22,7 +21,7 @@
   padding: 2% 0;
   border: none;
   border-bottom: dotted 0.5px #808080;
-  font: 200 2vmin "丸明オールド";
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   transition: all 0.3s;
 }
@@ -33,12 +32,12 @@
 .update_recipe_input:focus ~ label, .update_recipe_input:valid ~ label {
   top: -12px;
   color: #6fefc147;
-  font: 200 2vmin "丸明オールド";
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
 }
 
 .edit_material {
   background: #ffffff;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   width: 70%;
   height: 70%;
   border-radius: 10px;
@@ -56,25 +55,18 @@
   display: none;
 }
 
-.sub_title {
-  color: #5F5F5F;
-  font: 400 3vmin "丸明オールド";
-  width: 60%;
-  margin: 3% 10%;
-}
-
 .edit_material_form {
   width: 80%;
   margin: 3% auto;
   border-collapse: collapse;
 }
 .edit_material_form th {
-  font: 500 2vmin "丸明オールド";
+  font: 500 16px Times, "Times New Roman", Georgia, serif;
   color: #098402;
   padding: 2px 0;
 }
 .edit_material_form td {
-  font: 200 2vmin "丸明オールド";
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
   padding: 2px 0;
@@ -86,7 +78,7 @@
   margin: 2% auto;
   border: none;
   border-bottom: dotted 0.5px #808080;
-  font: 200 2vmin "丸明オールド";
+  font: 200 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   transition: all 0.3s;
 }
@@ -97,13 +89,12 @@
 .edit_material_input:focus ~ label, .edit_material_input:valid ~ label {
   top: -12px;
   color: #6fefc147;
-  font: 700 12px Roboto;
+  font: 100 12px Times, "Times New Roman", Georgia, serif;
 }
 
 .material_delete_btn, .update_material_btn {
   cursor: pointer;
-  font-family: FontAwesome;
-  font-size: 1.6em;
+  font-size: 16px;
   border: none;
   background: none;
   color: #5F5F5F;
@@ -146,5 +137,5 @@
 .edit_add_material_input:focus ~ label, .edit_add_material_input:valid ~ label {
   top: -12px;
   color: #6fefc147;
-  font: 700 12px "丸明オールド";
+  font: 700 12px Times, "Times New Roman", Georgia, serif;
 }

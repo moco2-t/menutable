@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font: "丸明オールド";
+$base_font: Times, "Times New Roman", Georgia, serif;
 $color: rgba(111, 239, 193, 0.28);
 $link-color: rgba(78, 154, 126, 0.356);
 $titlebar_color: rgba(72, 155, 125, 0.551);
@@ -17,7 +17,7 @@ $font-color: #5F5F5F;
         display: inline-block;
         width: 20%;
         margin: 0 3%;
-        font: 400 2vmin $base_font;
+        font: 400 16px $base_font;
         color: $font-color;
     }
     .input,.password_input {
@@ -27,21 +27,20 @@ $font-color: #5F5F5F;
         margin: 5% auto;
         border: none;
         border-bottom: dotted 1px $font-color;
-        font:200 2vmin $base_font;
+        font:200 16px $base_font;
         color: $font-color;
     }
     .user_form_btn{
         display: inline-block;
         background: $link-color;
         width: 50%;
-        height: 15%;
-        padding: 1% 0;
+        padding: 2% 0;
         margin: 5% 25%;
         border: none;
         border-radius: 10px;
         box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
         color: $font-color;
-        font-size: 2vmin;
+        font: 200 16px $base_font;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         &:hover { 
@@ -68,7 +67,7 @@ $font-color: #5F5F5F;
 
     .user_date_label {
         display: inline-block;
-        font: 600 2vmin $base_font;
+        font: 600 16px $base_font;
         color: $font-color;
         width: 80%;
         margin: 5% auto;
@@ -99,7 +98,7 @@ $font-color: #5F5F5F;
 
     .note {
         display: block;
-        font:100 1vmin $base_font;
+        font:100 10px $base_font;
         color: $font-color;
         text-align: center;
         width: 90%;

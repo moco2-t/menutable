@@ -1,4 +1,4 @@
-$base_font: "丸明オールド";
+$base_font: Times, "Times New Roman", Georgia, serif;
 $color: rgba(111, 239, 193, 0.28);
 $font-color: #5F5F5F;
 
@@ -17,7 +17,7 @@ $font-color: #5F5F5F;
         margin: 3% auto;
         border: none;
         border-bottom: dotted 1px $font-color;
-        font: 200 2vmin $base_font;
+        font: 200 16px $base_font;
         transition: all 0.3s;
         // Stop that awful pale yellow background on webkit auto-fill
         &:focus, &:valid {
@@ -26,7 +26,7 @@ $font-color: #5F5F5F;
             ~label {
             top: -12px;
             color: $color;
-            font: 700 2vmin $base_font;
+            font: 700 16px $base_font;
             }
         }
     }
@@ -34,7 +34,7 @@ $font-color: #5F5F5F;
 .create_recipe_attention {
     display: block;
     color: $font-color;
-    font: 100 1vmin $base_font;       
+    font: 100 10px $base_font;       
     width: 40%;
     margin: 5% auto 2%;
     text-align: center;
@@ -44,7 +44,7 @@ $font-color: #5F5F5F;
     width: 80%;
     margin: 1% auto;
     text-align: center;
-    font: 200 2vmin $base_font;
+    font: 200 16px $base_font;
     color: $font-color;
 }
 //材料登録フォーム
@@ -62,12 +62,12 @@ $font-color: #5F5F5F;
     & td {
         padding: 6px 10px;
         margin: 1% 2%;
-        font:100 2vmin $base_font;
+        font:100 16px $base_font;
         color: $font-color;
     }
 }
     .foodname {
-        font:500 2vmin $base_font;
+        font:500 16px $base_font;
         color: $font-color;
     }
 
@@ -75,12 +75,12 @@ $font-color: #5F5F5F;
 .add_material {
     width: 100%;
     margin: 1% auto;
-    font: 100 1vmin $base_font;
+    font: 100 10px $base_font;
 }
 .add_material_table {
     width: 50%;
     margin: 0 auto;
-    font: 100 2vmin $base_font;
+    font: 100 16px $base_font;
 }
 .listing-select-wrapper__box--select{
     width: 100%;
@@ -90,14 +90,14 @@ $font-color: #5F5F5F;
     border-color:#038C25;
     text-align:center;
     background:#fff;
-    font: 100 2vmin $base_font;
+    font: 100 16px $base_font;
     color: $font-color;
 }
 .material_amount_form {
     width: 40%;
     margin: 0 auto;
     text-align: center;
-    font: 400 2vmin $base_font;
+    font: 400 16px $base_font;
 }
 .amount_form {
     width: 50%;
@@ -105,7 +105,7 @@ $font-color: #5F5F5F;
     margin: 10px auto;
     border: none;
     border-bottom: dotted 0.5px #808080;
-    font-size: 2vmin;
+    font-size: 10px;
     transition: all 0.3s;
     &:focus, &:valid {
         background-position: 0 0;
@@ -113,7 +113,7 @@ $font-color: #5F5F5F;
         ~label {
         top: -12px;
         color: $color;
-        font: 300 2vmin $base_font;
+        font: 300 16px $base_font;
         }
     }
 }
@@ -124,7 +124,7 @@ $font-color: #5F5F5F;
     text-align: center;
     margin: 5% 25%;
     padding: 1% 0;
-    font: 800 2vmin $base_font;
+    font: 800 16px $base_font;
     letter-spacing: 10px;
     color: $font-color;
     border: solid 1px rgba(4, 179, 48, 0.445);

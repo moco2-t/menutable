@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$base_font: "丸明オールド";
+$base_font: Times, "Times New Roman", Georgia, serif;
 $color: #6fefc147;
 $font-color: #5F5F5F;
 
@@ -22,16 +22,16 @@ $font-color: #5F5F5F;
     list-style-type: none!important;/*ポチ消す*/
 }
     .calender_recipe_link {
-        font-size:2vmin;
+        font-size:10px;
         &:hover {
-            border-bottom: 2px solid $font-color;
+            border-bottom: 1px solid $font-color;
         }
     }
 
 //献立作成ページ,編集ページ
 .new_menu , .edit_menu {
     background: #ffffff;
-    font:100 2vmin $base_font;
+    font:100 16px $base_font;
     width: 70%;
     height: 60%;
     border-radius: 10px;
@@ -39,21 +39,10 @@ $font-color: #5F5F5F;
     transition: .3s;
     margin: 5% auto;
 }
-    //タイトル
-    .title_new_menu , .title_edit_menu{
-        background: $color;
-        margin: 2% 0;
-        padding: 8px;
-        border-radius: 10px 10px 0 0;
-        color: $font-color;
-        font: 400 3vmin $base_font;
-        text-align: center;
-    }
-
 //検索と登録
     .how_to_register {
         color: $font-color;
-        font: 100 2vmin $base_font;
+        font: 100 16px $base_font;
         margin: 2%;
         text-align: center;
     }
@@ -111,7 +100,7 @@ $font-color: #5F5F5F;
         .create_new {
             cursor: pointer;
             font-family: FontAwesome;
-            font-size: 3vmin;
+            font-size: 20px;
             border: none;
             background: none;
             color: $font-color;
@@ -127,14 +116,14 @@ $font-color: #5F5F5F;
     margin: 0 auto 10%;
 }
     .calender_title{
-        font-size: 900 2vmin $base_font;
+        font-size: 900 16px $base_font;
         color: $font-color;
         text-align: center;
         margin: 0 auto;
     }
 
     .edit_menu_calender {
-        font-size: 1vmin;
+        font-size: 10px;
         height: 20%;
         width: 90%;
         margin: 0 auto; 

@@ -27,7 +27,7 @@
                         <td>
                             <%= form_with url:"/recipes/material/#{m.id}/delete",method: :delete do |f|%>
                                 <%= f.hidden_field :recipe_id, value: params[:id]%>
-                                <%= f.button type:"submit",class:"material_delete_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="fas fa-trash-alt"></i> <%end%>
+                                <%= f.button type:"submit",class:"material_delete_btn", data: { confirm: "削除してよろしいですか?"} do%><i class="fa-regular fa-trash-can"></i><%end%>
                             <%end%>
                         </td>
                         <td>
@@ -43,7 +43,7 @@
                                     <%= Food.find_by(id: m.food_id)[:unit]%>
                                 </td>
                                 <td>
-                                    <%= f2.button type:"submit",class:"update_material_btn" do%><i class="fas fa-edit"></i> <%end%>
+                                    <%= f2.button type:"submit",class:"update_material_btn" do%><i class="fa-thin fa-pen-to-square"></i><%end%>
                                 </td>
                             <%end%>
                         <%end%>

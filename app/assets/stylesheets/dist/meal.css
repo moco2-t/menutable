@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .menu_sub_title {
   color: #5F5F5F;
-  font: 400 2vw "丸明オールド";
+  font: 400 2vw Times, "Times New Roman", Georgia, serif;
   width: 300px;
   margin: 5%;
 }
@@ -11,21 +11,21 @@
   max-height: 30%;
   margin: 3% auto;
   color: #5F5F5F;
-  font-family: "丸明オールド";
+  font-family: Times, "Times New Roman", Georgia, serif;
   list-style-type: none !important;
   /*ポチ消す*/
 }
 
 .calender_recipe_link {
-  font-size: 2vmin;
+  font-size: 10px;
 }
 .calender_recipe_link:hover {
-  border-bottom: 2px solid #5F5F5F;
+  border-bottom: 1px solid #5F5F5F;
 }
 
 .new_menu, .edit_menu {
   background: #ffffff;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   width: 70%;
   height: 60%;
   border-radius: 10px;
@@ -34,19 +34,9 @@
   margin: 5% auto;
 }
 
-.title_new_menu, .title_edit_menu {
-  background: #6fefc147;
-  margin: 2% 0;
-  padding: 8px;
-  border-radius: 10px 10px 0 0;
-  color: #5F5F5F;
-  font: 400 3vmin "丸明オールド";
-  text-align: center;
-}
-
 .how_to_register {
   color: #5F5F5F;
-  font: 100 2vmin "丸明オールド";
+  font: 100 16px Times, "Times New Roman", Georgia, serif;
   margin: 2%;
   text-align: center;
 }
@@ -108,7 +98,7 @@
 .create_new {
   cursor: pointer;
   font-family: FontAwesome;
-  font-size: 3vmin;
+  font-size: 20px;
   border: none;
   background: none;
   color: #5F5F5F;
@@ -124,14 +114,14 @@
 }
 
 .calender_title {
-  font-size: 900 2vmin "丸明オールド";
+  font-size: 900 16px Times, "Times New Roman", Georgia, serif;
   color: #5F5F5F;
   text-align: center;
   margin: 0 auto;
 }
 
 .edit_menu_calender {
-  font-size: 1vmin;
+  font-size: 10px;
   height: 20%;
   width: 90%;
   margin: 0 auto;

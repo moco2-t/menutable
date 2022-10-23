@@ -5,7 +5,7 @@
 @use '_create_recipe';
 @use '_edit_recipe'; 
 
-$base_font: "丸明オールド";
+$base_font: Times, "Times New Roman", Georgia, serif;
 $color: #6fefc147;
 $font-color: #5F5F5F;
 $link-color: rgba(78, 154, 126, 0.356);
@@ -21,7 +21,7 @@ $link-color: rgba(78, 154, 126, 0.356);
     //ラベル
     .recipe_label{
         color: $font-color;
-        font: 800 2vmin $base_font; 
+        font: 800 22px $base_font; 
     }
     //入力フォーム
     .search_input {
@@ -31,7 +31,7 @@ $link-color: rgba(78, 154, 126, 0.356);
         margin: 5%;
         border: none;
         border-bottom: dotted 1px $font-color;
-        font-size: 2vmin;
+        font-size: 16px;
         transition: all 0.3s;
         &:focus, &:valid {
             background-position: 0 0;
@@ -40,14 +40,14 @@ $link-color: rgba(78, 154, 126, 0.356);
             ~label {
             top: -12px;
             color: $color;
-            font: 700 2vmin $base_font;
+            font: 700 16px $base_font;
             }
         }
     }
     //検索ボタン
     .search_submit {
         font-family: FontAwesome;
-        font-size: 3vmin;
+        font-size: 26px;
         border: none;
         background: none;
         color: rgba(78, 154, 126, 0.852);
@@ -60,7 +60,7 @@ $link-color: rgba(78, 154, 126, 0.356);
 //検索結果のリスト
 .search_recipeslist,.all_recipeslist {
     color: $font-color;
-    font: 100 2vmin $base_font ;
+    font: 100 16px $base_font ;
     width: 80%;
     margin: 0 auto;
 }
@@ -106,7 +106,7 @@ $link-color: rgba(78, 154, 126, 0.356);
 }
     .recipe_detail h2 {
         margin: 5% 0 3% 10%;
-        font: 500 3vmin $base_font;
+        font: 500 25px $base_font;
         color: $font-color;
         text-align: center;
     }
@@ -114,12 +114,12 @@ $link-color: rgba(78, 154, 126, 0.356);
         width: 60%;
         margin: 2% auto 4% auto; 
         & th {
-            font: 600 2vmin $base_font;
+            font: 600 16px $base_font;
             color:  #4e9a7e;
             padding: 3%;
         }
         & td {
-            font: 200 2vmin $base_font;
+            font: 200 16px $base_font;
             color: $font-color;
             text-align: center;
         }
@@ -133,7 +133,7 @@ $link-color: rgba(78, 154, 126, 0.356);
 
 .list_title {
     width: 55%;
-    font: 800 2vmin $base_font;
+    font: 800 16px $base_font;
     color: $font-color;
     text-align: center;
     margin: 2% auto;
@@ -144,7 +144,7 @@ $link-color: rgba(78, 154, 126, 0.356);
     border-collapse: collapse;
     width: 100%;
     margin: 0 0 10% 8%;
-    font-size: 2vmin;
+    font-size: 16px;
     & th {
         color: white;/*文字色*/
         background:rgba(78, 154, 126, 0.852);
@@ -152,7 +152,7 @@ $link-color: rgba(78, 154, 126, 0.356);
     }
     & td {
         padding: 3% 5%;
-        font: 200 2vmin $base_font;
+        font: 200 16px $base_font;
         text-align: center;
     }
 }
@@ -165,10 +165,10 @@ $link-color: rgba(78, 154, 126, 0.356);
     margin: 5% auto;
     text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
     color:#5F5F5F;
-    font-size: 2vmin;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover { 
@@ -186,7 +186,7 @@ $link-color: rgba(78, 154, 126, 0.356);
     border-radius: 10px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
     color: $font-color;
-    font-size: 2vmin;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover { 
