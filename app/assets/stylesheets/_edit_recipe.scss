@@ -52,24 +52,23 @@ $font-color: #5F5F5F;
     transition: .3s;
     margin: 5% auto; 
 }
-    .main_contents {
-        height:90%;
-        overflow: scroll;
-        -ms-overflow-style: none;
-        &::-webkit-scrollbar {
-            display:none;
-        }
-    }
+.material_sub_title {
+    width: 60%;
+    margin: 5% auto;
+    font : 200 25px $base_font;
+    text-align: center;
+    color: $font-color;
+}
 
 //材料編集テーブル
 .edit_material_form {
-    width: 80%;
+    width: 60%;
     margin: 3% auto;
     border-collapse: collapse;
     & th {
         font:500 16px $base_font;
         color: #098402;
-        padding: 2px 0;
+        padding: 4px 0;
     }
     & td {
         font:200 16px $base_font;
@@ -101,6 +100,7 @@ $font-color: #5F5F5F;
     //削除変更ボタン
     .material_delete_btn ,.update_material_btn {
         cursor: pointer;
+        font-family: FontAwesome;
         font-size: 16px;
         border: none;
         background: none;

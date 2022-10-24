@@ -46,24 +46,23 @@
   margin: 5% auto;
 }
 
-.main_contents {
-  height: 90%;
-  overflow: scroll;
-  -ms-overflow-style: none;
-}
-.main_contents::-webkit-scrollbar {
-  display: none;
+.material_sub_title {
+  width: 60%;
+  margin: 5% auto;
+  font: 200 25px Times, "Times New Roman", Georgia, serif;
+  text-align: center;
+  color: #5F5F5F;
 }
 
 .edit_material_form {
-  width: 80%;
+  width: 60%;
   margin: 3% auto;
   border-collapse: collapse;
 }
 .edit_material_form th {
   font: 500 16px Times, "Times New Roman", Georgia, serif;
   color: #098402;
-  padding: 2px 0;
+  padding: 4px 0;
 }
 .edit_material_form td {
   font: 200 16px Times, "Times New Roman", Georgia, serif;
@@ -94,6 +93,7 @@
 
 .material_delete_btn, .update_material_btn {
   cursor: pointer;
+  font-family: FontAwesome;
   font-size: 16px;
   border: none;
   background: none;
