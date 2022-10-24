@@ -15,9 +15,7 @@
  *= require_self
  */
 
-@import 'font-awesome-sprockets';
 @import 'font-awesome';
-
 
 @media screen and (max-width: 1024px) {
     html {
