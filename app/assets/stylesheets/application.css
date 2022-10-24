@@ -14,10 +14,7 @@
  *= require_tree .
  *= require_self
  */
-
-@import 'font-awesome';
-
-@media screen and (max-width: 1024px) {
+ @media screen and (max-width: 1024px) {
     html {
         min-width: 100%;
         min-height: 100%;
