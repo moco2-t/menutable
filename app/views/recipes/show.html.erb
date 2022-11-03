@@ -65,7 +65,7 @@
                             <td>
                                 <%= Food.find_by(id: m.food_id)[:name]%>
                             </td>
-                            <%unless m.quantity === nil%>
+                            <%unless m.quantity === 0.0 %>
                                 <td>
                                     <%= m.quantity%>
                                     <%= Food.find_by(id: m.food_id)[:unit]%>

@@ -5,9 +5,9 @@ module Converter
         @gen_amount = @amount.tr('〇一二三四五六七八九', '0123456789').tr('０-９ａ-ｚＡ-Ｚ／〜', '0-9a-zA-Z/~').delete("^0-9/~","^０-９／〜")
         food_unit = Food.find_by(id:@temporary_food_id).unit
         case @temporary_food_id
-            when '23' then #キャベツ
+            when '24' then #キャベツ
                 quantity_conversion_cabbage
-            when '101' || '102' then #鶏むね肉、鶏もも肉 
+            when '104' || '105' then #鶏むね肉、鶏もも肉 
                 quantity_conversion_chicken_breast
             else
                 basic_quantity_conversion
@@ -17,8 +17,8 @@ module Converter
     def basic_quantity_conversion
         food_unit = Food.find_by(id:@temporary_food_id).unit
         criterion_value = Food.find_by(id:@temporary_food_id).criterion.to_f
-        if food_unit == "none"
-            @quantity = nil
+        if food_unit === "none"
+            @quantity = '0'
         else
             if @amount.include?("g") || @amount.include?("ｇ") || @amount.include?("グラム")
                 if @amount.include?("~") || @amount.include?("〜") 
@@ -36,10 +36,6 @@ module Converter
                 end
             end
         end
-    end
-
-    def quantity_conversion_of_seasonings
-        @quantity = nil
     end
 
     def quantity_conversion_cabbage

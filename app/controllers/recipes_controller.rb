@@ -7,7 +7,7 @@ include Converter
 
     def search
         @search_recipe = Recipe.where('name LIKE ?', "%#{params[:searchword]}%")
-        render("/recipes/index")
+        render action: :index
     end
 
     def new
@@ -15,10 +15,7 @@ include Converter
 
     def create_recipe
         @url = params[:address] 
-            if @url.empty?
-                @url_error = "URLを入力してください。"
-                render("/recipes/new")
-            elsif @url.include?("https://")
+            if @url.include?("https://")
                 html = URI.open(@url).read
                 doc = Nokogiri::HTML.parse(html)
                 doc_name = doc.css('.name')
@@ -37,13 +34,14 @@ include Converter
                                 )
                             @created_ingredient.save
                         end
-                        redirect_to("/recipes/show_food_choices/#{@created_recipe.id}/")
+                        redirect_to action: :show_food_choices, id: @created_recipe.id
                     else
-                        render("recipes/new")
+                        @url_error = "URLを再度確認してください。"
+                        render action: :new
                     end
             else
-                @url_error = "URLを再度確認して入力してください。"
-                render("/recipes/new")
+                @url_error = "URLを入力してください。"
+                render action: :new
             end
     end
 
@@ -73,7 +71,7 @@ include Converter
         @recipe_id = params[:recipe_id]
         food_ids = params[:food_ids]
         amounts = params[:amounts].split
-        if amounts.split.count == food_ids.count
+        if amounts.count === food_ids.count
             food_ids.zip(amounts) do |food_id,amount| 
                 @temporary_food_id = food_id
                 @amount = amount
