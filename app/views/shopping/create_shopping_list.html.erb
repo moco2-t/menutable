@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping</title>
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">New shoppng list<%= link_to shopping_index_path,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">New shoppng list<%= link_to shopping_shopping_top_path,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <div class='central_part'>
             <div class="description">日付を選択してください。</div>
                 <div class="form-error"><%= flash[:error_new_shopping] %></div>

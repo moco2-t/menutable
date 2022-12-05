@@ -2,15 +2,15 @@ require "csv"
 require_relative "converter.rb"
 class RecipesController < ApplicationController
 include Converter
-    def index
+    def recipe_top
     end
 
-    def search
+    def search_recipe
         @search_recipe = Recipe.where('name LIKE ?', "%#{params[:searchword]}%")
         render action: :index
     end
 
-    def new
+    def recipe_new
     end
 
     def create_recipe
@@ -37,11 +37,11 @@ include Converter
                         redirect_to action: :show_food_choices, id: @created_recipe.id
                     else
                         @url_error = "URLを再度確認してください。"
-                        render action: :new
+                        render action: :recipe_new
                     end
             else
                 @url_error = "URLを入力してください。"
-                render action: :new
+                render action: :recipe_new
             end
     end
 
@@ -134,7 +134,7 @@ include Converter
             flash[:notice] = "レシピを削除しました"
             destroy_ingredients = Ingredient.where(recipe_id: params[:id]).destroy_all
             destroy_materials = Material.where(recipe_id: params[:id]).destroy_all
-            redirect_to("/recipes/index")
+            redirect_to("/recipes/recipe_top")
         end
     end
 

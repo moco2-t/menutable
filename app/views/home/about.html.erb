@@ -2,51 +2,83 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>top</title>
+  <title>Menutable |about|</title>
 </head>
-<body> 
-  <nav>
-    <div class="nav_title">About</div>
-  </nav>
-  <article>
-    <div class="about_title">How to use</div>
-        <table class="how_to_use">
-          <tr>
-            <th>
-              <div class="about_sub_title">Recipe</div>
-            </th>
-            <td>
-              <div class="explanation">
-                URLを入力して、レシピと材料、買い物リストを登録します。<br>
-                レシピの内容は登録後も編集可能です
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <div class="about_sub_title">Menu</div> 
-            </th>
-            <td>
-              <div class="explanation">
-                登録したレシピから日付ごとに献立を作成します<br>
-                登録した内容はカレンダーで確認できます。
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <div class="about_sub_title">Shopping</div>
-            </th>
-            <td>
-              <div class="explanation">
-                事前に日付毎に献立を作成して買い物リストを作成したい日付を選択し、<br>
-                リストを作成します。リストは作成後も編集可能です 
-              </div>
-            </td>
-          </tr>
-        </table>
-  </article>
-</body>
+  <body>  
+    <header>
+      <div class="title_logo">Menutable</div>
+        <div class="account_list">
+          <%= link_to "/users/#{@current_user.id}",class:'header_link',method: :get do %>
+            <i class="fas fa-user"></i> <%=@current_user.login_id%>
+          <%end%>
+          <%= link_to "/users/logout",class:'header_link',method: :post, data: {confirm: "ログアウトしますか？"} do %>
+            <i class="fas fa-sign-out-alt"></i> Logout
+          <%end%>
+        </div>
+        <div class="menu_list">
+          <%= link_to "/about",class:'header_link',method: :get do %>
+            <i class="fas fa-home"></i> About
+          <%end%>
+          <%= link_to "/recipes/recipe_top",class:'header_link',method: :get do %>
+            <i class="fas fa-book"></i> Recipe
+          <%end%>
+          <%= link_to "/meal/menu_top",class:'header_link',method: :get do %>
+            <i class="far fa-calendar-alt"></i> Menu
+          <%end%>
+          <%= link_to "/shopping/shopping_top",class:'header_link',method: :get do %>
+            <i class="far fa-list-alt"></i> Shopping
+          <%end%>
+          <%= link_to 'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link',method: :get do %>
+            <i class="fas fa-shopping-cart"></i> Store
+          <%end%>
+        </div>
+    </header>
+    <div class="auto">
+      <% if flash[:notice] %>
+        <div class="flash"><%= flash[:notice] %></div>
+      <%end%>
+    </div>
+    <main>
+      <nav><div class="nav_title">About</div></nav>
+      <article>
+        <div class="about_title">How to use</div>
+          <table class="how_to_use">
+            <tr>
+              <th>
+                <div class="about_sub_title">Recipe</div>
+              </th>
+              <td>
+                <div class="explanation">
+                  URLを入力して、レシピと材料、買い物リストを登録します。<br>
+                  レシピの内容は登録後も編集可能です
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <div class="about_sub_title">Menu</div> 
+              </th>
+              <td>
+                <div class="explanation">
+                  登録したレシピから日付ごとに献立を作成します<br>
+                  登録した内容はカレンダーで確認できます。
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <div class="about_sub_title">Shopping</div>
+              </th>
+              <td>
+                <div class="explanation">
+                  事前に日付毎に献立を作成して買い物リストを作成したい日付を選択し、<br>
+                  リストを作成します。リストは作成後も編集可能です 
+                </div>
+              </td>
+            </tr>
+          </table>
+      </article>
+    </main>
+  </body>
 </html>

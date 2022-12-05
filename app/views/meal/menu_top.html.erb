@@ -1,0 +1,63 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Make a menu</title>
+</head>
+<body>
+  <header>
+      <div class="title_logo">Menutable</div>
+        <div class="account_list">
+          <%= link_to "/users/#{@current_user.id}",class:'header_link',method: :get do %>
+            <i class="fas fa-user"></i> <%=@current_user.login_id%>
+          <%end%>
+          <%= link_to "/users/logout",class:'header_link',method: :post, data: {confirm: "ログアウトしますか？"} do %>
+            <i class="fas fa-sign-out-alt"></i> Logout
+          <%end%>
+        </div>
+        <div class="menu_list">
+          <%= link_to "/about",class:'header_link',method: :get do %>
+            <i class="fas fa-home"></i> About
+          <%end%>
+          <%= link_to "/recipes/recipe_top",class:'header_link',method: :get do %>
+            <i class="fas fa-book"></i> Recipe
+          <%end%>
+          <%= link_to "/meal/menu_top",class:'header_link',method: :get do %>
+            <i class="far fa-calendar-alt"></i> Menu
+          <%end%>
+          <%= link_to "/shopping/shopping_top",class:'header_link',method: :get do %>
+            <i class="far fa-list-alt"></i> Shopping
+          <%end%>
+          <%= link_to 'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link',method: :get do %>
+            <i class="fas fa-shopping-cart"></i> Store
+          <%end%>
+        </div>
+  </header>
+  <main>
+    <div class="auto">
+      <% if flash[:notice] %>
+        <div class="flash"><%= flash[:notice] %></div>
+      <%end%>
+    </div>
+    <nav>
+        <div class="nav_title">Menu</div>
+        <div class="nav_menu">
+            <li><%= link_to "献立作成・編集","/meal/menu_new",class:"nav_menu_link" %></li>
+        </div>
+    </nav>
+    <article>
+      <!--献立カレンダー-->
+      <div class="menu_sub_title"><i class="far fa-calendar-alt"></i>  Calendar</div>
+          <div class="menu_calender">
+              <%= week_calendar number_of_weeks:4 ,events:@menus do |date,menus| %>
+                  <%= date.day %>
+                  <% menus.each do |m| %>
+                      <li><%= link_to Recipe.find_by(id:m.recipe_id).name ,Recipe.find_by(id:m.recipe_id).address ,class:"calender_recipe_link" %></li>
+                  <% end %>
+              <% end %>
+          </div>
+          <br>
+          <br>
+    </article>
+  </main>
+</body>
+</html>

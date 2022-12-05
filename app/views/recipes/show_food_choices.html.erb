@@ -10,8 +10,13 @@
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">Add Material<%= link_to recipes_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">Add Material<%= link_to recipes_recipe_top_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
+        <div class="auto">
+            <% if flash[:notice] %>
+                <div class="flash"><%= flash[:notice] %></div>
+            <%end%>
+        </div>
             <div class="p_explanation">候補から各食材１つを選択してください</div>
             <div class="form-error"><%= flash[:error_create_materials] %></div>
                 <%= form_with url:"/recipes/create_materials" do |f| %>

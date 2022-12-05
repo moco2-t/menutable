@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>レシピ登録</title>
 </head>
 <body>
     <div class="input_table">
-        <div class="input_table_title">Add Recipe<%= link_to recipes_index_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div> 
+        <div class="input_table_title">Add Recipe<%= link_to recipes_recipe_top_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div> 
         <div class="create_recipe_attention">cookpadのみ対応</div>
         <% if @url_error %>
             <div class="form-error"><%= @url_error%></div>

@@ -1,82 +1,113 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
-    <title>レシピ詳細</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>レシピ詳細</title>
 </head>
 <body>
-    <nav>
-        <div class="nav_title">Recipe</div>
-        <div class="nav_menu">
-            <li><%= link_to("レシピを登録する","/recipes/new",class:"nav_menu_link")%></li>
-            <li><%= link_to("レシピ一覧","/recipes/index",class:"nav_menu_link")%></li>
+    <header>
+      <div class="title_logo">Menutable</div>
+        <div class="account_list">
+          <%= link_to "/users/#{@current_user.id}",class:'header_link',method: :get do %>
+            <i class="fas fa-user"></i> <%=@current_user.login_id%>
+          <%end%>
+          <%= link_to "/users/logout",class:'header_link',method: :post, data: {confirm: "ログアウトしますか？"} do %>
+            <i class="fas fa-sign-out-alt"></i> Logout
+          <%end%>
         </div>
-    </nav>
-    <article>
+        <div class="menu_list">
+          <%= link_to "/about",class:'header_link',method: :get do %>
+            <i class="fas fa-home"></i> About
+          <%end%>
+          <%= link_to "/recipes/recipe_top",class:'header_link',method: :get do %>
+            <i class="fas fa-book"></i> Recipe
+          <%end%>
+          <%= link_to "/meal/menu_top",class:'header_link',method: :get do %>
+            <i class="far fa-calendar-alt"></i> Menu
+          <%end%>
+          <%= link_to "/shopping/shopping_top",class:'header_link',method: :get do %>
+            <i class="far fa-list-alt"></i> Shopping
+          <%end%>
+          <%= link_to 'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link',method: :get do %>
+            <i class="fas fa-shopping-cart"></i> Store
+          <%end%>
+        </div>
+    </header>
+    <main>
+      <div class="auto">
+        <% if flash[:notice] %>
+          <div class="flash"><%= flash[:notice] %></div>
+        <%end%>
+      </div>
+      <nav>
+          <div class="nav_title">Recipe</div>
+          <div class="nav_menu">
+              <li><%= link_to("レシピを登録する","/recipes/recipe_new",class:"nav_menu_link")%></li>
+              <li><%= link_to("レシピ一覧","/recipes/recipe_top",class:"nav_menu_link")%></li>
+          </div>
+      </nav>
+      <article>
         <div class="recipe_detail">
-            <div class="recipe_settings">
-                <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
-                <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
-                <li><%= link_to("買い物リストの編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
-            </div>
-            <h2><%= recipe().name %></h2>
-            <table class="recipe_detail_table">
-                <tr>
-                    <th>keyword</th>
-                    <td><%= recipe().keyword %></td>
-                </tr>
-                <tr>
-                    <th>URL</th>
-                    <td><%= link_to recipe().address, recipe().address %></td>
-                </tr>
-            </table>
-
-            <div class="show_section">
-                <div class='list_title'><i class="fa-solid fa-utensils"></i>　材料リスト</div>
-                    <table class="materials_list">
-                        <tr>
-                            <th>名前</th>
-                            <th>分量</th>
-                        </tr>
-                        <% ingredients().each do |i|%>
-                        <tr>
+          <div class="recipe_settings">
+              <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
+              <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
+              <li><%= link_to("買い物リストの編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
+          </div>
+          <h2><%= recipe().name %></h2>
+          <table class="recipe_detail_table">
+              <tr>
+                  <th>keyword</th>
+                  <td><%= recipe().keyword %></td>
+              </tr>
+              <tr>
+                  <th>URL</th>
+                  <td><%= link_to recipe().address, recipe().address %></td>
+              </tr>
+          </table>
+          <div class="show_section">
+            <div class='list_title'><i class="fa-solid fa-utensils"></i>　材料リスト</div>
+              <table class="materials_list">
+                  <tr>
+                      <th>名前</th>
+                      <th>分量</th>
+                  </tr>
+                  <% ingredients().each do |i|%>
+                  <tr>
+                      <td>
+                          <%= i.foodname %>
+                      </td>
+                      <td>
+                          <%= i.amount %>
+                      </td>
+                  </tr>
+                  <%end%>
+              </table>
+          </div>
+          <div class="show_section">
+            <div class='list_title'><i class="fa-solid fa-basket-shopping"></i>　買い物リスト</div>
+                <table class="materials_list">
+                    <tr>
+                        <th>名前</th>
+                        <th>数量</th>
+                    </tr>
+                    <% materials().each do |m|%>
+                    <tr>
+                        <td>
+                            <%= Food.find_by(id: m.food_id)[:name]%>
+                        </td>
+                        <%unless m.quantity === 0.0 %>
                             <td>
-                                <%= i.foodname %>
+                                <%= m.quantity%>
+                                <%= Food.find_by(id: m.food_id)[:unit]%>
                             </td>
-                            <td>
-                                <%= i.amount %>
-                            </td>
-                        </tr>
                         <%end%>
-                    </table>
-            </div>
-            <div class="show_section">
-                <div class='list_title'><i class="fa-solid fa-basket-shopping"></i>　買い物リスト</div>
-                    <table class="materials_list">
-                        <tr>
-                            <th>名前</th>
-                            <th>数量</th>
-                        </tr>
-                        <% materials().each do |m|%>
-                        <tr>
-                            <td>
-                                <%= Food.find_by(id: m.food_id)[:name]%>
-                            </td>
-                            <%unless m.quantity === 0.0 %>
-                                <td>
-                                    <%= m.quantity%>
-                                    <%= Food.find_by(id: m.food_id)[:unit]%>
-                                </td>
-                            <%end%>
-                        </tr>
-                        <%end%>
-                    </table>
-            </div>
+                    </tr>
+                    <%end%>
+                </table>
+          </div>
         </div>
-    </article>
+      </article>
+    </main>
 </body>
 </html>
 

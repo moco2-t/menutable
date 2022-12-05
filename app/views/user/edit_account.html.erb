@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>アカウント設定編集</title>
 </head>
@@ -15,7 +13,7 @@
                 <% end %>
             </div>
             <div class="account_edit_main">
-                <%= form_with url:"/users/update" do |f|%>
+                <%= form_with url:"/update_account" do |f|%>
                     <table class="account_form">
                         <tr>
                             <td>

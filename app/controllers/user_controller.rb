@@ -1,5 +1,5 @@
-class UserController < ApplicationController
-    
+class UserController < ApplicationController     
+ 
 
 def login_form
 end
@@ -18,23 +18,23 @@ def login
     end
 end
 
-def new
+def new_account
     
 end
 
-def create
+def create_account
     @user = User.new(
         login_id: params[:login_id],
         password: params[:password]
         )
     if @user.save
         session[:user_id] = @user.id
-        flash[:notice]= "ユーザー登録が完了しました / ログインしました"
+        flash[:notice]= "ログインしました"
         redirect_to("/about")
     else
         @login_id = params[:login_id]
         @password = params[:password]
-        render("user/new")
+        render("user/new_account")
     end
 end
 
@@ -45,30 +45,26 @@ def logout
 end
 
 
-def destroy
+def destroy_account
     @current_user.destroy
     session[:user_id] = nil
     flash[:success] = "アカウントを削除しました"
     redirect_to("/")
 end
 
-def edit
+def edit_account
 
 end
 
-def update
+def update_account
     @current_user.login_id = params[:login_id]
     @current_user.password = params[:password]   
     if @current_user.save
         flash[:notice]= "変更しました"
         redirect_to("/users/#{@current_user.id}")
     else
-        render("user/edit")
+        render("user/edit_account")
     end
-end
-
-def top
-
 end
 
 end

@@ -6,6 +6,81 @@ $base_font: Times, "Times New Roman", Georgia, serif;
 $color: rgba(111, 239, 193, 0.28);
 $font-color: #5F5F5F;
 
+/*login before*/
+.information {
+    width: 50%;
+    height: 60%;
+    margin: 15% auto;
+    background: #FFFFFF;
+}
+    .index_title {
+        display: inline-block;
+        width: 100%;
+        height: 20%;
+        margin: 10% auto 3% auto;
+        font: 500 80px Times, "Times New Roman", Georgia, serif;
+        text-align: center;
+        color: #5F5F5F;
+    }
+
+.login_menu {
+    width: 50%;
+    margin: 5% auto;
+    padding: 0 0 10% 0;
+}
+    .login_link {
+        display: inline-block;
+        width: 80%;
+        height: 10%;
+        margin: 2% auto;
+        padding: 5% 10%;
+        font: 500 16px Times, "Times New Roman", Georgia, serif;
+        background:rgba(72, 155, 125, 0.295);
+        color: #5F5F5F;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration:none; 
+        &:hover {
+            border: solid 1px rgba(72, 155, 125, 0.295);
+            background-color: #FFFFFF;
+        }
+    }
+
+.unauthenticated_title {
+    display: inline-block;
+    width: 100%;
+    height: 15%;
+    margin: 5% auto;
+    font: 500 60px $base_font;
+    text-align: center;
+    color: #f37053;
+}
+
+.unauthenticated_text {
+    font-size: 14px;
+    color: $font-color;
+    text-align: center;
+    margin-top: 4%;
+}
+
+.top_link {
+    display: block;
+    width: 50%;
+    height: 10%;
+    margin: 10% auto;
+    padding-top: 2%;
+    font: 500 20px $base_font;
+    background:rgba(72, 155, 125, 0.295);
+    color: #5F5F5F;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration:none; 
+    &:hover {
+        border: solid 1px rgba(72, 155, 125, 0.295);
+        background-color: #FFFFFF;
+    }
+}
+
 .about_title {
     font:100 34px $base_font;
     color: $font-color;
@@ -40,3 +115,4 @@ $font-color: #5F5F5F;
     font:100 16px $base_font;
     color: $font-color;
 }
+

@@ -1,8 +1,6 @@
-<html lang="ja">
+<html>
 <head>
     <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit material</title>
 </head>
@@ -10,7 +8,7 @@
     <div class="input_table_2">
         <div class="input_table_title">Edit material<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
-        <div class="main_contents">
+            <div class="main_contents">
             <div class="material_sub_title"><i class="fas fa-edit"></i> Edit material</div>
                 <div class="form-error"><%= flash[:info] %></div>
                 <table class="edit_material_form">
@@ -33,7 +31,7 @@
                         <td>
                             <%= Food.find_by(id: m.food_id)[:name]%>
                         </td>
-                        <%unless m.quantity === nil%>
+                        <%unless Food.find_by(id: m.food_id)[:unit] == "none"%>
                             <%= form_with url:"/recipes/#{m.id}/update_material" do |f2| %>
                                 <td>
                                     <%= f2.hidden_field :recipe_id, value: params[:id] %>

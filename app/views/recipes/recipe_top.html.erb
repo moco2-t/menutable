@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe</title>
+</head>
+<body>
+    <header>
+      <div class="title_logo">Menutable</div>
+        <div class="account_list">
+          <%= link_to "/users/#{@current_user.id}",class:'header_link',method: :get do %>
+            <i class="fas fa-user"></i> <%=@current_user.login_id%>
+          <%end%>
+          <%= link_to "/users/logout",class:'header_link',method: :post, data: {confirm: "ログアウトしますか？"} do %>
+            <i class="fas fa-sign-out-alt"></i> Logout
+          <%end%>
+        </div>
+        <div class="menu_list">
+          <%= link_to "/about",class:'header_link',method: :get do %>
+            <i class="fas fa-home"></i> About
+          <%end%>
+          <%= link_to "/recipes/recipe_top",class:'header_link',method: :get do %>
+            <i class="fas fa-book"></i> Recipe
+          <%end%>
+          <%= link_to "/meal/menu_top",class:'header_link',method: :get do %>
+            <i class="far fa-calendar-alt"></i> Menu
+          <%end%>
+          <%= link_to "/shopping/shopping_top",class:'header_link',method: :get do %>
+            <i class="far fa-list-alt"></i> Shopping
+          <%end%>
+          <%= link_to 'https://www.iy-net.jp/',target: :_blank, rel: "noopener noreferrer",class:'header_link',method: :get do %>
+            <i class="fas fa-shopping-cart"></i> Store
+          <%end%>
+        </div>
+    </header>
+    <main>
+      <div class="auto">
+        <% if flash[:notice] %>
+          <div class="flash"><%= flash[:notice] %></div>
+        <%end%>
+      </div>
+      <nav>
+        <div class="nav_title">Recipe</div>
+        <div class="nav_menu">
+            <li><%= link_to("レシピを登録する","/recipes/recipe_new",class:"nav_menu_link")%></li>
+            <li><%= link_to("レシピ一覧","/recipes/recipe_top",class:"nav_menu_link")%></li>
+        </div>
+      </nav>
+      <article>
+        <%= form_with url:"/recipes/recipe_search", class:"search_form", method: :get, local: true do |f| %>
+          <%= f.label :search,'Recipe search' ,class:"recipe_label"%>
+          <%= f.text_field :searchword ,class:"search_input"%>
+          <%= f.button type:"submit",name: nil,class:"search_submit" do %><i class="fas fa-search"></i><%end%>
+        <% end %>
+        <%if @search_recipe%>
+          <table class="search_recipeslist">
+            <% @search_recipe.each do |s| %>
+              <tr>
+                <td>
+                  <%= link_to s.name, "/recipes/#{s.id}",class:"recipes_link"%>
+                </td>
+              </tr>
+            <%end%>
+          </table>
+        <%else%>
+          <table class="all_recipeslist">
+            <% recipes().each do |r|%>
+              <tr>
+                <td>
+                  <li><%= link_to r.name , "/recipes/#{r.id}",class:"recipes_link" %></li>
+                </td>
+              </tr>
+            <%end%>
+          </table>
+        <%end%>
+      </article>
+    </main>
+</body>
+</html>

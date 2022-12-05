@@ -4,7 +4,7 @@ require_relative "converter.rb"
 class ShoppingController < ApplicationController
 include Converter
 
-    def index 
+    def shopping_top 
         @menus = Meal.all
     end
 
@@ -15,7 +15,7 @@ include Converter
     def sum_shopping_list
         if params[:start_date].empty? || params[:start_date2].empty?
             flash[:error_new_shopping] = "必ず２つ、日付を選択してください。"
-            redirect_to '/shopping/create_shopping_list'
+            redirect_to shopping_create_shopping_list_path
         else
             menu=Meal.where(start_date:params[:start_date]..params[:start_date2])
             menu_recipe_id = []
@@ -73,15 +73,15 @@ include Converter
         
     end
 
-    def search
+    def search_shopping
         if params[:start_date].empty? || params[:end_date].empty? 
             flash[:error_view] = "日付を選択してください"
-            redirect_to '/shopping/index'
+            redirect_to shopping_shopping_top_path
         else
             search_list = Shopping.where(start_date:params[:start_date]).where(end_date:params[:end_date])
             if search_list.empty?
                 flash[:error_view] = "買い物リストが存在しません。再度確認して日付を入力してください。"
-                redirect_to '/shopping/index'
+                redirect_to shopping_shopping_top_path
             else
                 redirect_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date])
             end    
@@ -118,7 +118,7 @@ include Converter
         destroy_shoppinglist = Shopping.where(start_date:params[:start_date]).where(end_date:params[:end_date]).destroy_all
         if destroy_shoppinglist
             flash[:notice] = "【#{params[:start_date]}〜#{params[:end_date]}】の買い物リストを削除しました"
-            redirect_to shopping_index_path
+            redirect_to shopping_shopping_top_path
         end
     end
 
