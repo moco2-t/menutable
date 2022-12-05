@@ -6,10 +6,10 @@
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">Edit material<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">材料リスト編集<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
             <div class="main_contents">
-            <div class="material_sub_title"><i class="fas fa-edit"></i> Edit material</div>
+            <div class="material_sub_title"><i class="fas fa-edit"></i> 材料リスト編集</div>
                 <div class="form-error"><%= flash[:info] %></div>
                 <table class="edit_material_form">
                     <tr>
@@ -48,7 +48,7 @@
                     </tr>
                 <%end%>
                 </table>
-            <div class="material_sub_title"><i class="fas fa-plus-square"></i> Add new material</div>
+            <div class="material_sub_title"><i class="fas fa-plus-square"></i> 材料の追加</div>
                 <div class="form-error"><%= flash[:alert] %></div>
                 <div class="edit_add_material">
                     <%=form_with url:"/recipes/create_manual_materials", id:"add_form" do |f| %>

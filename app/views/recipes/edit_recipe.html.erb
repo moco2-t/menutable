@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="input_table">
-        <div class="input_table_title">Edit recipe<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">レシピ編集<%= link_to "/recipes/#{params[:id]}" ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
             <% if @edit_recipe %>
                 <% @edit_recipe.errors.full_messages.each do |message| %>
                     <div class="form-error">

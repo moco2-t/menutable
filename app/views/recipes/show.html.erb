@@ -51,7 +51,7 @@
           <div class="recipe_settings">
               <li><%= link_to("編集","/recipes/#{params[:id]}/edit_recipe",class:"recipe_settings_link")%></li>
               <li><%= link_to "削除", "/recipes/#{params[:id]}/delete", method: :delete, data: { confirm: "レシピを削除してよろしいですか?"} ,class:"recipe_settings_link"%></li>
-              <li><%= link_to("買い物リストの編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
+              <li><%= link_to("材料リストの編集","/recipes/#{params[:id]}/edit_material",class:"recipe_settings_link")%></li>
           </div>
           <h2><%= recipe().name %></h2>
           <table class="recipe_detail_table">
@@ -65,7 +65,7 @@
               </tr>
           </table>
           <div class="show_section">
-            <div class='list_title'><i class="fa-solid fa-utensils"></i>　材料リスト</div>
+            <div class='list_title'><i class="fa-solid fa-utensils"></i>　分量リスト</div>
               <table class="materials_list">
                   <tr>
                       <th>名前</th>
@@ -84,7 +84,7 @@
               </table>
           </div>
           <div class="show_section">
-            <div class='list_title'><i class="fa-solid fa-basket-shopping"></i>　買い物リスト</div>
+            <div class='list_title'><i class="fa-solid fa-basket-shopping"></i>　材料リスト</div>
                 <table class="materials_list">
                     <tr>
                         <th>名前</th>

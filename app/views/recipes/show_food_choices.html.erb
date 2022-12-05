@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
-<%= javascript_pack_tag 'application','data-turbolinks-track': 'reload'%>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>材料登録</title>
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">Add Material<%= link_to recipes_recipe_top_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">買い物リスト作成<%= link_to recipes_recipe_top_path ,class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
         <div class="auto">
             <% if flash[:notice] %>

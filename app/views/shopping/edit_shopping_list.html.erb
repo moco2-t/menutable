@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="input_table_2">
-        <div class="input_table_title">Edit shopping list <%= link_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
+        <div class="input_table_title">買い物リスト編集<%= link_to shopping_show_shopping_list_path(start_date:params[:start_date],end_date:params[:end_date]),class:"close_btn" do %><i class="fa-regular fa-circle-xmark"></i><%end%></div>
         <section>
             <div class="edit_sub_title"><%= params[:start_date]%>〜<%=params[:end_date]%></div>
             <%= link_to shopping_list_delete_path(start_date:params[:start_date],end_date:params[:end_date]), method: :delete, data: { confirm: "買い物リストのすべての項目を削除します。削除してよろしいですか?"} ,class:"shopping_list_btn" do%><i class="fa-solid fa-trash-can"> 買い物リスト削除</i><%end%>
@@ -61,7 +61,7 @@
                 <%end%>
             </table>
             <br>
-            <div class="edit_sub_title"><i class="fa-solid fa-cart-plus"></i>  Add to list</div>
+            <div class="edit_sub_title"><i class="fa-solid fa-cart-plus"></i>　買い物リストの追加</div>
                 <div class="form-error"><%= flash[:alert] %></div>
                 <%=form_with url:"/shopping/add_shopping", id:"add_form" do |f| %>
                     <%= f.hidden_field :start_date, value: params[:start_date] %>
