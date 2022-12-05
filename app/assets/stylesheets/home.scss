@@ -9,7 +9,7 @@ $font-color: #5F5F5F;
 /*login before*/
 .information {
     width: 50%;
-    height: 60%;
+    height: 350px;
     margin: 15% auto;
     background: #FFFFFF;
 }
@@ -60,14 +60,14 @@ $font-color: #5F5F5F;
     font-size: 14px;
     color: $font-color;
     text-align: center;
-    margin-top: 4%;
+    margin-top: 2%;
 }
 
 .top_link {
     display: block;
     width: 50%;
     height: 10%;
-    margin: 10% auto;
+    margin: 6% auto;
     padding-top: 2%;
     font: 500 20px $base_font;
     background:rgba(72, 155, 125, 0.295);
